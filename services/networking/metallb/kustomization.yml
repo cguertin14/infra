@@ -1,0 +1,12 @@
+resources:
+- https://github.com/metallb/metallb/manifests?ref=v0.9.6
+
+namespace: metallb-system
+
+configMapGenerator:
+- name: config
+  files:
+  - config=config/config.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
