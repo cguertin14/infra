@@ -43,6 +43,9 @@ workflows:
           requires:
             - apply_approval
 
+##
+# EXECUTORS
+#
 executors:
   terraform-executor:
     docker:
@@ -52,6 +55,9 @@ executors:
     docker:
       - image: cimg/base:2021.02-20.04
 
+##
+# JOBS
+#
 version: 2.1
 jobs:
   tf_lint:
@@ -59,6 +65,11 @@ jobs:
     executor: terraform-executor
     steps:
       - checkout
+      - run:
+          command: >-
+            echo "credentials \"app.terraform.io\" {token =
+            \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+          name: Create .terraformrc file locally
       - run:
           name: Test if terraform configs are valid
           working_directory: dns
@@ -81,10 +92,7 @@ jobs:
           working_directory: dns
           command: |
             terraform init -input=false
-            terraform plan -out=tfplan.production -input=false
-      - persist_to_workspace:
-          root: terraform
-          paths: tfplan.production
+            terraform plan -input=false
       - store_artifacts:
           path: terraform/tfplan.production
           destination: tfplan.production
@@ -106,4 +114,4 @@ jobs:
           working_directory: dns
           command: |
             terraform init -input=false
-            terraform apply -auto-approve -input=false tfplan.production
+            terraform apply -auto-approve -input=false
