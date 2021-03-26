@@ -1,0 +1,97 @@
+---
+##
+# TEMPLATES
+#
+execute_on_tags: &execute_on_tags
+  # This filter will ignore changes to all the branches
+  # It will only be triggered when a tag with the following format v(anything you want here) is pushed
+  filters:
+    tags:
+      only: /v.*/
+    branches:
+      ignore: /.*/
+
+##
+# WORKFLOWS
+#
+workflows:
+  version: 2          
+  # Triggered only on tags
+  terraform:
+    jobs:
+      - plan:
+          <<: *execute_on_tags
+      - apply_approval:
+          <<: *execute_on_tags
+          type: approval
+          requires:
+            - plan
+      - apply:
+          <<: *execute_on_tags
+          requires:
+            - apply_approval
+
+executors:
+  terraform-executor:
+    docker:
+      - image: hashicorp/terraform:0.14.9
+
+  scripts-executor:
+    docker:
+      - image: cimg/base:2021.02-20.04
+
+version: 2.1
+jobs:
+  tf_lint:
+    resource_class: small
+    executor: terraform-executor
+    steps:
+      - checkout
+      - run:
+          name: Test if terraform configs are valid
+          working_directory: terraform
+          command: |
+            terraform init -input=false
+            terraform fmt -check -recursive -diff
+
+  plan:
+    resource_class: small
+    executor: terraform-executor
+    steps:
+      - checkout
+      - run:
+          command: >-
+            echo "credentials \"app.terraform.io\" {token =
+            \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+          name: Create .terraformrc file locally
+      - run:
+          name: Plan production terraform config
+          working_directory: terraform
+          command: |
+            terraform init -input=false
+            terraform plan -out=tfplan.production -input=false
+      - persist_to_workspace:
+          root: terraform
+          paths: tfplan.production
+      - store_artifacts:
+          path: terraform/tfplan.production
+          destination: tfplan.production
+
+  apply:
+    resource_class: small
+    executor: terraform-executor
+    steps:
+      - checkout
+      - run:
+          command: >-
+            echo "credentials \"app.terraform.io\" {token =
+            \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+          name: Create .terraformrc file locally
+      - attach_workspace:
+          at: terraform
+      - run:
+          name: Apply production terraform config
+          working_directory: terraform
+          command: |
+            terraform init -input=false
+            terraform apply -auto-approve -input=false tfplan.production
