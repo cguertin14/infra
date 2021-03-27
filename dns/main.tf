@@ -39,3 +39,12 @@ resource "cloudflare_record" "traefik" {
   ttl     = 1800
   proxied = false
 }
+
+resource "cloudflare_record" "auth" {
+  zone_id = cloudflare_zone.cguertin_dev.id
+  name    = "auth.k8s"
+  type    = "CNAME"
+  value   = cloudflare_record.pi_load_balancer.hostname
+  ttl     = 1800
+  proxied = false
+}
