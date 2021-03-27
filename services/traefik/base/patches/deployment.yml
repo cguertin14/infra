@@ -24,3 +24,31 @@ spec:
           - "--ping=true"
           - "--providers.kubernetescrd"
           - "--providers.kubernetesingress"
+      - image: thomseddon/traefik-forward-auth
+        name: traefik-forward-auth
+        ports:
+        - containerPort: 4181
+          protocol: TCP
+        envFrom:
+        - secretRef:
+            name: traefik-forward-auth-secrets
+        env:
+        - name: CONFIG
+          value: "/config"
+        volumeMounts:
+        - name: traefik-forward-auth-config
+          mountPath: /config
+          subPath: traefik-forward-auth.ini
+      volumes:
+        - name: traefik-forward-auth-config
+          configMap:
+            name: traefik-forward-auth-config
+        - name: traefik-forward-auth-secrets
+          secret:
+            secretName: traefik-forward-auth-secrets
+        - name: traefik-data
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+      securityContext:
+        fsGroup: 65532

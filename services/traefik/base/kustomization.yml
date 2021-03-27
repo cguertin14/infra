@@ -1,6 +1,7 @@
 resources:
 - resources/services.yml
 - resources/ingress-class.yml
+- resources/middleware.yml
 - metrics/service-monitor.yml
 - metrics/rbac.yml
 
@@ -12,5 +13,9 @@ patchesStrategicMerge:
 
 commonLabels:
   app.kubernetes.io/name: traefik
+
+images:
+- name: thomseddon/traefik-forward-auth
+  newTag: 2-arm64
 
 namespace: kube-system

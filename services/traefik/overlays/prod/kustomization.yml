@@ -1,12 +1,12 @@
 resources:
 - ../../base
-- ingress-dashboard.yml
-
-patchesStrategicMerge:
-- patches/ingress-dashboard.yml
+- ingress.yml
 
 generators:
 - secrets-generator.yml
 
-generatorOptions:
-  disableNameSuffixHash: true
+configMapGenerator:
+- name: traefik-forward-auth-config
+  namespace: kube-system
+  files:
+  - traefik-forward-auth.ini=config/traefik-forward-auth.ini
