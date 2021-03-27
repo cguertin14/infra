@@ -1,0 +1,4 @@
+creation_rules:
+- path_regex: services/.*/secrets/.*\.yml$
+  encrypted_regex: '^(data|stringData)$'
+  pgp: '1A37BCE8820939248F601E7F79BEF86F25A81443'
