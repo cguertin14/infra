@@ -3,6 +3,6 @@ resources:
 - resources/cluster-issuer.yml
 
 generators:
-- ./secrets-generator.yml
+- secrets-generator.yml
 
 namespace: cert-manager
