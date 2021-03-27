@@ -1,0 +1,6 @@
+GF_SERVER_DOMAIN=monitoring.k8s.cguertin.dev
+GF_SERVER_ROOT_URL=https://monitoring.k8s.cguertin.dev/
+GF_USERS_ALLOW_SIGN_UP=false
+GF_AUTH_ANONYMOUS_ENABLED=false
+GF_INSTALL_PLUGINS=grafana-piechart-panel
+TZ=America/Toronto

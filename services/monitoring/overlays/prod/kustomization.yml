@@ -1,0 +1,53 @@
+resources:
+- ../../base
+- ingress-grafana.yml
+- grafana-pvc.yml
+
+generators:
+- secrets-generator.yml
+
+images:
+- name: quay.io/coreos/kube-state-metrics
+  newName: gcr.io/k8s-staging-kube-state-metrics/kube-state-metrics-arm64
+  newTag: v2.0.0-rc.1
+
+patchesJson6902:
+- path: patches/grafana-patches.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: grafana
+    namespace: monitoring
+    version: v1
+## 
+# First, this JSON patch below changes the CPUThrottling alert:
+# 
+# - Change from 25% to 75%
+#
+# Second and Third, the JSON patches below remove the following alerts: 
+#  
+# - KubeSchedulerDown
+# - KubeControllerManagerDown
+#
+# We need to remove the 20th group twice, because
+# that is the index of one of the two alerts, and
+# once we remove one of the two, the other one takes
+# the 20th index and so we need to remove that one too.
+#
+- path: patches/prometheus-alerts-patch.yml
+  target:
+    group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: prometheus-k8s-rules
+    namespace: monitoring
+    version: v1
+
+patchesStrategicMerge:
+- patches/set-permissions-grafana-patch.yml
+- patches/prometheus-modifications.yml
+
+configMapGenerator:
+- name: grafana-settings-config
+  namespace: monitoring
+  envs:
+  - env/grafana-settings
