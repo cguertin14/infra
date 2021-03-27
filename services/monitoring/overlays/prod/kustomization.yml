@@ -6,11 +6,6 @@ resources:
 generators:
 - secrets-generator.yml
 
-images:
-- name: quay.io/coreos/kube-state-metrics
-  newName: gcr.io/k8s-staging-kube-state-metrics/kube-state-metrics-arm64
-  newTag: v2.0.0-rc.1
-
 patchesJson6902:
 - path: patches/grafana-patches.yml
   target:

@@ -1,2 +1,11 @@
 resources:
 - github.com/prometheus-operator/kube-prometheus?ref=v0.7.0
+- rbac.yml
+
+patchesStrategicMerge:
+- patches/rbac.yml
+
+images:
+- name: quay.io/coreos/kube-state-metrics
+  newName: k8s.gcr.io/kube-state-metrics-arm64
+  newTag: v1.9.5
