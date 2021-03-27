@@ -30,3 +30,12 @@ resource "cloudflare_record" "gitops" {
   ttl     = 1800
   proxied = false
 }
+
+resource "cloudflare_record" "traefik" {
+  zone_id = cloudflare_zone.cguertin_dev.id
+  name    = "traefik.k8s"
+  type    = "CNAME"
+  value   = cloudflare_record.pi_load_balancer.hostname
+  ttl     = 1800
+  proxied = false
+}

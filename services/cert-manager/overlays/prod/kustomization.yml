@@ -1,0 +1,8 @@
+resources:
+- ../../base
+- resources/cluster-issuer.yml
+
+generators:
+- ./secrets-generator.yml
+
+namespace: cert-manager

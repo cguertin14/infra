@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template: 
+    spec:
+      containers:
+      - name: traefik
+        args:
+          - "--global.checknewversion"
+          - "--entryPoints.traefik.address=:9000/tcp"
+          - "--entryPoints.web.address=:8000/tcp"
+          - "--entrypoints.web.http.redirections.entryPoint.to=:443"
+          - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+          - "--entryPoints.websecure.address=:8443/tcp"
+          - "--api.dashboard=true"
+          - "--metrics.prometheus=true"
+          - "--ping=true"
+          - "--providers.kubernetescrd"
+          - "--providers.kubernetesingress"

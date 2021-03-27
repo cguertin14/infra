@@ -1,0 +1,16 @@
+resources:
+- resources/services.yml
+- resources/ingress-class.yml
+- metrics/service-monitor.yml
+- metrics/rbac.yml
+
+generators:
+- resources/helm-chart.yml
+
+patchesStrategicMerge:
+- patches/deployment.yml
+
+commonLabels:
+  app.kubernetes.io/name: traefik
+
+namespace: kube-system
