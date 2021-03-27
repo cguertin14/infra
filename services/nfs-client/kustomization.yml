@@ -1,0 +1,14 @@
+resources:
+- resources/rbac.yml
+- resources/namespace.yml
+- resources/storage_class.yml
+- resources/provisioner.yml
+
+namespace: synology-nfs
+
+images:
+- name: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
+  newTag: v4.0.1
+
+commonLabels:
+  app.kubernetes.io/name: synology-nfs
