@@ -1,0 +1,8 @@
+resources:
+- https://github.com/jetstack/cert-manager/releases/download/v1.2.0/cert-manager.yaml
+
+patchesStrategicMerge:
+- patches/certmanager_namespace.yml
+- patches/cainjector_namespace.yml
+
+namespace: cert-manager

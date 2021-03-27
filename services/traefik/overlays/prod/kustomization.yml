@@ -1,0 +1,12 @@
+resources:
+- ../../base
+- ingress-dashboard.yml
+
+patchesStrategicMerge:
+- patches/ingress-dashboard.yml
+
+generators:
+- ./secrets-generator.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
