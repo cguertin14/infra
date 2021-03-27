@@ -1,6 +1,9 @@
 resources:
 - https://github.com/metallb/metallb/manifests?ref=v0.9.6
 
+generators:
+- secrets-generator.yml
+
 namespace: metallb-system
 
 configMapGenerator:
