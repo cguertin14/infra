@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1617051033966,
+  "iteration": 1617055304547,
   "links": [],
   "panels": [
     {
@@ -37,6 +37,14 @@
                 "value": null
               },
               {
+                "color": "semi-dark-green",
+                "value": 50
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 55
+              },
+              {
                 "color": "#EAB839",
                 "value": 60
               },
@@ -55,7 +63,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 24,
+        "w": 6,
         "x": 0,
         "y": 0
       },
@@ -92,12 +100,255 @@
       "type": "stat"
     },
     {
+      "cacheTimeout": null,
+      "datasource": "prometheus",
+      "description": "Average temperature of the selected instance.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 50
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 55
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "dark-orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 11,
+      "interval": null,
+      "links": [],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^°C$/",
+          "values": false
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "7.3.4",
+      "targets": [
+        {
+          "expr": "node_thermal_zone_temp{instance=\"$instance\"}",
+          "interval": "",
+          "legendFormat": "°C",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Average Temperature",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "prometheus",
+      "description": "Lowest temperature of the selected instance.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 50
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 55
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "dark-orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 10,
+      "interval": null,
+      "links": [],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "min"
+          ],
+          "fields": "/^°C$/",
+          "values": false
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "7.3.4",
+      "targets": [
+        {
+          "expr": "node_thermal_zone_temp{instance=\"$instance\"}",
+          "interval": "",
+          "legendFormat": "°C",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Lowest Temperature",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "prometheus",
+      "description": "Highest temperature of the selected instance.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 50
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 55
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "dark-orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "/^°C$/",
+          "values": false
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "7.3.4",
+      "targets": [
+        {
+          "expr": "node_thermal_zone_temp{instance=\"$instance\"}",
+          "interval": "",
+          "legendFormat": "°C",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Highest Temperature",
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$datasource",
-      "description": "Temperatures over time per instance.",
+      "description": "Temperature over time per instance.",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -151,7 +402,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Temperatures over time",
+      "title": "Temperature over time",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -219,9 +470,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "master",
-          "value": "master"
+          "selected": true,
+          "text": "pi-master",
+          "value": "pi-master"
         },
         "datasource": "$datasource",
         "definition": "label_values(up{job=\"node-exporter\"}, instance)",
@@ -253,5 +504,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 16
+  "version": 17
 }
