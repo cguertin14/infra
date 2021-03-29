@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  # 1- Set Recreate strategy, because of Persistent Storage.
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      # 2- Set security context to 65534.
+      securityContext:
+        fsGroup: 65534
+        runAsUser: 65534
+        runAsNonRoot: true
+      containers:
+      - name: grafana
+        # 3- Set envFrom values to Grafana admin credz + Grafana settings.
+        envFrom:
+        - configMapRef:
+            name: grafana-settings-config
+        - secretRef:
+            name: grafana-admin-credentials
+        # 4- Set Grafana custom dashboards volumeMount.
+        volumeMounts:
+        - mountPath: /grafana-dashboard-definitions/0/custom-dashboards
+          name: grafana-dashboards-custom
+      volumes:
+      # 5- Set Grafana Persistent Storage volume.
+      - emptyDir: null
+        name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-storage
+      # 6- Set Grafana custom dashboards volume.
+      - name: grafana-dashboards-custom
+        configMap:
+          defaultMode: 420
+          name: grafana-dashboards-custom
