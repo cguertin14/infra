@@ -7,13 +7,6 @@ generators:
 - secrets-generator.yml
 
 patchesJson6902:
-- path: patches/grafana-patches.yml
-  target:
-    group: apps
-    kind: Deployment
-    name: grafana
-    namespace: monitoring
-    version: v1
 ## 
 # First, this JSON patch below changes the CPUThrottling alert:
 # 
@@ -38,11 +31,16 @@ patchesJson6902:
     version: v1
 
 patchesStrategicMerge:
-- patches/set-permissions-grafana-patch.yml
 - patches/prometheus-modifications.yml
+- patches/grafana-strategic-patches.yml
 
 configMapGenerator:
 - name: grafana-settings-config
   namespace: monitoring
   envs:
   - env/grafana-settings
+- name: grafana-dashboards-custom
+  namespace: monitoring
+  files:
+  - dashboards/argocd.json
+  - dashboards/node_temperatures.json
