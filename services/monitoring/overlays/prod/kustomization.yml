@@ -1,7 +1,7 @@
 resources:
 - ../../base
-- ingress-grafana.yml
 - grafana-pvc.yml
+- ingresses.yml
 
 generators:
 - secrets-generator.yml

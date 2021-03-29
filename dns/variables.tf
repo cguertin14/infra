@@ -9,3 +9,16 @@ variable "router_ip" {
   type        = string
   default     = "173.179.104.31"
 }
+
+variable "domains" {
+  description = "The CNAME domains to create"
+  type        = list(string)
+  default = [
+    "auth.k8s",
+    "traefik.k8s",
+    "monitoring.k8s",
+    "gitops.k8s",
+    "alertmanager.monitoring.k8s",
+    "prometheus.monitoring.k8s",
+  ]
+}
