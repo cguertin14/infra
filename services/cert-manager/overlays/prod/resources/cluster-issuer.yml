@@ -22,6 +22,8 @@ spec:
       selector:
         dnsNames:
         - 'monitoring.k8s.cguertin.dev'
+        - 'alertmanager.monitoring.k8s.cguertin.dev'
+        - 'prometheus.monitoring.k8s.cguertin.dev'
         - 'gitops.k8s.cguertin.dev'
         - 'traefik.k8s.cguertin.dev'
         - 'auth.k8s.cguertin.dev'

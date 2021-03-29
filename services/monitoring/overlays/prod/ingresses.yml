@@ -1,0 +1,79 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - monitoring.k8s.cguertin.dev
+    secretName: grafana-cert-traefik-tls
+  rules:
+  - host: monitoring.k8s.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alertmanager
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - alertmanager.monitoring.k8s.cguertin.dev
+    secretName: alertmanager-cert-traefik-tls
+  rules:
+  - host: alertmanager.monitoring.k8s.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: alertmanager-main
+            port:
+              number: 9093
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - prometheus.monitoring.k8s.cguertin.dev
+    secretName: prometheus-cert-traefik-tls
+  rules:
+  - host: prometheus.monitoring.k8s.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-k8s
+            port:
+              number: 9090
