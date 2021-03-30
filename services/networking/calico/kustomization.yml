@@ -1,0 +1,9 @@
+resources:
+- canal.yml
+
+commonLabels:
+  app.kubernetes.io/name: calico
+
+images:
+- name: quay.io/coreos/flannel
+  newTag: v0.13.0-arm64
