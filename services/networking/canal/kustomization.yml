@@ -2,7 +2,7 @@ resources:
 - canal.yml
 
 commonLabels:
-  app.kubernetes.io/name: calico
+  app.kubernetes.io/name: canal
 
 images:
 - name: quay.io/coreos/flannel
