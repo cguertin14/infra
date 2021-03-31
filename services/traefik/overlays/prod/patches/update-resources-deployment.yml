@@ -1,0 +1,18 @@
+- op: replace
+  path: /spec/template/spec/containers/0/resources # traefik container
+  value:
+    limits:
+      cpu: 250m
+      memory: 256Mi
+    requests:
+      cpu: 125m
+      memory: 128Mi
+- op: replace
+  path: /spec/template/spec/containers/1/resources # traefik-forward-auth container
+  value:
+    limits:
+      cpu: 125m
+      memory: 128Mi
+    requests:
+      cpu: 62.5m
+      memory: 64Mi
