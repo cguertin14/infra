@@ -4,7 +4,7 @@
     sum(increase(container_cpu_cfs_throttled_periods_total{container!="", }[5m])) by (container, pod, namespace)
       /
     sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespace)
-      > ( 75 / 100 )
+      > ( 85 / 100 )
 - op: remove
   path: /spec/groups/20
 - op: remove
