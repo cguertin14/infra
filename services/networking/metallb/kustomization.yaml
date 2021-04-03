@@ -16,9 +16,3 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
-
-images:
-- name: metallb/controller
-  newTag: v0.9.6
-- name: metallb/speaker
-  newTag: v0.9.6

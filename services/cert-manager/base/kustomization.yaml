@@ -9,3 +9,11 @@ patchesStrategicMerge:
 - patches/cainjector_namespace.yml
 
 namespace: cert-manager
+
+images:
+- name: quay.io/jetstack/cert-manager-controller
+  newTag: v1.2.0
+- name: quay.io/jetstack/cert-manager-cainjector
+  newTag: v1.2.0
+- name: quay.io/jetstack/cert-manager-webhook
+  newTag: v1.2.0
