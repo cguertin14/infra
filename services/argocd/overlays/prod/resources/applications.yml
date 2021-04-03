@@ -29,6 +29,7 @@ metadata:
 spec:
   project: production
   destination:
+    namespace: kube-system
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
@@ -46,6 +47,7 @@ metadata:
 spec:
   project: production
   destination:
+    namespace: metallb
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
@@ -63,6 +65,7 @@ metadata:
 spec:
   project: production
   destination:
+    namespace: synology-nfs
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
