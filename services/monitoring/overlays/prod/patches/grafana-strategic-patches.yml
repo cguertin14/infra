@@ -16,12 +16,14 @@ spec:
         runAsNonRoot: true
       containers:
       - name: grafana
-        # 3- Set envFrom values to Grafana admin credz + Grafana settings.
+        # 3- Set envFrom values to Grafana admin credz, Grafana settings and Github SSO.
         envFrom:
         - configMapRef:
             name: grafana-settings-config
         - secretRef:
             name: grafana-admin-credentials
+        - secretRef:
+            name: grafana-github-sso-credentials
         # 4- Set Grafana custom dashboards volumeMount.
         volumeMounts:
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards
