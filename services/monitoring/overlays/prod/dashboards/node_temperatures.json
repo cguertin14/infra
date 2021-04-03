@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1617055304547,
+  "iteration": 1617473306186,
   "links": [],
   "panels": [
     {
@@ -418,15 +418,17 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:55",
           "decimals": null,
           "format": "celsius",
           "label": "",
           "logBase": 1,
-          "max": "75",
-          "min": "45",
+          "max": "85",
+          "min": "30",
           "show": true
         },
         {
+          "$$hashKey": "object:56",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -504,5 +506,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 17
+  "version": 1
 }
