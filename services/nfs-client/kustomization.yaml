@@ -11,7 +11,7 @@ namespace: synology-nfs
 
 images:
 - name: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
-  newTag: v4.0.1
+  newTag: v4.0.2
 
 commonLabels:
   app.kubernetes.io/name: synology-nfs
