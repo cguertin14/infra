@@ -47,7 +47,7 @@ metadata:
 spec:
   project: production
   destination:
-    namespace: metallb
+    namespace: metallb-system
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
