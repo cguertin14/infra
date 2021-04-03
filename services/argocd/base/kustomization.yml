@@ -7,8 +7,3 @@ resources:
 - namespace.yml
 
 namespace: argocd
-
-images:
-- name: argoproj/argocd
-  newName: cyrilix/argocd
-  newTag: v1.8.7
