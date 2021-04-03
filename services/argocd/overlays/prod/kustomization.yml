@@ -1,0 +1,15 @@
+resources:
+- ../../base
+# - resources/argocd-ingress.yml
+- resources/project.yml
+- resources/applications.yml
+
+patchesStrategicMerge:
+- patches/argocd-cm-patch.yml
+- patches/argocd-rbac-cm-patch.yml
+- patches/argocd-server-patch.yml
+- patches/argocd-repo-server-patch.yml
+- patches/application-controller-patch.yml
+
+generators:
+- secrets-generator.yml
