@@ -19,3 +19,6 @@ images:
 - name: argoproj/argocd
   newName: cyrilix/argocd
   newTag: v1.8.7
+- name: viaductoss/ksops
+  newName: cguertz/ksops # TODO: Remove once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
+  newTag: v2.5.1-goreleaser-test-3-arm64 # TODO: Change tag once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
