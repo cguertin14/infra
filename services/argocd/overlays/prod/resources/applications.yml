@@ -2,25 +2,25 @@
 # our production cluster are listed. Simply add
 # a new 'Application' resource to this list to
 # sync them with Git.
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: argocd
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: argocd
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/argocd/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-# ---
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/argocd/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
