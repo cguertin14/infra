@@ -20,3 +20,5 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+  signatureKeys:
+  - keyID: 38F2BB003653571E

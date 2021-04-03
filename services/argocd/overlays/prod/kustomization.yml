@@ -6,6 +6,7 @@ resources:
 
 patchesStrategicMerge:
 - patches/argocd-cm-patch.yml
+- patches/argocd-cm-gpg-patch.yml
 - patches/argocd-rbac-cm-patch.yml
 - patches/argocd-server-patch.yml
 - patches/argocd-repo-server-patch.yml
