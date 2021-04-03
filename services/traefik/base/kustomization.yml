@@ -3,7 +3,6 @@ resources:
 - resources/ingress-class.yml
 - resources/middleware.yml
 - metrics/service-monitor.yml
-- metrics/rbac.yml
 
 generators:
 - resources/helm-chart.yml
