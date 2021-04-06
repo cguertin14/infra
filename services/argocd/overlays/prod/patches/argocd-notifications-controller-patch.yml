@@ -3,9 +3,10 @@ kind: Deployment
 metadata:
   name: argocd-notifications-controller
 spec:
-  spec:
-    containers:
-    - name: argocd-notifications-controller
-      env:
-      - name: TZ
-        value: America/Toronto
+  template:
+    spec:
+      containers:
+      - name: argocd-notifications-controller
+        env:
+        - name: TZ
+          value: America/Toronto
