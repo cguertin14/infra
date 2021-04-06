@@ -12,6 +12,7 @@ patchesStrategicMerge:
 - patches/argocd-cm-patch.yml
 - patches/argocd-notifications-cm-patch.yml
 - patches/argocd-notifications-controller-patch.yml
+- patches/argocd-notifications-bot-svc-patch.yml
 - patches/argocd-server-patch.yml
 - patches/argocd-repo-server-patch.yml
 - patches/argocd-repo-server-gpg-import-patch.yml
