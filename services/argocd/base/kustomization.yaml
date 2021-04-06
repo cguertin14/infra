@@ -4,10 +4,11 @@ kind: Kustomization
 resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v1.8.7
 - https://github.com/argoproj-labs/argocd-notifications/manifests/bot?ref=v1.1.0
+- metrics/rbac.yml
 - metrics/argocd-serviceMonitor.yml
 - metrics/argocd-server-serviceMonitor.yml
 - metrics/argocd-repo-server-serviceMonitor.yml
-- metrics/rbac.yml
+- metrics/argocd-notifications-controller-serviceMonitor.yml
 - namespace.yml
 
 commonLabels:
