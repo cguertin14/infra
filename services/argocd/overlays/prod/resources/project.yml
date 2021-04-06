@@ -3,6 +3,8 @@ kind: AppProject
 metadata:
   name: production
   namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: gitops
 spec:
   sourceRepos:
   - 'https://github.com/cguertin14/infra'
