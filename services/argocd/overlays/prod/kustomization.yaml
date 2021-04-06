@@ -10,9 +10,6 @@ resources:
 patchesStrategicMerge:
 - patches/argocd-rbac-cm-patch.yml
 - patches/argocd-cm-patch.yml
-- patches/argocd-notifications-cm-patch.yml
-- patches/argocd-notifications-controller-patch.yml
-- patches/argocd-notifications-bot-svc-patch.yml
 - patches/argocd-server-patch.yml
 - patches/argocd-repo-server-patch.yml
 - patches/argocd-repo-server-gpg-import-patch.yml
@@ -25,8 +22,6 @@ images:
 - name: argoproj/argocd
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
   newTag: v1.8.7
-- name: argoprojlabs/argocd-notifications
-  newTag: v1.1.0
 - name: viaductoss/ksops
   newName: cguertz/ksops # TODO: Remove once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
   newTag: v2.5.1-goreleaser-test-3-arm64 # TODO: Change tag once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
