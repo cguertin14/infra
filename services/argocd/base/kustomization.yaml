@@ -11,7 +11,4 @@ resources:
 - metrics/argocd-notifications-controller-serviceMonitor.yml
 - namespace.yml
 
-commonLabels:
-  app.kubernetes.io/part-of: argocd
-
 namespace: argocd
