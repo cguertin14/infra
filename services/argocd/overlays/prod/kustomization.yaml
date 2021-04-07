@@ -11,7 +11,7 @@ patchesStrategicMerge:
 - patches/argocd-rbac-cm-patch.yml
 - patches/argocd-cm-patch.yml
 - patches/argocd-server-patch.yml
-- patches/argocd-repo-server-patch.yml
+- patches/argocd-repo-server-ksops-patch.yml
 - patches/argocd-repo-server-gpg-import-patch.yml
 - patches/application-controller-patch.yml
 
@@ -23,5 +23,4 @@ images:
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
   newTag: v1.8.7
 - name: viaductoss/ksops
-  newName: cguertz/ksops # TODO: Remove once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
-  newTag: v2.5.1-goreleaser-test-3-arm64 # TODO: Change tag once https://github.com/viaduct-ai/kustomize-sops/pull/102 is merged.
+  newTag: v2.5.2-arm64 # arm64-capable version of ksops
