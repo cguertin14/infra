@@ -46,6 +46,5 @@ configMapGenerator:
   namespace: monitoring
   files:
   - dashboards/argocd.json
-  - dashboards/argocd_notifications.json
   - dashboards/traefik.json
   - dashboards/node_temperatures.json
