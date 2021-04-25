@@ -12,7 +12,7 @@ namespace: cert-manager
 
 images:
 - name: quay.io/jetstack/cert-manager-controller
-  newTag: v1.3.0
+  newTag: v1.3.1
 - name: quay.io/jetstack/cert-manager-cainjector
   newTag: v1.3.0
 - name: quay.io/jetstack/cert-manager-webhook
