@@ -11,7 +11,7 @@ spec:
         description: The average CPU temperature of `{{$labels.instance}}` is high at `{{$value}}` Celcius degrees.
         summary: Average CPU temperature higher or equal to 50 Celcius degrees.
       expr: |
-        avg by (instance) (node_thermal_zone_temp[5m]) > 50
+        avg by (instance) (node_thermal_zone_temp) > 50
       for: 5m
       labels:
         severity: warning
