@@ -29,7 +29,7 @@ patchesJson6902:
   target:
     group: monitoring.coreos.com
     kind: PrometheusRule
-    name: prometheus-k8s-rules
+    name: kubernetes-monitoring-rules
     namespace: monitoring
     version: v1
 
