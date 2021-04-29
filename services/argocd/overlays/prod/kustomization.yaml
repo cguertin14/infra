@@ -19,7 +19,7 @@ generators:
 - secrets-generator.yml
 
 images:
-- name: argoproj/argocd
+- name: quay.io/argoproj/argocd:v2.0.1
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
   newTag: v2.0.1
 - name: viaductoss/ksops
