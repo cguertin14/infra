@@ -1,4 +1,4 @@
 [submodule "k3s-ansible"]
-	path = k3s-ansible
-	url = https://github.com/cguertin14/k3s-ansible
-	branch = master
+	path = k3s-ansible-ha
+	url = https://github.com/cguertin14/k3s-ansible-ha
+	branch = main
