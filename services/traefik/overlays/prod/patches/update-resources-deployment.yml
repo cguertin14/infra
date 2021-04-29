@@ -16,5 +16,3 @@
     requests:
       cpu: 62.5m
       memory: 64Mi
-- op: remove
-  path: /spec/replicas
