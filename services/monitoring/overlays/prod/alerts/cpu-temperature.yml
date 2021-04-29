@@ -17,7 +17,7 @@ spec:
         severity: warning
     - alert: CPUTemperatureVeryHigh
       annotations:
-        description: The average CPU temperature of `{{$labels.instance}}` very high at `{{$value}}` Celcius degrees.
+        description: The average CPU temperature of `{{$labels.instance}}` is very high at `{{$value}}` Celcius degrees.
         summary: Average CPU temperature higher or equal to 60 Celcius degrees.
       expr: |
         avg by (instance) (node_thermal_zone_temp) > 60
