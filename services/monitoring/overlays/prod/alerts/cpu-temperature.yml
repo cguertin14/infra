@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: cpu-temperature-rules
+spec:
+  groups:
+  - name: cpu-temperature
+    rules:
+    - alert: CPUTemperatureHigh
+      annotations:
+        description: The average CPU temperature of `{{$labels.instance}}` is high at `{{$value}}` Celcius degrees.
+        summary: Average CPU temperature higher or equal to 50 Celcius degrees.
+      expr: |
+        avg by (instance) (node_thermal_zone_temp[5m]) > 50
+      for: 5m
+      labels:
+        severity: warning
+    - alert: CPUTemperatureVeryHigh
+      annotations:
+        description: The average CPU temperature of `{{$labels.instance}}` very high at `{{$value}}` Celcius degrees.
+        summary: Average CPU temperature higher or equal to 60 Celcius degrees.
+      expr: |
+        avg by (instance) (node_thermal_zone_temp) > 60
+      for: 5m
+      labels:
+        severity: critical

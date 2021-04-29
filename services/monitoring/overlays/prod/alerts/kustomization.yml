@@ -1,0 +1,8 @@
+resources:
+- cpu-temperature.yml
+
+namespace: monitoring
+
+commonLabels:
+  prometheus: k8s
+  role: alert-rules
