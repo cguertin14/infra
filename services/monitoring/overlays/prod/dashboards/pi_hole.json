@@ -17,7 +17,7 @@
   "editable": true,
   "gnetId": 10176,
   "graphTooltip": 0,
-  "iteration": 1619843913174,
+  "iteration": 1619844445562,
   "links": [],
   "panels": [
     {
@@ -1346,7 +1346,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "10.42.1.25",
           "value": "10.42.1.25"
         },
@@ -1354,7 +1354,7 @@
         "definition": "label_values(pihole_ads_blocked_today, hostname)",
         "description": null,
         "error": null,
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "label": null,
         "multi": false,
@@ -1382,7 +1382,7 @@
         },
         "description": null,
         "error": null,
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "label": null,
         "multi": false,
@@ -1430,5 +1430,5 @@
   "timezone": "",
   "title": "PI-Hole Exporter",
   "uid": "PI-Hole-Exporter",
-  "version": 3
+  "version": 4
 }
