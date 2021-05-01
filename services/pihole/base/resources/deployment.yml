@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+        - 127.0.0.1
+        - 8.8.8.8
+      hostNetwork: false
+      containers:
+      - name: pihole
+        envFrom:
+        - configMapRef:
+            name: pihole-config
+        - secretRef:
+            name: pihole-secrets
+        image: pihole/pihole
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: false
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 53
+          name: dns
+          protocol: TCP
+        - containerPort: 53
+          name: dns-udp
+          protocol: UDP
+        - containerPort:  443
+          name: https
+          protocol: TCP
+        - containerPort: 67
+          name: client-udp
+          protocol: UDP
+        livenessProbe:
+          httpGet:
+            path: /admin.index.php
+            port: http
+          initialDelaySeconds: 60
+          failureThreshold: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /admin.index.php
+            port: http
+          initialDelaySeconds: 60
+          failureThreshold: 3
+          timeoutSeconds: 5
+        volumeMounts:
+        - mountPath: /etc/pihole
+          name: config
+        - mountPath: /etc/dnsmasq.d/02-custom.conf
+          name: custom-dnsmasq
+          subPath: 02-custom.conf
+        - mountPath: /etc/addn-hosts
+          name: custom-dnsmasq
+          subPath: addn-hosts
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: pihole
+      - configMap:
+          defaultMode: 420
+          name: pihole-custom-dnsmasq
+        name: custom-dnsmasq

@@ -1,0 +1,29 @@
+resources:
+- resources/namespace.yml
+- resources/services.yml
+- resources/deployment.yml
+- resources/ingress.yml
+- resources/pvc.yml
+
+namespace: pihole
+
+commonLabels:
+  app.kubernetes.io/name: pihole
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+- name: pihole/pihole
+  newTag: v5.8.1-stretch
+
+configMapGenerator:
+- name: pihole-config
+  literals:
+  - TZ=America/New_York
+  - WEB_PORT=80
+  - VIRTUAL_HOST=pi.hole
+  - DNS1=8.8.8.8
+  - DNS2=8.8.4.4
+- name: pihole-custom-dnsmasq
+  files:
+  - config/02-custom.conf
+  - config/addn-hosts
