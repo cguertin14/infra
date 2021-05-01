@@ -4,6 +4,7 @@ resources:
 - resources/deployment.yml
 - resources/ingress.yml
 - resources/pvc.yml
+- resources/service-monitor.yml
 
 namespace: pihole
 
@@ -14,6 +15,8 @@ commonLabels:
 images:
 - name: pihole/pihole
   newTag: v5.8.1-stretch
+- name: ekofr/pihole-exporter
+  newTag: 0.0.10
 
 configMapGenerator:
 - name: pihole-config
@@ -27,3 +30,6 @@ configMapGenerator:
   files:
   - config/02-custom.conf
   - config/addn-hosts
+- name: pihole-whitelist
+  files:
+  - config/whitelist.txt
