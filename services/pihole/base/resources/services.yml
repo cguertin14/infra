@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-dns-tcp
+spec:
+  type: ClusterIP
+  ports:
+  - port: 53
+    targetPort: dns
+    protocol: TCP
+    name: dns
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-dns-udp
+spec:
+  type: ClusterIP
+  ports:
+  - port: 53
+    targetPort: dns-udp
+    protocol: UDP
+    name: dns-udp
+  - port: 67
+    targetPort: client-udp
+    protocol: UDP
+    name: client-udp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-web
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: https
+    protocol: TCP
+    name: https

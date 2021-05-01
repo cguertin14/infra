@@ -27,3 +27,4 @@ spec:
         - 'gitops.k8s.cguertin.dev'
         - 'traefik.k8s.cguertin.dev'
         - 'auth.k8s.cguertin.dev'
+        - 'pihole.k8s.cguertin.dev'
