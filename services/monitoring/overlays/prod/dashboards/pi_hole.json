@@ -1,58 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.2.1"
-    },
-    {
-      "type": "panel",
-      "id": "grafana-piechart-panel",
-      "name": "Pie Chart",
-      "version": "1.3.6"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -71,8 +17,7 @@
   "editable": true,
   "gnetId": 10176,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1609280899627,
+  "iteration": 1619843913174,
   "links": [],
   "panels": [
     {
@@ -102,9 +47,7 @@
       ],
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "none",
@@ -199,9 +142,7 @@
       "datasource": "${DS_PROMETHEUS}",
       "decimals": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "none",
@@ -289,9 +230,7 @@
       ],
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "format": "none",
@@ -377,9 +316,7 @@
       },
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fontSize": "80%",
@@ -429,9 +366,7 @@
       },
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fontSize": "80%",
@@ -481,9 +416,7 @@
       },
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fontSize": "80%",
@@ -530,26 +463,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -579,7 +493,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -645,7 +559,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "decimals": 2,
           "mappings": [],
           "max": "100",
@@ -692,9 +605,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "expr": "pihole_ads_percentage_today{hostname=~'$node'}",
@@ -719,9 +633,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -752,7 +664,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -818,9 +730,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -850,7 +760,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -921,9 +831,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -953,7 +861,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1020,9 +928,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1052,7 +958,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1114,9 +1020,7 @@
       "columns": [],
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fontSize": "100%",
@@ -1176,9 +1080,7 @@
       "columns": [],
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fontSize": "100%",
@@ -1244,9 +1146,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1278,7 +1178,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1348,26 +1248,7 @@
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1397,7 +1278,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1457,7 +1338,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1465,19 +1346,24 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "10.10.200.20",
-          "value": "10.10.200.20"
+          "selected": true,
+          "text": "10.42.1.25",
+          "value": "10.42.1.25"
         },
         "datasource": "${DS_PROMETHEUS}",
         "definition": "label_values(pihole_ads_blocked_today, hostname)",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
         "name": "node",
         "options": [],
-        "query": "label_values(pihole_ads_blocked_today, hostname)",
+        "query": {
+          "query": "label_values(pihole_ads_blocked_today, hostname)",
+          "refId": "prometheus-node-Variable-Query"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1487,6 +1373,26 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "prometheus",
+          "value": "prometheus"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },
@@ -1524,5 +1430,5 @@
   "timezone": "",
   "title": "PI-Hole Exporter",
   "uid": "PI-Hole-Exporter",
-  "version": 31
+  "version": 3
 }
