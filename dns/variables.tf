@@ -20,5 +20,6 @@ variable "domains" {
     "gitops.k8s",
     "alertmanager.monitoring.k8s",
     "prometheus.monitoring.k8s",
+    "pihole.k8s.cguertin.dev",
   ]
 }
