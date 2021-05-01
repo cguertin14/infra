@@ -49,3 +49,4 @@ configMapGenerator:
   - dashboards/argocd.json
   - dashboards/traefik.json
   - dashboards/node_temperatures.json
+  - dashboards/pi_hole.json
