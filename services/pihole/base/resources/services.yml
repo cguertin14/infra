@@ -41,3 +41,15 @@ spec:
     targetPort: https
     protocol: TCP
     name: https
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-metrics
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9090
+    targetPort: 9617
+    protocol: TCP
+    name: metrics
