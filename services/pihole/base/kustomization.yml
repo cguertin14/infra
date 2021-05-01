@@ -4,7 +4,8 @@ resources:
 - resources/deployment.yml
 - resources/ingress.yml
 - resources/pvc.yml
-- resources/service-monitor.yml
+- metrics/rbac.yml
+- metrics/service-monitor.yml
 
 namespace: pihole
 
@@ -30,6 +31,3 @@ configMapGenerator:
   files:
   - config/02-custom.conf
   - config/addn-hosts
-- name: pihole-whitelist
-  files:
-  - config/whitelist.txt

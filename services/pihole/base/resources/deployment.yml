@@ -88,16 +88,10 @@ spec:
         - mountPath: /etc/addn-hosts
           name: custom-dnsmasq
           subPath: addn-hosts
-        - mountPath: /etc/pihole/whitelist.txt
-          name: whitelist
-          subPath: whitelist.txt
         resources:
-          limits:
+          requests:
             cpu: 200m
             memory: 256Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
       volumes:
       - name: config
         persistentVolumeClaim:
@@ -106,7 +100,3 @@ spec:
           defaultMode: 420
           name: pihole-custom-dnsmasq
         name: custom-dnsmasq
-      - configMap:
-          defaultMode: 420
-          name: pihole-whitelist
-        name: whitelist
