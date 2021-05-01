@@ -23,7 +23,7 @@ configMapGenerator:
   literals:
   - TZ=America/New_York
   - WEB_PORT=80
-  - VIRTUAL_HOST=pi.hole
+  - VIRTUAL_HOST=pihole.k8s.cguertin.dev
   - DNS1=8.8.8.8
   - DNS2=8.8.4.4
 - name: pihole-custom-dnsmasq
