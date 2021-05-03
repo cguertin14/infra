@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+configMapGenerator:
+- name: wireguard-config
+  namespace: wireguard
+  literals:
+  - PUID=1000
+  - PGID=1000
+  - TZ=America/New_York
+  - SERVERPORT=51820
+  - SERVERURL=vpn.cguertin.dev
+  - PEERS=2
+  - PEERDNS=auto
+  - ALLOWEDIPS="0.0.0.0/0, ::/0" # Will need to change this.
+  - INTERNAL_SUBNET=192.168.0.0
