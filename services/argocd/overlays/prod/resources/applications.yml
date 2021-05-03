@@ -63,6 +63,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: wireguard
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: wireguard
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/networking/wireguard/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: nfs-client
   namespace: argocd
 spec:
