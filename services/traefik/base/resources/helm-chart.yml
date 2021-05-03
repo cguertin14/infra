@@ -319,6 +319,7 @@ items:
       annotations:
     spec:
       type: LoadBalancer
+      loadBalancerIP: 192.168.0.202
       selector:
         app.kubernetes.io/name: traefik
         app.kubernetes.io/instance: traefik
