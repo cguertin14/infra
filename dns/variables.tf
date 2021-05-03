@@ -16,7 +16,7 @@ variable "domains" {
 
   # Prefixes for *.cguertin.dev
   default = [
-    "vpn"
+    "vpn",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",
