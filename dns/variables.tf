@@ -14,12 +14,13 @@ variable "domains" {
   description = "The CNAME domains to create"
   type        = list(string)
   default = [
+    "vpn",
     "auth.k8s",
+    "gitops.k8s",
+    "pihole.k8s",
     "traefik.k8s",
     "monitoring.k8s",
-    "gitops.k8s",
-    "alertmanager.monitoring.k8s",
     "prometheus.monitoring.k8s",
-    "pihole.k8s.cguertin.dev",
+    "alertmanager.monitoring.k8s",
   ]
 }
