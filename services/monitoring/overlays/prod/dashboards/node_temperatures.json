@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1620247552668,
   "links": [],
   "panels": [
     {
@@ -267,7 +266,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": "prometheus",
       "description": "Temperatures over time per instance.",
       "fieldConfig": {
         "defaults": {},
@@ -377,5 +376,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 3
+  "version": 4
 }
