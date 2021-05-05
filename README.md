@@ -33,7 +33,7 @@ $ make start-lb
 Second, you're going to want to edit your `~/.kube/config` file like this:
 ```yaml
 ...
-	server: https://127.0.0.1:8000
+server: https://127.0.0.1:8000
 ...
 ```
 
