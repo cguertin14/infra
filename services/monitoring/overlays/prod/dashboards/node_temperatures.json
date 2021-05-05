@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1620246412266,
+  "iteration": 1620247552668,
   "links": [],
   "panels": [
     {
@@ -28,7 +28,7 @@
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "align": "left",
             "filterable": false
           },
           "mappings": [],
@@ -59,7 +59,7 @@
       "interval": null,
       "links": [],
       "options": {
-        "frameIndex": 0,
+        "frameIndex": 2,
         "showHeader": true
       },
       "pluginVersion": "7.5.4",
@@ -75,7 +75,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "min by (instance) (node_thermal_zone_temp)",
+          "expr": "min_over_time(node_thermal_zone_temp[${__range_s}s])",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -86,7 +86,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg by (instance) (node_thermal_zone_temp)",
+          "expr": "avg_over_time(node_thermal_zone_temp[${__range_s}s])",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -97,7 +97,7 @@
         },
         {
           "exemplar": true,
-          "expr": "max by (instance) (node_thermal_zone_temp)",
+          "expr": "max_over_time(node_thermal_zone_temp[${__range_s}s])",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -124,21 +124,41 @@
           }
         },
         {
-          "id": "seriesToColumns",
-          "options": {
-            "byField": "instance"
-          }
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
-              "Time 1": true,
-              "Time 2": true,
-              "Time 3": true
+              "Time 1": false,
+              "Time 2": false,
+              "Time 3": false,
+              "container": true,
+              "endpoint": true,
+              "job": true,
+              "namespace": true,
+              "pod": true,
+              "service": true,
+              "type": true,
+              "zone": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "Time": 0,
+              "Value #A": 10,
+              "Value #B": 11,
+              "Value #C": 12,
+              "container": 1,
+              "endpoint": 2,
+              "instance": 4,
+              "job": 3,
+              "namespace": 5,
+              "pod": 6,
+              "service": 7,
+              "type": 8,
+              "zone": 9
+            },
             "renameByName": {
               "Time 2": "",
               "Time 3": "",
@@ -256,7 +276,7 @@
       "fill": 3,
       "fillGradient": 7,
       "gridPos": {
-        "h": 11,
+        "h": 13,
         "w": 24,
         "x": 0,
         "y": 10
@@ -347,29 +367,7 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": false,
-          "text": "prometheus",
-          "value": "prometheus"
-        },
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "datasource",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-3h",
@@ -379,5 +377,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 2
+  "version": 3
 }
