@@ -10,7 +10,8 @@ spec:
   tls:
   - hosts:
     - cguertin.dev
-    secretName: pihole-cert
+    - blog.cguertin.dev
+    secretName: cguertin-dev-cert
   rules:
   - host: cguertin.dev
     http:
