@@ -6,6 +6,7 @@ namespace: blog
 resources:
 - resources/deployment.yml
 - resources/service.yml
+- resources/namespace.yml
 
 images:
 - name: cguertz/cguertin.dev
