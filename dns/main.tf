@@ -22,3 +22,16 @@ resource "cloudflare_record" "cname_dns_entry" {
   ttl     = 1800
   proxied = false
 }
+
+resource "cloudflare_page_rule" "blog_redirect_to_root" {
+  zone_id  = cloudflare_zone.cguertin_dev.id
+  target   = "blog.${var.domain_cguertin}"
+  priority = 2
+
+  actions {
+    forwarding_url {
+      url         = "https://${var.domain_cguertin}"
+      status_code = 301
+    }
+  }
+}
