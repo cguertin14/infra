@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog
+spec:
+  template:
+    spec:
+      containers:
+      - name: blog
+        image: cguertz/cguertin.dev
+        ports:
+        - containerPort: 1313
+          name: http
+          protocol: TCP
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 1313
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 1313
+          initialDelaySeconds: 5
+          periodSeconds: 10
