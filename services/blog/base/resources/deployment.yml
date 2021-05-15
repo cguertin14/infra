@@ -21,15 +21,15 @@ spec:
           requests:
             memory: "64Mi"
             cpu: "125m"
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 1313
-        #   initialDelaySeconds: 15
-        #   periodSeconds: 20
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 1313
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 1313
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 1313
+          initialDelaySeconds: 5
+          periodSeconds: 10
