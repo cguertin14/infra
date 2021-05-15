@@ -6,6 +6,7 @@ namespace: blog
 resources:
 - resources/deployment.yml
 - resources/service.yml
+- resources/autoscaler.yml
 - resources/namespace.yml
 
 images:
