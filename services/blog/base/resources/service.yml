@@ -6,5 +6,5 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 1313
+    targetPort: 80
     protocol: TCP

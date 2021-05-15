@@ -9,7 +9,7 @@ spec:
       - name: blog
         image: cguertz/cguertin.dev
         ports:
-        - containerPort: 1313
+        - containerPort: 80
           name: http
           protocol: TCP
         securityContext:
