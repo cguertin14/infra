@@ -29,6 +29,8 @@ resource "cloudflare_page_rule" "blog_redirect_to_root" {
   priority = 2
 
   actions {
+    always_use_https = true
+
     forwarding_url {
       url         = "https://${var.domain_cguertin}"
       status_code = 301

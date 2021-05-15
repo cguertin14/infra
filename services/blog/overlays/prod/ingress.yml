@@ -10,7 +10,6 @@ spec:
   tls:
   - hosts:
     - cguertin.dev
-    - blog.cguertin.dev
     secretName: cguertin-dev-cert
   rules:
   - host: cguertin.dev
