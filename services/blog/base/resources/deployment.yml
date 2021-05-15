@@ -14,7 +14,6 @@ spec:
           protocol: TCP
         securityContext:
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
         resources:
           limits:
             memory: "128Mi"
