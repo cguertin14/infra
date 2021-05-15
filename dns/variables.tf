@@ -16,7 +16,6 @@ variable "domains" {
   default = [
     "@",
     "vpn",
-    "blog",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",
