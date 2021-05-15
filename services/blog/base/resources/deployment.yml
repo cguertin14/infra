@@ -24,12 +24,12 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 1313
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 20
         readinessProbe:
           httpGet:
             path: /
-            port: 1313
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
