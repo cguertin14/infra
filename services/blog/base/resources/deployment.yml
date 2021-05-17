@@ -3,6 +3,11 @@ kind: Deployment
 metadata:
   name: blog
 spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     spec:
       containers:
