@@ -9,7 +9,7 @@ spec:
     kind: Deployment
     name: traefik
   minReplicas: 4
-  maxReplicas: 8
+  maxReplicas: 16
   metrics:
   - type: Resource
     resource:
