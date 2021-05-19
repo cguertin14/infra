@@ -11,4 +11,4 @@ resources:
 
 images:
 - name: cguertz/cguertin.dev
-  newTag: v1.0.7
+  newTag: v1.0.8
