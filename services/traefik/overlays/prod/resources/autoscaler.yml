@@ -9,17 +9,17 @@ spec:
     kind: Deployment
     name: traefik
   minReplicas: 4
-  maxReplicas: 16
+  maxReplicas: 24
   metrics:
   - type: Resource
     resource:
       name: memory
       target:
         type: Utilization
-        averageUtilization: 60
+        averageUtilization: 65
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 60
+        averageUtilization: 75
