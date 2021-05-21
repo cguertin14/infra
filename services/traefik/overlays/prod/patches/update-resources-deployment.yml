@@ -3,10 +3,10 @@
   value:
     limits:
       cpu: 500m
-      memory: 512Mi
+      memory: 256Mi
     requests:
       cpu: 250m
-      memory: 256Mi
+      memory: 128Mi
 - op: replace
   path: /spec/template/spec/containers/1/resources # traefik-forward-auth container
   value:
