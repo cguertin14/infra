@@ -2,7 +2,7 @@
   path: /spec/template/spec/containers/0/resources # traefik container
   value:
     limits:
-      cpu: 500m
+      cpu: 1000m
       memory: 256Mi
     requests:
       cpu: 250m
