@@ -15,6 +15,6 @@ images:
 - name: docker.io/calico/cni
   newTag: v3.19.1
 - name: docker.io/calico/pod2daemon-flexvol
-  newTag: v3.19.0
+  newTag: v3.19.1
 - name: docker.io/calico/node
   newTag: v3.19.1
