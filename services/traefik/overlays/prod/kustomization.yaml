@@ -17,7 +17,7 @@ patchesJson6902:
     name: traefik
     namespace: kube-system 
     version: v1
-- path: patches/update-metrics-bucket.yml
+- path: patches/update-metrics-buckets.yml
   target:
     group: apps
     kind: Deployment
