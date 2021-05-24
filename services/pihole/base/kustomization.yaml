@@ -20,7 +20,7 @@ images:
 - name: pihole/pihole
   newTag: v5.8.1-stretch
 - name: ekofr/pihole-exporter
-  newTag: 0.0.10
+  newTag: v0.0.11
 
 configMapGenerator:
 - name: pihole-config
