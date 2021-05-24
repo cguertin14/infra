@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1621524591520,
+  "iteration": 1621880984177,
   "links": [],
   "panels": [
     {
@@ -528,7 +528,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.3\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r",
+          "expr": "sum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -599,7 +599,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.3\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))* 60 * 60 * 24 * 28",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))* 60 * 60 * 24 * 28",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -669,7 +669,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.3\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -739,7 +739,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.3\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -900,7 +900,7 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 0.3,
+          "value": 0.7,
           "yaxis": "left"
         }
       ],
@@ -1038,5 +1038,5 @@
   "timezone": "",
   "title": "Blog - Service Level Objectives (SLOs)",
   "uid": "WlaIIMjGz",
-  "version": 7
+  "version": 8
 }
