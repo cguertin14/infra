@@ -17,6 +17,13 @@ patchesJson6902:
     name: traefik
     namespace: kube-system 
     version: v1
+- path: patches/update-metrics-bucket.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: traefik
+    namespace: kube-system 
+    version: v1
 
 configMapGenerator:
 - name: traefik-forward-auth-config
