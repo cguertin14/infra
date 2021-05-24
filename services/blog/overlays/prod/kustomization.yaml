@@ -9,3 +9,7 @@ commonLabels:
 resources:
 - ../../base
 - ingress.yml
+
+images:
+- name: cguertz/cguertin.dev
+  newTag: v1.1.0
