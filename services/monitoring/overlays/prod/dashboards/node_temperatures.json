@@ -104,6 +104,17 @@
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
           "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "last_over_time(node_thermal_zone_temp[${__range_s}s])",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{instance}}",
+          "refId": "D"
         }
       ],
       "timeFrom": null,
@@ -134,6 +145,7 @@
               "Time 1": false,
               "Time 2": false,
               "Time 3": false,
+              "__name__": true,
               "container": true,
               "endpoint": true,
               "job": true,
@@ -163,7 +175,9 @@
               "Time 3": "",
               "Value #A": "Min",
               "Value #B": "Avg",
-              "Value #C": "Max"
+              "Value #C": "Max",
+              "Value #D": "Current",
+              "master1": ""
             }
           }
         }
@@ -385,5 +399,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 5
+  "version": 6
 }
