@@ -298,7 +298,7 @@
       "fill": 3,
       "fillGradient": 7,
       "gridPos": {
-        "h": 13,
+        "h": 22,
         "w": 24,
         "x": 0,
         "y": 10
@@ -339,7 +339,26 @@
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "$$hashKey": "object:86",
+          "colorMode": "warning",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 50,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:207",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 55,
+          "yaxis": "left"
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -364,8 +383,8 @@
           "format": "celsius",
           "label": "",
           "logBase": 1,
-          "max": "85",
-          "min": "30",
+          "max": "75",
+          "min": "20",
           "show": true
         },
         {
@@ -399,5 +418,5 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 6
+  "version": 7
 }
