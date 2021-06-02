@@ -2,6 +2,7 @@ apiVersion: builtin
 kind: HelmChartInflationGenerator
 metadata:
   name: traefik
+chartHome: ./
 chartName: traefik
 chartRepoUrl: https://helm.traefik.io/traefik
 chartVersion: v9.18.0
