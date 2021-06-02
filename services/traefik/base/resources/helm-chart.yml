@@ -2,14 +2,10 @@ apiVersion: builtin
 kind: HelmChartInflationGenerator
 metadata:
   name: traefik
-chartHome: ./
 chartName: traefik
 chartRepoUrl: https://helm.traefik.io/traefik
 chartVersion: v9.19.1
-helmBin: /usr/local/bin/helm
-# helmHome: /tmp/helmHome
 releaseName: traefik
 releaseNamespace: kube-system
-values: ./resources/helm-values.yml
 extraArgs:
-- --include-crds 
+- --include-crds
