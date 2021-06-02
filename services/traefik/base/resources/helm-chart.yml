@@ -2,10 +2,17 @@ apiVersion: builtin
 kind: HelmChartInflationGenerator
 metadata:
   name: traefik
-name: traefik
+
+# Deprecated fields
 chartName: traefik
 chartRepoUrl: https://helm.traefik.io/traefik
 chartVersion: v9.19.1
+
+# New fields
+name: traefik
+repo: https://helm.traefik.io/traefik
+version: v9.19.1
+
 releaseName: traefik
 releaseNamespace: kube-system
 extraArgs:
