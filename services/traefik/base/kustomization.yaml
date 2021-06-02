@@ -2,11 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- resources/helm-chart.yml
 - resources/services.yml
 - resources/ingress-class.yml
 - resources/middleware.yml
 - metrics/service-monitor.yml
+
+generators:
+- resources/helm-chart.yml
 
 patchesStrategicMerge:
 - patches/deployment.yml
@@ -15,6 +17,8 @@ commonLabels:
   app.kubernetes.io/name: traefik
 
 images:
+- name: traefik
+  newTag: v2.4.8
 - name: thomseddon/traefik-forward-auth
   newTag: 2-arm64
 
