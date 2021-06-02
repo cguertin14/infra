@@ -5,7 +5,7 @@ metadata:
 chartHome: ./
 chartName: traefik
 chartRepoUrl: https://helm.traefik.io/traefik
-chartVersion: v9.18.0
+chartVersion: v9.19.1
 helmBin: /usr/local/bin/helm
 helmHome: /tmp/helmHome
 releaseName: traefik
