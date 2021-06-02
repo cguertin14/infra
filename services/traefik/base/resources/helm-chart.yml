@@ -9,6 +9,6 @@ helmBin: /usr/local/bin/helm
 helmHome: /tmp/helmHome
 releaseName: traefik
 releaseNamespace: kube-system
-values: ./helm-values.yml
+values: ./resources/helm-values.yml
 extraArgs:
 - --include-crds 
