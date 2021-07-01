@@ -1,4 +1,4 @@
-KIND_NODE_IMAGE_VERSION = v1.19.11 # v1.21.1
+KIND_NODE_IMAGE_VERSION = v1.19.11
 PWD = $(shell pwd)
 
 # Start local NGINX Load Balancer docker container for control plane.
