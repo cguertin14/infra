@@ -12,6 +12,10 @@ spec:
       autoPromotionSeconds: 30
       prePromotionAnalysis:
         templates:
+        - templateName: replicaset-ready
+      postPromotionAnalysis:
+        templates:
+        - templateName: traffic-generator
         - templateName: slo-success-rate
   template:
     spec:
