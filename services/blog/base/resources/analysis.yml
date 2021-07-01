@@ -36,7 +36,7 @@ spec:
                 image: alpine:3.14
                 command: ["/bin/sh", "-c"]
                 args:
-                - apk add curl --no-cache && for i in {1..60}; do curl --max-time=2 --fail https://{{args.service-name}} || curl --max-time=2 --fail http://{{args.service-name}}; done
+                - apk add curl --no-cache && for i in {1..60}; do curl --max-time 1 --fail https://{{args.service-name}} || curl --max-time 1 --fail http://{{args.service-name}}; done
               restartPolicy: Never
 ---
 apiVersion: argoproj.io/v1alpha1
