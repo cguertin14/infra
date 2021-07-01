@@ -13,3 +13,35 @@ images:
 
 commonLabels:
   app.kubernetes.io/name: argo-rollouts
+
+patchesJson6902:
+- path: patches/remove-unknown-fields.yml
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: analysisruns.argoproj.io
+    version: v1
+- path: patches/remove-unknown-fields.yml
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: analysistemplates.argoproj.io
+    version: v1
+- path: patches/remove-unknown-fields.yml
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: clusteranalysistemplates.argoproj.io
+    version: v1
+- path: patches/remove-unknown-fields.yml
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: experiments.argoproj.io
+    version: v1
+- path: patches/remove-unknown-fields.yml
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: rollouts.argoproj.io
+    version: v1
