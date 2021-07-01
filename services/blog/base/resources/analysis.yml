@@ -5,11 +5,10 @@ metadata:
 spec:
   metrics:
   - name: availability-sli-success-rate
-    interval: 5m
     initialDelay: 20s
     # 99.99% Availability SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9999
-    failureLimit: 3
+    failureLimit: 5
     provider:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
@@ -22,11 +21,10 @@ spec:
             traefik_service_requests_total{exported_service=~"blog.*"}[5m]
           ))
   - name: latency-sli-success-rate
-    interval: 5m
     initialDelay: 20s
     # 99.95% Latency SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9995
-    failureLimit: 3
+    failureLimit: 5
     provider:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
@@ -38,22 +36,22 @@ spec:
           sum(rate(
             traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"blog.*"}[5m]
           ))
-  # - name: traffic-generator
-  #   initialDelay: 20s
-  #   provider:
-  #     job:
-  #       spec:
-  #         backoffLimit: 1
-  #         template:
-  #           spec:
-  #             containers:
-  #             - name: load-test
-  #               image: alpine:3.14
-  #               command: ["/bin/sh", "-c"]
-  #               args:
-  #               - apk add curl --no-cache
-  #               - for i in {1..60}
-  #                 do
-  #                   curl -i https://cguertin.dev
-  #                 done
-  #             restartPolicy: Never
+  - name: traffic-generator
+    initialDelay: 20s
+    provider:
+      job:
+        spec:
+          backoffLimit: 1
+          template:
+            spec:
+              containers:
+              - name: load-test
+                image: alpine:3.14
+                command: ["/bin/sh", "-c"]
+                args:
+                - apk add curl --no-cache
+                - for i in {1..60}
+                  do
+                    curl -i https://cguertin.dev
+                  done
+              restartPolicy: Never
