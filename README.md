@@ -15,6 +15,7 @@ The [services/](./services) folder contains subfolders which contain different k
 * [Ansible](https://www.ansible.com/)
 * [Kubectl](https://kubernetes.io)
 * [Kustomize](https://kustomize.io)
+* [Kind](https://kind.sigs.k8s.io/)
 * [SOPS](https://github.com/mozilla/sops)
 * [Kustomize-Sops](https://github.com/viaduct-ai/kustomize-sops)
 
@@ -38,3 +39,10 @@ server: https://127.0.0.1:8000
 ```
 
 And that's it! Your local setup is now fully functional.
+
+## Start a local cluster
+
+```bash
+$ make local-cluster
+...
+```

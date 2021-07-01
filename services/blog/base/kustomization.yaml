@@ -4,7 +4,8 @@ kind: Kustomization
 namespace: blog
 
 resources:
-- resources/deployment.yml
-- resources/service.yml
+- resources/rollout.yml
+- resources/analysis.yml
+- resources/services.yml
 - resources/autoscaler.yml
 - resources/namespace.yml
