@@ -6,7 +6,7 @@ spec:
   metrics:
   - name: replicaset-ready
     initialDelay: 15s
-    successCondition: result >= 8
+    successCondition: result[0] >= 8
     provider:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
