@@ -4,8 +4,8 @@ metadata:
   name: blog
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
     name: blog
   minReplicas: 4
   maxReplicas: 8
