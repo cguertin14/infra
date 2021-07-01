@@ -5,8 +5,10 @@ namespace: argo-rollouts
 
 resources:
 - github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.0.2
-- templates/
 - resources/namespace.yml
+- templates/replicaset-ready.yml
+- templates/slo-success-rate.yml
+- templates/traffic-generator.yml
 
 images:
 - name: quay.io/argoproj/argo-rollouts
