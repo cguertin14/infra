@@ -42,7 +42,7 @@ metadata:
 spec:
   metrics:
   - name: availability-sli-success-rate
-    initialDelay: 15s
+    initialDelay: 30s
     # 99.99% Availability SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9999
     failureLimit: 5
@@ -58,7 +58,7 @@ spec:
             traefik_service_requests_total{exported_service=~"blog-blog-active.*"}[5m]
           ))
   - name: latency-sli-success-rate
-    initialDelay: 15s
+    initialDelay: 30s
     # 99.95% Latency SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9995
     failureLimit: 5
