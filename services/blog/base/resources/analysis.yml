@@ -4,25 +4,6 @@ metadata:
   name: slo-success-rate
 spec:
   metrics:
-  - name: traffic-generator
-    initialDelay: 20s
-    provider:
-      job:
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: load-test
-                image: alpine:3.14
-                command: ["/bin/sh", "-c"]
-                args:
-                - apk add curl --no-cache
-                - for i in {1..60}
-                  do
-                    curl -i https://cguertin.dev
-                  done
-              restartPolicy: Never
   - name: availability-sli-success-rate
     interval: 5m
     initialDelay: 20s
@@ -57,3 +38,22 @@ spec:
           sum(rate(
             traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"blog.*"}[5m]
           ))
+  # - name: traffic-generator
+  #   initialDelay: 20s
+  #   provider:
+  #     job:
+  #       spec:
+  #         backoffLimit: 1
+  #         template:
+  #           spec:
+  #             containers:
+  #             - name: load-test
+  #               image: alpine:3.14
+  #               command: ["/bin/sh", "-c"]
+  #               args:
+  #               - apk add curl --no-cache
+  #               - for i in {1..60}
+  #                 do
+  #                   curl -i https://cguertin.dev
+  #                 done
+  #             restartPolicy: Never

@@ -10,9 +10,9 @@ spec:
       scaleDownDelaySeconds: 120 # 2 minutes
       autoPromotionEnabled: true
       autoPromotionSeconds: 120
-      # prePromotionAnalysis:
-      #   templates:
-      #   - templateName: slo-success-rate
+      prePromotionAnalysis:
+        templates:
+        - templateName: slo-success-rate
   template:
     spec:
       containers:
