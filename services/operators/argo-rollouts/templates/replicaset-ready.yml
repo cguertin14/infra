@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ClusterAnalysisTemplate
+metadata:
+  name: replicaset-ready
+spec:
+	args:
+	- name: namespace
+  - name: min-replicas-ready
+  metrics:
+  - name: replicaset-ready
+    initialDelay: 15s
+    failureLimit: 5
+    successCondition: result[0] >= {{args.min-replicas-ready}}
+    provider:
+      prometheus:
+        address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
+        query: |
+          sum(kube_replicaset_status_ready_replicas{namespace="{{args.namespace}}"})

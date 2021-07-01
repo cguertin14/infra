@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: slo-success-rate
+spec:
+  args:
+  - name: active-service-name
+  metrics:
+  - name: availability-sli-success-rate
+    initialDelay: 45s
+    # 99.99% Availability SLI
+    successCondition: isNaN(result[0]) || result[0] >= 0.9999
+    failureLimit: 5
+    provider:
+      prometheus:
+        address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
+        query: |
+          sum(rate(
+            traefik_service_requests_total{code!~"5.*", exported_service=~"{{args.active-service-name}}.*"}[5m]
+          ))
+          / 
+          sum(rate(
+            traefik_service_requests_total{exported_service=~"{{args.active-service-name}}.*"}[5m]
+          ))
+  - name: latency-sli-success-rate
+    initialDelay: 45s
+    # 99.95% Latency SLI
+    successCondition: isNaN(result[0]) || result[0] >= 0.9995
+    failureLimit: 5
+    provider:
+      prometheus:
+        address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
+        query: |
+          sum(rate(
+            traefik_service_request_duration_seconds_bucket{le="0.7", exported_service=~"{{args.active-service-name}}.*"}[5m]
+          ))
+          /
+          sum(rate(
+            traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"{{args.active-service-name}}.*"}[5m]
+          ))
