@@ -3,10 +3,9 @@ kind: AnalysisTemplate
 metadata:
   name: slo-success-rate
 spec:
-  args:
-  - name: service-name
   metrics:
   - name: traffic-generator
+    initialDelay: 20s
     provider:
       job:
         spec:
@@ -26,6 +25,7 @@ spec:
               restartPolicy: Never
   - name: availability-sli-success-rate
     interval: 5m
+    initialDelay: 20s
     # 99.99% Availability SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9999
     failureLimit: 3
@@ -42,6 +42,7 @@ spec:
           ))
   - name: latency-sli-success-rate
     interval: 5m
+    initialDelay: 20s
     # 99.95% Latency SLI
     successCondition: isNaN(result[0]) || result[0] >= 0.9995
     failureLimit: 3

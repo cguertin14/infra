@@ -10,12 +10,9 @@ spec:
       scaleDownDelaySeconds: 300 # 5 minutes
       autoPromotionEnabled: true
       autoPromotionSeconds: 30
-      postPromotionAnalysis:
+      prePromotionAnalysis:
         templates:
         - templateName: slo-success-rate
-        args:
-        - name: service-name
-          value: blog-preview.blog.svc.cluster.local
   template:
     spec:
       containers:
