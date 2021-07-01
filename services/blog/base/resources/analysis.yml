@@ -24,6 +24,7 @@ spec:
   metrics:
   - name: traffic-generator
     initialDelay: 15s
+    failureLimit: 5
     provider:
       job:
         spec:
