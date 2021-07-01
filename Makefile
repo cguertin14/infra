@@ -1,4 +1,5 @@
-PWD=$(shell pwd)
+KIND_NODE_IMAGE_VERSION = v1.21.1
+PWD = $(shell pwd)
 
 # Start local NGINX Load Balancer docker container for control plane.
 start-lb:
@@ -13,3 +14,7 @@ start-lb:
 stop-lb:
 	@docker stop k3s-load-balancer && \
 		docker rm k3s-load-balancer
+
+# Start a local cluster.
+local-cluster:
+	@kind create cluster --config=local-cluster.yml --image=kindest/node:${KIND_NODE_IMAGE_VERSION}
