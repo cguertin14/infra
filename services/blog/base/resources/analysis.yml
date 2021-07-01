@@ -39,7 +39,7 @@ spec:
           / 
           sum(rate(
             traefik_service_requests_total{exported_service=~"blog.*"}[5m]
-          ))
+          )) >= 0.9999
   - name: latency-sli-success-rate
     interval: 5m
     # 99.95% Latency SLI
@@ -55,4 +55,4 @@ spec:
           /
           sum(rate(
             traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"blog.*"}[5m]
-          ))
+          )) >= 0.9995
