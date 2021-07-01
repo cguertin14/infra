@@ -1,9 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
-  name: slo-success-rate
+  name: replicaset-ready
 spec:
-  metrics:
+  args:
+  - name: replicaset-ready
+    initialDelay: 15s
+    successCondition: result >= 8
+    provider:
+      prometheus:
+        address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
+        query: |
+          sum(kube_replicaset_status_ready_replicas{namespace="blog"})
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: traffic-generator
+spec:
+  args:
   - name: traffic-generator
     initialDelay: 15s
     provider:
@@ -17,8 +32,15 @@ spec:
                 image: alpine:3.14
                 command: ["/bin/sh", "-c"]
                 args:
-                - apk add curl --no-cache && for i in {1..60}; do curl -i https://cguertin.dev; done
+                - apk add curl --no-cache && for i in {1..60}; do curl -i --fail https://{{args.service-name}}; done
               restartPolicy: Never
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: slo-success-rate
+spec:
+  metrics:
   - name: availability-sli-success-rate
     initialDelay: 15s
     # 99.99% Availability SLI
@@ -29,11 +51,11 @@ spec:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
           sum(rate(
-            traefik_service_requests_total{code!~"5.*", exported_service=~"blog.*"}[5m]
+            traefik_service_requests_total{code!~"5.*", exported_service=~"blog-blog-active.*"}[5m]
           ))
           / 
           sum(rate(
-            traefik_service_requests_total{exported_service=~"blog.*"}[5m]
+            traefik_service_requests_total{exported_service=~"blog-blog-active.*"}[5m]
           ))
   - name: latency-sli-success-rate
     initialDelay: 15s
@@ -45,9 +67,9 @@ spec:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
           sum(rate(
-            traefik_service_request_duration_seconds_bucket{le="0.7", exported_service=~"blog.*"}[5m]
+            traefik_service_request_duration_seconds_bucket{le="0.7", exported_service=~"blog-blog-active.*"}[5m]
           ))
           /
           sum(rate(
-            traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"blog.*"}[5m]
+            traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"blog-blog-active.*"}[5m]
           ))
