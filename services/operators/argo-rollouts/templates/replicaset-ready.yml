@@ -3,8 +3,8 @@ kind: ClusterAnalysisTemplate
 metadata:
   name: replicaset-ready
 spec:
-	args:
-	- name: namespace
+  args:
+  - name: namespace
   - name: min-replicas-ready
   metrics:
   - name: replicaset-ready
