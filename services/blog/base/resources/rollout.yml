@@ -8,7 +8,7 @@ spec:
       activeService: blog-active
       previewService: blog-preview
       scaleDownDelaySeconds: 300 # 5 minutes
-      prePromotionAnalysis:
+      postPromotionAnalysis:
         templates:
         - templateName: slo-success-rate
         args:
