@@ -9,7 +9,7 @@ spec:
       previewService: blog-preview
       scaleDownDelaySeconds: 120 # 2 minutes
       autoPromotionEnabled: true
-      autoPromotionSeconds: 120
+      autoPromotionSeconds: 30
       prePromotionAnalysis:
         templates:
         - templateName: slo-success-rate
