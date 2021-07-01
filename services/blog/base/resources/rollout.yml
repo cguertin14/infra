@@ -14,16 +14,16 @@ spec:
         templates:
         - templateName: replicaset-ready
         - templateName: traffic-generator
-          args:
-          - name: service-name
-            value: blog-preview.blog.svc.cluster.local
+        args:
+        - name: service-name
+          value: blog-preview.blog.svc.cluster.local
       postPromotionAnalysis:
         templates:
         - templateName: traffic-generator
-          args:
-          - name: service-name
-            value: cguertin.dev
         - templateName: slo-success-rate
+        args:
+        - name: service-name
+          value: cguertin.dev
   template:
     spec:
       containers:
