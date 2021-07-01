@@ -17,11 +17,7 @@ spec:
                 image: alpine:3.14
                 command: ["/bin/sh", "-c"]
                 args:
-                - apk add curl --no-cache
-                - for i in {1..60}
-                  do
-                    curl -i https://cguertin.dev
-                  done
+                - apk add curl --no-cache && for i in {1..60}; do curl -i https://cguertin.dev; done
               restartPolicy: Never
   - name: availability-sli-success-rate
     initialDelay: 15s
