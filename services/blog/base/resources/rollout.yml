@@ -7,12 +7,12 @@ spec:
     blueGreen:
       activeService: blog-active
       previewService: blog-preview
-      scaleDownDelaySeconds: 300 # 5 minutes
+      scaleDownDelaySeconds: 120 # 5 minutes
       autoPromotionEnabled: true
-      autoPromotionSeconds: 30
-      prePromotionAnalysis:
-        templates:
-        - templateName: slo-success-rate
+      autoPromotionSeconds: 120
+      # prePromotionAnalysis:
+      #   templates:
+      #   - templateName: slo-success-rate
   template:
     spec:
       containers:
