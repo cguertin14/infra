@@ -13,17 +13,25 @@ spec:
       prePromotionAnalysis:
         templates:
         - templateName: replicaset-ready
+          clusterScope: true
         - templateName: traffic-generator
+          clusterScope: true
         args:
         - name: service-name
           value: blog-preview.blog.svc.cluster.local
+        - name: min-replicas-ready
+          value: '8'
       postPromotionAnalysis:
         templates:
         - templateName: traffic-generator
+          clusterScope: true
         - templateName: slo-success-rate
+          clusterScope: true
         args:
         - name: service-name
           value: cguertin.dev
+        - name: active-service-name
+          value: blog-blog-active
   template:
     spec:
       containers:

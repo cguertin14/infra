@@ -5,7 +5,6 @@ namespace: blog
 
 resources:
 - resources/rollout.yml
-- resources/analysis.yml
 - resources/services.yml
 - resources/autoscaler.yml
 - resources/namespace.yml
