@@ -173,3 +173,22 @@ spec:
     automated:
       selfHeal: true
       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: argo-rollouts
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/operators/argo-rollouts
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

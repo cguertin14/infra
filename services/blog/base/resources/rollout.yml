@@ -1,13 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: blog
 spec:
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+    blueGreen:
+      activeService: blog-active
+      previewService: blog-preview
+      scaleDownDelaySeconds: 300 # 5 minutes
+      prePromotionAnalysis:
+        templates:
+        - templateName: slo-success-rate
+        args:
+        - name: service-name
+          value: blog-preview.blog.svc.cluster.local
   template:
     spec:
       containers:
