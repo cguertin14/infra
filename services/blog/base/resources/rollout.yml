@@ -19,6 +19,8 @@ spec:
         args:
         - name: service-name
           value: blog-preview.blog.svc.cluster.local
+        - name: namespace
+          value: blog
         - name: min-replicas-ready
           value: '8'
       postPromotionAnalysis:
