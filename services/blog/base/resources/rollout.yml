@@ -7,7 +7,7 @@ spec:
     blueGreen:
       activeService: blog-active
       previewService: blog-preview
-      scaleDownDelaySeconds: 120 # 2 minutes
+      scaleDownDelaySeconds: 30
       autoPromotionEnabled: true
       autoPromotionSeconds: 30
       prePromotionAnalysis:
