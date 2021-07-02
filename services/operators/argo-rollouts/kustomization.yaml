@@ -8,11 +8,16 @@ resources:
 - resources/namespace.yml
 - templates/replicaset-ready.yml
 - templates/slo-success-rate.yml
-- templates/traffic-generator.yml
+- templates/load-tester.yml
 
 images:
 - name: quay.io/argoproj/argo-rollouts
   newTag: v1.0.2
+- name: cguertz/load-tester
+  newTag: v1.0.0
+
+configurations:
+- https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 
 commonLabels:
   app.kubernetes.io/name: argo-rollouts
