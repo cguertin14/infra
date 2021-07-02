@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: AnalysisTemplate
+kind: ClusterAnalysisTemplate
 metadata:
   name: slo-success-rate
 spec:
