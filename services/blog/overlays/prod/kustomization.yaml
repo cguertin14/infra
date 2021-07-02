@@ -8,7 +8,7 @@ commonLabels:
 
 resources:
 - ../../base
-- ingress.yml
+- ingresses.yml
 
 images:
 - name: cguertz/cguertin.dev
