@@ -21,6 +21,6 @@ spec:
                 command: [sh, -c, -x, -e]
                 args:
                 - |
-                  wrk -t5 -c25 -d45s -s report.lua {{args.service-uri}}
+                  wrk -t5 -c10 -d30s -s report.lua {{args.service-uri}}
                   jq -e '.errors_ratio <= 0.0001 and .latency_avg_ms < 250' report.json
               restartPolicy: Never
