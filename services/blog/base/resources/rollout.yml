@@ -16,6 +16,8 @@ spec:
           clusterScope: true
         - templateName: load-tester
           clusterScope: true
+        - templateName: slo-success-rate
+          clusterScope: true
         args:
         - name: service-uri
           value: https://preview.cguertin.dev
