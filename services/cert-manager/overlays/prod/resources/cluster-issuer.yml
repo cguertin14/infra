@@ -22,7 +22,7 @@ spec:
       selector:
         dnsNames:
         - 'cguertin.dev'
-        - 'blog.cguertin.dev'
+        - 'preview.cguertin.dev'
         - 'monitoring.k8s.cguertin.dev'
         - 'alertmanager.monitoring.k8s.cguertin.dev'
         - 'prometheus.monitoring.k8s.cguertin.dev'
