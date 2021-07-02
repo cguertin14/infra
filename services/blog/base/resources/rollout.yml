@@ -7,31 +7,31 @@ spec:
     blueGreen:
       activeService: blog-active
       previewService: blog-preview
-      scaleDownDelaySeconds: 30
       autoPromotionEnabled: true
       autoPromotionSeconds: 30
+      scaleDownDelaySeconds: 30
       prePromotionAnalysis:
         templates:
         - templateName: replicaset-ready
           clusterScope: true
-        - templateName: traffic-generator
+        - templateName: load-tester
           clusterScope: true
         args:
-        - name: service-name
-          value: blog-preview.blog.svc.cluster.local
+        - name: service-uri
+          value: http://blog-preview.blog.svc.cluster.local
         - name: namespace
           value: blog
         - name: min-replicas-ready
           value: '8'
       postPromotionAnalysis:
         templates:
-        - templateName: traffic-generator
+        - templateName: load-tester
           clusterScope: true
         - templateName: slo-success-rate
           clusterScope: true
         args:
-        - name: service-name
-          value: cguertin.dev
+        - name: service-uri
+          value: http://cguertin.dev
         - name: active-service-name
           value: blog-blog-active
   template:
