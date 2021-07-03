@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 12,
   "links": [],
   "panels": [
     {
@@ -27,7 +26,11 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "dtdurations",
       "gauge": {
         "maxValue": 100,
@@ -79,9 +82,12 @@
       "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "time() - max(process_start_time_seconds{job=\"argo-rollouts-metrics\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -107,6 +113,11 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -158,9 +169,10 @@
       "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(rollout_info)",
-          "format": "time_series",
-          "intervalFactor": 1,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -185,13 +197,20 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 4,
         "w": 13,
         "x": 8,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 25,
       "legend": {
         "avg": false,
@@ -206,19 +225,25 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "paceLength": 10,
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(rollout_info) by (strategy)",
-          "format": "time_series",
-          "intervalFactor": 1,
+          "interval": "",
+          "legendFormat": "{{strategy}}",
           "refId": "A"
         }
       ],
@@ -242,6 +267,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:253",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -250,6 +276,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:254",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -274,7 +301,11 @@
         "#F2495C",
         "#F2495C"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -326,10 +357,13 @@
       "tableColumn": "",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(rollout_reconcile_error)",
           "format": "time_series",
           "hide": false,
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -348,6 +382,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -370,7 +405,11 @@
         "rgba(237, 129, 40, 0.89)",
         "#629e51"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -453,7 +492,11 @@
         "#5794F2",
         "#5794F2"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -536,7 +579,11 @@
         "#FF9830",
         "#FF9830"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -619,7 +666,11 @@
         "#F2495C",
         "#F2495C"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -702,7 +753,11 @@
         "#F2495C",
         "#F2495C"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -785,7 +840,11 @@
         "#F2495C",
         "#F2495C"
       ],
-      "datasource": "Prometheus",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -862,13 +921,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -883,19 +949,25 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "paceLength": 10,
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(increase(rollout_reconcile_count[10m]))",
-          "format": "time_series",
-          "intervalFactor": 1,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -919,6 +991,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:551",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -927,6 +1000,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:552",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -954,6 +1028,11 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
@@ -961,17 +1040,19 @@
         "y": 16
       },
       "heatmap": {},
+      "hideZeroBuckets": false,
       "highlightCards": true,
       "id": 8,
       "legend": {
         "show": false
       },
       "links": [],
+      "reverseYBuckets": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(increase(rollout_reconcile_bucket[10m])) by (le)",
-          "format": "heatmap",
-          "intervalFactor": 1,
+          "interval": "",
           "legendFormat": "{{le}}",
           "refId": "A"
         }
@@ -1007,13 +1088,20 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 24,
         "x": 0,
         "y": 24
       },
+      "hiddenSeries": false,
       "id": 12,
       "legend": {
         "avg": false,
@@ -1028,19 +1116,25 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "paceLength": 10,
       "percentage": false,
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "go_memstats_heap_alloc_bytes{job=\"argo-rollouts-metrics\"}",
-          "format": "time_series",
-          "intervalFactor": 1,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -1064,6 +1158,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:600",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1072,6 +1167,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:601",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1087,7 +1183,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1125,5 +1221,5 @@
   "timezone": "",
   "title": "Argo Rollouts",
   "uid": "9zNpieqik",
-  "version": 5
+  "version": 1
 }
