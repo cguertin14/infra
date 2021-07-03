@@ -3,5 +3,8 @@ kind: ServiceMonitor
 metadata:
   name: argo-rollouts-metrics
 spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argo-rollouts
   endpoints:
   - port: metrics
