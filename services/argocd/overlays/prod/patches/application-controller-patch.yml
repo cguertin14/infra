@@ -8,14 +8,14 @@ kind: StatefulSet
 metadata:
   name: argocd-application-controller
 spec:
-  replicas: 2
+  replicas: 3
   template:
     spec:
       containers:
       - name: argocd-application-controller
         env:
         - name: ARGOCD_CONTROLLER_REPLICAS
-          value: "2"
+          value: "3"
         command:
         - argocd-application-controller
         - --status-processors
