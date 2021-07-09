@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1621880984177,
+  "iteration": 1625791467831,
   "links": [],
   "panels": [
     {
@@ -83,7 +83,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[28d]))",
+          "expr": "sum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -93,7 +93,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "[SLO] Availability % 28d",
+      "title": "[SLO] Availability % 14d",
       "type": "gauge"
     },
     {
@@ -153,7 +153,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1 - (\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[28d]))\n))* 60 * 60 * 24 * 28\n\r",
+          "expr": "(1 - (\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))\n))* 60 * 60 * 24 * 14\n\r",
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -161,7 +161,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Time Traefik served != 5xx in last 28d",
+      "title": "Time Traefik served != 5xx in last 14d",
       "type": "gauge"
     },
     {
@@ -223,7 +223,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[28d]))\n\r\n))/0.001",
+          "expr": "(1 - (\r\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))\n\r\n))/0.001",
           "interval": "",
           "legendFormat": "",
           "refId": "B"
@@ -231,7 +231,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Error budget spent in 28d",
+      "title": "Error budget spent in 14d",
       "type": "gauge"
     },
     {
@@ -528,7 +528,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r",
+          "expr": "sum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -539,12 +539,12 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "[SLO] Latency % 28d",
+      "title": "[SLO] Latency % 14d",
       "type": "gauge"
     },
     {
       "datasource": "$DS_PROMETHEUS",
-      "description": "For a 99.5% slo, Traefik is allowed to be under slo for 201 minutes in a 28 days period",
+      "description": "For a 99.5% slo, Traefik is allowed to be under slo for 201 minutes in a 14 days period",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -599,7 +599,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))* 60 * 60 * 24 * 28",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r\r\r\n))* 60 * 60 * 24 * 14",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -607,7 +607,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Time Traefik is under SLO in the last 28d",
+      "title": "Time Traefik is under SLO in the last 14d",
       "type": "gauge"
     },
     {
@@ -669,7 +669,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -677,7 +677,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Error budget spent in 28d",
+      "title": "Error budget spent in 14d",
       "type": "gauge"
     },
     {
@@ -739,7 +739,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.7\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
           "refId": "C"
@@ -1038,5 +1038,5 @@
   "timezone": "",
   "title": "Blog - Service Level Objectives (SLOs)",
   "uid": "WlaIIMjGz",
-  "version": 8
+  "version": 9
 }
