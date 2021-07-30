@@ -18,7 +18,7 @@ commonLabels:
 
 images:
 - name: traefik
-  newTag: v2.4.12
+  newTag: v2.4.13
 - name: thomseddon/traefik-forward-auth
   newTag: 2-arm64
 
