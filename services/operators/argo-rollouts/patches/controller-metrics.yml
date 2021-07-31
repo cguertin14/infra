@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-rollouts
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8090"
+    prometheus.io/scrape: "true"
+spec:
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8090"
+        prometheus.io/scrape: "true"

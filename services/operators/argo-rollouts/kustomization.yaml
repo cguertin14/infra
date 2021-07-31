@@ -24,6 +24,9 @@ configurations:
 commonLabels:
   app.kubernetes.io/name: argo-rollouts
 
+patchesStrategicMerge:
+- patches/controller-metrics.yml
+
 patchesJson6902:
 - path: patches/remove-unknown-fields.yml
   target:
