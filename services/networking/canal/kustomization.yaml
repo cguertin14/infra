@@ -11,7 +11,7 @@ images:
 - name: quay.io/coreos/flannel
   newTag: v0.14.0-arm64
 - name: docker.io/calico/kube-controllers
-  newTag: v3.19.1
+  newTag: v3.20.0
 - name: docker.io/calico/cni
   newTag: v3.20.0
 - name: docker.io/calico/pod2daemon-flexvol
