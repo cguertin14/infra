@@ -58,3 +58,9 @@ patchesJson6902:
     kind: CustomResourceDefinition
     name: rollouts.argoproj.io
     version: v1
+- path: patches/add-configmap-to-clusterrole.yml
+  target:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: argo-rollouts-clusterrole
+    version: v1

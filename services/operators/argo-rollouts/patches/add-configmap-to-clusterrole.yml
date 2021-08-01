@@ -1,0 +1,5 @@
+- op: replace
+  path: /rules/6/resources
+  value: 
+  - secrets
+  - configmaps
