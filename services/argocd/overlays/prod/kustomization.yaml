@@ -26,4 +26,4 @@ images:
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
   newTag: v2.0.5
 - name: viaductoss/ksops
-  newTag: v2.5.7-arm64 # arm64-capable version of ksops
+  newTag: v2.6.0-arm64 # arm64-capable version of ksops
