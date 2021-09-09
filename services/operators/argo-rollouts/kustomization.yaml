@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: argo-rollouts
 
 resources:
-- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.0.4
+- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.0.6
 - resources/namespace.yml
 - metrics/rbac.yml
 - metrics/service-monitor.yml
@@ -14,7 +14,7 @@ resources:
 
 images:
 - name: quay.io/argoproj/argo-rollouts
-  newTag: v1.0.4
+  newTag: v1.0.6
 - name: cguertz/load-tester
   newTag: v1.0.0
 
