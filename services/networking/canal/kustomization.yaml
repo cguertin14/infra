@@ -13,7 +13,7 @@ images:
 - name: docker.io/calico/kube-controllers
   newTag: v3.20.0
 - name: docker.io/calico/cni
-  newTag: v3.20.0
+  newTag: v3.20.1
 - name: docker.io/calico/pod2daemon-flexvol
   newTag: v3.20.0
 - name: docker.io/calico/node
