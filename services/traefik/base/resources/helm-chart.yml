@@ -4,7 +4,7 @@ metadata:
   name: traefik
 name: traefik
 repo: https://helm.traefik.io/traefik
-version: v9.20.1
+version: v10.3.4
 releaseName: traefik
 releaseNamespace: kube-system
 valuesInline:
