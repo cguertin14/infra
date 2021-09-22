@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.middlewares: "traefik-forward-auth@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
