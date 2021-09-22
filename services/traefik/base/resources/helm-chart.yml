@@ -11,7 +11,7 @@ chartVersion: v9.19.1
 # New fields
 name: traefik
 repo: https://helm.traefik.io/traefik
-version: v9.19.1
+version: v9.20.2
 
 releaseName: traefik
 releaseNamespace: kube-system
