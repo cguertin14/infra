@@ -10,5 +10,4 @@ releaseNamespace: kube-system
 valuesInline:
   rbac:
     enabled: true
-extraArgs:
-- --include-crds
+includeCRDs: true
