@@ -13,15 +13,13 @@ spec:
       containers:
       - name: traefik
         args:
+          - "--api.dashboard=true"
           - "--global.checknewversion"
           - "--entryPoints.traefik.address=:9000/tcp"
           - "--entryPoints.web.address=:8000/tcp"
           - "--entrypoints.web.http.redirections.entryPoint.to=:443"
           - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
           - "--entryPoints.websecure.address=:8443/tcp"
-          - "--api"
-          - "--api.insecure=true"
-          - "--api.dashboard=true"
           - "--metrics.prometheus=true"
           - "--ping=true"
           - "--providers.kubernetescrd"
