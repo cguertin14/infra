@@ -17,7 +17,8 @@ resources:
 images:
 - name: quay.io/argoproj/argo-rollouts
   newTag: v1.0.6
-- name: ghcr.io/argoproj/kubectl-argo-rollouts
+- name: quay.io/argoproj/kubectl-argo-rollouts
+  newName: quay.io/argoproj/argo-rollouts
   newTag: v1.0.6
 - name: cguertz/load-tester
   newTag: v1.0.0
