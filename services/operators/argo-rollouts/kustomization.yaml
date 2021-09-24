@@ -18,7 +18,7 @@ images:
 - name: quay.io/argoproj/argo-rollouts
   newTag: v1.0.6
 - name: quay.io/argoproj/kubectl-argo-rollouts
-  newTag: v1.0.6
+  newTag: v1.0.7
 - name: cguertz/load-tester
   newTag: v1.0.0
 
