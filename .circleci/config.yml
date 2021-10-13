@@ -49,7 +49,7 @@ workflows:
 executors:
   terraform-executor:
     docker:
-      - image: hashicorp/terraform:1.0.8
+      - image: hashicorp/terraform:1.0.9
 
   scripts-executor:
     docker:
