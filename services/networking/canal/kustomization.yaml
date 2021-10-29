@@ -9,7 +9,7 @@ commonLabels:
 
 images:
 - name: quay.io/coreos/flannel
-  newTag: v0.14.0-arm64
+  newTag: v0.15.0-arm64
 - name: docker.io/calico/kube-controllers
   newTag: v3.20.2
 - name: docker.io/calico/cni
