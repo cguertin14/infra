@@ -17,4 +17,4 @@ images:
 - name: docker.io/calico/pod2daemon-flexvol
   newTag: v3.21.0
 - name: docker.io/calico/node
-  newTag: v3.21.0
+  newTag: v3.21.2
