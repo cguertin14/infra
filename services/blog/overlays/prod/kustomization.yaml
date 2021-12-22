@@ -12,7 +12,7 @@ resources:
 
 images:
 - name: cguertz/cguertin.dev
-  newTag: v1.2.0
+  newTag: v1.2.1
 
 configurations:
 - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
