@@ -197,7 +197,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kured
-  namespace: kured
+  namespace: argocd
 spec:
   project: production
   destination:
