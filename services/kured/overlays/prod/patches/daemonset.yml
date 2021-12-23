@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kured
+  namespace: kured
+spec:
+  template:
+    spec:
+      containers:
+        - name: kured
+          envFrom:
+            - secretRef:
+                name: notify-url
+          command:
+            - /usr/bin/kured
+            - --reboot-days=sun,tue,thu
+            - --period=72h
+            - --time-zone=EST
+            - --start-time=0:00
+            - --end-time=4:59:59
+            - --ds-namespace=kured
+            - --prometheus-url=http://prometheus-k8s.monitoring.svc.cluster.local:9090
+            - --alert-filter-regexp=^(RebootRequired|Watchdog)$
+            - --alert-firing-only=true
