@@ -15,7 +15,7 @@ spec:
             - /usr/bin/kured
             - --reboot-days=sun,tue,thu
             - --period=72h
-            - --time-zone=EST
+            - --time-zone=America/New_York
             - --start-time=0:00
             - --end-time=4:59:59
             - --ds-namespace=kured
