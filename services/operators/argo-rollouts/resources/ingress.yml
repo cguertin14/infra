@@ -4,6 +4,8 @@ metadata:
   name: argo-rollout-dashboard
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    ingress.kubernetes.io/app-root: /rollouts
+    traefik.ingress.kubernetes.io/router.entrypoints: web
     traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
