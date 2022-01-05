@@ -32,6 +32,7 @@ commonLabels:
 patchesStrategicMerge:
 - patches/controller-metrics.yml
 - patches/image-pull-policy-dashboard.yml
+- patches/insecure-dashboard-tls.yml
 
 patchesJson6902:
 - path: patches/remove-unknown-fields.yml
