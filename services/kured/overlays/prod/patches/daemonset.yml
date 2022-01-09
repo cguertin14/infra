@@ -13,11 +13,9 @@ spec:
                 name: notify-url
           command:
             - /usr/bin/kured
-            - --reboot-days=sun,tue,thu
+            - --reboot-days=sun,mon,thu
             - --period=72h
             - --time-zone=America/New_York
-            - --start-time=0:00
-            - --end-time=4:59:59
             - --ds-namespace=kured
             - --prometheus-url=http://prometheus-k8s.monitoring.svc.cluster.local:9090
             - --alert-filter-regexp=^(RebootRequired|Watchdog)$
