@@ -14,6 +14,7 @@ spec:
           command:
             - /usr/bin/kured
             - --reboot-days=sun,mon,thu
+            - --period=12h
             - --time-zone=America/New_York
             - --ds-namespace=kured
             - --prometheus-url=http://prometheus-k8s.monitoring.svc.cluster.local:9090
