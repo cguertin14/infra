@@ -17,4 +17,4 @@ namespace: kured
 images:
 - name: docker.io/weaveworks/kured
   newName: raspbernetes/kured
-  newTag: 1.9.0
+  newTag: 1.9.1
