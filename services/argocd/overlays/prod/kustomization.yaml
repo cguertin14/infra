@@ -21,9 +21,9 @@ generators:
 images:
 - name: quay.io/argoproj/argocd
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
-  newTag: v2.2.2
+  newTag: v2.2.3
 - name: argoproj/argocd
   newName: cyrilix/argocd # arm64-capable ArgoCD docker image
-  newTag: v2.2.2
+  newTag: v2.2.3
 - name: viaductoss/ksops
   newTag: v3.0.1-arm64 # arm64-capable version of ksops
