@@ -1,0 +1,62 @@
+@startuml infra architecture
+
+cloud Internet
+
+cloud LAN {
+	
+	node Modem
+	node Router
+	node LoadBalancer
+	storage NAS
+
+	cloud cluster as "Kubernetes Cluster  \n   192.168.0.0/24"
+
+	node ControlPlane {
+		node master1
+		node master2
+		node master3
+
+		database etcd
+	}
+
+	node DataPlane {
+		node worker1
+		node worker2
+		node worker3
+		node worker4
+		node worker5
+	}
+
+	master1 -u-> etcd
+	master2 -u-> etcd
+	master3 -u-> etcd
+
+	cluster -d-> ControlPlane
+	DataPlane -d-> NAS
+
+	master1 <-d-> worker1
+	master1 <-d-> worker2
+	master1 <-d-> worker3
+	master1 <-d-> worker4
+	master1 <-d-> worker5
+	
+	master2 <-d-> worker1
+	master2 <-d-> worker2
+	master2 <-d-> worker3
+	master2 <-d-> worker4
+	master2 <-d-> worker5
+
+	master3 <-d-> worker1
+	master3 <-d-> worker2
+	master3 <-d-> worker3
+	master3 <-d-> worker4
+	master3 <-d-> worker5
+
+}
+
+Internet -r-> Modem : HTTP request
+Modem -r-> Router : Forward request
+Router -r-> LoadBalancer : Forward request
+LoadBalancer -d-> cluster : Forward request
+
+@enduml

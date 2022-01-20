@@ -4,6 +4,10 @@
 
 My infrastructure running on a Raspberry Pi Kubernetes Cluster.
 
+## Architecture
+
+![](https://www.planttext.com/api/plantuml/png/RLDTJy8m57rUVyKDxqFMWb5Z38Wn6f4GvD6NibObRctiHtWm_dUxjeCD-hBid7jspkrTxrGRgeojAzY93qM1gl9hPtXfhE88bPMq39w5uKfmq-B5R0c_A4EPa8p3gtlKyNqjhPD6i92KtTEAYhAXj96AVd9OpjuGoe9HMLdjz40r35xireTm3VD8mxi0WE8Q3ulBg-5eEBh0um6AxdCfZ9BLoldpffl0rhJvikX3t8V4MMIC6hgbcWCt9KFPNslxuFWJpxrKtntF074VaZuSz-4a1CJc8BVvNSoD3PvJf4CrumeJoPdZkYT7sR5XNmpZRPDkFNSuG8h6QPgawN6QdZIteJrBCXIdGt4w5AT3yKdeSLZ9J9BE9EbCaiuafvdkJxOB0Rbo5Ry0S0DFcyqA5F-nN1iKI5yFI-44ZrBjgM87JInuKNTP4j9UsVVJNebpBPfomTn6_mC0)
+
 ## Structure of this repository
 
 The [services/](./services) folder contains subfolders which contain different kinds of web/networking/other services.
