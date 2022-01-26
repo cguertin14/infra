@@ -1,0 +1,21 @@
+apiVersion: builtin
+kind: HelmChartInflationGenerator
+metadata:
+  name: linkerd-viz
+name: linkerd-viz
+repo: https://helm.linkerd.io/stable
+version: v2.11.1
+releaseName: linkerd-viz
+releaseNamespace: linkerd
+includeCRDs: true
+valuesInline:
+  grafana:
+    enabled: false
+  prometheus:
+    enabled: false
+  prometheusUrl: https://prometheus.monitoring.k8s.cguertin.dev
+  grafanaUrl: https://monitoring.k8s.cguertin.dev
+  installNamespace: false
+  identity:
+    issuer:
+      scheme: kubernetes.io/tls

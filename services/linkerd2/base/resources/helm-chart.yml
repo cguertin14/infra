@@ -1,0 +1,119 @@
+apiVersion: builtin
+kind: HelmChartInflationGenerator
+metadata:
+  name: linkerd2
+name: linkerd2
+repo: https://helm.linkerd.io/stable
+version: v2.11.1
+releaseName: linkerd2
+releaseNamespace: linkerd
+includeCRDs: true
+valuesInline:
+  installNamespace: false
+  identity:
+    issuer:
+      scheme: kubernetes.io/tls
+      
+  # Public trust root certificates,
+  # no harm done when exposing them.
+  #
+  # See:
+  # * https://github.com/linkerd/linkerd2/pull/6455#issuecomment-882765601
+  # * https://github.com/linkerd/linkerd2/issues/6108#issuecomment-842653274
+  identityTrustAnchorsPEM: |
+    -----BEGIN CERTIFICATE-----
+    MIIBjTCCATSgAwIBAgIRAI9mvMdkIuR1lmcmMZSz6d4wCgYIKoZIzj0EAwIwJTEj
+    MCEGA1UEAxMacm9vdC5saW5rZXJkLmNsdXN0ZXIubG9jYWwwHhcNMjIwMTI2MTU0
+    OTMzWhcNMzIwMTI0MTU0OTMzWjAlMSMwIQYDVQQDExpyb290LmxpbmtlcmQuY2x1
+    c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABF5T6M5yscMctdBh
+    K/PEEDR7pbD7fagRhtLGENSWGBttTzVXWoIwfDC6srhYE6y7yFzcjEsnAHdz3+fY
+    2/VOYVqjRTBDMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMB0G
+    A1UdDgQWBBRtNOOKLx8wzKBbpXJlwPK7QNf2xDAKBggqhkjOPQQDAgNHADBEAiBp
+    75Ke1f4X4a4UYjsxar25un2qdvb3X68YNu1UmzoJ8AIgNA3pOSYLo+2Ikq4zZ7uS
+    +u982tdCD9WclI2sxVH1uP4=
+    -----END CERTIFICATE-----
+
+  policyValidator:
+    externalSecret: true
+    caBundle: |
+      -----BEGIN CERTIFICATE-----
+      MIIBlDCCATqgAwIBAgIRAMBn3eb9LSVkbppyCTu4fWwwCgYIKoZIzj0EAwIwKDEm
+      MCQGA1UEAxMdd2ViaG9vay5saW5rZXJkLmNsdXN0ZXIubG9jYWwwHhcNMjIwMTI2
+      MTYzMTA5WhcNMzIwMTI0MTYzMTA5WjAoMSYwJAYDVQQDEx13ZWJob29rLmxpbmtl
+      cmQuY2x1c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABG/0aes6
+      YliTyv0/q7QscPwzRregSEgRE2EfruHyhpI7sFD8Bh4q2GWOTei6aWuFOBecwxK+
+      GgN3dwyujARxLrSjRTBDMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/
+      AgEBMB0GA1UdDgQWBBTO5qyDNkGJX59EhiXqa32e2N32FTAKBggqhkjOPQQDAgNI
+      ADBFAiA6/YewhnNCm6ywqIJfnYWQCLNqim+VJgkkDxWtWEmpmgIhAPs/s94Qw8Qf
+      9ukmwrtBhyjiXTCfs0vaJ7oldUxYLBEr
+      -----END CERTIFICATE-----
+  proxyInjector:
+    externalSecret: true
+    caBundle: |
+      -----BEGIN CERTIFICATE-----
+      MIIBlDCCATqgAwIBAgIRAMBn3eb9LSVkbppyCTu4fWwwCgYIKoZIzj0EAwIwKDEm
+      MCQGA1UEAxMdd2ViaG9vay5saW5rZXJkLmNsdXN0ZXIubG9jYWwwHhcNMjIwMTI2
+      MTYzMTA5WhcNMzIwMTI0MTYzMTA5WjAoMSYwJAYDVQQDEx13ZWJob29rLmxpbmtl
+      cmQuY2x1c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABG/0aes6
+      YliTyv0/q7QscPwzRregSEgRE2EfruHyhpI7sFD8Bh4q2GWOTei6aWuFOBecwxK+
+      GgN3dwyujARxLrSjRTBDMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/
+      AgEBMB0GA1UdDgQWBBTO5qyDNkGJX59EhiXqa32e2N32FTAKBggqhkjOPQQDAgNI
+      ADBFAiA6/YewhnNCm6ywqIJfnYWQCLNqim+VJgkkDxWtWEmpmgIhAPs/s94Qw8Qf
+      9ukmwrtBhyjiXTCfs0vaJ7oldUxYLBEr
+      -----END CERTIFICATE-----
+  profileValidator:
+    externalSecret: true
+    caBundle: |
+      -----BEGIN CERTIFICATE-----
+      MIIBlDCCATqgAwIBAgIRAMBn3eb9LSVkbppyCTu4fWwwCgYIKoZIzj0EAwIwKDEm
+      MCQGA1UEAxMdd2ViaG9vay5saW5rZXJkLmNsdXN0ZXIubG9jYWwwHhcNMjIwMTI2
+      MTYzMTA5WhcNMzIwMTI0MTYzMTA5WjAoMSYwJAYDVQQDEx13ZWJob29rLmxpbmtl
+      cmQuY2x1c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABG/0aes6
+      YliTyv0/q7QscPwzRregSEgRE2EfruHyhpI7sFD8Bh4q2GWOTei6aWuFOBecwxK+
+      GgN3dwyujARxLrSjRTBDMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/
+      AgEBMB0GA1UdDgQWBBTO5qyDNkGJX59EhiXqa32e2N32FTAKBggqhkjOPQQDAgNI
+      ADBFAiA6/YewhnNCm6ywqIJfnYWQCLNqim+VJgkkDxWtWEmpmgIhAPs/s94Qw8Qf
+      9ukmwrtBhyjiXTCfs0vaJ7oldUxYLBEr
+      -----END CERTIFICATE-----
+
+  ## HA configuration
+  # 
+  # The following values contain the values needed to enable HA mode.
+  enablePodAntiAffinity: true
+
+  # proxy configuration
+  proxy:
+    resources:
+      cpu:
+        request: 100m
+      memory:
+        limit: 250Mi
+        request: 20Mi
+
+  # controller configuration
+  controllerReplicas: 3
+  controllerResources: &controller_resources
+    cpu: &controller_resources_cpu
+      limit: ""
+      request: 100m
+    memory:
+      limit: 250Mi
+      request: 50Mi
+  destinationResources: *controller_resources
+
+  # identity configuration
+  identityResources:
+    cpu: *controller_resources_cpu
+    memory:
+      limit: 250Mi
+      request: 10Mi
+
+  # heartbeat configuration
+  heartbeatResources: *controller_resources
+
+  # proxy injector configuration
+  proxyInjectorResources: *controller_resources
+  webhookFailurePolicy: Fail
+
+  # service profile validator configuration
+  spValidatorResources: *controller_resources
