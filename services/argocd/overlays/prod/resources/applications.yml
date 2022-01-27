@@ -220,7 +220,7 @@ metadata:
 spec:
   project: production
   destination:
-    namespace: kured
+    namespace: linkerd
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
@@ -239,12 +239,31 @@ metadata:
 spec:
   project: production
   destination:
-    namespace: kured
+    namespace: linkerd-viz
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
     path: services/linkerd-viz/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-system
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/kube-system/overlays/prod
   syncPolicy:
     automated:
       selfHeal: true
