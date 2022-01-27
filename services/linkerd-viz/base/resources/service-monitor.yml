@@ -1,34 +1,40 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: linkerd-metrics
-  labels:
-    linkerd.io/control-plane-ns: linkerd
-spec:
-  selector:
-    linkerd.io/control-plane-ns: linkerd
-  ports:
-  - name: metrics
-    port: 4191
-    targetPort: 4191
----
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: linkerd-control-plane-metrics
+  labels:
+    k8s-app: linkerd-prometheus
+    release: monitoring
+  name: linkerd-viz-federate-metrics
+  namespace: linkerd-viz
 spec:
+  endpoints:
+  - interval: 30s
+    scrapeTimeout: 30s
+    params:
+      match[]:
+      - '{job="linkerd-proxy"}'
+      - '{job="linkerd-controller"}'
+    path: /federate
+    port: admin-http
+    honorLabels: true
+    relabelings:
+    - action: keep
+      regex: '^prometheus$'
+      sourceLabels:
+      - '__meta_kubernetes_pod_container_name'
+  jobLabel: app
+  namespaceSelector:
+    matchNames:
+    - linkerd-viz
   selector:
     matchLabels:
-      linkerd.io/control-plane-ns: linkerd
-  endpoints:
-  - port: metrics
+      component: prometheus
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: prometheus-k8s
-  labels:
-    linkerd.io/control-plane-ns: linkerd
+  namespace: linkerd-viz
 rules:
 - apiGroups:
   - ""
@@ -53,8 +59,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: prometheus-k8s
-  labels:
-    linkerd.io/control-plane-ns: linkerd
+  namespace: linkerd-viz
 subjects:
 - kind: ServiceAccount
   name: prometheus-k8s

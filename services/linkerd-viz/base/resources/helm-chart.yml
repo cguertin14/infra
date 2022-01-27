@@ -12,7 +12,7 @@ valuesInline:
   grafana:
     enabled: false
   prometheus:
-    enabled: false
+    enabled: true # To easily collect metrics with federation
   prometheusUrl: http://prometheus-k8s.monitoring.svc.cluster.local:9090
   grafanaUrl: https://monitoring.k8s.cguertin.dev
   dashboard:
