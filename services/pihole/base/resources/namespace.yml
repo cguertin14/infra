@@ -5,4 +5,4 @@ metadata:
   labels:
     name: pihole
   annotations:
-    linkerd.io/inject: disabled
+    linkerd.io/inject: enabled

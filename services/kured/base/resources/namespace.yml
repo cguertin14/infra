@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: kured
   annotations:
-    linkerd.io/inject: disabled
+    linkerd.io/inject: enabled
