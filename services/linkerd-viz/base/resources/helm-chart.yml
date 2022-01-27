@@ -15,6 +15,8 @@ valuesInline:
     enabled: false
   prometheusUrl: https://prometheus.monitoring.k8s.cguertin.dev
   grafanaUrl: https://monitoring.k8s.cguertin.dev
+  dashboard:
+    enforcedHostRegexp: ^(localhost|127\.0\.0\.1|web\.linkerd-viz\.svc\.cluster\.local|web\.linkerd-viz\.svc|mesh\.k8s\.cguertin\.dev|\[::1\])(:\d+)?$
   installNamespace: false
   identity:
     issuer:
