@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: blog
+  annotations:
+    linkerd.io/inject: enabled
 spec:
   strategy:
     blueGreen:
@@ -39,6 +41,9 @@ spec:
         - name: service-name
           value: blog-blog-active
   template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
     spec:
       containers:
       - name: blog
