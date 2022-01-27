@@ -2,11 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: linkerd-metrics
-  labels:
-    app.kubernetes.io/name: linkerd
 spec:
   selector:
-    app.kubernetes.io/name: linkerd
+    linkerd.io/control-plane-ns: linkerd
   ports:
   - name: metrics
     port: 4191
@@ -16,12 +14,10 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: linkerd-metrics
-  labels:
-    app.kubernetes.io/name: linkerd
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: linkerd
+      linkerd.io/control-plane-ns: linkerd
   endpoints:
   - port: metrics
 ---
@@ -29,8 +25,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: prometheus-k8s
-  labels:
-    app.kubernetes.io/name: linkerd
 rules:
 - apiGroups:
   - ""
@@ -55,8 +49,6 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: prometheus-k8s
-  labels:
-    app.kubernetes.io/name: linkerd
 subjects:
 - kind: ServiceAccount
   name: prometheus-k8s
