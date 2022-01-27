@@ -56,7 +56,7 @@ configMapGenerator:
 
 ## All Linkerd2 dashboards are defined below
 #
-- name: grafana-linkerd2-dashboards
+- name: grafana-linkerd2-dashboards-1
   namespace: monitoring
   files:
   # Replace 'stable-VERSION' when a new release comes out
@@ -69,6 +69,9 @@ configMapGenerator:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/kubernetes.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/multicluster.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/namespace.json
+- name: grafana-linkerd2-dashboards-2
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/pod.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus-benchmark.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus.json
