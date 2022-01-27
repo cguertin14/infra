@@ -3,9 +3,6 @@ kind: Kustomization
 
 namespace: linkerd
 
-commonLabels:
-  app.kubernetes.io/name: linkerd
-
 resources:
 - resources/namespace.yml
 - resources/ca-issuer.yml
