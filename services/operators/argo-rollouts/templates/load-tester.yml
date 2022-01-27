@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: ClusterAnalysisTemplate
 metadata:
   name: load-tester
+  annotations:
+    linkerd.io/inject: disabled
 spec:
   args:
   - name: service-uri
@@ -11,6 +13,9 @@ spec:
     failureLimit: 5
     provider:
       job:
+        metadata:
+          annotations:
+            linkerd.io/inject: disabled
         spec:
           backoffLimit: 1
           template:
