@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: linkerd2-metrics
+  name: linkerd-metrics
 spec:
   endpoints:
   - interval: 30s
@@ -21,7 +21,7 @@ spec:
   jobLabel: app
   namespaceSelector:
     matchNames:
-    - linkerd
+    - linkerd-viz
   selector:
     matchLabels:
       component: prometheus
