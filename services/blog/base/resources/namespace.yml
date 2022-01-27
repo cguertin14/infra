@@ -4,3 +4,5 @@ metadata:
   name: blog
   labels:
     name: blog
+  annotations:
+    linkerd.io/inject: disabled

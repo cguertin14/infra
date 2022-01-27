@@ -4,3 +4,5 @@ metadata:
   name: synology-nfs
   labels:
     name: synology-nfs
+  annotations:
+    linkerd.io/inject: disabled
