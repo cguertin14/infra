@@ -13,12 +13,12 @@ spec:
     failureLimit: 5
     provider:
       job:
-        metadata:
-          annotations:
-            linkerd.io/inject: disabled
         spec:
           backoffLimit: 1
           template:
+            metadata:
+              annotations:
+                linkerd.io/inject: disabled
             spec:
               containers:
               - name: load-tester
