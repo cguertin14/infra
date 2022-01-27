@@ -65,17 +65,23 @@ configMapGenerator:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/daemonset.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/deployment.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/health.json
+- name: grafana-linkerd2-dashboards-2
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/job.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/kubernetes.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/multicluster.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/namespace.json
-- name: grafana-linkerd2-dashboards-2
+- name: grafana-linkerd2-dashboards-3
   namespace: monitoring
   files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/pod.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus-benchmark.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/replicaset.json
+- name: grafana-linkerd2-dashboards-4
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/replicationcontroller.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/route.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/service.json

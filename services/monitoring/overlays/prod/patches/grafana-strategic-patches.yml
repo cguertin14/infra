@@ -32,6 +32,10 @@ spec:
           name: grafana-linkerd2-dashboards
         - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-2
           name: grafana-linkerd2-dashboards-2
+        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-3
+          name: grafana-linkerd2-dashboards-3
+        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-4
+          name: grafana-linkerd2-dashboards-4
       volumes:
       # 5- Set Grafana Persistent Storage volume.
       - emptyDir: null
@@ -53,3 +57,13 @@ spec:
         configMap:
           defaultMode: 420
           name: grafana-linkerd2-dashboards-2
+      # 9- Set Linkerd2 custom dashboards volume.
+      - name: grafana-linkerd2-dashboards-3
+        configMap:
+          defaultMode: 420
+          name: grafana-linkerd2-dashboards-3
+      # 10- Set Linkerd2 custom dashboards volume.
+      - name: grafana-linkerd2-dashboards-4
+        configMap:
+          defaultMode: 420
+          name: grafana-linkerd2-dashboards-4
