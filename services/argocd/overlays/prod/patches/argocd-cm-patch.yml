@@ -38,3 +38,9 @@ data:
         hs.status = "Healthy"
         return hs
   kustomize.buildOptions: "--enable-alpha-plugins"
+  resource.compareoptions: |
+    # disables status field diffing in specified resource types
+    # 'crd' - CustomResourceDefinition-s (default)
+    # 'all' - all resources
+    # 'none' - disabled
+    ignoreResourceStatusField: crd
