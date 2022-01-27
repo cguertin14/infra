@@ -56,34 +56,46 @@ configMapGenerator:
 
 ## All Linkerd2 dashboards are defined below
 #
+# Replace 'stable-VERSION' when a new release comes out
 - name: grafana-linkerd2-dashboards-1
   namespace: monitoring
   files:
-  # Replace 'stable-VERSION' when a new release comes out
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/authority.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/cronjob.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/daemonset.json
+- name: grafana-linkerd2-dashboards-2
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/deployment.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/health.json
-- name: grafana-linkerd2-dashboards-2
+- name: grafana-linkerd2-dashboards-3
   namespace: monitoring
   files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/job.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/kubernetes.json
+- name: grafana-linkerd2-dashboards-4
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/multicluster.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/namespace.json
-- name: grafana-linkerd2-dashboards-3
+- name: grafana-linkerd2-dashboards-5
   namespace: monitoring
   files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/pod.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus-benchmark.json
+- name: grafana-linkerd2-dashboards-6
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/prometheus.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/replicaset.json
-- name: grafana-linkerd2-dashboards-4
+- name: grafana-linkerd2-dashboards-7
   namespace: monitoring
   files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/replicationcontroller.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/route.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/service.json
+- name: grafana-linkerd2-dashboards-8
+  namespace: monitoring
+  files:
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/statefulset.json
   - https://raw.githubusercontent.com/linkerd/linkerd2/stable-2.11.1/grafana/dashboards/top-line.json
