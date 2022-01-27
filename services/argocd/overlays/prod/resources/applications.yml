@@ -230,6 +230,15 @@ spec:
     automated:
       selfHeal: true
       prune: true
+  ignoreDifferences:
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: certificates.cert-manager.io
+    jsonPointers:
+      - /status
+      - /spec/duration
+      - /spec/isCA
+      - /spec/renewBefore
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
