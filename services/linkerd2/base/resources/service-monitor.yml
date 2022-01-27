@@ -1,0 +1,64 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: linkerd2-metrics
+spec:
+  endpoints:
+  - interval: 30s
+    scrapeTimeout: 30s
+    params:
+      match[]:
+      - '{job="linkerd-proxy"}'
+      - '{job="linkerd-controller"}'
+    path: /federate
+    port: admin-http
+    honorLabels: true
+    relabelings:
+    - action: keep
+      regex: '^prometheus$'
+      sourceLabels:
+      - '__meta_kubernetes_pod_container_name'
+  jobLabel: app
+  namespaceSelector:
+    matchNames:
+    - linkerd
+  selector:
+    matchLabels:
+      component: prometheus
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: prometheus-k8s
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - endpoints
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: prometheus-k8s
+subjects:
+- kind: ServiceAccount
+  name: prometheus-k8s
+  namespace: monitoring
+roleRef:
+  kind: Role
+  name: prometheus-k8s
+  apiGroup: rbac.authorization.k8s.io
