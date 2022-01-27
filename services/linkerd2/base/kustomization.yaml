@@ -3,10 +3,14 @@ kind: Kustomization
 
 namespace: linkerd
 
+commonLabels:
+  app.kubernetes.io/name: linkerd2
+
 resources:
 - resources/namespace.yml
 - resources/ca-issuer.yml
 - resources/webhook-issuer.yml
+- resources/service-monitor.yml
 
 generators:
 - resources/helm-chart.yml
