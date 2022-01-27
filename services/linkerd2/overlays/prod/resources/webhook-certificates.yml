@@ -4,8 +4,8 @@ metadata:
   name: linkerd-policy-validator
 spec:
   secretName: linkerd-policy-validator-k8s-tls
-  duration: 24h
-  renewBefore: 1h
+  duration: 60d
+  renewBefore: 25h
   issuerRef:
     name: webhook-issuer
     kind: Issuer
@@ -25,8 +25,8 @@ metadata:
   name: linkerd-proxy-injector
 spec:
   secretName: linkerd-proxy-injector-k8s-tls
-  duration: 24h
-  renewBefore: 1h
+  duration: 60d
+  renewBefore: 25h
   issuerRef:
     name: webhook-issuer
     kind: Issuer
@@ -45,8 +45,8 @@ metadata:
   name: linkerd-sp-validator
 spec:
   secretName: linkerd-sp-validator-k8s-tls
-  duration: 24h
-  renewBefore: 1h
+  duration: 60d
+  renewBefore: 25h
   issuerRef:
     name: webhook-issuer
     kind: Issuer
