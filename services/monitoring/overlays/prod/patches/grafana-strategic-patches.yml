@@ -28,22 +28,6 @@ spec:
         volumeMounts:
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards
           name: grafana-dashboards-custom
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-1
-          name: grafana-linkerd2-dashboards-1
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-2
-          name: grafana-linkerd2-dashboards-2
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-3
-          name: grafana-linkerd2-dashboards-3
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-4
-          name: grafana-linkerd2-dashboards-4
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-5
-          name: grafana-linkerd2-dashboards-5
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-6
-          name: grafana-linkerd2-dashboards-6
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-7
-          name: grafana-linkerd2-dashboards-7
-        - mountPath: /grafana-dashboard-definitions/0/linkerd2-dashboards-8
-          name: grafana-linkerd2-dashboards-8
       volumes:
       # 5- Set Grafana Persistent Storage volume.
       - emptyDir: null
@@ -55,36 +39,3 @@ spec:
         configMap:
           defaultMode: 420
           name: grafana-dashboards-custom
-      # 7- Set Linkerd2 custom dashboards volumes
-      - name: grafana-linkerd2-dashboards-1
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-1
-      - name: grafana-linkerd2-dashboards-2
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-2
-      - name: grafana-linkerd2-dashboards-3
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-3
-      - name: grafana-linkerd2-dashboards-4
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-4
-      - name: grafana-linkerd2-dashboards-5
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-5
-      - name: grafana-linkerd2-dashboards-6
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-6
-      - name: grafana-linkerd2-dashboards-7
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-7
-      - name: grafana-linkerd2-dashboards-8
-        configMap:
-          defaultMode: 420
-          name: grafana-linkerd2-dashboards-8

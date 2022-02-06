@@ -12,9 +12,7 @@ valuesInline:
   grafana:
     enabled: false
   prometheus:
-    enabled: true # To easily collect metrics with federation
-  prometheusUrl: http://prometheus-k8s.monitoring.svc.cluster.local:9090
-  grafanaUrl: https://monitoring.k8s.cguertin.dev
+    enabled: false
   dashboard:
     enforcedHostRegexp: ^(localhost|127\.0\.0\.1|web\.linkerd-viz\.svc\.cluster\.local|web\.linkerd-viz\.svc|mesh\.k8s\.cguertin\.dev|\[::1\])(:\d+)?$
   installNamespace: false
