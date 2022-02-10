@@ -26,7 +26,5 @@ helmCharts:
       enabled: true
 
 images:
-- name: traefik
-  newTag: v2.6.0
 - name: thomseddon/traefik-forward-auth
   newTag: 2-arm64
