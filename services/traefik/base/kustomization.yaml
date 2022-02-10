@@ -18,7 +18,7 @@ commonLabels:
 helmCharts:
 - name: traefik
   repo: https://helm.traefik.io/traefik
-  version: v10.3.4
+  version: 10.14.1
   releaseName: traefik
   namespace: kube-system
   valuesInline:
