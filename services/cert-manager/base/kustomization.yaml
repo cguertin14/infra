@@ -1,14 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-- https://github.com/jetstack/cert-manager/releases/download/v1.7.1/cert-manager.yaml
+namespace: cert-manager
 
 patchesStrategicMerge:
 - patches/certmanager_namespace.yml
 - patches/cainjector_namespace.yml
 
-namespace: cert-manager
+helmCharts:
+- name: cert-manager
+  includeCRDs: true
+  releaseName: cert-manager
+  version: 1.7.1
+  repo: https://charts.jetstack.io
+  namespace: cert-manager
+  valuesInline:
+    installCRDs: true
 
 images:
 - name: quay.io/jetstack/cert-manager-controller
