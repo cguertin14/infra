@@ -4,5 +4,11 @@ kind: Kustomization
 resources:
 - resources/namespace.yml
 
-generators:
-- resources/helm-chart.yml
+helmCharts:
+- name: linkerd-viz
+  repo: https://helm.linkerd.io/stable
+  version: v2.11.1
+  releaseName: linkerd-viz
+  namespace: linkerd
+  includeCRDs: true
+  valuesFile: resources/linkerd-viz-values.yml

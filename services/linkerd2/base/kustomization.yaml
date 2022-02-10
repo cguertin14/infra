@@ -10,5 +10,13 @@ resources:
 - resources/service-monitor.yml
 
 generators:
-- resources/helm-chart.yml
 - secrets-generator.yml
+
+helmCharts:
+- name: linkerd2
+  repo: https://helm.linkerd.io/stable
+  version: v2.11.1
+  releaseName: linkerd2
+  namespace: linkerd
+  includeCRDs: true
+  valuesFile: resources/linkerd-values.yml
