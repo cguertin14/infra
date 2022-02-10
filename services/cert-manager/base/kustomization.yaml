@@ -16,11 +16,3 @@ helmCharts:
   namespace: cert-manager
   valuesInline:
     installCRDs: true
-
-images:
-- name: quay.io/jetstack/cert-manager-controller
-  newTag: v1.7.1
-- name: quay.io/jetstack/cert-manager-cainjector
-  newTag: v1.7.1
-- name: quay.io/jetstack/cert-manager-webhook
-  newTag: v1.7.1
