@@ -24,5 +24,9 @@ helmCharts:
       ui:
         enabled: true
     ipam:
+      mode: cluster-pool
       operator:
         clusterPoolIPv4PodCIDR: 10.42.0.0/16
+        clusterPoolIPv4MaskSize: 24
+        clusterPoolIPv6PodCIDR: fd00::/104
+        clusterPoolIPv6MaskSize: 120
