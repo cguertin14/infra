@@ -25,7 +25,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: canal
+  name: cilium
   namespace: argocd
 spec:
   project: production
@@ -35,7 +35,7 @@ spec:
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: services/networking/canal
+    path: services/networking/cilium
   syncPolicy:
     automated:
       selfHeal: true
