@@ -35,6 +35,7 @@ patchesJson6902:
     version: v1
 
 patchesStrategicMerge:
+- patches/prometheus-crd-length.yml
 - patches/prometheus-modifications.yml
 - patches/grafana-strategic-patches.yml
 
