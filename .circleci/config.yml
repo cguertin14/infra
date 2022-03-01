@@ -53,7 +53,7 @@ executors:
 
   scripts-executor:
     docker:
-      - image: cimg/base:2022.02-20.04
+      - image: cimg/base:2022.03-20.04
 
 ##
 # JOBS
