@@ -13,7 +13,7 @@ spec:
                 name: notify-url
           command:
             - /usr/bin/kured
-            - --reboot-days=sun,mon,thu
+            - --reboot-days=sat,sun,mon,thu
             - --period=8h
             - --time-zone=America/New_York
             - --ds-namespace=kured
