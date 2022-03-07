@@ -14,7 +14,7 @@ spec:
       initContainers:
       - name: import-gpg-key
         image: alpine
-        command: ["/bin/sh", "-c", "apk update && apk install gpg && gpg --import /deploy-pgp-key/deploy-key.asc"]
+        command: ["/bin/sh", "-c", "apk add gpg --update --no-cache && gpg --import /deploy-pgp-key/deploy-key.asc"]
         env:
         - name: GNUPGHOME
           value: /gnupg-home/.gnupg
