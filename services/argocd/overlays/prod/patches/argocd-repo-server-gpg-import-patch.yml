@@ -8,21 +8,19 @@ spec:
       volumes:
       - name: gnupg-home
         emptyDir: {}
-      - name: deploy-pgp-key
+      - name: deploy-gpg-key
         secret:
-          secretName: deploy-pgp-key
+          secretName: deploy-gpg-key
       initContainers:
       - name: import-gpg-key
         image: alpine
-        command: 
-        - apk install gpg --update --no-cache
-        - gpg --import /deploy-pgp-key/deploy-key.asc
+        command: ["/bin/sh", "-c", "apk install gpg --update --no-cache && gpg --import /deploy-gpg-key/deploy-key.asc"]
         env:
         - name: GNUPGHOME
           value: /gnupg-home/.gnupg
         volumeMounts:
-        - mountPath: /deploy-pgp-key
-          name: deploy-pgp-key
+        - mountPath: /deploy-gpg-key
+          name: deploy-gpg-key
           readOnly: true
         - mountPath: /gnupg-home
           name: gnupg-home
