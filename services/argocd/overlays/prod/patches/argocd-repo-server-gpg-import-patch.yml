@@ -13,8 +13,10 @@ spec:
           secretName: deploy-pgp-key
       initContainers:
       - name: import-gpg-key
-        image: argoproj/argocd:v1.8.7
-        command: ["gpg", "--import", "/deploy-pgp-key/deploy-key.asc"]
+        image: alpine
+        command: 
+        - apk install gpg --update --no-cache
+        - gpg --import /deploy-pgp-key/deploy-key.asc
         env:
         - name: GNUPGHOME
           value: /gnupg-home/.gnupg
