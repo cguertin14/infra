@@ -20,6 +20,6 @@ generators:
 
 images:
 - name: alpine
-  newTag: 3.15
+  newTag: "3.15"
 - name: viaductoss/ksops
   newTag: v3.0.1-arm64 # arm64-capable version of ksops
