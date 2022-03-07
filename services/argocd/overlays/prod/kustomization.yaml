@@ -19,5 +19,7 @@ generators:
 - secrets-generator.yml
 
 images:
+- name: argoproj/argocd # upstream image is wrongly tagged
+  newTag: v2.3.0
 - name: viaductoss/ksops
   newTag: v3.0.1-arm64 # arm64-capable version of ksops
