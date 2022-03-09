@@ -19,7 +19,7 @@ generators:
 - secrets-generator.yml
 
 images:
-- name: alpine
-  newTag: "3.15"
+- name: argoproj/argocd
+  newTag: v2.3.0
 - name: viaductoss/ksops
   newTag: v3.0.1-arm64 # arm64-capable version of ksops
