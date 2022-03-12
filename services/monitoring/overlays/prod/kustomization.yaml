@@ -44,14 +44,6 @@ configMapGenerator:
   namespace: monitoring
   envs:
   - env/grafana-settings
-
-secretGenerator:
-- name: grafana-datasources
-  namespace: monitoring
-  behavior: replace
-  files:
-  - datasources.yaml=secrets/datasources.json
-
 - name: grafana-dashboards-custom
   namespace: monitoring
   files:
@@ -61,3 +53,10 @@ secretGenerator:
   - dashboards/node_temperatures.json
   - dashboards/pi_hole.json
   - dashboards/blog_slos.json
+
+secretGenerator:
+- name: grafana-datasources
+  namespace: monitoring
+  behavior: replace
+  files:
+  - datasources.yaml=secrets/datasources.json
