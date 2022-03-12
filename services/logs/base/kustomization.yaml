@@ -18,6 +18,12 @@ helmCharts:
   namespace: monitoring
   valuesInline:
     replicas: 3
+    persistence:
+      enabled: true
+      storageClassName: nfs-client
+      accessModes:
+      - ReadWriteOnce
+      size: 200Gi
 
 ###
 ## Promtail deployment
