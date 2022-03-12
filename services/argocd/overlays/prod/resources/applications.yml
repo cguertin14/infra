@@ -106,7 +106,7 @@ metadata:
 spec:
   project: production
   destination:
-    namespace: logs
+    namespace: monitoring
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
