@@ -3,6 +3,9 @@ kind: Kustomization
 
 namespace: monitoring
 
+commonLabels:
+  app.kubernetes.io/name: logstack
+
 helmCharts:
 ###
 ## Loki deployment
@@ -13,6 +16,8 @@ helmCharts:
   version: 2.10.1
   repo: https://grafana.github.io/helm-charts
   namespace: monitoring
+  valuesInline:
+    replicas: 3
 
 ###
 ## Promtail deployment
