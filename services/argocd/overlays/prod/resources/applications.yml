@@ -101,6 +101,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: logs
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: logs
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/logs/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: cert-manager
   namespace: argocd
 spec:
