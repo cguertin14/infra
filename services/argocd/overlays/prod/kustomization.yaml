@@ -22,4 +22,4 @@ images:
 - name: argoproj/argocd
   newTag: v2.3.1
 - name: viaductoss/ksops
-  newTag: v3.0.1-arm64 # arm64-capable version of ksops
+  newTag: v3.0.2-arm64 # arm64-capable version of ksops
