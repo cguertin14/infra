@@ -1,3 +1,6 @@
+podLabels:
+  app: promtail
+
 loki:
   serviceName: loki
 
