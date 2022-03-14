@@ -7,4 +7,7 @@ resources:
 - ../../base
 
 patchesStrategicMerge:
-- patches/loki-network-policy.yml
+- patches/promtail-metrics.yml
+# TODO: Uncomment when loki network policy
+# is stable and working
+# - patches/loki-network-policy.yml

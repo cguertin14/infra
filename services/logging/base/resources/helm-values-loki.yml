@@ -1,7 +1,9 @@
 replicas: 3
 
-networkPolicy:
-  enabled: true
+# TODO: Find a solution for this + grafana in
+# monitoring namespace
+# networkPolicy:
+#   enabled: true
 
 config:
   common:
