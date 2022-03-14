@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: promtail
+  namespace: logging
+spec:
+  endpoints:
+  - port: http-metrics
+  selector:
+    matchLabels:
+      app: promtail
+      app.kubernetes.io/instance: promtail
+      app.kubernetes.io/name: promtail

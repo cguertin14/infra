@@ -1,3 +1,6 @@
+podLabels:
+  app: promtail
+
 loki:
   serviceName: loki
 
@@ -6,3 +9,6 @@ config:
 
 serviceMonitor:
   enabled: true
+  namespaceSelector:
+    matchNames:
+    - logging
