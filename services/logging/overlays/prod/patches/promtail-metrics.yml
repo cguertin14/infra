@@ -1,15 +1,3 @@
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: promtail
-  namespace: logging
-spec:
-  endpoints:
-  - port: http-metrics
-  selector:
-    matchLabels:
-      app: promtail
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -20,7 +8,6 @@ metadata:
 spec:
   selector:
     app: promtail
-    app.kubernetes.io/instance: promtail
 ---
 apiVersion: apps/v1
 kind: DaemonSet

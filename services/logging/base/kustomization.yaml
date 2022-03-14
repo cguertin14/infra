@@ -10,6 +10,7 @@ resources:
 - resources/namespace.yml
 - resources/metrics-rbac.yml
 - resources/promtail-rules.yml
+- resources/promtail-metrics.yml
 
 helmCharts:
 ###

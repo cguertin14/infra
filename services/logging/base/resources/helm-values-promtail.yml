@@ -6,9 +6,3 @@ loki:
 
 config:
   lokiAddress: http://loki.logging.svc:3100/loki/api/v1/push
-
-serviceMonitor:
-  enabled: true
-  namespaceSelector:
-    matchNames:
-    - logging
