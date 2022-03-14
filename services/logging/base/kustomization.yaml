@@ -1,10 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: monitoring
+namespace: logging
 
 commonLabels:
-  app.kubernetes.io/name: logstack
+  app.kubernetes.io/name: logging
+
+resources:
+- namespace.yml
 
 helmCharts:
 ###
@@ -15,9 +18,14 @@ helmCharts:
   releaseName: loki
   version: 2.10.1
   repo: https://grafana.github.io/helm-charts
-  namespace: monitoring
+  namespace: logging
   valuesInline:
     replicas: 3
+    config:
+      common:
+        replication_factor: 3
+      compactor:
+        retention_enabled: true
     persistence:
       enabled: true
       storageClassName: nfs-client
@@ -33,9 +41,9 @@ helmCharts:
   releaseName: promtail
   version: 3.11.0
   repo: https://grafana.github.io/helm-charts
-  namespace: monitoring
+  namespace: logging
   valuesInline:
     loki:
       serviceName: loki
     config:
-      lokiAddress: http://loki.monitoring.svc:3100/loki/api/v1/push
+      lokiAddress: http://loki.logging.svc:3100/loki/api/v1/push
