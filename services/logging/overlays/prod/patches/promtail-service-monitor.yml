@@ -9,15 +9,23 @@ spec:
   selector:
     matchLabels:
       app: promtail
-      app.kubernetes.io/instance: promtail
-      app.kubernetes.io/name: promtail
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: promtail-metrics
   namespace: logging
+  labels:
+    app: promtail
 spec:
   selector:
     app: promtail
     app.kubernetes.io/instance: promtail
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: promtail
+  namespace: logging
+  labels:
+    app: promtail
