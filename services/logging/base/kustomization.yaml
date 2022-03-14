@@ -7,7 +7,9 @@ commonLabels:
   app.kubernetes.io/name: logging
 
 resources:
-- namespace.yml
+- resources/namespace.yml
+- resources/metrics-rbac.yml
+- resources/promtail-rules.yml
 
 helmCharts:
 ###
@@ -19,19 +21,7 @@ helmCharts:
   version: 2.10.1
   repo: https://grafana.github.io/helm-charts
   namespace: logging
-  valuesInline:
-    replicas: 3
-    config:
-      common:
-        replication_factor: 3
-      compactor:
-        retention_enabled: true
-    persistence:
-      enabled: true
-      storageClassName: nfs-client
-      accessModes:
-      - ReadWriteOnce
-      size: 200Gi
+  valuesFile: resources/helm-values-loki.yml
 
 ###
 ## Promtail deployment
@@ -42,8 +32,4 @@ helmCharts:
   version: 3.11.0
   repo: https://grafana.github.io/helm-charts
   namespace: logging
-  valuesInline:
-    loki:
-      serviceName: loki
-    config:
-      lokiAddress: http://loki.logging.svc:3100/loki/api/v1/push
+  valuesFile: resources/helm-values-promtail.yml
