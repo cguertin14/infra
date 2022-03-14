@@ -11,3 +11,13 @@ spec:
       app: promtail
       app.kubernetes.io/instance: promtail
       app.kubernetes.io/name: promtail
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: promtail-metrics
+  namespace: logging
+spec:
+  selector:
+    app: promtail
+    app.kubernetes.io/instance: promtail
