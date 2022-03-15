@@ -19,7 +19,7 @@ generators:
 - secrets-generator.yml
 
 images:
-- name: argoproj/argocd
-  newTag: v2.3.1
+- name: ubuntu
+  newTag: "22.04"
 - name: viaductoss/ksops
   newTag: v3.0.2-arm64 # arm64-capable version of ksops
