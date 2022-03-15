@@ -15,7 +15,7 @@ spec:
       - name: import-gpg-key
         image: ubuntu
         command: [
-          "/bin/bash", "-c", "apt update && apt install gpg && gpg --import /deploy-pgp-key/deploy-key.asc"
+          "/bin/bash", "-c", "apt update && apt install gpg gpg-agent -y && gpg --import /deploy-pgp-key/deploy-key.asc"
         ]
         env:
         - name: GNUPGHOME
