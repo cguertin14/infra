@@ -19,7 +19,5 @@ generators:
 - secrets-generator.yml
 
 images:
-- name: ubuntu
-  newTag: "22.04"
 - name: viaductoss/ksops
   newTag: v3.0.2-arm64 # arm64-capable version of ksops
