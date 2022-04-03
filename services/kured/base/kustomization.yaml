@@ -21,6 +21,6 @@ helmCharts:
   namespace: kured
 
 images:
-- name: docker.io/weaveworks/kured
+- name: weaveworks/kured
   newName: raspbernetes/kured
   newTag: 1.9.2
