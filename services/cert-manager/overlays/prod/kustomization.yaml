@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - ../../base
 - resources/cluster-issuer.yml
+- resources/namespace.yml
 
 generators:
 - secrets-generator.yml
