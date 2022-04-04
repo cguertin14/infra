@@ -2,83 +2,83 @@
 # # our production cluster are listed. Simply add
 # # a new 'Application' resource to this list to
 # # sync them with Git.
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: argocd
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: argocd
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/argocd/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: cilium
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: kube-system
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/networking/cilium
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: metallb
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: metallb-system
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/networking/metallb
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: nfs-client
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: synology-nfs
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/nfs-client
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/argocd/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/networking/cilium
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: metallb-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/networking/metallb
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-client
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: synology-nfs
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/nfs-client
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -116,44 +116,44 @@ spec:
 #     automated:
 #       selfHeal: true
 #       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: cert-manager
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: cert-manager
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/cert-manager/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: traefik
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: kube-system
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/traefik/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/cert-manager/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/traefik/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 # ---
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
@@ -211,25 +211,25 @@ spec:
 #     automated:
 #       selfHeal: true
 #       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kured
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: kured
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/kured/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kured
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kured
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/kured/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 # ---
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
@@ -276,41 +276,41 @@ spec:
 #     automated:
 #       selfHeal: true
 #       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kube-system
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: kube-system
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/kube-system/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: k3supdater
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: k3supdater
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/k3supdater/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-system
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/kube-system/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k3supdater
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: k3supdater
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/k3supdater/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
