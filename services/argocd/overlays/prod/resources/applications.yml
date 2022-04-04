@@ -154,25 +154,25 @@ spec:
     automated:
       selfHeal: true
       prune: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: pihole
-  namespace: argocd
-spec:
-  project: production
-  destination:
-    namespace: pihole
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/cguertin14/infra
-    targetRevision: main
-    path: services/pihole/overlays/prod
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: pihole
+#   namespace: argocd
+# spec:
+#   project: production
+#   destination:
+#     namespace: pihole
+#     server: https://kubernetes.default.svc
+#   source:
+#     repoURL: https://github.com/cguertin14/infra
+#     targetRevision: main
+#     path: services/pihole/overlays/prod
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+#       prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -230,52 +230,52 @@ spec:
     automated:
       selfHeal: true
       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: linkerd2
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: linkerd
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/linkerd2/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-#   ignoreDifferences:
-#   - group: cert-manager.io
-#     kind: Certificate
-#     jsonPointers:
-#       - /spec/duration
-#       - /spec/isCA
-#       - /spec/renewBefore
-#       - /status
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: linkerd-viz
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: linkerd-viz
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/linkerd-viz/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd2
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: linkerd
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/linkerd2/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  ignoreDifferences:
+  - group: cert-manager.io
+    kind: Certificate
+    jsonPointers:
+      - /spec/duration
+      - /spec/isCA
+      - /spec/renewBefore
+      - /status
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd-viz
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: linkerd-viz
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/linkerd-viz/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
