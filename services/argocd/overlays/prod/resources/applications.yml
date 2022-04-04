@@ -1,7 +1,7 @@
-# # In this file, all applications running in
-# # our production cluster are listed. Simply add
-# # a new 'Application' resource to this list to
-# # sync them with Git.
+# In this file, all applications running in
+# our production cluster are listed. Simply add
+# a new 'Application' resource to this list to
+# sync them with Git.
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -173,44 +173,44 @@ spec:
 #     automated:
 #       selfHeal: true
 #       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: blog
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: blog
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/blog/overlays/prod
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: argo-rollouts
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: argo-rollouts
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/operators/argo-rollouts
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: blog
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: blog
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/blog/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: argo-rollouts
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/operators/argo-rollouts
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
