@@ -7,7 +7,7 @@ resources:
 helmCharts:
 - name: linkerd-viz
   repo: https://helm.linkerd.io/stable
-  version: v2.11.1
+  version: 2.11.2
   releaseName: linkerd-viz
   namespace: linkerd
   includeCRDs: true
