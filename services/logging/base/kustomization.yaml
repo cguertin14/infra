@@ -19,7 +19,7 @@ helmCharts:
 - name: loki
   includeCRDs: true
   releaseName: loki
-  version: 2.10.3
+  version: 2.11.1
   repo: https://grafana.github.io/helm-charts
   namespace: logging
   valuesFile: resources/helm-values-loki.yml
