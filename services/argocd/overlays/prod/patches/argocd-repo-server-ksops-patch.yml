@@ -18,7 +18,6 @@ spec:
         args:
         - echo "Installing KSOPS...";
           mv ksops /custom-tools;
-          mv ksops.so /custom-tools;
           mv $GOPATH/bin/kustomize /custom-tools/;
           echo "Done.";
         volumeMounts:
@@ -40,9 +39,3 @@ spec:
         - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops-exec/ksops-exec
           name: custom-tools
           subPath: ksops
-        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops.so
-          name: custom-tools
-          subPath: ksops.so
-        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops-exec/ksops-exec.so
-          name: custom-tools
-          subPath: ksops.so
