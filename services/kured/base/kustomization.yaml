@@ -16,7 +16,7 @@ namespace: kured
 helmCharts:
 - name: kured
   repo: https://weaveworks.github.io/kured
-  version: 2.14.1
+  version: 2.14.2
   releaseName: kured
   namespace: kured
 
