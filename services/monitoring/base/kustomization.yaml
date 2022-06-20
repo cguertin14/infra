@@ -11,7 +11,5 @@ patchesStrategicMerge:
 
 images:
 - name: quay.io/coreos/kube-state-metrics
-  newName: k8s.gcr.io/kube-state-metrics-arm64
+  newName: registry.k8s.io/kube-state-metrics/kube-state-metrics
   newTag: v1.9.5
-  # newName: k8s.gcr.io/kube-state-metrics/kube-state-metrics
-  # newTag: v2.0.0-rc.1
