@@ -38,7 +38,7 @@ patchesStrategicMerge:
 - patches/prometheus-crd-length.yml
 - patches/prometheus-modifications.yml
 - patches/grafana-strategic-patches.yml
-- patches/grafana-network-policy.yml
+- patches/network-policies.yml
 
 configMapGenerator:
 - name: grafana-settings-config
