@@ -1,0 +1,10 @@
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: metrics-server
