@@ -1,53 +1,10 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: grafana
-  namespace: monitoring
-spec:
-  ingress:
-  - from:
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
     - namespaceSelector:
         matchLabels:
           name: kube-system
       podSelector:
         matchLabels:
           app.kubernetes.io/name: traefik
-  policyTypes:
-  - Egress
-  - Ingress
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: prometheus-k8s
-  namespace: monitoring
-spec:
-  ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          name: kube-system
-      podSelector:
-        matchLabels:
-          app.kubernetes.io/name: traefik
-  policyTypes:
-  - Egress
-  - Ingress
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: alertmanager-main
-  namespace: monitoring
-spec:
-  ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          name: kube-system
-      podSelector:
-        matchLabels:
-          app.kubernetes.io/name: traefik
-  policyTypes:
-  - Egress
-  - Ingress

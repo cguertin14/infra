@@ -11,6 +11,29 @@ generators:
 - secrets-generator.yml
 
 patchesJson6902:
+# Networking changes to expose services publicly
+# by going through a reverse proxy
+- path: patches/network-policies-reverse-proxy.yml
+  target:
+    group: networking.k8s.io
+    kind: NetworkPolicy
+    name: alertmanager-main
+    namespace: monitoring
+    version: v1
+- path: patches/network-policies-reverse-proxy.yml
+  target:
+    group: networking.k8s.io
+    kind: NetworkPolicy
+    name: prometheus-k8s
+    namespace: monitoring
+    version: v1
+- path: patches/network-policies-reverse-proxy.yml
+  target:
+    group: networking.k8s.io
+    kind: NetworkPolicy
+    name: grafana
+    namespace: monitoring
+    version: v1
 ## 
 # First, this JSON patch below changes the CPUThrottling alert:
 # 
@@ -38,7 +61,6 @@ patchesStrategicMerge:
 - patches/prometheus-crd-length.yml
 - patches/prometheus-modifications.yml
 - patches/grafana-strategic-patches.yml
-- patches/network-policies-reverse-proxy.yml
 
 configMapGenerator:
 - name: grafana-settings-config
