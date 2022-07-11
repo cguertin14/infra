@@ -11,21 +11,6 @@ generators:
 - secrets-generator.yml
 
 patchesJson6902:
-# Networking changes to allow metrics fetching
-- path: patches/network-policies-metrics-server.yml
-  target:
-    group: networking.k8s.io
-    kind: NetworkPolicy
-    name: kube-state-metrics
-    namespace: monitoring
-    version: v1
-- path: patches/network-policies-metrics-server.yml
-  target:
-    group: networking.k8s.io
-    kind: NetworkPolicy
-    name: node-exporter
-    namespace: monitoring
-    version: v1
 # Networking changes to expose services publicly
 # by going through a reverse proxy
 - path: patches/network-policies-reverse-proxy.yml
