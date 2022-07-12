@@ -3,7 +3,6 @@ kind: IPAddressPool
 metadata:
   name: home-ip-pool
 spec:
-  avoid-buggy-ips: true
   addresses:
   - 192.168.0.202-192.168.0.254
 ---
