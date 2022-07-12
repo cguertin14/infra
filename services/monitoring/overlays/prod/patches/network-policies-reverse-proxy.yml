@@ -15,6 +15,3 @@
     - namespaceSelector:
         matchLabels:
           name: blog
-      podSelector:
-        matchLabels:
-          app.kubernetes.io/name: blog
