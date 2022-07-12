@@ -14,4 +14,7 @@
     from:
     - namespaceSelector:
         matchLabels:
-          name: blog
+          name: argo-rollouts
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: argo-rollouts
