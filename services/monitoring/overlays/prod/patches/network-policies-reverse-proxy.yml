@@ -8,3 +8,13 @@
       podSelector:
         matchLabels:
           app.kubernetes.io/name: traefik
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+    - namespaceSelector:
+        matchLabels:
+          name: blog
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: blog
