@@ -3,16 +3,12 @@ kind: Kustomization
 
 resources:
 - https://github.com/metallb/metallb/config/native?ref=v0.13.3
+- config/config.yml
 
 generators:
 - secrets-generator.yml
 
 namespace: metallb-system
-
-configMapGenerator:
-- name: config
-  files:
-  - config=config/config.yml
 
 generatorOptions:
   disableNameSuffixHash: true

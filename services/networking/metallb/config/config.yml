@@ -1,6 +1,13 @@
-address-pools:
-- name: default-v4
-  protocol: layer2
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: home-ip-pool
+spec:
   avoid-buggy-ips: true
   addresses:
   - 192.168.0.202-192.168.0.254
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: home-l2-network
