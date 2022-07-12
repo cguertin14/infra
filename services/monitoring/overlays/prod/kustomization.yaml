@@ -34,6 +34,14 @@ patchesJson6902:
     name: grafana
     namespace: monitoring
     version: v1
+# Prometheus networking changes
+- path: patches/network-policy-prometheus-traffic.yml
+  target:
+    group: networking.k8s.io
+    kind: NetworkPolicy
+    name: prometheus-k8s
+    namespace: monitoring
+    version: v1
 ## 
 # First, this JSON patch below changes the CPUThrottling alert:
 # 

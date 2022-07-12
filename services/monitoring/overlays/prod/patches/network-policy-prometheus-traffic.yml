@@ -1,0 +1,20 @@
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+    - namespaceSelector:
+        matchLabels:
+          name: argo-rollouts
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: argo-rollouts
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+    - namespaceSelector:
+        matchLabels:
+          name: kured
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: kured
