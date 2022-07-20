@@ -18,6 +18,9 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     hubble:
+      tls:
+        auto:
+          method: cronjob
       listenAddress: :4244
       relay:
         enabled: true
