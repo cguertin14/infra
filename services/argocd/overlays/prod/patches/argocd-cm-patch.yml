@@ -58,4 +58,11 @@ data:
     hs.status = "Progressing"
     hs.message = "Waiting for certificate"
     return hs
+  resource.exclusions: |
+    - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumIdentity
+      clusters:
+        - "*"
   kustomize.buildOptions: "--enable-alpha-plugins"
