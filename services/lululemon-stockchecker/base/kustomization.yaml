@@ -6,4 +6,4 @@ resources:
 
 images:
 - name: quay.io/cguertin14/lululemon-stockchecker 
-  newTag: v0.0.3
+  newTag: v0.0.5
