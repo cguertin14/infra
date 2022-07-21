@@ -4,5 +4,8 @@ kind: Kustomization
 resources:
 - ../../base
 
+patchesStrategicMerge:
+- patches/set-product-to-observe.yml
+
 generators:
 - secrets-generator.yml

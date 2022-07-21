@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: lululemon-stockchecker-cron
+  namespace: lululemon-stockchecker
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: lululemon-stockchecker
+            env:
+            - name: LULULEMON_URI
+              value: https://shop.lululemon.com/p/accessories/Crossbody-with-Nano-Pouch/_/prod10930209
