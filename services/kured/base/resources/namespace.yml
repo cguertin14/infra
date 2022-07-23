@@ -2,5 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: kured
+  labels:
+    name: kured
   annotations:
     linkerd.io/inject: enabled
