@@ -4,7 +4,6 @@ metadata:
   name: lululemon-stockchecker-cron
   namespace: lululemon-stockchecker
 spec:
-  # schedule: '* * * * *'
   jobTemplate:
     spec:
       template:
@@ -13,4 +12,4 @@ spec:
           - name: lululemon-stockchecker
             env:
             - name: LULULEMON_URI
-              value: https://shop.lululemon.com/p/accessories/Crossbody-with-Nano-Pouch/_/prod10930209
+              value: https://shop.lululemon.com/p/accessories/Crossbody-with-Nano-Pouch/_/prod10930209?sz=ONESIZE
