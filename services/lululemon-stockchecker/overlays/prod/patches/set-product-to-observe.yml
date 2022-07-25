@@ -4,7 +4,7 @@ metadata:
   name: lululemon-stockchecker-cron
   namespace: lululemon-stockchecker
 spec:
-  schedule: '* * * * *'
+  # schedule: '* * * * *'
   jobTemplate:
     spec:
       template:
