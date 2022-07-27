@@ -12,4 +12,4 @@ spec:
           - name: lululemon-stockchecker
             env:
             - name: LULULEMON_URI
-              value: https://shop.lululemon.com/p/accessories/Crossbody-with-Nano-Pouch/_/prod10930209?sz=ONESIZE
+              value: https://shop.lululemon.com/p/bags/Dual-Pouch-Wristlet/_/prod10920248?color=0001&sz=ONESIZE
