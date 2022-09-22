@@ -15,7 +15,7 @@ generators:
 helmCharts:
 - name: linkerd2
   repo: https://helm.linkerd.io/stable
-  version: 2.11.4
+  version: 2.11.5
   releaseName: linkerd2
   namespace: linkerd
   includeCRDs: true
