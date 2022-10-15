@@ -17,7 +17,6 @@ helmCharts:
 ## Loki deployment
 #
 - name: loki
-  includeCRDs: true
   releaseName: loki
   version: 3.2.1
   repo: https://grafana.github.io/helm-charts
@@ -28,7 +27,6 @@ helmCharts:
 ## Promtail deployment
 #
 - name: promtail
-  includeCRDs: true
   releaseName: promtail
   version: 6.5.0
   repo: https://grafana.github.io/helm-charts
