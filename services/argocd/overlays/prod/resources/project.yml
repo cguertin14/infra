@@ -10,11 +10,12 @@ spec:
   - namespace: '*'
     server: 'https://kubernetes.default.svc'
   roles:
-  # A role which provides read-only access to all applications in the project
-  - name: read-only
-    description: Read-only privileges to production
+  # A role which provides read and delete access to all applications in the project
+  - name: read-delete-only
+    description: Read and Delete privileges to production
     policies:
-    - p, proj:production:read-only, applications, get, production/*, allow
+    - p, proj:production:read-delete-only, applications, get, production/*, allow
+    - p, proj:production:read-delete-only, applications, delete, production/*, allow
     groups:
     - homelab-infra:SRE
   clusterResourceWhitelist:
