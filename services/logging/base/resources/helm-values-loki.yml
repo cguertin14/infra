@@ -18,6 +18,9 @@ persistence:
   - ReadWriteOnce
   size: 200Gi
 
+rbac:
+  pspEnabled: false
+
 serviceMonitor:
   enabled: true
   prometheusRule:
