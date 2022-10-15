@@ -19,6 +19,7 @@ helmCharts:
   version: 3.0.1
   releaseName: kured
   namespace: kured
+  includeCRDs: true
 
 images:
 - name: weaveworks/kured
