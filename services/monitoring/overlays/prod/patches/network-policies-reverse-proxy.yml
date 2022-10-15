@@ -8,3 +8,9 @@
       podSelector:
         matchLabels:
           app.kubernetes.io/name: traefik
+    - namespaceSelector:
+        matchLabels:
+          name: logging
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: logging
