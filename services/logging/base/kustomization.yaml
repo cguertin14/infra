@@ -30,7 +30,7 @@ helmCharts:
 - name: promtail
   includeCRDs: true
   releaseName: promtail
-  version: 6.5.0
+  version: 6.5.1
   repo: https://grafana.github.io/helm-charts
   namespace: logging
   valuesFile: resources/helm-values-promtail.yml
