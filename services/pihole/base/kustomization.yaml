@@ -5,6 +5,7 @@ resources:
 - resources/namespace.yml
 - resources/services.yml
 - resources/deployment.yml
+- resources/autoscaler.yml
 - resources/ingress.yml
 - resources/pvc.yml
 - metrics/rbac.yml
