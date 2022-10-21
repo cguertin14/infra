@@ -18,7 +18,7 @@ commonLabels:
 helmCharts:
 - name: traefik
   repo: https://helm.traefik.io/traefik
-  version: 15.3.1
+  version: 17.0.5
   releaseName: traefik
   namespace: kube-system
   includeCRDs: true
