@@ -6,9 +6,8 @@ resources:
 - resources/services.yml
 - resources/deployment.yml
 - resources/ingress.yml
-- resources/autoscaler.yml
 - metrics/rbac.yml
-# - metrics/service-monitor.yml
+- metrics/service-monitor.yml
 
 namespace: pihole
 
