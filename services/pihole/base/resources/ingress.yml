@@ -20,6 +20,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: pihole-web
+            name: pihole-tcp
             port: 
               name: http

@@ -53,21 +53,21 @@ spec:
         securityContext:
           privileged: false
         ports:
-        - containerPort: 80
-          name: http
+        - name: dns-tcp
+          containerPort: 53
           protocol: TCP
-        - containerPort: 53
-          name: dns
-          protocol: TCP
-        - containerPort: 53
-          name: dns-udp
+        - name: dns-udp
+          containerPort: 53
           protocol: UDP
-        - containerPort:  443
-          name: https
-          protocol: TCP
-        - containerPort: 67
-          name: client-udp
+        - name: dchp
+          containerPort: 67
           protocol: UDP
+        - name: web
+          containerPort: 80
+          protocol: TCP
+        - name: https
+          containerPort: 443
+          protocol: TCP
         livenessProbe:
           httpGet:
             path: /admin.index.php
