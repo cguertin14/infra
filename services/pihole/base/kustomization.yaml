@@ -3,23 +3,44 @@ kind: Kustomization
 
 resources:
 - resources/namespace.yml
-- resources/services.yml
-- resources/deployment.yml
 - resources/ingress.yml
 - metrics/rbac.yml
 - metrics/service-monitor.yml
+- metrics/service.yml
 
 namespace: pihole
 
+patchesStrategicMerge:
+- patches/deployment.yml
+
 commonLabels:
   app.kubernetes.io/name: pihole
-  app.kubernetes.io/managed-by: kustomize
 
 images:
 - name: pihole/pihole
   newTag: "2022.10"
 - name: ekofr/pihole-exporter
   newTag: v0.3.0
+
+helmCharts:
+- name: pihole
+  repo: https://mojo2600.github.io/pihole-kubernetes/
+  version: 2.9.3
+  releaseName: pihole
+  namespace: pihole
+  valuesInline:
+    replicaCount: 2
+    serviceWeb:
+      loadBalancerIP: 192.168.0.203
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
+
+    serviceDns:
+      loadBalancerIP: 192.168.0.203
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
 
 configMapGenerator:
 - name: pihole-config
@@ -29,12 +50,4 @@ configMapGenerator:
   - VIRTUAL_HOST=pihole.k8s.cguertin.dev
   - DNS1=8.8.8.8
   - DNS2=8.8.4.4
-- name: pihole-ftl.conf
-  files:
-  - pihole-FTL.conf=config/pihole-FTL.conf
-- name: adlists.list
-  files:
-  - adlists.list=config/adlists.list
-- name: whitelist.txt
-  files:
-  - whitelist.txt=config/whitelist.txt
+  - PIHOLE_DNS_=8.8.8.8;8.8.4.4

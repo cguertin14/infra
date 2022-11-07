@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    spec:
+      hostNetwork: false
+      containers:
+      - name: exporter
+        image: ekofr/pihole-exporter
+        imagePullPolicy: IfNotPresent
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        env:
+        - name: PIHOLE_HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: PIHOLE_PORT
+          value: "80"
+        - name: PIHOLE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: WEBPASSWORD
+              name: pihole-secrets
+        resources:
+          limits:
+            memory: 128Mi
+        ports:
+        - containerPort: 9617
+          name: prometheus
+          protocol: TCP
+      - name: pihole
+        env: null # This allows us to set our own env variables
+        envFrom:
+        - configMapRef:
+            name: pihole-config
+        - secretRef:
+            name: pihole-secrets
