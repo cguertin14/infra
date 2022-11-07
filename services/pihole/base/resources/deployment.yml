@@ -71,14 +71,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /admin.index.php
-            port: http
+            port: web
           initialDelaySeconds: 60
           failureThreshold: 10
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /admin.index.php
-            port: http
+            port: web
           initialDelaySeconds: 60
           failureThreshold: 3
           timeoutSeconds: 5
