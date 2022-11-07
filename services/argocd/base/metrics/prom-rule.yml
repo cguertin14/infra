@@ -1,0 +1,32 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: argocd-rules
+spec:
+  groups:
+  - name: failed-applications
+    rules:
+    - alert: FailedApplication
+      annotations:
+        description: Application `{{$labels.name}}` is in a `{{$labels.phase}}` state.
+        summary: Application `{{$labels.name}}` requires being fixed and cannot be deployed at the moment.
+        impact: No deployment possible for application `{{$labels.name}}`, requires fix to core configuration.
+      expr: |
+        sum(
+          round(increase(argocd_app_sync_total{namespace=~".*",phase=~"Error|Failed",dest_server=~".*"}[15m]))
+        ) by (namespace, phase, name) > 0
+      for: 15m
+      labels:
+        severity: critical
+  - name: unknown-sync-applicaitons
+    rules:
+    - alert: UnknownSyncApplication
+      annotations:
+        description: Application `{{$labels.name}}` is in a `{{$labels.sync_status}}` sync status.
+        summary: Application `{{$labels.name}}` requires being fixed and cannot be deployed at the moment.
+        impact: No deployment possible for application `{{$labels.name}}`, requires fix to core configuration.
+      expr: |
+        sum(argocd_app_info{sync_status="Unknown"}) by (name, sync_status) > 0
+      for: 15m
+      labels:
+        severity: critical

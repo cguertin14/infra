@@ -7,6 +7,7 @@ resources:
 - metrics/argocd-serviceMonitor.yml
 - metrics/argocd-server-serviceMonitor.yml
 - metrics/argocd-repo-server-serviceMonitor.yml
+- metrics/prom-rule.yml
 - namespace.yml
 
 namespace: argocd
