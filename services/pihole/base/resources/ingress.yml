@@ -22,4 +22,4 @@ spec:
           service:
             name: pihole-tcp
             port: 
-              name: http
+              name: web
