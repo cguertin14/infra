@@ -79,8 +79,6 @@ spec:
           failureThreshold: 3
           timeoutSeconds: 5
         volumeMounts:
-        - mountPath: /etc/pihole
-          name: config
         - mountPath: /etc/dnsmasq.d/02-custom.conf
           name: custom-dnsmasq
           subPath: 02-custom.conf
@@ -92,9 +90,6 @@ spec:
             cpu: 200m
             memory: 256Mi
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: pihole
       - configMap:
           defaultMode: 420
           name: pihole-custom-dnsmasq

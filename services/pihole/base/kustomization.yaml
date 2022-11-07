@@ -6,9 +6,9 @@ resources:
 - resources/services.yml
 - resources/deployment.yml
 - resources/ingress.yml
-- resources/pvc.yml
+- resources/autoscaler.yml
 - metrics/rbac.yml
-- metrics/service-monitor.yml
+# - metrics/service-monitor.yml
 
 namespace: pihole
 
@@ -18,7 +18,7 @@ commonLabels:
 
 images:
 - name: pihole/pihole
-  newTag: 2022.10
+  newTag: "2022.10"
 - name: ekofr/pihole-exporter
   newTag: v0.3.0
 
