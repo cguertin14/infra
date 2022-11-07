@@ -111,6 +111,9 @@ spec:
       - name: var-log
         emptyDir:
           medium: Memory
+      - name: var-log-lighttpd
+        emptyDir:
+          medium: Memory
       - configMap:
           defaultMode: 420
           name: pihole-custom-dnsmasq
