@@ -91,9 +91,6 @@ spec:
           mountPath: /var/log
         - name: var-log-lighttpd
           mountPath: /var/log/lighttpd
-        - name: custom-dnsmasq
-          mountPath: /etc/addn-hosts
-          subPath: addn-hosts
         resources:
           requests:
             cpu: "20m"
