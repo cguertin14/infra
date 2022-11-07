@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: pihole
 spec:
+  replicas: 2
   strategy:
     type: Recreate
   template:
