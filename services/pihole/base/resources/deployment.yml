@@ -85,17 +85,32 @@ spec:
         volumeMounts:
         - name: etc-pihole
           mountPath: /etc/pihole
-        - mountPath: /etc/dnsmasq.d/02-custom.conf
-          name: custom-dnsmasq
-          subPath: 02-custom.conf
-        - mountPath: /etc/addn-hosts
-          name: custom-dnsmasq
+        - name: etc-dnsmasq
+          mountPath: /etc/dnsmasq.d
+        - name: var-log
+          mountPath: /var/log
+        - name: var-log-lighttpd
+          mountPath: /var/log/lighttpd
+        - name: custom-dnsmasq
+          mountPath: /etc/addn-hosts
           subPath: addn-hosts
         resources:
           requests:
-            cpu: 200m
-            memory: 256Mi
+            cpu: "20m"
+            memory: "512Mi"
+          limits:
+            cpu: "250m"
+            memory: "896Mi"
       volumes:
+      - name: etc-pihole
+        emptyDir:
+          medium: Memory
+      - name: etc-dnsmasq
+        emptyDir:
+          medium: Memory
+      - name: var-log
+        emptyDir:
+          medium: Memory
       - configMap:
           defaultMode: 420
           name: pihole-custom-dnsmasq

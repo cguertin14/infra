@@ -29,7 +29,3 @@ configMapGenerator:
   - VIRTUAL_HOST=pihole.k8s.cguertin.dev
   - DNS1=8.8.8.8
   - DNS2=8.8.4.4
-- name: pihole-custom-dnsmasq
-  files:
-  - config/02-custom.conf
-  - config/addn-hosts
