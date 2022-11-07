@@ -13,6 +13,7 @@ patchesStrategicMerge:
 
 commonLabels:
   app.kubernetes.io/name: traefik
+  app.kubernetes.io/instance: traefik
 
 helmCharts:
 - name: traefik
