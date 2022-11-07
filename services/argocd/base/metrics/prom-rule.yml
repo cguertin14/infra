@@ -4,7 +4,7 @@ metadata:
   name: argocd-rules
 spec:
   groups:
-  - name: failed-applications
+  - name: failed-application
     rules:
     - alert: FailedApplication
       annotations:
@@ -18,7 +18,7 @@ spec:
       for: 15m
       labels:
         severity: critical
-  - name: unknown-sync-applications
+  - name: unknown-sync-application
     rules:
     - alert: UnknownSyncApplication
       annotations:
