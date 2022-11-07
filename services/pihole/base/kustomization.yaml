@@ -46,6 +46,9 @@ helmCharts:
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
+    
+    serviceDhcp:
+      enabled: false
 
 configMapGenerator:
 - name: pihole-config
