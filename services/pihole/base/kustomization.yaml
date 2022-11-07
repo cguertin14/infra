@@ -50,6 +50,9 @@ helmCharts:
     serviceDhcp:
       enabled: false
 
+    ftl:
+      MAXDBDAYS: 15 # half a month
+
 configMapGenerator:
 - name: pihole-config
   literals:
