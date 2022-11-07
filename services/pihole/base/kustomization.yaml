@@ -29,3 +29,12 @@ configMapGenerator:
   - VIRTUAL_HOST=pihole.k8s.cguertin.dev
   - DNS1=8.8.8.8
   - DNS2=8.8.4.4
+- name: pihole-ftl.conf
+  files:
+  - pihole-FTL.conf=config/pihole-FTL.conf
+- name: adlists.list
+  files:
+  - adlists.list=config/adlists.list
+- name: whitelist.txt
+  files:
+  - whitelist.txt=config/whitelist.txt

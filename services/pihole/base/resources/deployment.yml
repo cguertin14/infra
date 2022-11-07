@@ -11,11 +11,6 @@ spec:
     type: RollingUpdate
   template:
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-        nameservers:
-        - 127.0.0.1
-        - 8.8.8.8
       hostNetwork: false
       containers:
       - name: exporter
@@ -91,6 +86,15 @@ spec:
           mountPath: /var/log
         - name: var-log-lighttpd
           mountPath: /var/log/lighttpd
+        - name: ftlconf
+          mountPath: /etc/pihole/pihole-FTL.conf
+          subPath: pihole-FTL.conf
+        - name: whitelist
+          mountPath: /etc/pihole/whitelist.txt
+          subPath: whitelist.txt
+        - name: adlists
+          mountPath: /etc/pihole/adlists.list
+          subPath: adlists.list
         resources:
           requests:
             cpu: "20m"
@@ -111,7 +115,22 @@ spec:
       - name: var-log-lighttpd
         emptyDir:
           medium: Memory
-      - configMap:
-          defaultMode: 420
-          name: pihole-custom-dnsmasq
-        name: custom-dnsmasq
+      - name: ftlconf
+        configMap:
+          name: pihole-ftl.conf
+          items:
+            - key: pihole-FTL.conf
+              path: pihole-FTL.conf
+      - name: whitelist
+        configMap:
+          name: whitelist.txt
+          items:
+            - key: whitelist.txt
+              path: whitelist.txt
+      - name: adlists
+        configMap:
+          name: adlists.list
+          items:
+            - key: adlists.list
+              path: adlists.list
+      
