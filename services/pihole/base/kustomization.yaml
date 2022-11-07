@@ -29,12 +29,17 @@ helmCharts:
   releaseName: pihole
   namespace: pihole
   valuesInline:
-    replicaCount: 2
+    resources:
+      requests:
+        cpu: "20m"
+        memory: "512Mi"
+      limits:
+        cpu: "250m"
+        memory: "896Mi"
+
     serviceWeb:
       loadBalancerIP: 192.168.0.203
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
-      type: LoadBalancer
+      type: ClusterIP
 
     serviceDns:
       loadBalancerIP: 192.168.0.203
