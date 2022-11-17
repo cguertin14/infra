@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: traefik
+  namespace: kube-system
 spec:
   strategy:
     rollingUpdate:
@@ -24,8 +25,8 @@ spec:
           - "--ping=true"
           - "--providers.kubernetescrd"
           - "--providers.kubernetesingress"
-      - image: thomseddon/traefik-forward-auth
-        name: traefik-forward-auth
+      - name: traefik-forward-auth
+        image: thomseddon/traefik-forward-auth
         ports:
         - containerPort: 4181
           protocol: TCP
