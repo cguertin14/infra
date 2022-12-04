@@ -18,6 +18,4 @@ spec:
             - --period=1m
             - --time-zone=America/New_York
             - --ds-namespace=kured
-            - --prometheus-url=http://prometheus-k8s.monitoring.svc.cluster.local:9090
-            - --alert-filter-regexp=^(KubeProxyDown|RebootRequired|Watchdog|InfoInhibitor|CPUThrottlingHigh)$
             - --alert-firing-only=true
