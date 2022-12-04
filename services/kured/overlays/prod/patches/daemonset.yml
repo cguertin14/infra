@@ -18,4 +18,3 @@ spec:
             - --period=1m
             - --time-zone=America/New_York
             - --ds-namespace=kured
-            - --alert-firing-only=true
