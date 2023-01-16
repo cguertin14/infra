@@ -30,3 +30,15 @@ spec:
       for: 15m
       labels:
         severity: critical
+  - name: missing-application
+    rules:
+    - alert: MissingApplication
+      annotations:
+        description: Application `{{$labels.name}}` is in a `{{$labels.health_status}}` health status.
+        summary: Application `{{$labels.name}}` is missing from the cluster.
+        impact: No deployment possible for application `{{$labels.name}}`, requires fix to core configuration.
+      expr: |
+        sum(argocd_app_info{health_status="Missing"}) by (name, health_status) > 0
+      for: 15m
+      labels:
+        severity: critical
