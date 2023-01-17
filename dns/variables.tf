@@ -7,7 +7,7 @@ variable "domain_cguertin" {
 variable "router_ip" {
   description = "Router IP address"
   type        = string
-  default     = "24.200.237.46"
+  default     = "192.168.0.6"
 }
 
 variable "domains" {
