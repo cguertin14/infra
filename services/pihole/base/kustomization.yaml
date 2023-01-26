@@ -18,7 +18,7 @@ commonLabels:
 
 images:
 - name: pihole/pihole
-  newTag: "2023.01.8"
+  newTag: "2023.01.10"
 - name: ekofr/pihole-exporter
   newTag: v0.3.0
 
