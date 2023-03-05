@@ -4,9 +4,9 @@ metadata:
   name: k8s
   namespace: monitoring
 spec:
-  # Data is accumulated for 30 days and is deleted afterwards.
+  # Data is accumulated for 183 days (6 months) and is deleted afterwards.
   # More info: https://github.com/prometheus-operator/kube-prometheus/blob/v0.7.0/manifests/setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml#L2846
-  retention: 30d
+  retention: 183d
   storage:
     volumeClaimTemplate:
       apiVersion: v1
