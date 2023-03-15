@@ -4,5 +4,8 @@ kind: Kustomization
 resources:
 - ../../base
 
+patchesStrategicMerge:
+- patches/affinity-deployment.yml
+
 generators:
 - secrets-generator.yml
