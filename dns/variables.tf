@@ -4,6 +4,12 @@ variable "domain_cguertin" {
   default     = "cguertin.dev"
 }
 
+# provided via terraform cloud
+variable "account_id" {
+  description = "The ID of the cloudflare account"
+  type        = string
+}
+
 variable "router_ip" {
   description = "Router IP address"
   type        = string

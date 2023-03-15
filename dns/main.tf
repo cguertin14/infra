@@ -1,7 +1,8 @@
 resource "cloudflare_zone" "cguertin_dev" {
-  zone = var.domain_cguertin
-  plan = "free"
-  type = "full"
+  zone       = var.domain_cguertin
+  account_id = var.account_id
+  plan       = "free"
+  type       = "full"
 }
 
 resource "cloudflare_record" "pi_load_balancer" {
