@@ -7,6 +7,9 @@ commonLabels:
   app.kubernetes.io/name: nginx-ingress-controller
   app.kubernetes.io/instance: nginx-ingress-controller
 
+resources:
+  - resources/autoscaler.yml
+
 helmCharts:
 - name: nginx-ingress
   repo: https://helm.nginx.com/stable
