@@ -5,7 +5,6 @@ metadata:
   namespace: monitoring
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: nginx
   tls:
@@ -31,8 +30,6 @@ metadata:
   namespace: monitoring
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
 spec:
   ingressClassName: nginx
   tls:
@@ -58,8 +55,6 @@ metadata:
   namespace: monitoring
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.middlewares: "kube-system-traefik-forward-auth@kubernetescrd"
 spec:
   ingressClassName: nginx
   tls:

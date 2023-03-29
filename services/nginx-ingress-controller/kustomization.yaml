@@ -22,12 +22,6 @@ helmCharts:
       setAsDefaultIngress: true
       service:
         loadBalancerIP: 192.168.0.202
-      # autoscaling:
-      #   enabled: true
-      #   minReplicas: 4
-      #   maxReplicas: 24
-      #   targetCPUUtilizationPercentage: 75
-      #   targetMemoryUtilizationPercentage: 75
 
 patchesJson6902:
 - path: patches/update-resources.yml

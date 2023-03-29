@@ -4,7 +4,6 @@ metadata:
   name: blog-preview
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: nginx
   tls:
@@ -29,7 +28,6 @@ metadata:
   name: blog-active
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: nginx
   tls:
