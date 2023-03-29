@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: oauth2-proxy
   namespace: kube-system
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
 spec:
   ingressClassName: nginx
   rules:
