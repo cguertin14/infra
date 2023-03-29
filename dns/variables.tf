@@ -27,7 +27,6 @@ variable "domains" {
     "gitops.k8s",
     "mesh.k8s",
     "pihole.k8s",
-    "traefik.k8s",
     "network.k8s",
     "monitoring.k8s",
     "prometheus.monitoring.k8s",
