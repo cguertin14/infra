@@ -12,6 +12,13 @@ spec:
         - --email-domain=*
         - --upstream=file:///dev/null
         - --http-address=0.0.0.0:4180
+        - --pass-authorization-header=true
+        - --pass-access-token=true
+        - --pass-user-headers=true
+        - --set-authorization-header=true
+        - --set-xauthrequest=true
+        - --cookie-refresh=1m
+        - --cookie-expire=30m
         envFrom:
         - secretRef:
             name: oauth-secrets          
