@@ -8,6 +8,7 @@
   "lockFileMaintenance": {
     "enabled": false
   },
+  "ignorePaths": ["**/.terraform.lock.hcl"],
   "packageRules": [
     {
       "groupName": "all dependencies",
