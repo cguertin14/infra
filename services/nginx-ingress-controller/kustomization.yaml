@@ -22,3 +22,19 @@ helmCharts:
         maxReplicas: 24
         targetCPUUtilizationPercentage: 75
         targetMemoryUtilizationPercentage: 75
+
+patchesJson6902:
+- path: patches/update-resources.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: nginx-ingress-controller
+    namespace: kube-system
+    version: v1
+- path: patches/remove-replicas.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: nginx-ingress-controller
+    namespace: kube-system
+    version: v1
