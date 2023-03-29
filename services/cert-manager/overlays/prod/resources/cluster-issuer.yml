@@ -30,6 +30,5 @@ spec:
         - 'prometheus.monitoring.k8s.cguertin.dev'
         - 'rollout.gitops.k8s.cguertin.dev'
         - 'gitops.k8s.cguertin.dev'
-        - 'traefik.k8s.cguertin.dev'
         - 'auth.k8s.cguertin.dev'
         - 'pihole.k8s.cguertin.dev'
