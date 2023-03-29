@@ -139,7 +139,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: nginx-ingress-controller
   namespace: argocd
 spec:
   project: production
@@ -149,7 +149,7 @@ spec:
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: services/traefik/overlays/prod
+    path: services/nginx-ingress-controller
   syncPolicy:
     automated:
       selfHeal: true
