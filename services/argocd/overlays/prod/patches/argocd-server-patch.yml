@@ -9,7 +9,7 @@ spec:
       - name: argocd-server
         command:
         - argocd-server
-        # - --insecure
+        - --insecure
         - --staticassets
         - /shared/app
         - --redis
