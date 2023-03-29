@@ -5,18 +5,10 @@ namespace: kube-system
 
 resources:
 - resources/autoscaler.yml
-- resources/oauth-proxy.yml
 
 commonLabels:
   app.kubernetes.io/name: nginx-ingress-controller
   app.kubernetes.io/instance: nginx-ingress-controller
-
-images:
-- name: quay.io/oauth2-proxy/oauth2-proxy
-  newTag: v7.4.0
-
-generators:
-- secrets-generator.yml
 
 helmCharts:
 - name: nginx-ingress

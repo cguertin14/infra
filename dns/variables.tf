@@ -25,7 +25,6 @@ variable "domains" {
     "preview",
     "auth.k8s",
     "gitops.k8s",
-    "mesh.k8s",
     "pihole.k8s",
     "network.k8s",
     "monitoring.k8s",
