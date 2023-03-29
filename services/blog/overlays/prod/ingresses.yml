@@ -6,7 +6,7 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
   - hosts:
     - preview.cguertin.dev
@@ -31,7 +31,7 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   tls:
   - hosts:
     - cguertin.dev
