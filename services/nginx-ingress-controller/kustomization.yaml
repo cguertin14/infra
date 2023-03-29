@@ -19,6 +19,7 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     controller:
+      enableCustomResources: true
       enableTLSPassthrough: true
       setAsDefaultIngress: true
       service:
