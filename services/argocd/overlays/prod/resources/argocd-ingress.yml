@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - gitops.k8s.cguertin.dev
-    secretName: argocd-secret
+    secretName: argocd-tls-cert
   rules:
   - host: gitops.k8s.cguertin.dev
     http:
