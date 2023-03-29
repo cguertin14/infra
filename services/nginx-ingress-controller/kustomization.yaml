@@ -7,13 +7,18 @@ commonLabels:
   app.kubernetes.io/name: nginx-ingress-controller
   app.kubernetes.io/instance: nginx-ingress-controller
 
-resources:
-  - resources/autoscaler.yml
-
 helmCharts:
 - name: nginx-ingress
   repo: https://helm.nginx.com/stable
   version: 0.17.0
-  releaseName: nginx-ingress-controller
+  releaseName: nginx-ingress
   namespace: kube-system
   includeCRDs: true
+  valuesInline:
+    controller:
+      autoscaling:
+        enabled: true
+        minReplicas: 4
+        maxReplicas: 24
+        targetCPUUtilizationPercentage: 75
+        targetMemoryUtilizationPercentage: 75
