@@ -19,6 +19,9 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     controller:
+      enableOIDC: true
+      enableExternalDNS: true
+      enableCertManager: true
       enableCustomResources: true
       enableTLSPassthrough: true
       setAsDefaultIngress: true
