@@ -3,7 +3,12 @@ kind: Deployment
 metadata:
   name: oauth2-proxy
 spec:
-  replicas: 3 # hardcoded 
+  replicas: 3 # hardcoded
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0
+    type: RollingUpdate
   template:
     spec:
       containers:
