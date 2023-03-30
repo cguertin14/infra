@@ -26,7 +26,6 @@ spec:
         - --cookie-refresh=1m
         - --cookie-expire=30m
         - --cookie-domain=cguertin.dev
-        - --cookie-secure=false
         envFrom:
         - secretRef:
             name: oauth-secrets          
