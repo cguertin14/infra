@@ -25,7 +25,8 @@ spec:
         - --set-xauthrequest=true
         - --cookie-refresh=1m
         - --cookie-expire=30m
-        # - --cookie-domain=cguertin.dev
+        - --cookie-domain=cguertin.dev
+        - --cookie-csrf-per-request=true
         envFrom:
         - secretRef:
             name: oauth-secrets          
