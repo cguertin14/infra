@@ -20,8 +20,3 @@ helmCharts:
   releaseName: kured
   namespace: kured
   includeCRDs: true
-
-images:
-- name: weaveworks/kured
-  newName: raspbernetes/kured
-  newTag: 1.11.0
