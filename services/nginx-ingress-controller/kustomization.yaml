@@ -18,6 +18,8 @@ helmCharts:
   namespace: kube-system
   includeCRDs: true
   valuesInline:
+    rbac:
+      create: true
     controller:
       enableOIDC: true
       enableExternalDNS: true
