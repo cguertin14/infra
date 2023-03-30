@@ -3,24 +3,36 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "iteration": 1625791467831,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -29,15 +41,29 @@
       },
       "id": 22,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Availability",
       "type": "row"
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 4,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -79,11 +105,15 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))",
+          "expr": "sum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -91,13 +121,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "[SLO] Availability % 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "For a 99.9% slo, Traefik is allowed to be down for 40.32 minutes in a 28 days period",
       "fieldConfig": {
         "defaults": {
@@ -149,28 +180,36 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))\n))* 60 * 60 * 24 * 14\n\r",
+          "expr": "(1 - (\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\n/ \nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))\n))* 60 * 60 * 24 * 14\n\n",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Time Traefik served != 5xx in last 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "Error budget percentage consumed",
       "fieldConfig": {
         "defaults": {
           "decimals": 12,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -208,6 +247,7 @@
       },
       "id": 48,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -219,28 +259,36 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[14d]))\n\r\n))/0.001",
+          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))\r\n\r\n))/0.001",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Error budget spent in 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "Error budget percentage consumed",
       "fieldConfig": {
         "defaults": {
           "decimals": 12,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -278,6 +326,7 @@
       },
       "id": 57,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -289,33 +338,34 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(traefik_service_requests_total{code!~\"5.*\", exported_service=~\"blog.*\"}[$__range]))\r\n/ \r\nsum(rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[$__range]))\n\r\n))/0.001",
+          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[$__range]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__range]))\r\n\r\n))/0.001",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Error budget spent in range",
       "type": "gauge"
     },
     {
       "aliasColors": {},
       "breakPoint": "50%",
-      "cacheTimeout": null,
       "combine": {
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "$DS_PROMETHEUS",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
       },
       "fontSize": "80%",
       "format": "short",
@@ -326,7 +376,6 @@
         "y": 8
       },
       "id": 20,
-      "interval": null,
       "legend": {
         "percentage": true,
         "percentageDecimals": 4,
@@ -341,16 +390,19 @@
       "strokeWidth": 1,
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (code) (increase(traefik_service_requests_total{exported_service=~\"blog.*\"}[$__range]))>0",
+          "expr": "sum by (status) (increase(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__range]))>0",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ code}}",
+          "range": true,
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Requests Status Code Seen from Traefik",
       "transformations": [],
       "type": "grafana-piechart-panel",
@@ -361,11 +413,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$DS_PROMETHEUS",
-      "decimals": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -397,7 +447,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -407,8 +457,12 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by(code) (rate(traefik_service_requests_total{exported_service=~\"blog.*\"}[$__rate_interval]))",
+          "expr": "sum by(status) (rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__rate_interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -417,10 +471,8 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
-      "title": "requests / seconds displayed by HTTP Code seen from Traefik",
+      "title": "requests / seconds displayed by HTTP Code seen from Nginx",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -428,9 +480,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -438,30 +488,26 @@
         {
           "$$hashKey": "object:89",
           "format": "reqps",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:90",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -470,15 +516,29 @@
       },
       "id": 10,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Latency",
       "type": "row"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 4,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -524,11 +584,15 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r",
+          "expr": "sum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -537,13 +601,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "[SLO] Latency % 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "For a 99.5% slo, Traefik is allowed to be under slo for 201 minutes in a 14 days period",
       "fieldConfig": {
         "defaults": {
@@ -595,28 +660,36 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r\r\r\n))* 60 * 60 * 24 * 14",
+          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))* 60 * 60 * 24 * 14",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Time Traefik is under SLO in the last 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "Error budget percentage consumed",
       "fieldConfig": {
         "defaults": {
           "decimals": 12,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -654,6 +727,7 @@
       },
       "id": 55,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -665,28 +739,36 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Error budget spent in 14d",
       "type": "gauge"
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "Error budget percentage consumed",
       "fieldConfig": {
         "defaults": {
           "decimals": 12,
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
@@ -724,6 +806,7 @@
       },
       "id": 56,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -735,26 +818,26 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(traefik_service_request_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(traefik_service_request_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\n\r\n\r\r\n\r\r\r\r\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Error budget spent in range",
       "type": "gauge"
     },
     {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -763,9 +846,23 @@
         "mode": "opacity"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
         "overrides": []
       },
       "gridPos": {
@@ -783,20 +880,60 @@
         "show": false
       },
       "maxDataPoints": 40,
-      "pluginVersion": "7.2.2",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "opacity",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Oranges",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "9.3.2",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (le) (increase(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval]))",
+          "expr": "sum by (le) (increase(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval]))",
           "format": "heatmap",
           "interval": "",
           "legendFormat": "{{le}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Latency",
       "tooltip": {
         "show": true,
@@ -806,27 +943,22 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "s",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "s"
@@ -861,7 +993,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -871,14 +1003,21 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "histogram_quantile(0.999, sum by(le)(rate(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])))\n",
+          "expr": "histogram_quantile(0.999, sum by(le)(rate(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])))\n",
           "instant": false,
           "interval": "",
           "legendFormat": "99.9 percentile",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
           "exemplar": true,
           "expr": "histogram_quantile(0.95, sum(rate(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
           "interval": "",
@@ -886,6 +1025,9 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
           "exemplar": true,
           "expr": "histogram_quantile(0.90, sum(rate(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
           "interval": "",
@@ -904,9 +1046,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Latency Percentiles",
       "tooltip": {
         "shared": true,
@@ -915,9 +1055,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -925,29 +1063,25 @@
         {
           "$$hashKey": "object:165",
           "format": "s",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:166",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "$DS_PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$DS_PROMETHEUS"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -973,6 +1107,8 @@
       "id": 12,
       "options": {
         "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -984,26 +1120,29 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.3.2",
       "targets": [
         {
+          "datasource": {
+            "uid": "$DS_PROMETHEUS"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (le) (increase(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__range]))",
+          "expr": "sum by (le) (increase(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__range]))",
           "format": "heatmap",
           "hide": false,
           "interval": "",
           "legendFormat": "{{le}}",
+          "range": true,
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Count of request by latency bucket",
       "type": "bargauge"
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 27,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1014,11 +1153,8 @@
           "text": "prometheus",
           "value": "prometheus"
         },
-        "description": null,
-        "error": null,
         "hide": 2,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "DS_PROMETHEUS",
         "options": [],
@@ -1038,5 +1174,6 @@
   "timezone": "",
   "title": "Blog - Service Level Objectives (SLOs)",
   "uid": "WlaIIMjGz",
-  "version": 9
+  "version": 1,
+  "weekStart": ""
 }
