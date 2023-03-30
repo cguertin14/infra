@@ -82,6 +82,9 @@ configMapGenerator:
   - dashboards/argo-rollouts.json
   - dashboards/node_temperatures.json
   - dashboards/pi_hole.json
+- name: grafana-dashboards-custom-2
+  namespace: monitoring
+  files:
   - dashboards/blog_slos.json
   - dashboards/nginx-overview.json
   - dashboards/nginx-performance.json
