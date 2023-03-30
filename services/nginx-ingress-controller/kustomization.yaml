@@ -37,7 +37,7 @@ helmCharts:
           servicePort: 10254
           type: ClusterIP
           labels:
-            app.kubernetes.io/component: nginx-metrics
+            app.kubernetes.io/other: nginx-metrics
         serviceMonitor:
           enabled: false
 

@@ -6,6 +6,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: nginx-ingress-controller
-      app.kubernetes.io/component: nginx-metrics
+      app.kubernetes.io/other: nginx-metrics
   endpoints:
   - port: metrics
