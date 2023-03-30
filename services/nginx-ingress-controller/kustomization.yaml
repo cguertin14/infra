@@ -5,6 +5,7 @@ namespace: kube-system
 
 resources:
 - resources/autoscaler.yml
+- resources/service-monitor.yml
 
 commonLabels:
   app.kubernetes.io/name: nginx-ingress-controller
@@ -36,8 +37,7 @@ helmCharts:
           servicePort: 10254
           type: ClusterIP
         serviceMonitor:
-          enabled: true
-          scrapeInterval: 30s
+          enabled: false
 
 patchesJson6902:
 - path: patches/update-resources.yml
