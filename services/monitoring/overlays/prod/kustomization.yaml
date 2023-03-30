@@ -80,10 +80,11 @@ configMapGenerator:
   files:
   - dashboards/argocd.json
   - dashboards/argo-rollouts.json
-  - dashboards/traefik.json
   - dashboards/node_temperatures.json
   - dashboards/pi_hole.json
   - dashboards/blog_slos.json
+  - dashboards/nginx-overview.json
+  - dashboards/nginx-performance.json
 
 secretGenerator:
 - name: grafana-datasources
