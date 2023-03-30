@@ -195,7 +195,7 @@
           "refId": "B"
         }
       ],
-      "title": "Time Traefik served != 5xx in last 14d",
+      "title": "Time Nginx served != 5xx in last 14d",
       "type": "gauge"
     },
     {
@@ -403,7 +403,7 @@
           "refId": "B"
         }
       ],
-      "title": "Requests Status Code Seen from Traefik",
+      "title": "Requests Status Code Seen from Nginx",
       "transformations": [],
       "type": "grafana-piechart-panel",
       "valueName": "current"
@@ -609,7 +609,7 @@
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "description": "For a 99.5% slo, Traefik is allowed to be under slo for 201 minutes in a 14 days period",
+      "description": "For a 99.5% slo, Nginx is allowed to be under slo for 201 minutes in a 14 days period",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -675,7 +675,7 @@
           "refId": "C"
         }
       ],
-      "title": "Time Traefik is under SLO in the last 14d",
+      "title": "Time Nginx is under SLO in the last 14d",
       "type": "gauge"
     },
     {
