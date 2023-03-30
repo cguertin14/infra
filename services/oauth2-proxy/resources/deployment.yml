@@ -15,7 +15,7 @@ spec:
       - args:
         - --provider=github
         - --email-domain=*
-        - --scope "user:email" # fix for 500 errors.
+        - --scope=user:email # fix for 500 errors.
         - --upstream=file:///dev/null
         - --http-address=0.0.0.0:4180
         - --pass-authorization-header=true
