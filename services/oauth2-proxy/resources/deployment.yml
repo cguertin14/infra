@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - args:
-        - --provider=github
+        - --provider=google
         - --email-domain=*
         - --scope=user:email # fix for 500 errors.
         - --upstream=file:///dev/null
