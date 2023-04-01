@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - monitoring.k8s.cguertin.dev
-    secretName: grafana-cert-traefik-tls
+    secretName: grafana-cert-tls
   rules:
   - host: monitoring.k8s.cguertin.dev
     http:
@@ -37,7 +37,7 @@ spec:
   tls:
   - hosts:
     - alertmanager.monitoring.k8s.cguertin.dev
-    secretName: alertmanager-cert-traefik-tls
+    secretName: alertmanager-cert-tls
   rules:
   - host: alertmanager.monitoring.k8s.cguertin.dev
     http:
@@ -64,7 +64,7 @@ spec:
   tls:
   - hosts:
     - prometheus.monitoring.k8s.cguertin.dev
-    secretName: prometheus-cert-traefik-tls
+    secretName: prometheus-cert-tls
   rules:
   - host: prometheus.monitoring.k8s.cguertin.dev
     http:

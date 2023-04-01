@@ -129,7 +129,7 @@
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "description": "For a 99.9% slo, Traefik is allowed to be down for 40.32 minutes in a 28 days period",
+      "description": "For a 99.9% slo, Nginx is allowed to be down for 40.32 minutes in a 28 days period",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1019,7 +1019,7 @@
             "uid": "$DS_PROMETHEUS"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.95, sum(rate(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
+          "expr": "histogram_quantile(0.95, sum(rate(nginx_ingress_controller_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
           "interval": "",
           "legendFormat": "95 percentile",
           "refId": "C"
@@ -1029,7 +1029,7 @@
             "uid": "$DS_PROMETHEUS"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.90, sum(rate(traefik_service_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
+          "expr": "histogram_quantile(0.90, sum(rate(nginx_ingress_controller_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
           "interval": "",
           "legendFormat": "90 percentile ",
           "refId": "B"
