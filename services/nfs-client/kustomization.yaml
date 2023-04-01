@@ -10,7 +10,7 @@ resources:
 namespace: synology-nfs
 
 images:
-- name: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
+- name: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
   newTag: v4.0.2
 
 commonLabels:
