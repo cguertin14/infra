@@ -5,6 +5,6 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: argo-rollouts
+      app.kubernetes.io/other: metrics
   endpoints:
   - port: metrics
