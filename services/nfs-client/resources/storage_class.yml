@@ -6,5 +6,5 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: homelab-nfs # or choose another name, must match deployment's env PROVISIONER_NAME'
 archiveOnDelete: "false"
-allowVolumeExpansion: true
+allowVolumeExpansion: false # nfs limitation
 reclaimPolicy: "Delete"
