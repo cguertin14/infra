@@ -16,11 +16,11 @@ spec:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
           sum(rate(
-            traefik_service_requests_total{code!~"5.*", exported_service=~"{{args.service-name}}.*"}[5m]
+            nginx_ingress_controller_requests{status!~"5.*", exported_service=~"{{args.service-name}}.*"}[5m]
           ))
           / 
           sum(rate(
-            traefik_service_requests_total{exported_service=~"{{args.service-name}}.*"}[5m]
+            nginx_ingress_controller_requests{exported_service=~"{{args.service-name}}.*"}[5m]
           ))
   - name: latency-sli-success-rate
     initialDelay: 45s
@@ -32,9 +32,9 @@ spec:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
           sum(rate(
-            traefik_service_request_duration_seconds_bucket{le="0.7", exported_service=~"{{args.service-name}}.*"}[5m]
+            nginx_ingress_controller_request_duration_seconds_bucket{le="0.7", exported_service=~"{{args.service-name}}.*"}[5m]
           ))
           /
           sum(rate(
-            traefik_service_request_duration_seconds_bucket{le="+Inf", exported_service=~"{{args.service-name}}.*"}[5m]
+            nginx_ingress_controller_request_duration_seconds_bucket{le="+Inf", exported_service=~"{{args.service-name}}.*"}[5m]
           ))
