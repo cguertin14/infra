@@ -225,7 +225,7 @@ spec:
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: services/operators/argo-rollouts
+    path: services/argo-rollouts
   syncPolicy:
     automated:
       selfHeal: true

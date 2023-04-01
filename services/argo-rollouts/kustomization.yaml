@@ -4,10 +4,9 @@ kind: Kustomization
 namespace: argo-rollouts
 
 resources:
-# TODO: Change to tagged versions when stable.
-- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=master
-  #- github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=master
-  #- resources/ingress.yml
+- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.4.1
+- github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=v1.4.1
+- resources/ingress.yml
 - resources/namespace.yml
 - metrics/rbac.yml
 - metrics/service-monitor.yml
@@ -16,10 +15,10 @@ resources:
 - templates/load-tester.yml
 
 images:
-#- name: quay.io/argoproj/argo-rollouts
-#  newTag: v1.0.6
-#- name: quay.io/argoproj/kubectl-argo-rollouts
-#  newTag: v1.0.6
+- name: quay.io/argoproj/argo-rollouts
+  newTag: v1.4.1
+- name: quay.io/argoproj/kubectl-argo-rollouts
+  newTag: v1.4.1
 - name: cguertz/load-tester
   newTag: v1.0.0
 
@@ -31,7 +30,6 @@ commonLabels:
 
 patchesStrategicMerge:
 - patches/controller-metrics.yml
-  #- patches/image-pull-policy-dashboard.yml
 
 patchesJson6902:
 - path: patches/remove-unknown-fields.yml
