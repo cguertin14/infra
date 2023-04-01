@@ -272,8 +272,8 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-system
-  namespace: metrics-server
+  name: metrics-server
+  namespace: kube-system
 spec:
   project: production
   destination:
