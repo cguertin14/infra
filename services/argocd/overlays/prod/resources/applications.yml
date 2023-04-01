@@ -273,7 +273,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: metrics-server
-  namespace: kube-system
+  namespace: argocd
 spec:
   project: production
   destination:
