@@ -24,7 +24,7 @@ spec:
         - name: service-uri
           value: https://preview.cguertin.dev
         - name: service-name
-          value: blog-blog-preview
+          value: blog-preview
         - name: namespace
           value: blog
         - name: min-replicas-ready
@@ -39,7 +39,7 @@ spec:
         - name: service-uri
           value: https://cguertin.dev
         - name: service-name
-          value: blog-blog-active
+          value: blog-active
   template:
     metadata:
       annotations:
