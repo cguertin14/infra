@@ -58,6 +58,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: prometheus-k8s
+  namespace: monitoring
 roleRef:
   kind: ClusterRole
   name: prometheus
