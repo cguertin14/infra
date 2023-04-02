@@ -59,6 +59,6 @@ subjects:
 - kind: ServiceAccount
   name: prometheus-k8s
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: prometheus-k8s
   apiGroup: rbac.authorization.k8s.io
