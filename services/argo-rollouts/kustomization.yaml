@@ -8,7 +8,6 @@ resources:
 - github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=v1.4.1
 - resources/ingress.yml
 - resources/namespace.yml
-- metrics/rbac.yml
 - metrics/service-monitor.yml
 - templates/replicaset-ready.yml
 - templates/slo-success-rate.yml
