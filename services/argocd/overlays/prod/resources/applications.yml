@@ -139,6 +139,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: lululemon-stockchecker
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: lululemon-stockchecker
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/lululemon-stockchecker/overlays/prod
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: nginx-ingress-controller
   namespace: argocd
 spec:
