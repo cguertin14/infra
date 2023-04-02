@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.6.7
-- metrics/rbac.yml
 - metrics/argocd-serviceMonitor.yml
 - metrics/argocd-server-serviceMonitor.yml
 - metrics/argocd-repo-server-serviceMonitor.yml

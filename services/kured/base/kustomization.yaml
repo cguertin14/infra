@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - resources/namespace.yml
-- metrics/rbac.yml
 - metrics/service.yml
 - metrics/prom-rule.yml
 - metrics/service-monitor.yml
