@@ -30,7 +30,7 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: prometheus-k8s
+  name: prometheus
 rules:
 - apiGroups:
   - ""
@@ -54,7 +54,7 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: prometheus-k8s
+  name: prometheus
 subjects:
 - kind: ServiceAccount
   name: prometheus-k8s
