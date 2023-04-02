@@ -12,3 +12,6 @@ helmCharts:
   version: 3.9.0
   repo: https://kubernetes-sigs.github.io/metrics-server/
   namespace: kube-system
+  valuesInline:
+    apiService:
+      create: true
