@@ -15,3 +15,5 @@ spec:
         prometheus.io/path: /metrics
         prometheus.io/port: "8090"
         prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/other: metrics
