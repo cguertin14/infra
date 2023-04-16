@@ -1,5 +1,5 @@
 resource "cloudflare_zone" "cguertin_dev" {
-  zone       = var.domain_cguertin
+  zone       = var.cguertin_domain
   account_id = var.account_id
   plan       = "free"
   type       = "full"
@@ -7,7 +7,7 @@ resource "cloudflare_zone" "cguertin_dev" {
 
 resource "cloudflare_record" "pi_load_balancer" {
   zone_id = cloudflare_zone.cguertin_dev.id
-  name    = "lb.${var.domain_cguertin}."
+  name    = "lb.${var.cguertin_domain}."
   type    = "A"
   value   = var.router_ip
   ttl     = 300
@@ -15,6 +15,10 @@ resource "cloudflare_record" "pi_load_balancer" {
 }
 
 resource "cloudflare_record" "cname_dns_entry" {
+  depends_on = [
+    cloudflare_record.pi_load_balancer,
+    cloudflare_zone.cguertin_dev
+  ]
   count   = length(var.domains)
   zone_id = cloudflare_zone.cguertin_dev.id
   name    = var.domains[count.index]
