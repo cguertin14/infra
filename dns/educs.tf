@@ -10,11 +10,12 @@ resource "cloudflare_record" "educs" {
     cloudflare_record.pi_load_balancer,
     cloudflare_zone.educs
   ]
-  count   = length(var.educs_domain)
-  zone_id = cloudflare_zone.educs.id
-  name    = var.educs_domains[count.index]
-  type    = "CNAME"
-  value   = cloudflare_record.pi_load_balancer.hostname
-  ttl     = 1800
-  proxied = false
+
+  for_each = toset(var.educs_domains)
+  zone_id  = cloudflare_zone.educs.id
+  name     = each.value
+  type     = "CNAME"
+  value    = cloudflare_record.pi_load_balancer.hostname
+  ttl      = 1800
+  proxied  = false
 }
