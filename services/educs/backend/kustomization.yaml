@@ -24,5 +24,5 @@ configMapGenerator:
 - name: backend-config
   literals:
   - NODE_ENV=production
-  - PORT=3000
+  - PORT=80
   - URL=https://api.erabliereducoeursucre.com
