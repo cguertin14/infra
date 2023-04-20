@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: educs-frontend
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - erabliereducoeursucre.com
+    secretName: educs-frontend-cert
+  rules:
+  - host: erabliereducoeursucre.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: educs-frontend
+            port: 
+              name: http

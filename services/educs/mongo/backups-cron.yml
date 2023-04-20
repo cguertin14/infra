@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mongo-backups
+spec:
+  schedule: '0 3 * * *' # at 3AM every day.
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 4
+  successfulJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: ghcr.io/cguertin14/mongodb-backup-s3
+            imagePullPolicy: IfNotPresent
+            name: mongo-backups
+            envFrom:
+            - configMapRef:
+                name: mongo-backups-config
+            - secretRef:
+                name: mongo-backups-secrets
+            resources:
+              limits:
+                cpu: 200m
+                memory: 128Mi
+              requests:
+                cpu: 100m
+                memory: 64Mi
+          dnsPolicy: ClusterFirst
+          restartPolicy: OnFailure

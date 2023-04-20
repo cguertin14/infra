@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  app.kubernetes.io/name: mongo
+
+resources:
+- statefulset.yml
+- service.yml
+- rbac.yml
+- backups-cron.yml
+
+images:
+- name: arm64v8/mongo
+  newTag: "4.0"
+- name: ghcr.io/cguertin14/mongo-k8s-sidecar
+  newTag: lts
+- name: ghcr.io/cguertin14/mongodb-backup-s3
+  newTag: v1.0.4
+
+replicas:
+- count: 3
+  name: mongo
+
+configMapGenerator:
+- name: mongo-backups-config
+  literals:
+  - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
+  - MONGODB_PORT=27017
+  - INIT_BACKUP=true
+  # - INIT_RESTORE=true
+
+generators:
+- secrets-generator.yml
