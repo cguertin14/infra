@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: educs
+
+commonLabels:
+  app.kubernetes.io/part-of: educs
+
+resources:
+- resources/
+- frontend/
+- backend/
+- mongo/
+- redis/

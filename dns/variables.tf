@@ -1,4 +1,4 @@
-variable "domain_cguertin" {
+variable "cguertin_domain" {
   description = "Personal domain URI"
   type        = string
   default     = "cguertin.dev"

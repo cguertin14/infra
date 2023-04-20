@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: educs-backend
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0
+  template:
+    spec:
+      imagePullSecrets:
+        - name: docker-auth
+      containers:
+      - name: educs-backend
+        image: ghcr.io/cguertin14/educs-backend
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: false
+        envFrom:
+        - configMapRef:
+            name: backend-config
+        - secretRef:
+            name: backend-secrets
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "700m"
+          requests:
+            memory: "256Mi"
+            cpu: "350m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 45
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 25
+          periodSeconds: 10
