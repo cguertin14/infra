@@ -5,12 +5,11 @@ commonLabels:
   app.kubernetes.io/name: redis
 
 resources:
-- statefulset.yml
+- deployment.yml
 - service.yml
-- pdb.yml
 
 replicas:
-- count: 6
+- count: 1
   name: redis
 
 images:
@@ -18,9 +17,6 @@ images:
   newTag: '7.0-alpine'
 
 configMapGenerator:
-- name: redis-cluster
-  files:
-  - config/redis.conf
 - name: redis-probes
   files:
   - config/liveness.sh

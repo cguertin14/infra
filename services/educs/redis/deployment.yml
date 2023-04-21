@@ -1,21 +1,28 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+spec:
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: redis
 spec:
-  serviceName: "redis-cluster"
+  strategy:
+    type: Recreate
   template:
     spec:
       terminationGracePeriodSeconds: 20
       containers:
       - name: redis
         image: redis
-        command:
-          - "redis-server"
-        args:
-          - "/conf/redis.conf"
-          - "--protected-mode"
-          - "no"
         resources:
           requests:
             cpu: "100m"
@@ -49,9 +56,6 @@ spec:
           exec:
             command: ["sh", "-c", "/probes/readiness.sh"]
         volumeMounts:
-        - name: conf
-          mountPath: /conf
-          readOnly: false
         - name: data
           mountPath: /data
           readOnly: false
@@ -59,19 +63,10 @@ spec:
           mountPath: /probes
           readOnly: true
       volumes:
-      - name: conf
-        configMap:
-          name: redis-cluster
-          defaultMode: 0755
       - name: probes
         configMap:
           name: redis-probes
           defaultMode: 0555
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 2Gi
+      - name: redis-persistent-storage
+        persistentVolumeClaim: 
+          claimName: redis-pvc
