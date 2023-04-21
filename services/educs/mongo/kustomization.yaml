@@ -27,8 +27,8 @@ configMapGenerator:
   literals:
   - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
   - MONGODB_PORT=27017
-  - INIT_RESTORE=true
-  # - INIT_BACKUP=true
+  - INIT_BACKUP=true
+  # - INIT_RESTORE=true
 
 generators:
 - secrets-generator.yml
