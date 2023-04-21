@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+ name: mongo
+spec:
+  serviceName: mongo
+  template:
+    spec:
+      serviceAccountName: mongo-sidecar-view
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongo
+        image: arm64v8/mongo
+        command:
+          - mongod
+          - "--replSet"
+          - rs0
+          - "--bind_ip"
+          - 0.0.0.0
+          - "--smallfiles"
+          - "--noprealloc"
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db
+      - name: mongo-sidecar
+        image: ghcr.io/cguertin14/mongo-k8s-sidecar
+        env:
+        - name: MONGO_SIDECAR_POD_LABELS
+          value: "app.kubernetes.io/name=mongo"
+        - name: KUBERNETES_MONGO_SERVICE_NAME
+          value: "mongo"
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-persistent-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi
