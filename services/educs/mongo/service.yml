@@ -5,6 +5,7 @@ metadata:
 spec:
   ipFamilyPolicy: SingleStack
   type: ClusterIP
+  clusterIP: None
   ports:
   - port: 27017
     protocol: TCP
