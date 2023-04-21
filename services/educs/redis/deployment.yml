@@ -56,7 +56,7 @@ spec:
           exec:
             command: ["sh", "-c", "/probes/readiness.sh"]
         volumeMounts:
-        - name: data
+        - name: redis-persistent-storage
           mountPath: /data
           readOnly: false
         - name: probes
