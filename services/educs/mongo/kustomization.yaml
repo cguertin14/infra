@@ -19,7 +19,7 @@ images:
   newTag: v1.0.10
 
 replicas:
-- count: 1
+- count: 3
   name: mongo
 
 configMapGenerator:
