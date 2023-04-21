@@ -16,7 +16,7 @@ images:
 - name: ghcr.io/cguertin14/mongo-k8s-sidecar
   newTag: lts
 - name: ghcr.io/cguertin14/mongodb-backup-s3
-  newTag: v1.0.10
+  newTag: v1.1.0
 
 replicas:
 - count: 3
