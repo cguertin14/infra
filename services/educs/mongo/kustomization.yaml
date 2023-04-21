@@ -12,7 +12,7 @@ resources:
 
 images:
 - name: arm64v8/mongo
-  newTag: "4.0"
+  newTag: "4.4"
 - name: ghcr.io/cguertin14/mongo-k8s-sidecar
   newTag: lts
 - name: ghcr.io/cguertin14/mongodb-backup-s3
