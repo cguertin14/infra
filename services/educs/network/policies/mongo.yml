@@ -14,6 +14,9 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: educs-backend # only backend can query the DB
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: mongo # backups can also query the DB for dumps
     ports:
     - protocol: TCP
       port: 27017
