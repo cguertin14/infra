@@ -4,14 +4,26 @@ metadata:
   name: educs-frontend
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
     - erabliereducoeursucre.com
+    - www.erabliereducoeursucre.com
     secretName: educs-frontend-cert
   rules:
   - host: erabliereducoeursucre.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: educs-frontend
+            port: 
+              name: http
+  - host: www.erabliereducoeursucre.com
     http:
       paths:
       - path: /

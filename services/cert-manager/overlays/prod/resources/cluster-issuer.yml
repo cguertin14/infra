@@ -33,4 +33,5 @@ spec:
         - 'auth.k8s.cguertin.dev'
         - 'pihole.k8s.cguertin.dev'
         - 'erabliereducoeursucre.com'
+        - 'www.erabliereducoeursucre.com'
         - 'api.erabliereducoeursucre.com'
