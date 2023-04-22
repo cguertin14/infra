@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mongo-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: mongo
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: educs-backend # only backend can query the DB
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: mongo # backups traffic
+    ports:
+    - protocol: TCP
+      port: 27017
+  egress: []

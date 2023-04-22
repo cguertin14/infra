@@ -10,8 +10,10 @@ spec:
   tls:
   - hosts:
     - erabliereducoeursucre.com
-    - www.erabliereducoeursucre.com
     secretName: educs-frontend-cert
+  - hosts:
+    - www.erabliereducoeursucre.com
+    secretName: www-educs-frontend-cert
   rules:
   - host: erabliereducoeursucre.com
     http:

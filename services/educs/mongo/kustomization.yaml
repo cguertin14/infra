@@ -9,6 +9,7 @@ resources:
 - service.yml
 - rbac.yml
 - backups-cron.yml
+# - network-policy.yml
 
 images:
 - name: arm64v8/mongo
