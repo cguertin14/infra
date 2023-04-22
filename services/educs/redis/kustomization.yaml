@@ -7,7 +7,7 @@ commonLabels:
 resources:
 - deployment.yml
 - service.yml
-- network-policy.yml
+# - network-policy.yml
 
 replicas:
 - count: 1
