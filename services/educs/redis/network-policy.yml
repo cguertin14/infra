@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: mongo-network-policy
+  name: redis-network-policy
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: mongo
+      app.kubernetes.io/name: redis
   policyTypes:
   - Ingress
   - Egress
