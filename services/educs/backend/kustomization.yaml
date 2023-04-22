@@ -14,7 +14,7 @@ generators:
 
 images:
 - name: ghcr.io/cguertin14/educs-backend
-  newTag: v2.0.38
+  newTag: v2.0.39
 
 replicas:
 - name: educs-backend
