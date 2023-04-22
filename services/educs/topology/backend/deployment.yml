@@ -33,15 +33,15 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "350m"
-        # livenessProbe:
-        #   httpGet:
-        #     path: /api/health
-        #     port: 80
-        #   initialDelaySeconds: 45
-        #   periodSeconds: 20
-        # readinessProbe:
-        #   httpGet:
-        #     path: /api/health
-        #     port: 80
-        #   initialDelaySeconds: 25
-        #   periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 70
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 50
+          periodSeconds: 10
