@@ -15,4 +15,4 @@ helmCharts:
   valuesInline:
     replicas: 2
     apiService:
-      create: false
+      create: true # will conflict with prometheus-adapter
