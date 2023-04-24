@@ -56,11 +56,11 @@ spec:
           allowPrivilegeEscalation: false
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "500m"
-          requests:
             memory: "128Mi"
             cpu: "250m"
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
         livenessProbe:
           httpGet:
             path: /
