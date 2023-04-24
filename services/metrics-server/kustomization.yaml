@@ -15,4 +15,4 @@ helmCharts:
   valuesInline:
     replicas: 3 # HA
     apiService:
-      create: true
+      create: false # handled by ../monitoring/overlays/prod/patches/apiservice-metrics-server.yml

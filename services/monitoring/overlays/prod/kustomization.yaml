@@ -70,7 +70,6 @@ patchesStrategicMerge:
 - patches/prometheus-modifications.yml
 - patches/grafana-strategic-patches.yml
 - patches/apiservice-metrics-server.yml # use metrics-server instead of prom-adapter for metrics.
-- patches/disable-prom-adapter.yml
 
 configMapGenerator:
 - name: grafana-settings-config
