@@ -7,7 +7,7 @@ spec:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
     name: blog
-  minReplicas: 3
+  minReplicas: 4
   maxReplicas: 8
   metrics:
   - type: Resource
