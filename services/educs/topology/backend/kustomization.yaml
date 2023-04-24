@@ -18,7 +18,7 @@ images:
 
 replicas:
 - name: educs-backend
-  count: 2
+  count: 3
 
 configMapGenerator:
 - name: backend-config

@@ -15,4 +15,4 @@ images:
 
 replicas:
 - name: educs-frontend
-  count: 2
+  count: 3
