@@ -13,5 +13,6 @@ helmCharts:
   repo: https://kubernetes-sigs.github.io/metrics-server/
   namespace: kube-system
   valuesInline:
+    replicas: 2
     apiService:
       create: false
