@@ -13,6 +13,6 @@ helmCharts:
   repo: https://kubernetes-sigs.github.io/metrics-server/
   namespace: kube-system
   valuesInline:
-    replicas: 2
+    replicas: 3 # HA
     apiService:
-      create: false # will *not* conflict with prometheus-adapter
+      create: true
