@@ -25,4 +25,4 @@ configMapGenerator:
   literals:
   - NODE_ENV=production
   - PORT=80
-  - URL=https://api.erabliereducoeursucre.com
+  - URL=https://erabliereducoeursucre.com
