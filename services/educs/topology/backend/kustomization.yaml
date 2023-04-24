@@ -14,11 +14,11 @@ generators:
 
 images:
 - name: ghcr.io/cguertin14/educs-backend
-  newTag: v2.0.39
+  newTag: v2.1.0
 
 replicas:
 - name: educs-backend
-  count: 3
+  count: 2
 
 configMapGenerator:
 - name: backend-config
