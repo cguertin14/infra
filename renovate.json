@@ -8,7 +8,11 @@
   "lockFileMaintenance": {
     "enabled": false
   },
-  "ignorePaths": ["**/.terraform.lock.hcl"],
+  "ignorePaths": [
+    "**/.terraform.lock.hcl",
+    "services/educs/topology/mongo",
+    "services/educs/topology/redis"
+  ],
   "packageRules": [
     {
       "groupName": "all dependencies",
