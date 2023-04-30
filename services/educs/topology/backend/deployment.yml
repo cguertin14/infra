@@ -28,11 +28,11 @@ spec:
             name: backend-secrets
         resources:
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "700Mi"
+            cpu: "650m"
           requests:
-            memory: "200Mi"
-            cpu: "125m"
+            memory: "350Mi"
+            cpu: "250m"
         livenessProbe:
           httpGet:
             path: /api/health
