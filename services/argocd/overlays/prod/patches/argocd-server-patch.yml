@@ -8,6 +8,7 @@ spec:
       containers:
       - name: argocd-server
         command:
+        - /usr/local/bin/argocd-server
         - --insecure
         - --staticassets
         - /shared/app

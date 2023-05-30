@@ -29,12 +29,6 @@ spec:
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
-        - name: ARGOCD_RECONCILIATION_TIMEOUT
-          valueFrom:
-            configMapKeyRef:
-              name: argocd-cm
-              key: timeout.reconciliation
-              optional: false
         volumeMounts:
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
