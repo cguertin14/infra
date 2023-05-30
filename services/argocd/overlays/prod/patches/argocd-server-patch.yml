@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: argocd-server
-        command:
+        args:
         - /usr/local/bin/argocd-server
         - --insecure
         - --staticassets
