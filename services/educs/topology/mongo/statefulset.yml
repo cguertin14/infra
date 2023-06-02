@@ -8,17 +8,26 @@ spec:
     spec:
       serviceAccountName: mongo-sidecar-view
       terminationGracePeriodSeconds: 10
+      initContainers:
+      - name: mongo-repair
+        image: arm64v8/mongo
+        command:
+        - mongod
+        - "--repair"
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db
       containers:
       - name: mongo
         image: arm64v8/mongo
         command:
-          - mongod
-          - "--replSet"
-          - rs0
-          - "--bind_ip"
-          - 0.0.0.0
-          - "--smallfiles"
-          - "--noprealloc"
+        - mongod
+        - "--replSet"
+        - rs0
+        - "--bind_ip"
+        - 0.0.0.0
+        - "--smallfiles"
+        - "--noprealloc"
         ports:
         - containerPort: 27017
         volumeMounts:
