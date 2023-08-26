@@ -5,31 +5,32 @@ commonLabels:
   app.kubernetes.io/name: mongo
 
 resources:
-# - statefulset.yml
+- statefulset.yml
 - service.yml
 - rbac.yml
 - backups-cron.yml
 
 images:
-# - name: arm64v8/mongo
-#   newTag: "4.0"
+- name: arm64v8/mongo
+  newTag: "4.0"
 - name: ghcr.io/cguertin14/mongo-k8s-sidecar
   newTag: lts
 - name: ghcr.io/cguertin14/mongodb-backup-s3
   newTag: v1.1.0
 
-# replicas:
-# - count: 3
-#   name: mongo
+replicas:
+- count: 3
+  name: mongo
 
 configMapGenerator:
 - name: mongo-backups-config
   literals:
   - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
   - MONGODB_PORT=27017
-  - INIT_BACKUP=true
+  # Comment if restore enabled.
+  # - INIT_BACKUP=true
   # Uncomment if need to restore DB.
-  # - INIT_RESTORE=true
+  - INIT_RESTORE=true
 
 generators:
 - secrets-generator.yml
