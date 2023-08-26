@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: mongo-backups
 spec:
+  suspend: true
   schedule: '0 3 * * *' # at 3AM every day.
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 4
