@@ -11,9 +11,8 @@ spec:
       initContainers:
       - name: mongo-repair
         image: arm64v8/mongo
-        command:
-        - mongod
-        - "--repair"
+        args: ["/bin/bash", "-c"]
+        command: ["rm /data/db/mongod.lock; mongod --repair"]
         volumeMounts:
         - name: mongo-persistent-storage
           mountPath: /data/db
