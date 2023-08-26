@@ -12,7 +12,7 @@ spec:
       - name: mongo-repair
         image: arm64v8/mongo
         args: ["/bin/bash", "-c"]
-        command: ["rm /data/db/mongod.lock; mongod --repair"]
+        command: ["mongod --repair"] # ["rm /data/db/mongod.lock; mongod --repair"]
         volumeMounts:
         - name: mongo-persistent-storage
           mountPath: /data/db
