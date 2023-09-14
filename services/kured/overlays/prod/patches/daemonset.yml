@@ -11,6 +11,9 @@ spec:
           envFrom:
             - secretRef:
                 name: notify-url
+          env:
+          - name: KURED_METRICS_PORT
+            value: "8080"
           args: []
           command:
             - /usr/bin/kured

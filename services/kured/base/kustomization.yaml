@@ -19,5 +19,4 @@ helmCharts:
   releaseName: kured
   namespace: kured
   includeCRDs: true
-  valuesInline:
-    hostNetwork: true
+  
