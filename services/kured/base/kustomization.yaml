@@ -19,4 +19,9 @@ helmCharts:
   releaseName: kured
   namespace: kured
   includeCRDs: true
-  
+  valuesInline:
+    metricsPort: 8080
+    configuration:
+      rebootDays: sat,sun,mon,thu
+      period: 30m
+      timeZone: America/New_York

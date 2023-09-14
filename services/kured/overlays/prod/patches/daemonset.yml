@@ -11,11 +11,3 @@ spec:
           envFrom:
             - secretRef:
                 name: notify-url
-          args: []
-          command:
-            - /usr/bin/kured
-            - --reboot-days=sat,sun,mon,thu
-            - --period=30m
-            - --time-zone=America/New_York
-            - --ds-namespace=kured
-            - --metrics-port=8080
