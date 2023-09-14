@@ -22,6 +22,6 @@ helmCharts:
   valuesInline:
     metricsPort: 8080
     configuration:
-      rebootDays: sat,sun,mon,thu
+      rebootDays: [sat,sun,mon,thu]
       period: 30m
       timeZone: America/New_York
