@@ -26,3 +26,4 @@ configMapGenerator:
   - NODE_ENV=production
   - PORT=80
   - URL=https://erabliereducoeursucre.com
+  - NODE_OPTIONS=--max-old-space-size=1024
