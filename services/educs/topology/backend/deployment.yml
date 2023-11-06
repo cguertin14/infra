@@ -10,6 +10,19 @@ spec:
       maxUnavailable: 0
   template:
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - "worker1"
+                - "worker2"
+                - "worker3"
+                - "worker4"
+                - "worker5"
       imagePullSecrets:
         - name: docker-auth
       containers:
