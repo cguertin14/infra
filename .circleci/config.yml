@@ -49,11 +49,11 @@ workflows:
 executors:
   terraform-executor:
     docker:
-      - image: hashicorp/terraform:1.6.4
+      - image: hashicorp/terraform:1.6.5
 
   scripts-executor:
     docker:
-      - image: cimg/base:2023.11-20.04
+      - image: cimg/base:2023.12-20.04
 
 ##
 # JOBS
