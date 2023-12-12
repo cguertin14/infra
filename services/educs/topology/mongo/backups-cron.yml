@@ -4,7 +4,7 @@ metadata:
   name: mongo-backups
 spec:
   suspend: true # Uncomment if need to restore DB.
-  schedule: '0 3 * * *' # at 3AM every day.
+  schedule: '0 3 * * *' # at 3AM every day. - TODO: change to every 3h?
   concurrencyPolicy: Allow
   failedJobsHistoryLimit: 4
   successfulJobsHistoryLimit: 4
