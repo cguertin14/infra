@@ -11,13 +11,13 @@
 5. Manually delete the Mongo PVCs: 
 
 ```
-❯ kubectl rm pvc -n educs mongo-persistent-storage-mongo-0
+❯ kubectl delete pvc -n educs mongo-persistent-storage-mongo-0
 persistentvolumeclaim "mongo-persistent-storage-mongo-0" deleted
 
-❯ kubectl rm pvc -n educs mongo-persistent-storage-mongo-1
+❯ kubectl delete pvc -n educs mongo-persistent-storage-mongo-1
 persistentvolumeclaim "mongo-persistent-storage-mongo-1" deleted
 
-❯ kubectl rm pvc -n educs mongo-persistent-storage-mongo-2
+❯ kubectl delete pvc -n educs mongo-persistent-storage-mongo-2
 persistentvolumeclaim "mongo-persistent-storage-mongo-2" deleted
 ```
 
