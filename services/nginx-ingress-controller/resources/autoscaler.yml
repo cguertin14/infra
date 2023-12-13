@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: prod-ingress-nginx-controller
-  minReplicas: 4
+  minReplicas: 3
   maxReplicas: 24
   metrics:
   - type: Resource
