@@ -15,7 +15,7 @@ generators:
 
 images:
 - name: ghcr.io/cguertin14/educs-backend
-  newTag: v3.3.0
+  newTag: v3.3.1
 
 replicas:
 - name: educs-backend
@@ -28,3 +28,4 @@ configMapGenerator:
   - PORT=80
   - URL=https://erabliereducoeursucre.com
   - NODE_OPTIONS=--max-old-space-size=1024
+  - LOG_LEVEL=info
