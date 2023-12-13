@@ -5,4 +5,3 @@ namespace: educs
 
 resources:
 - policies/mongo.yml
-- policies/redis.yml

@@ -10,8 +10,7 @@
   },
   "ignorePaths": [
     "**/.terraform.lock.hcl",
-    "services/educs/topology/mongo",
-    "services/educs/topology/redis"
+    "services/educs/topology/mongo"
   ],
   "packageRules": [
     {

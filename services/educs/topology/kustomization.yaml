@@ -11,4 +11,3 @@ resources:
 - frontend/
 - backend/
 - mongo/
-- redis/
