@@ -5,14 +5,14 @@ commonLabels:
   app.kubernetes.io/name: mongo
 
 resources:
-- statefulset.yml
+# - statefulset.yml
 - service.yml
 - rbac.yml
 - backups-cron.yml
 
 images:
-- name: arm64v8/mongo
-  newTag: "4.0"
+- name: mongo
+  newTag: "5.0"
 - name: ghcr.io/cguertin14/mongo-k8s-sidecar
   newTag: lts
 - name: ghcr.io/cguertin14/mongodb-backup-s3
