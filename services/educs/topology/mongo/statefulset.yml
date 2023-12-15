@@ -8,14 +8,14 @@ spec:
     spec:
       serviceAccountName: mongo-sidecar-view
       terminationGracePeriodSeconds: 10
-      initContainers:
-      - name: mongo-repair
-        image: mongo
-        command: ["/bin/sh", "-c"]
-        args: ["rm /data/db/mongod.lock; mongod --dbpath /data/db --repair"]
-        volumeMounts:
-        - name: mongo-persistent-storage
-          mountPath: /data/db
+      # initContainers:
+      # - name: mongo-repair
+      #   image: mongo
+      #   command: ["/bin/sh", "-c"]
+      #   args: ["rm /data/db/mongod.lock; mongod --dbpath /data/db --repair"]
+      #   volumeMounts:
+      #   - name: mongo-persistent-storage
+      #     mountPath: /data/db
       containers:
       - name: mongo
         image: mongo
