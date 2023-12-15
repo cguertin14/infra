@@ -3,9 +3,9 @@ kind: Kustomization
 
 namespace: cert-manager
 
-patchesStrategicMerge:
-- patches/certmanager_namespace.yml
-- patches/cainjector_namespace.yml
+# patchesStrategicMerge:
+# - patches/certmanager_namespace.yml
+# - patches/cainjector_namespace.yml
 
 helmCharts:
 - name: cert-manager
