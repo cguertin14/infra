@@ -6,7 +6,7 @@
 
 3. Commit this file and re-sync argo in the [UI](https://gitops.k8s.cguertin.dev/applications/argocd/educs-topology?view=tree&conditions=false).
 
-4. Manually delete the Mongo Statefulset: `kubectl rm statefulset -n educs mongo`.
+4. Manually delete the Mongo Statefulset: `kubectl delete statefulset -n educs mongo`.
 
 5. Manually delete the Mongo PVCs: 
 
