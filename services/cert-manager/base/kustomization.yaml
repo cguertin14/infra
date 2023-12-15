@@ -7,6 +7,10 @@ namespace: cert-manager
 # - patches/certmanager_namespace.yml
 # - patches/cainjector_namespace.yml
 
+resources:
+# CRDS must be installed separately.
+- https://github.com/cert-manager/cert-manager/releases/download/v1.13.3/cert-manager.crds.yaml
+
 helmCharts:
 - name: cert-manager
   includeCRDs: true
@@ -14,5 +18,3 @@ helmCharts:
   version: v1.13.3
   repo: https://charts.jetstack.io
   namespace: cert-manager
-  valuesInline:
-    installCRDs: true
