@@ -13,6 +13,8 @@ helmCharts:
   valuesInline:
     installCRDs: true
     logLevel: 3
+    extraArgs:
+    - --controllers=*
     global:
       leaderElection:
         namespace: 'cert-manager'
