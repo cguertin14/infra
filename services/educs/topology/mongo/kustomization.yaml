@@ -12,7 +12,7 @@ resources:
 
 images:
 - name: mongo
-  newTag: "5.0"
+  newTag: "6.0"
 - name: ghcr.io/cguertin14/mongo-k8s-sidecar
   newTag: lts
 - name: ghcr.io/cguertin14/mongodb-backup-s3
