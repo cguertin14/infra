@@ -5,7 +5,7 @@ commonLabels:
   app.kubernetes.io/name: mongo
 
 resources:
-# - statefulset.yml
+- statefulset.yml
 - service.yml
 - rbac.yml
 - backups-cron.yml
