@@ -3,10 +3,6 @@ kind: Kustomization
 
 namespace: cert-manager
 
-patchesStrategicMerge:
-- patches/cainjector_namespace.yml
-# - patches/certmanager_namespace.yml
-
 helmCharts:
 - name: cert-manager
   includeCRDs: true
@@ -16,9 +12,7 @@ helmCharts:
   namespace: cert-manager
   valuesInline:
     installCRDs: true
-    leaderElection:
-      namespace: 'cert-manager'
-    extraArgs:
-    - --v=2
-    - --controllers=*
-    - --cluster-resource-namespace=$(POD_NAMESPACE)
+    logLevel: 3
+    global:
+      leaderElection:
+        namespace: 'cert-manager'
