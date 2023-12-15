@@ -23,8 +23,8 @@ spec:
         - mongod
         - "--dbpath"
         - /data/db
-        # - "--replSet"
-        # - rs0
+        - "--replSet"
+        - rs0
         - "--bind_ip"
         - 0.0.0.0
         - "--smallfiles"
