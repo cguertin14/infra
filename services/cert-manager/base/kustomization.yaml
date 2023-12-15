@@ -14,7 +14,7 @@ helmCharts:
     installCRDs: true
     logLevel: 3
     extraArgs:
-    - --controllers=*
+    - --controllers=issuers,clusterissuers,certificates-metrics,ingress-shim,orders,challenges,certificaterequests-issuer-acme,certificaterequests-approver,certificaterequests-issuer-ca,certificaterequests-issuer-selfsigned,certificaterequests-issuer-vault,certificaterequests-issuer-venafi,certificates-trigger,certificates-issuing,certificates-key-manager,certificates-request-manager,certificates-readiness,certificates-revision-manager
     global:
       leaderElection:
         namespace: 'cert-manager'
