@@ -28,9 +28,9 @@ configMapGenerator:
   - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
   - MONGODB_PORT=27017
   # Comment if restore enabled.
-  - INIT_BACKUP=true
+  # - INIT_BACKUP=true
   # Uncomment if need to restore DB.
-  # - INIT_RESTORE=true
+  - INIT_RESTORE=true
 
 generators:
 - secrets-generator.yml
