@@ -10,7 +10,7 @@ patchesStrategicMerge:
 generators:
 - secrets-generator.yml
 
-patchesJson6902:
+patches:
 - path: patches/suspend-cronjob.yml
   target:
     kind: CronJob

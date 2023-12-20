@@ -41,7 +41,7 @@ helmCharts:
         serviceMonitor:
           enabled: false
 
-patchesJson6902:
+patches:
 - path: patches/update-resources.yml
   target:
     group: apps

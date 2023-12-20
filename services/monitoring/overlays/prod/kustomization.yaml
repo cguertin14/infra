@@ -10,7 +10,7 @@ resources:
 generators:
 - secrets-generator.yml
 
-patchesJson6902:
+patches:
 # Networking changes to expose services publicly
 # by going through a reverse proxy
 - path: patches/network-policies-reverse-proxy.yml
