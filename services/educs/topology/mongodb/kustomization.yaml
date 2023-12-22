@@ -9,9 +9,6 @@ helmCharts:
   repo: https://mongodb.github.io/helm-charts
   version: 0.9.0
 
-resources:
-- backups-cron.yml
-
 images:
 - name: ghcr.io/cguertin14/mongodb-backup-s3
   newTag: v1.1.4
