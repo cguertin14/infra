@@ -1,14 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  app.kubernetes.io/name: mongo
+namespace: mongo
 
 resources:
 - statefulset.yml
 - service.yml
 - rbac.yml
-- backups-cron.yml
 
 images:
 - name: arm64v8/mongo
@@ -22,15 +20,7 @@ replicas:
 - count: 3
   name: mongo
 
-configMapGenerator:
-- name: mongo-backups-config
-  literals:
-  - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
-  - MONGODB_PORT=27017
-  # Comment if restore enabled.
-  - INIT_BACKUP=true
-  # Uncomment if need to restore DB.
-  # - INIT_RESTORE=true
-
-generators:
-- secrets-generator.yml
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/name: mongo

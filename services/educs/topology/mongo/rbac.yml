@@ -4,14 +4,23 @@ metadata:
   name: mongo-sidecar-view
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mongo-cluster-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: mongo-sidecar-view
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: view
+  name: mongo-cluster-role
 subjects:
 - kind: ServiceAccount
   name: mongo-sidecar-view
-  namespace: educs
+  namespace: mongo

@@ -3,11 +3,14 @@ kind: Kustomization
 
 namespace: educs
 
-commonLabels:
-  app.kubernetes.io/part-of: educs
-
 resources:
 - resources/
 - frontend/
 - backend/
 - mongo/
+- mongodb/
+
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: educs
