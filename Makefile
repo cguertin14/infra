@@ -1,4 +1,4 @@
-KIND_NODE_IMAGE_VERSION = v1.19.11
+KIND_NODE_IMAGE_VERSION = v1.28.0
 PWD = $(shell pwd)
 
 # Start local NGINX Load Balancer docker container for control plane.
@@ -17,6 +17,4 @@ stop-lb:
 
 # Start a local cluster.
 local-cluster:
-	@kind create cluster \
-		--config=local-cluster.yml \
-		--image=kindest/node:${KIND_NODE_IMAGE_VERSION}
+	@kind create cluster --image=kindest/node:${KIND_NODE_IMAGE_VERSION}
