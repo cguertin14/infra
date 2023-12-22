@@ -7,6 +7,7 @@ resources:
 - statefulset.yml
 - service.yml
 - rbac.yml
+- backups-cron.yml
 
 images:
 - name: arm64v8/mongo
@@ -19,6 +20,16 @@ images:
 replicas:
 - count: 3
   name: mongo
+
+configMapGenerator:
+- name: mongo-backups-config
+  literals:
+  - MONGODB_HOST=mongo-0.mongo,mongo-1.mongo,mongo-2.mongo
+  - MONGODB_PORT=27017
+  # Comment if restore enabled.
+  - INIT_BACKUP=true
+  # Uncomment if need to restore DB.
+  # - INIT_RESTORE=true
 
 labels:
 - includeSelectors: true

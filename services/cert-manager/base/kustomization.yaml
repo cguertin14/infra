@@ -12,7 +12,7 @@ helmCharts:
   namespace: cert-manager
   valuesInline:
     installCRDs: true
-    kelogLevel: 3
+    logLevel: 3
     global:
       leaderElection:
         namespace: 'cert-manager'

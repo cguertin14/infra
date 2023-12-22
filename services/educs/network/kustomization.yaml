@@ -3,5 +3,5 @@ kind: Kustomization
 
 namespace: educs
 
-# resources:
-# - policies/mongo.yml
+resources:
+- policies/mongo.yml
