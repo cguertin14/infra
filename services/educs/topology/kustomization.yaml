@@ -8,7 +8,7 @@ resources:
 - frontend/
 - backend/
 - mongo/
-- mongodb/
+# - mongodb/
 
 labels:
 - includeSelectors: true
