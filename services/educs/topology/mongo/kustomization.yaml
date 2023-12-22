@@ -35,3 +35,6 @@ labels:
 - includeSelectors: true
   pairs:
     app.kubernetes.io/name: mongo
+
+generators:
+- secrets-generator.yml
