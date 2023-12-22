@@ -21,7 +21,7 @@ configMapGenerator:
   # - INIT_BACKUP=true
   # Uncomment if need to restore DB.
   - INIT_RESTORE=true
-  name: mongo-backups-config
+  name: mongodb-backups-config
 
 generators:
 - secrets-generator.yml
