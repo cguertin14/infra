@@ -1,8 +1,6 @@
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
-namespace: mongodb
-
 # NOTE: for upgrades, refer to https://github.com/mongodb/mongodb-kubernetes-operator/blob/master/docs/install-upgrade.md
 helmCharts:
 - includeCRDs: true
