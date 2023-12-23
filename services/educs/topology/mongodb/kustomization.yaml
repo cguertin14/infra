@@ -1,13 +1,14 @@
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
-# NOTE: for upgrades, refer to https://github.com/mongodb/mongodb-kubernetes-operator/blob/master/docs/install-upgrade.md
-helmCharts:
-- includeCRDs: true
-  name: community-operator
-  releaseName: mongodb
-  repo: https://mongodb.github.io/helm-charts
-  version: 0.9.0
+## About the arm64v8.2 mongo errors:
+#
+# NEW ERROR WHEN RUNNING `mongod` on v7.0.4: Illegal instruction (core dumped)
+# discussion: https://www.mongodb.com/community/forums/t/raspberrypi-4-8gb-docker-entrypoint-sh-27-illegal-instruction-core-dumped/132518/3
+# solution: https://github.com/cguertin14/mongodb-raspberrypi-docker
+
+resources:
+- https://github.com/mongodb/mongodb-kubernetes-operator/config/rbac?ref=v0.9.0
 
 images:
 - name: ghcr.io/cguertin14/mongodb-backup-s3
