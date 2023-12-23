@@ -6,9 +6,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 # NEW ERROR WHEN RUNNING `mongod` on v7.0.4: Illegal instruction (core dumped)
 # discussion: https://www.mongodb.com/community/forums/t/raspberrypi-4-8gb-docker-entrypoint-sh-27-illegal-instruction-core-dumped/132518/3
 # solution: https://github.com/cguertin14/mongodb-raspberrypi-docker
-
 resources:
-- https://github.com/mongodb/mongodb-kubernetes-operator/config/rbac?ref=v0.9.0
+- operator-rbac.yml
 
 images:
 - name: ghcr.io/cguertin14/mongodb-backup-s3
