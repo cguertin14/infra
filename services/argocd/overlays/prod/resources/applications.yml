@@ -382,3 +382,22 @@ spec:
     automated:
       selfHeal: true
       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb-operator
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: mongodb-operator
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/mongodb-operator
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
