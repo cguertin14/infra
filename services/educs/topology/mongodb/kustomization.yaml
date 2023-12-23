@@ -18,9 +18,9 @@ configMapGenerator:
 - literals:
   - MONGODB_HOST=educs-mongodb-0.educs-mongodb-svc.mongodb,educs-mongodb-1.educs-mongodb-svc,educs-mongodb-2.educs-mongodb-svc
   - MONGODB_PORT=27017
-  # - INIT_BACKUP=true
+  - INIT_BACKUP=true
   # Uncomment if need to restore DB.
-  - INIT_RESTORE=true
+  # - INIT_RESTORE=true
   name: mongodb-backups-config
 
 generators:
