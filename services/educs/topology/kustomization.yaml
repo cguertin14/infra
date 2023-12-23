@@ -7,7 +7,6 @@ resources:
 - resources/
 - frontend/
 - backend/
-- mongo/
 - mongodb/
 
 labels:
