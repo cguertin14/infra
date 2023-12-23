@@ -5,6 +5,7 @@ resources:
 - ingress.yml
 - service.yml
 - pdb.yml
+- deployment.yml
 
 generators:
 - secrets-generator.yml

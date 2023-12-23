@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: educs-backend
+spec:
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 0
+    template:
+        spec:
+            affinity:
+                nodeAffinity:
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                        nodeSelectorTerms:
+                            - matchExpressions:
+                                - key: kubernetes.io/hostname
+                                  operator: In
+                                  values:
+                                    - worker1
+                                    - worker2
+                                    - worker3
+                                    - worker4
+                                    - worker5
+            imagePullSecrets:
+                - name: docker-auth
+            containers:
+                - name: educs-backend
+                  image: ghcr.io/cguertin14/educs-backend
+                  ports:
+                    - containerPort: 80
+                      name: http
+                      protocol: TCP
+                  securityContext:
+                    allowPrivilegeEscalation: false
+                  envFrom:
+                    - configMapRef:
+                        name: backend-config
+                    - secretRef:
+                        name: backend-secrets
+                  resources:
+                    limits:
+                        # No CPU limit
+                        memory: 1Gi
+                    requests:
+                        memory: 1Gi
+                        cpu: 400m
+                  livenessProbe:
+                    httpGet:
+                        path: /api/health
+                        port: 80
+                    initialDelaySeconds: 100
+                    periodSeconds: 20
+                  readinessProbe:
+                    httpGet:
+                        path: /api/health
+                        port: 80
+                    initialDelaySeconds: 80
+                    periodSeconds: 10
