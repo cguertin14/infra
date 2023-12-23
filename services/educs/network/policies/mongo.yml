@@ -6,6 +6,7 @@ spec:
   podSelector:
     matchLabels:
       app.kubernetes.io/name: mongo
+      app: educs-mongodb-svc
   policyTypes:
   - Ingress
   - Egress
