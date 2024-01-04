@@ -10,6 +10,7 @@ resource "cloudflare_record" "pi_load_balancer" {
   name    = "lb.${var.cguertin_domain}."
   type    = "A"
   value   = var.router_ip
+  ttl     = 1
   proxied = true
 }
 
@@ -24,4 +25,5 @@ resource "cloudflare_record" "cname_dns_entry" {
   type    = "CNAME"
   value   = cloudflare_record.pi_load_balancer.hostname
   proxied = true
+  ttl     = 1
 }

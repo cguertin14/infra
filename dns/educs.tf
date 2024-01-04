@@ -17,4 +17,5 @@ resource "cloudflare_record" "educs" {
   type     = "CNAME"
   value    = cloudflare_record.pi_load_balancer.hostname
   proxied  = true
+  ttl      = 1
 }
