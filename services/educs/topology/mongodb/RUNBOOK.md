@@ -4,6 +4,8 @@
 
 Avoid the `--repair` option on any replica set member.
 
+Source: https://www.mongodb.com/docs/v7.0/reference/program/mongod/#std-option-mongod.--repair
+
 ## Procedure
 
 1. Suspend mongo backups by adding `suspend: true` to the [mongo cronjob](./backups-cron.yml).
