@@ -33,7 +33,7 @@ resource "cloudflare_record" "cname_dns_entry_proxied" {
     cloudflare_record.pi_load_balancer,
     cloudflare_zone.cguertin_dev
   ]
-  for_each = toset(var.domains)
+  for_each = toset(var.proxied_domains)
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
