@@ -29,6 +29,7 @@ variable "domains" {
   description = "The CNAME domains to create"
   type        = list(string)
   default = [
+    "plex",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",
