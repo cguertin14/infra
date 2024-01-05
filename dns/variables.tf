@@ -16,13 +16,19 @@ variable "router_ip" {
   default     = "24.202.157.237"
 }
 
+variable "proxied_domains" {
+  description = "List of CF proxied domains to create"
+  type        = list(string)
+  default = [
+    "@",
+    "preview",
+  ]
+}
+
 variable "domains" {
   description = "The CNAME domains to create"
   type        = list(string)
   default = [
-    "@",
-    "vpn",
-    "preview",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",

@@ -12,8 +12,8 @@ resource "cloudflare_record" "educs" {
   ]
 
   for_each = toset(var.educs_domains)
-  zone_id  = cloudflare_zone.educs.id
   name     = each.value
+  zone_id  = cloudflare_zone.educs.id
   type     = "CNAME"
   value    = cloudflare_record.pi_load_balancer.hostname
   ttl      = 1800

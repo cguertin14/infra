@@ -19,11 +19,25 @@ resource "cloudflare_record" "cname_dns_entry" {
     cloudflare_record.pi_load_balancer,
     cloudflare_zone.cguertin_dev
   ]
-  count   = length(var.domains)
-  zone_id = cloudflare_zone.cguertin_dev.id
-  name    = var.domains[count.index]
-  type    = "CNAME"
-  value   = cloudflare_record.pi_load_balancer.hostname
-  ttl     = 1800
-  proxied = false
+  for_each = toset(var.domains)
+  name     = each.value
+  zone_id  = cloudflare_zone.cguertin_dev.id
+  type     = "CNAME"
+  value    = cloudflare_record.pi_load_balancer.hostname
+  ttl      = 1800
+  proxied  = false
+}
+
+resource "cloudflare_record" "cname_dns_entry_proxied" {
+  depends_on = [
+    cloudflare_record.pi_load_balancer,
+    cloudflare_zone.cguertin_dev
+  ]
+  for_each = toset(var.domains)
+  name     = each.value
+  zone_id  = cloudflare_zone.cguertin_dev.id
+  type     = "CNAME"
+  value    = cloudflare_record.pi_load_balancer.hostname
+  ttl      = 1
+  proxied  = true
 }
