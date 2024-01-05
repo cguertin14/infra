@@ -40,6 +40,8 @@ helmCharts:
             app.kubernetes.io/other: nginx-metrics
         serviceMonitor:
           enabled: false
+      config:
+        use-http2: true
 
 patches:
 - path: patches/update-resources.yml
