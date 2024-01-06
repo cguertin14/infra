@@ -30,6 +30,10 @@ variable "domains" {
   type        = list(string)
   default = [
     "plex",
+    "sonarr",
+    "radarr",
+    "prowlarr",
+    "qbittorrent",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",
