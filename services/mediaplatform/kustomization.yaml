@@ -1,0 +1,163 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: mediaplatform
+
+resources:
+- resources/namespace.yml
+- resources/volumes.yml
+- resources/ingresses.yml
+
+## Important: Storage logic
+#
+# 1. each service must have its own PVC. -> Add 'persistence' to each chart. -> DONE.
+# 2. radarr, sonarr and qbittorrent all use the same PVC as PLEX.
+# 3. currently, the PVC is part of a claimTemplate on the plex StatefulSet.
+#    we'll need to create it manually, and then reference it in each SS/Deployment
+#    via volumes[0].persistentVolumeClaim.claimName.
+
+# Installation from: https://www.plex.tv/en-ca/blog/plex-pro-week-23-a-z-on-k8s-for-plex-media-server/
+
+helmCharts:
+- name: plex-media-server
+  namespace: mediaplatform
+  releaseName: plex-media-server
+  repo: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
+  valuesInline:
+    extraEnv:
+      ADVERTISE_IP: https://plex.media.cguertin.dev
+      PLEX_GID: 1002
+      PLEX_UID: 1001
+      TZ: America/Toronto
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-issuer
+      enabled: false
+      ingressClassName: ingress-nginx
+      url: https://plex.cguertin.dev
+    pms:
+      configStorage: 10Gi
+    service:
+      type: LoadBalancer
+# Below charts live here -> https://github.com/k8s-at-home/charts/tree/master/charts/stable
+- name: radarr
+  namespace: mediaplatform
+  releaseName: radarr
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 16.3.2
+- name: sonarr
+  namespace: mediaplatform
+  releaseName: sonarr
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 16.3.2
+- name: prowlarr
+  namespace: mediaplatform
+  releaseName: prowlarr
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 4.5.2
+- name: qbittorrent
+  namespace: mediaplatform
+  releaseName: qbittorrent
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+      WEBUI_PORT: 443
+    service:
+      main:
+        ports:
+          http:
+            port: 443
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 13.5.2
+
+# Setting proper image tags on each service.
+images:
+- name: index.docker.io/plexinc/pms-docker
+  newName: linuxserver/plex
+  newTag: 1.32.8
+- name: ghcr.io/k8s-at-home/sonarr
+  newName: linuxserver/sonarr
+  newTag: 4.0.0
+- name: ghcr.io/k8s-at-home/radarr
+  newName: linuxserver/radarr
+  newTag: 5.3.0-nightly
+- name: ghcr.io/k8s-at-home/prowlarr
+  newName: linuxserver/prowlarr
+  newTag: 1.12.0-nightly
+- name: ghcr.io/k8s-at-home/qbittorrent
+  newName: linuxserver/qbittorrent
+  newTag: 4.6.2
+
+# Patches to add standalone common PVC to each service.
+patches:
+- path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer
+- path: patches/container-auth-patch.yml # add env variables to each service
+- path: patches/pvc-mediaserver-plex-patch.yml
+  target:
+    group: apps
+    kind: StatefulSet
+    name: plex-media-server
+    version: v1
+- path: patches/pvc-mediaserver-movies-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: radarr
+    version: v1
+- path: patches/pvc-mediaserver-tvshows-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: sonarr
+    version: v1
+- path: patches/pvc-mediaserver-downloads-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: qbittorrent
+    version: v1
+- path: patches/update-qbittorrent-host-header-patch-cm.yml
+  target:
+    kind: ConfigMap
+    name: qbittorrent-scripts
+    version: v1
+- path: patches/update-qbittorrent-host-header-patch-depl.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: qbittorrent
+    version: v1
+
+configMapGenerator:
+- literals:
+  - PUID=1001
+  - PGID=1002
+  name: mediaplatform-env
+
+generators:
+- secrets-generator.yml

@@ -1,0 +1,18 @@
+- op: add
+  path: /data
+  value:
+    99-webui-host-header: |
+      #!/bin/bash
+      QBITTORRENT_CONFIGFILE="/config/qBittorrent/qBittorrent.conf"
+
+      host_header_exists=$(cat ${QBITTORRENT_CONFIGFILE} | grep -m 1 'WebUI\\HostHeaderValidation=false')
+      if [[ -z "${host_header_exists}" ]]; then
+        host_exists=$(cat ${QBITTORRENT_CONFIGFILE} | grep -m 1 'WebUI\\HostHeaderValidation')
+        if [[ ! -z "${host_exists}" ]]; then
+          # Get line number of HostHeaderValidation
+          LINE_NUM=$(grep -Fn -m 1 'WebUI\HostHeaderValidation' ${QBITTORRENT_CONFIGFILE} | cut -d: -f 1)
+          sed -i "${LINE_NUM}s@.*@WebUI\\HostHeaderValidation=false@" ${QBITTORRENT_CONFIGFILE}
+        else
+          echo "WebUI\\HostHeaderValidation=false" >> ${QBITTORRENT_CONFIGFILE}
+        fi
+      fi

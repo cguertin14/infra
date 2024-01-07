@@ -1,0 +1,127 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pms-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - plex.media.cguertin.dev
+    secretName: pms-cert
+  rules:
+  - host: plex.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: plex-media-server
+            port:
+              name: pms
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radarr-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - radarr.media.cguertin.dev
+    secretName: radarr-cert
+  rules:
+  - host: radarr.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: radarr
+            port:
+              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - sonarr.media.cguertin.dev
+    secretName: sonarr-cert
+  rules:
+  - host: sonarr.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sonarr
+            port:
+              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prowlarr-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - prowlarr.media.cguertin.dev
+    secretName: prowlarr-cert
+  rules:
+  - host: prowlarr.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prowlarr
+            port:
+              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - qbittorrent.media.cguertin.dev
+    secretName: qbittorrent-cert
+  rules:
+  - host: qbittorrent.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: qbittorrent
+            port:
+              name: http

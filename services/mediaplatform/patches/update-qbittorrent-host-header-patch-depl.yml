@@ -1,0 +1,15 @@
+# volumes change
+- op: add
+  path: /spec/template/spec/volumes/2
+  value:
+    name: qbittorrent-scripts
+    configMap:
+      name: qbittorrent-scripts
+      defaultMode: 511
+
+# volumeMounts change
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/2
+  value:
+    name: qbittorrent-scripts
+    mountPath: /config/custom-cont-init.d

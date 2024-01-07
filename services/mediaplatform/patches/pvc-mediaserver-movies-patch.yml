@@ -1,0 +1,18 @@
+# volumes change
+- op: add
+  path: /spec/template/spec/volumes/1
+  value:
+    name: mediaserver-data
+    persistentVolumeClaim:
+      claimName: mediaserver-data
+# volumeMounts change
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/1
+  value:
+    name: mediaserver-data
+    mountPath: /media/movies
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/2
+  value:
+    name: mediaserver-data
+    mountPath: /media/downloads
