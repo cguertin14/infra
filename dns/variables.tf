@@ -30,6 +30,7 @@ variable "domains" {
   type        = list(string)
   default = [
     "plex.media",
+    "jellyfin.media",
     "sonarr.media",
     "radarr.media",
     "prowlarr.media",
