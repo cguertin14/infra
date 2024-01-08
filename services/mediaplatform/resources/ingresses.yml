@@ -25,6 +25,30 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: jellyfin-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - jellyfin.media.cguertin.dev
+    secretName: pms-cert
+  rules:
+  - host: jellyfin.media.cguertin.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jellyfin
+            port:
+              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: radarr-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"

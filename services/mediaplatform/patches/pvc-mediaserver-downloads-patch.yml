@@ -10,4 +10,4 @@
   path: /spec/template/spec/containers/0/volumeMounts/1
   value:
     name: mediaserver-data
-    mountPath: /media/downloads
+    mountPath: /downloads

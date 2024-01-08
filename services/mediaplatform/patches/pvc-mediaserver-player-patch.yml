@@ -10,4 +10,9 @@
   path: /spec/template/spec/containers/0/volumeMounts/1
   value:
     name: mediaserver-data
-    mountPath: /media
+    mountPath: /tvshows
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/2
+  value:
+    name: mediaserver-data
+    mountPath: /movies

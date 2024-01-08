@@ -51,6 +51,19 @@ spec:
             name: mediaplatform-env
 ---
 apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      containers:
+      - name: jellyfin
+        envFrom:
+        - configMapRef:
+            name: mediaplatform-env
+---
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: plex-media-server
