@@ -401,22 +401,22 @@ spec:
     automated:
       selfHeal: true
       prune: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: mediaplatform
-#   namespace: argocd
-# spec:
-#   project: production
-#   destination:
-#     namespace: mediaplatform
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/cguertin14/infra
-#     targetRevision: main
-#     path: services/mediaplatform
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mediaplatform
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: mediaplatform
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/mediaplatform
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

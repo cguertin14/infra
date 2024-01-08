@@ -33,7 +33,7 @@ spec:
   tls:
   - hosts:
     - jellyfin.media.cguertin.dev
-    secretName: pms-cert
+    secretName: jellyfin-cert
   rules:
   - host: jellyfin.media.cguertin.dev
     http:
