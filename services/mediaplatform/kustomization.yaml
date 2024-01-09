@@ -103,6 +103,10 @@ helmCharts:
         size: 2Gi
   version: 13.5.2
 
+replicas:
+- name: plex-media-server
+  count: 0 # TODO: Set to 1 to deploy.
+
 # Setting proper image tags on each service.
 images:
 - name: index.docker.io/plexinc/pms-docker
@@ -126,7 +130,7 @@ images:
 
 # Patches to add standalone common PVC to each service.
 patches:
-- path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer
+# - path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer -> TODO: UNCOMMENT if plex redeployed.
 - path: patches/container-auth-patch.yml # add env variables to each service
 - path: patches/pvc-mediaserver-player-patch.yml
   target:
