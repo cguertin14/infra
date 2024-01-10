@@ -125,8 +125,9 @@ images:
   newName: linuxserver/plex
   newTag: 1.32.8
 - name: jellyfin/jellyfin
-  newName: linuxserver/jellyfin
-  newTag: 10.8.13
+  newTag: 20240108.5-unstable
+  # newName: linuxserver/jellyfin
+  # newTag: 10.8.13
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.0
