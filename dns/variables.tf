@@ -35,6 +35,7 @@ variable "domains" {
     "radarr.media",
     "prowlarr.media",
     "qbittorrent.media",
+    "sabnzbd.media",
     "auth.k8s",
     "gitops.k8s",
     "pihole.k8s",
