@@ -118,6 +118,8 @@ helmCharts:
 replicas:
 - name: plex-media-server
   count: 0 # TODO: Set to 1 to deploy.
+- name: jellyfin
+  count: 0
 
 # Setting proper image tags on each service.
 images:
