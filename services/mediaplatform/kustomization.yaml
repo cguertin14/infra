@@ -102,6 +102,18 @@ helmCharts:
         enabled: true
         size: 2Gi
   version: 13.5.2
+- name: sabnzbd
+  namespace: mediaplatform
+  releaseName: sabnzbd
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 9.4.2
 
 replicas:
 - name: plex-media-server
@@ -127,6 +139,9 @@ images:
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.2
+- name: ghcr.io/k8s-at-home/sabnzbd
+  newName: linuxserver/sabnzbd
+  newTag: 4.2.1
 
 # Patches to add standalone common PVC to each service.
 patches:
@@ -161,6 +176,12 @@ patches:
     group: apps
     kind: Deployment
     name: qbittorrent
+    version: v1
+- path: patches/pvc-mediaserver-downloads-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: sabnzbd
     version: v1
 - path: patches/update-qbittorrent-host-header-patch-cm.yml
   target:

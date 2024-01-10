@@ -53,6 +53,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: sabnzbd
+spec:
+  template:
+    spec:
+      containers:
+      - name: sabnzbd
+        envFrom:
+        - configMapRef:
+            name: mediaplatform-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: jellyfin
 spec:
   template:
