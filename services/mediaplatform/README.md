@@ -23,3 +23,8 @@ Head over to https://epg.best/, log in.
 
 1. Copy `My EPG XML link`, then add it as a new `TV Guide Data Provider` in Jellyfin
 2. Copy all the `m3u` links, then add them as individual m3u `Tuner Devices` in Jellyfin.
+
+## Known Issues
+
+Currently, in versions <10.9.0, DTS-enabled livefeeds have no sound. This is fixed in version 10.9.0, which is unreleased.
+In that version, simply enable `Ignore DTS` in playback settings.
