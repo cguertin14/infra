@@ -126,7 +126,7 @@ images:
   newTag: 1.32.8
 - name: jellyfin/jellyfin
   newName: linuxserver/jellyfin
-  newTag: nightly-20231115.15-unstable-ls50 # 10.8.13
+  newTag: nightly-version-20231115.15-unstable # 10.8.13
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.0
