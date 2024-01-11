@@ -26,5 +26,7 @@ Head over to https://epg.best/, log in.
 
 ## Known Issues
 
+### Jellyfin
+
 Currently, in versions <10.9.0, DTS-enabled livefeeds have no sound. This is fixed in version 10.9.0, which is unreleased.
 In that version, simply enable `Ignore DTS` in playback settings.
