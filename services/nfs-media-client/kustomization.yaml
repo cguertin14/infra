@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- resources/rbac.yml
+- resources/namespace.yml
+- resources/storage_class.yml
+- resources/provisioner.yml
+
+namespace: synology-nfs-media
+
+images:
+- name: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+  newTag: v4.0.2
+
+commonLabels:
+  app.kubernetes.io/name: synology-nfs-media

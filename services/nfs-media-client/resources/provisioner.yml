@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-client-provisioner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+      - name: nfs-client-provisioner
+        image: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+        volumeMounts:
+        - name: nfs-client-root
+          mountPath: /persistentvolumes
+        env:
+        - name: PROVISIONER_NAME
+          value: homelab-nfs-media
+        - name: NFS_SERVER
+          value: 192.168.0.205
+        - name: NFS_PATH
+          value: /volume1/k8s
+      volumes:
+      - name: nfs-client-root
+        nfs:
+          server: 192.168.0.205
+          path: /volume1/k8s
