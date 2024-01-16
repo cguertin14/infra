@@ -28,6 +28,9 @@ helmCharts:
   releaseName: pihole
   namespace: pihole
   valuesInline:
+    admin:
+      enabled: false
+      
     resources:
       requests:
         cpu: "20m"
