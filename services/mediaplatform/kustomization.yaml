@@ -46,6 +46,11 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
+    resources:
+      # Warning: No limits.
+      requests:
+        cpu: '4' # take the whole node, so that no other workload can be scheduled on it.
+        memory: 8Gi
   version: 9.5.3
 # Below charts live here -> https://github.com/k8s-at-home/charts/tree/master/charts/stable
 - name: radarr
@@ -147,6 +152,7 @@ images:
 patches:
 # - path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer -> TODO: UNCOMMENT if plex redeployed.
 - path: patches/container-auth-patch.yml # add env variables to each service
+- path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/pvc-mediaserver-player-patch.yml
   target:
     group: apps
