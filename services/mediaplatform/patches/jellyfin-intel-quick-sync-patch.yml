@@ -11,7 +11,7 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         supplementalGroups:
-        - 44 # 109 # ID of the 'render' group
+        - 109 # ID of the 'render' group
       containers:
       - name: "jellyfin"
         securityContext:
