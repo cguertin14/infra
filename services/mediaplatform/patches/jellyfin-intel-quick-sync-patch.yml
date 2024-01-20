@@ -11,7 +11,7 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         supplementalGroups:
-        - 122 # Change this to match your "render" host group id and remove this comment
+        - 109 # ID of the 'render' group
       containers:
       - name: "jellyfin"
         securityContext:
