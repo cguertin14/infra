@@ -64,21 +64,6 @@ spec:
             name: mediaplatform-env
 ---
 apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jellyfin
-spec:
-  template:
-    spec:
-      containers:
-      - name: jellyfin
-        env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
----
-apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: plex-media-server
