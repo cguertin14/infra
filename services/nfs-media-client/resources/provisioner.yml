@@ -8,7 +8,7 @@ spec:
     type: Recreate
   template:
     spec:
-      serviceAccountName: nfs-client-provisioner
+      serviceAccountName: media-nfs-client-provisioner
       containers:
       - name: nfs-client-provisioner
         image: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
