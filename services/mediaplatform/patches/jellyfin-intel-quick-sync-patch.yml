@@ -1,0 +1,25 @@
+## Docs: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#kubernetes
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        supplementalGroups:
+        - 109 # ID of the 'render' group
+      containers:
+      - name: "jellyfin"
+        securityContext:
+          privileged: true # Container must run as privileged inside of the pod
+        volumeMounts:
+        - name: "render-device"
+          mountPath: "/dev/dri/renderD128"
+      volumes:
+      - name: "render-device"
+        hostPath:
+          path: "/dev/dri/renderD128"
