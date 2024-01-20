@@ -2,34 +2,34 @@
 - op: add
   path: /spec/template/spec/volumes/1
   value:
-    name: mediaserver-downloads-data
+    name: mediaserver-downloads-storage
     persistentVolumeClaim:
-      claimName: mediaserver-downloads-data
+      claimName: mediaserver-downloads-storage
 - op: add
   path: /spec/template/spec/volumes/2
   value:
-    name: mediaserver-shows-data
+    name: mediaserver-shows-storage
     persistentVolumeClaim:
-      claimName: mediaserver-shows-data
+      claimName: mediaserver-shows-storage
 - op: add
   path: /spec/template/spec/volumes/3
   value:
-    name: mediaserver-movies-data
+    name: mediaserver-movies-storage
     persistentVolumeClaim:
-      claimName: mediaserver-movies-data
+      claimName: mediaserver-movies-storage
 # volumeMounts change
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts/1
   value:
-    name: mediaserver-downloads-data
+    name: mediaserver-downloads-storage
     mountPath: /media
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts/2
   value:
-    name: mediaserver-shows-data
+    name: mediaserver-shows-storage
     mountPath: /tvshows
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts/3
   value:
-    name: mediaserver-movies-data
+    name: mediaserver-movies-storage
     mountPath: /movies

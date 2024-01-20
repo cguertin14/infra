@@ -82,6 +82,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: nfs-media-client
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: synology-nfs-media
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/nfs-media-client
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: monitoring
   namespace: argocd
 spec:
