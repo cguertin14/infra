@@ -49,7 +49,7 @@ helmCharts:
     resources:
       # Warning: No limits.
       requests:
-        cpu: '4' # take the whole node, so that no other workload can be scheduled on it.
+        cpu: '7' # take the whole node, so that no other workload can be scheduled on it. (there are 8 cores, but let's use 7)
         memory: 8Gi
   version: 9.5.3
 # Below charts live here -> https://github.com/k8s-at-home/charts/tree/master/charts/stable
