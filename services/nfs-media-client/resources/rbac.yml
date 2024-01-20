@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: nfs-client-provisioner
+  name: media-nfs-client-provisioner
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: nfs-client-provisioner-runner
+  name: media-nfs-client-provisioner-runner
 rules:
   - apiGroups: [""]
     resources: ["persistentvolumes"]
@@ -24,20 +24,20 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: run-nfs-client-provisioner
+  name: run-media-nfs-client-provisioner
 subjects:
   - kind: ServiceAccount
-    name: nfs-client-provisioner
+    name: media-nfs-client-provisioner
     # replace with namespace where provisioner is deployed
 roleRef:
   kind: ClusterRole
-  name: nfs-client-provisioner-runner
+  name: media-nfs-client-provisioner-runner
   apiGroup: rbac.authorization.k8s.io
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: leader-locking-nfs-client-provisioner
+  name: leader-locking-media-nfs-client-provisioner
   # replace with namespace where provisioner is deployed
 rules:
   - apiGroups: [""]
@@ -47,13 +47,13 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: leader-locking-nfs-client-provisioner
+  name: leader-locking-media-nfs-client-provisioner
   # replace with namespace where provisioner is deployed
 subjects:
   - kind: ServiceAccount
-    name: nfs-client-provisioner
+    name: media-nfs-client-provisioner
     # replace with namespace where provisioner is deployed
 roleRef:
   kind: Role
-  name: leader-locking-nfs-client-provisioner
+  name: leader-locking-media-nfs-client-provisioner
   apiGroup: rbac.authorization.k8s.io
