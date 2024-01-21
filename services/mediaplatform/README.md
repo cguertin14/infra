@@ -17,6 +17,10 @@ Provider is news.newshosting.com, SSL on port 563. Credentials can be found on h
 
 ## Jellyfin Setup
 
+### Hardware Acceleration
+
+Official setup guide is [here](https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-with-linux-virtualization), this is already done through [this](./patches/jellyfin-intel-quick-sync-patch.yml). Simply enable it in the Jellyfin UI, in Playback settings.
+
 ### IPTV Providers
 
 Head over to https://epg.best/, log in.
