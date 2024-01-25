@@ -4,8 +4,8 @@ kind: Kustomization
 namespace: argo-rollouts
 
 resources:
-- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.6.4
-- github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=v1.6.4
+- github.com/argoproj/argo-rollouts/manifests/cluster-install?ref=v1.6.5
+- github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=v1.6.5
 - resources/ingress.yml
 - resources/namespace.yml
 - metrics/service-monitor.yml
@@ -15,9 +15,9 @@ resources:
 
 images:
 - name: quay.io/argoproj/argo-rollouts
-  newTag: v1.6.4
+  newTag: v1.6.5
 - name: quay.io/argoproj/kubectl-argo-rollouts
-  newTag: v1.6.4
+  newTag: v1.6.5
 - name: cguertz/load-tester
   newTag: v1.0.0
 
