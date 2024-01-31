@@ -152,6 +152,8 @@ patches:
 # - path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer -> TODO: UNCOMMENT if plex redeployed.
 - path: patches/container-auth-patch.yml # add env variables to each service
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
+- path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
+- path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node
 - path: patches/pvc-mediaserver-player-patch.yml
   target:
     group: apps
