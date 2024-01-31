@@ -150,7 +150,7 @@ images:
   newTag: 4.6.3
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
-  newTag: 4.2.1
+  newTag: 4.2.2
 
 # Patches to add standalone common PVC to each service.
 patches:
