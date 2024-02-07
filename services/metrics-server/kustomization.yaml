@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
 - name: metrics-server
   releaseName: metrics-server
-  version: 3.11.0
+  version: 3.12.0
   repo: https://kubernetes-sigs.github.io/metrics-server/
   namespace: kube-system
   valuesInline:
