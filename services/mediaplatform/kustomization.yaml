@@ -159,6 +159,7 @@ patches:
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
 - path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node
+- path: patches/qbittorrent-affinity-rules-patch.yml # configure Qbittorrent to run on the mediaserver node
 - path: patches/pvc-mediaserver-player-patch.yml
   target:
     group: apps
