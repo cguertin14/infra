@@ -144,7 +144,7 @@ images:
   newTag: 5.3.5-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.13.3-nightly
+  newTag: 1.14.0-nightly
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.3
