@@ -133,7 +133,7 @@ replicas:
 images:
 - name: index.docker.io/plexinc/pms-docker
   newName: linuxserver/plex
-  newTag: 1.32.8
+  newTag: 1.40.0
 - name: jellyfin/jellyfin
   newTag: 10.8.13
 - name: ghcr.io/k8s-at-home/sonarr
