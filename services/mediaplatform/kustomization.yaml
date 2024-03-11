@@ -141,16 +141,16 @@ images:
   newTag: 4.0.2
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.4.2-nightly
+  newTag: 5.4.3-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.14.2-nightly
+  newTag: 1.14.3-nightly
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.3
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
-  newTag: 4.2.2
+  newTag: 4.2.3
 
 # Patches to add standalone common PVC to each service.
 patches:
