@@ -141,7 +141,7 @@ images:
   newTag: 4.0.2
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.4.4-nightly
+  newTag: 5.4.5-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
   newTag: 1.15.0-nightly
