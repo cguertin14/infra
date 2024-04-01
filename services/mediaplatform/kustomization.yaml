@@ -107,6 +107,19 @@ helmCharts:
         enabled: true
         size: 2Gi
   version: 13.5.2
+- name: deluge
+  namespace: mediaplatform
+  releaseName: deluge
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+      DELUGE_LOGLEVEL: error
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 5.4.2
 - name: sabnzbd
   namespace: mediaplatform
   releaseName: sabnzbd
@@ -148,6 +161,8 @@ images:
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.4
+- name: linuxserver/deluge
+  newTag: 2.1.1
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
   newTag: 4.2.3
@@ -189,6 +204,12 @@ patches:
     group: apps
     kind: Deployment
     name: qbittorrent
+    version: v1
+- path: patches/pvc-mediaserver-downloads-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: deluge
     version: v1
 - path: patches/pvc-mediaserver-downloads-patch.yml
   target:
