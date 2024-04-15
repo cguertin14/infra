@@ -151,10 +151,10 @@ images:
   newTag: 10.8.13
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
-  newTag: 4.0.3
+  newTag: 4.0.4
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.4.6-nightly
+  newTag: 5.5.0-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
   newTag: 1.16.1-nightly
