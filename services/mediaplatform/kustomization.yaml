@@ -146,7 +146,7 @@ replicas:
 images:
 - name: index.docker.io/plexinc/pms-docker
   newName: linuxserver/plex
-  newTag: 1.40.1
+  newTag: 1.40.2
 - name: jellyfin/jellyfin
   newTag: 10.8.13
 - name: ghcr.io/k8s-at-home/sonarr
@@ -157,7 +157,7 @@ images:
   newTag: 5.5.0-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.16.1-nightly
+  newTag: 1.16.2-nightly
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.4
