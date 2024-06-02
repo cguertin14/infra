@@ -148,24 +148,24 @@ images:
   newName: linuxserver/plex
   newTag: 1.40.2
 - name: jellyfin/jellyfin
-  newTag: 10.9.3
+  newTag: 10.9.4
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
-  newTag: 4.0.4
+  newTag: 4.0.5
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
   newTag: 5.7.0-nightly
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.18.0-nightly
+  newTag: 1.19.0-nightly
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
-  newTag: 4.6.4
+  newTag: 4.6.5
 - name: linuxserver/deluge
   newTag: 2.1.1
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
-  newTag: 4.3.1
+  newTag: 4.3.2
 
 # Patches to add standalone common PVC to each service.
 patches:
