@@ -33,8 +33,6 @@ helmCharts:
       url: https://plex.cguertin.dev
     pms:
       configStorage: 10Gi
-    service:
-      type: LoadBalancer
 - name: jellyfin
   namespace: mediaplatform
   releaseName: jellyfin
@@ -175,6 +173,11 @@ patches:
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
 - path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node
 - path: patches/qbittorrent-affinity-rules-patch.yml # configure Qbittorrent to run on the mediaserver node
+- path: patches/jellyfin-load-balancer-patch.yml # configure Jellyfin to use a Load Balancer
+  target:
+    kind: Service
+    name: jellyfin
+    version: v1
 - path: patches/pvc-mediaserver-player-patch.yml
   target:
     group: apps
