@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -13,13 +16,17 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 18,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "cacheTimeout": null,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -28,7 +35,11 @@
           },
           "custom": {
             "align": "left",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -55,26 +66,32 @@
         "y": 0
       },
       "id": 6,
-      "interval": null,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "frameIndex": 2,
         "showHeader": true
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.5.3",
       "repeat": "datasource",
       "repeatDirection": "h",
-      "scopedVars": {
-        "datasource": {
-          "selected": true,
-          "text": "prometheus",
-          "value": "prometheus"
-        }
-      },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "min_over_time(node_thermal_zone_temp[${__range_s}s])",
+          "expr": "min_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s])",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -84,8 +101,13 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg_over_time(node_thermal_zone_temp[${__range_s}s])",
+          "expr": "avg_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s])",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -95,8 +117,13 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "max_over_time(node_thermal_zone_temp[${__range_s}s])",
+          "expr": "max_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s])",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -106,8 +133,13 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "last_over_time(node_thermal_zone_temp[${__range_s}s])",
+          "expr": "last_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s])",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -117,8 +149,6 @@
           "refId": "D"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Temperatures per machine",
       "transformations": [
         {
@@ -185,7 +215,10 @@
       "type": "table"
     },
     {
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -234,6 +267,8 @@
       "id": 10,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -243,13 +278,19 @@
           "values": false
         },
         "showUnfilled": true,
-        "text": {}
+        "text": {},
+        "valueMode": "color"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "min(min_over_time(node_thermal_zone_temp[${__range_s}s]))",
+          "expr": "min(min_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s]))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -259,8 +300,13 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg(avg_over_time(node_thermal_zone_temp[${__range_s}s]))",
+          "expr": "avg(avg_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s]))",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -270,8 +316,13 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "max(max_over_time(node_thermal_zone_temp[${__range_s}s]))",
+          "expr": "max(max_over_time(node_thermal_zone_temp{type=\"cpu-thermal\"}[${__range_s}s]))",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -289,12 +340,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
-      "description": "Temperatures over time per instance.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
       },
+      "description": "Temperatures over time per instance.",
       "fill": 3,
       "fillGradient": 7,
       "gridPos": {
@@ -321,7 +371,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -331,11 +381,17 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (instance) (node_thermal_zone_temp)",
+          "expr": "sum by (instance) (node_thermal_zone_temp{type=\"cpu-thermal\"})",
           "interval": "",
           "legendFormat": "{{instance}}",
           "queryType": "randomWalk",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -359,9 +415,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Temperatures over time",
       "tooltip": {
         "shared": true,
@@ -370,16 +424,13 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:55",
-          "decimals": null,
           "format": "celsius",
           "label": "",
           "logBase": 1,
@@ -390,21 +441,17 @@
         {
           "$$hashKey": "object:56",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 27,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -418,5 +465,6 @@
   "timezone": "",
   "title": "Node Temperatures",
   "uid": "_BhwvilMk",
-  "version": 7
+  "version": 1,
+  "weekStart": ""
 }
