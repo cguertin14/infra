@@ -29,6 +29,7 @@ variable "domains" {
   description = "The CNAME domains to create"
   type        = list(string)
   default = [
+    "ha", # home-assistant
     "plex.media",
     "jellyfin.media",
     "sonarr.media",
