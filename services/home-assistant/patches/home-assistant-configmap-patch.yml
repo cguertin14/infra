@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+spec:
+  template:
+    spec:
+      containers:
+      - name: home-assistant
+        volumeMounts:
+        - mountPath: /config/configuration.yaml
+          name: configuration-file
+      volumes:
+      - name: configuration-file
+        configMap:
+          name: home-assistant-configuration-file
