@@ -27,7 +27,7 @@ helmCharts:
 
     persistence:
       config:
-        enabled: false # TODO: Validate that this works
+        enabled: true
       usb:
         enabled: true
         type: hostPath
@@ -85,11 +85,3 @@ helmCharts:
       #   cpu: '6' # take the whole node, so that only sabnzbd can be scheduled on it. (there are 8 cores, but let's use 6)
       #   memory: 8Gi
 
-configMapGenerator:
-- name: home-assistant-configuration-file
-  namespace: home-assistant
-  files:
-  - config/configuration.yaml
-
-patches:
-- path: patches/home-assistant-configmap-patch.yml # configure Jellyfin to run on the mediaserver node
