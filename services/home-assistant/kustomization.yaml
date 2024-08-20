@@ -52,10 +52,13 @@ helmCharts:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
           - matchExpressions:
-            - key: node-role.kubernetes.io/home-assistant-controller
+            - key: kubernetes.io/hostname
               operator: In
               values:
-              - "true"
+              # Nodes with USB devices attached.
+              - worker3
+              - worker4
+              - worker5
 
     ingress:
       main:
