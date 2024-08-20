@@ -31,7 +31,7 @@ helmCharts:
       usb:
         enabled: true
         type: hostPath
-        hostPath: /dev/bus/usb/001/005
+        hostPath: /dev/bus/usb/001/003
 
     # TODO: See if this is needed?
     # addons:
