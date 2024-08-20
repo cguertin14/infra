@@ -83,3 +83,5 @@ helmCharts:
       #   cpu: '6' # take the whole node, so that only sabnzbd can be scheduled on it. (there are 8 cores, but let's use 6)
       #   memory: 8Gi
 
+patches:
+- patches/home-assistant-hostnetwork-patch.yml
