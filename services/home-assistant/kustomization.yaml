@@ -27,7 +27,7 @@ helmCharts:
 
     persistence:
       config:
-        enabled: true # TODO: Validate that this works
+        enabled: false # TODO: Validate that this works
       usb:
         enabled: true
         type: hostPath
