@@ -84,4 +84,4 @@ helmCharts:
       #   memory: 8Gi
 
 patches:
-- patches/home-assistant-hostnetwork-patch.yml
+- path: patches/home-assistant-hostnetwork-patch.yml
