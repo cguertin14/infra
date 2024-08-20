@@ -30,8 +30,8 @@ helmCharts:
         enabled: true # TODO: Validate that this works
       usb:
         enabled: true
-        type: hostPath # TODO: Change this
-        hostPath: /path/to/device # TODO: Change this
+        type: hostPath
+        hostPath: /dev/bus/usb/001/005
 
     # TODO: See if this is needed?
     # addons:
