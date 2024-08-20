@@ -23,6 +23,7 @@ spec:
         dnsNames:
         - 'cguertin.dev'
         - 'preview.cguertin.dev'
+        - 'ha.cguertin.dev'
         - 'plex.media.cguertin.dev'
         - 'jellyfin.media.cguertin.dev'
         - 'radarr.media.cguertin.dev'
