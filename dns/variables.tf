@@ -34,8 +34,6 @@ variable "domains" {
     "sonarr.media",
     "radarr.media",
     "prowlarr.media",
-    "readarr.media",
-    "calibre.media",
     "qbittorrent.media",
     "sabnzbd.media",
     "auth.k8s",
