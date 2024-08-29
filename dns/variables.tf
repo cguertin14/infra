@@ -30,7 +30,6 @@ variable "domains" {
   type        = list(string)
   default = [
     "ha", # home-assistant
-    "plex.media",
     "jellyfin.media",
     "sonarr.media",
     "radarr.media",

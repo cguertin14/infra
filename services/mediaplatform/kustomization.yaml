@@ -258,6 +258,3 @@ configMapGenerator:
   - PUID=1001
   - PGID=1002
   name: mediaplatform-env
-
-generators:
-- secrets-generator.yml

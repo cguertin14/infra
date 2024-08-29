@@ -40,6 +40,45 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: readarr
+spec:
+  template:
+    spec:
+      containers:
+      - name: readarr
+        envFrom:
+        - configMapRef:
+            name: mediaplatform-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre
+spec:
+  template:
+    spec:
+      containers:
+      - name: calibre
+        envFrom:
+        - configMapRef:
+            name: mediaplatform-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre-web
+spec:
+  template:
+    spec:
+      containers:
+      - name: calibre-web
+        envFrom:
+        - configMapRef:
+            name: mediaplatform-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: qbittorrent
 spec:
   template:
@@ -62,18 +101,4 @@ spec:
         envFrom:
         - configMapRef:
             name: mediaplatform-env
----
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: plex-media-server
-spec:
-  serviceName: plex-media-server
-  template:
-    spec:
-      containers:
-      - name: plex-media-server-pms
-        envFrom:
-        - secretRef:
-            name: plex-claim
         
