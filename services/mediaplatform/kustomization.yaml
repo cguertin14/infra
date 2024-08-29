@@ -11,28 +11,9 @@ resources:
 ## Important: Storage logic
 #
 # 1. each service must have its own PVC. -> Add 'persistence' to each chart. -> DONE.
-# 2. radarr, sonarr and qbittorrent all use the same PVC as PLEX.
+# 2. radarr, sonarr and qbittorrent all use the same PVC as Jellyfin.
 
 helmCharts:
-# Installation from: https://www.plex.tv/en-ca/blog/plex-pro-week-23-a-z-on-k8s-for-plex-media-server/
-- name: plex-media-server
-  namespace: mediaplatform
-  releaseName: plex-media-server
-  repo: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
-  valuesInline:
-    extraEnv:
-      ADVERTISE_IP: https://plex.media.cguertin.dev
-      PLEX_GID: 1002
-      PLEX_UID: 1001
-      TZ: America/Toronto
-    ingress:
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-issuer
-      enabled: false
-      ingressClassName: ingress-nginx
-      url: https://plex.cguertin.dev
-    pms:
-      configStorage: 10Gi
 - name: jellyfin
   namespace: mediaplatform
   releaseName: jellyfin
@@ -171,15 +152,8 @@ helmCharts:
         memory: 1Gi
   version: 9.4.2
 
-replicas:
-- name: plex-media-server
-  count: 0 # TODO: Set to 1 to deploy.
-
 # Setting proper image tags on each service.
 images:
-- name: index.docker.io/plexinc/pms-docker
-  newName: linuxserver/plex
-  newTag: 1.40.5
 - name: jellyfin/jellyfin
   newTag: 10.9.10
 - name: ghcr.io/k8s-at-home/sonarr
@@ -209,7 +183,6 @@ images:
 
 # Patches to add standalone common PVC to each service.
 patches:
-# - path: patches/set-plex-lb-ip-patch.yml # set hardcoded IP on Plex Load Balancer -> TODO: UNCOMMENT if plex redeployed.
 - path: patches/container-auth-patch.yml # add env variables to each service
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
@@ -219,12 +192,6 @@ patches:
   target:
     kind: Service
     name: jellyfin
-    version: v1
-- path: patches/pvc-mediaserver-player-patch.yml
-  target:
-    group: apps
-    kind: StatefulSet
-    name: plex-media-server
     version: v1
 - path: patches/pvc-mediaserver-player-patch.yml
   target:

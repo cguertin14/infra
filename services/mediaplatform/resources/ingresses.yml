@@ -1,27 +1,3 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: pms-ingress
-#   annotations:
-#     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-# spec:
-#   ingressClassName: nginx
-#   tls:
-#   - hosts:
-#     - plex.media.cguertin.dev
-#     secretName: pms-cert
-#   rules:
-#   - host: plex.media.cguertin.dev
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: plex-media-server
-#             port:
-#               name: pms
-# ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
