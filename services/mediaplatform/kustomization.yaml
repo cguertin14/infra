@@ -68,18 +68,6 @@ helmCharts:
         enabled: true
         size: 2Gi
   version: 4.5.2
-# - name: readarr
-#   namespace: mediaplatform
-#   releaseName: readarr
-#   repo: https://k8s-at-home.com/charts/
-#   valuesInline:
-#     env:
-#       TZ: America/Toronto
-#     persistence:
-#       config:
-#         enabled: true
-#         size: 2Gi
-#   version: 6.4.2
 - name: calibre
   namespace: mediaplatform
   releaseName: calibre
