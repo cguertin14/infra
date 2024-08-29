@@ -33,3 +33,15 @@ spec:
   resources:
     requests:
       storage: 10Ti
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mediaserver-books-storage
+spec:
+  storageClassName: nfs-media-client
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi

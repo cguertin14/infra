@@ -87,6 +87,54 @@ helmCharts:
         enabled: true
         size: 2Gi
   version: 4.5.2
+- name: readarr
+  namespace: mediaplatform
+  releaseName: readarr
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 6.4.2
+- name: calibre
+  namespace: mediaplatform
+  releaseName: calibre
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 5.4.2
+- name: calibre-web
+  namespace: mediaplatform
+  releaseName: calibre-web
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 8.4.2
+- name: readarr
+  namespace: mediaplatform
+  releaseName: readarr
+  repo: https://k8s-at-home.com/charts/
+  valuesInline:
+    env:
+      TZ: America/Toronto
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+  version: 6.4.2
 - name: qbittorrent
   namespace: mediaplatform
   releaseName: qbittorrent
@@ -105,19 +153,6 @@ helmCharts:
         enabled: true
         size: 2Gi
   version: 13.5.2
-- name: deluge
-  namespace: mediaplatform
-  releaseName: deluge
-  repo: https://k8s-at-home.com/charts/
-  valuesInline:
-    env:
-      TZ: America/Toronto
-      DELUGE_LOGLEVEL: error
-    persistence:
-      config:
-        enabled: true
-        size: 2Gi
-  version: 5.4.2
 - name: sabnzbd
   namespace: mediaplatform
   releaseName: sabnzbd
@@ -156,11 +191,18 @@ images:
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
   newTag: 1.21.2
+- name: ghcr.io/k8s-at-home/readarr
+  newName: linuxserver/readarr
+  newTag: 0.4.0-nightly
+- name: ghcr.io/k8s-at-home/calibre
+  newName: linuxserver/calibre
+  newTag: 7.17.0
+- name: ghcr.io/k8s-at-home/calibre-web
+  newName: linuxserver/calibre
+  newTag: 0.6.23
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.6
-- name: linuxserver/deluge
-  newTag: 2.1.1
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
   newTag: 4.3.3
@@ -202,17 +244,29 @@ patches:
     kind: Deployment
     name: sonarr
     version: v1
-- path: patches/pvc-mediaserver-downloads-patch.yml
+- path: patches/pvc-mediaserver-books-patch.yml
   target:
     group: apps
     kind: Deployment
-    name: qbittorrent
+    name: readarr
+    version: v1
+- path: patches/pvc-mediaserver-books-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: calibre
+    version: v1
+- path: patches/pvc-mediaserver-books-patch.yml
+  target:
+    group: apps
+    kind: Deployment
+    name: calibre-web
     version: v1
 - path: patches/pvc-mediaserver-downloads-patch.yml
   target:
     group: apps
     kind: Deployment
-    name: deluge
+    name: qbittorrent
     version: v1
 - path: patches/pvc-mediaserver-downloads-patch.yml
   target:
