@@ -116,7 +116,7 @@ images:
   newTag: 5.12.2
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.24.3
+  newTag: 1.25.4
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.7
