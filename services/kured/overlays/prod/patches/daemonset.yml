@@ -8,6 +8,9 @@ spec:
     spec:
       containers:
         - name: kured
+          env:
+            - name: KURED_METRICS_PORT
+              value: "8080"
           envFrom:
             - secretRef:
                 name: notify-url
