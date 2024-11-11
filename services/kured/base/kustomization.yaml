@@ -20,8 +20,8 @@ helmCharts:
   namespace: kured
   includeCRDs: true
   valuesInline:
-    metricsPort: 8080
     configuration:
+      metricsPort: 8080
       rebootDays: [sun,mon,tue,wed,thu]
       period: 30m
       timeZone: America/New_York
