@@ -9,7 +9,7 @@ resources:
 images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
-  newTag: "2024.11"
+  newTag: "2024.12"
 
 helmCharts:
 - name: home-assistant
