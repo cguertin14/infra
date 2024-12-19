@@ -13,7 +13,7 @@ helmCharts:
   releaseName: mongodb
   includeCRDs: true
   repo: https://mongodb.github.io/helm-charts
-  version: 0.11.0
+  version: 0.12.0
   valuesInline:
     operator:
       watchNamespace: "*"
