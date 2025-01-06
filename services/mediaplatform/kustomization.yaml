@@ -110,13 +110,13 @@ images:
   newTag: 10.10.3
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
-  newTag: 4.0.11
+  newTag: 4.0.12
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.16.3
+  newTag: 5.17.2
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.28.2
+  newTag: 1.29.2
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.7
