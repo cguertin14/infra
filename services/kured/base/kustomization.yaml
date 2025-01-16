@@ -15,7 +15,7 @@ namespace: kured
 helmCharts:
 - name: kured
   repo: https://kubereboot.github.io/charts
-  version: 5.5.2
+  version: 5.6.0
   releaseName: kured
   namespace: kured
   includeCRDs: true
