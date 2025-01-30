@@ -5,11 +5,44 @@ namespace: home-assistant
 
 resources:
 - resources/namespace.yml
+- resources/voice-assistant-whisper.yml
+- resources/voice-assistant-piper.yml
 
 images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
   newTag: "2025.1"
+- name: lscr.io/linuxserver/faster-whisper
+  newTag: "2.4.0"
+- name: lscr.io/linuxserver/piper
+  newTag: "1.4.0"
+
+replicas:
+- name: whisper
+  count: 1
+- name: piper
+  count: 1
+
+configMapGenerator:
+- name: whisper-config
+  literals:
+  - PUID=1001
+  - PGID=1002
+  - TZ=America/Toronto
+  - WHISPER_MODEL=tiny-int8
+  - WHISPER_LANG=en
+  # - WHISPER_BEAM=1 #optional
+- name: piper-config
+  literals:
+  - PUID=1001
+  - PGID=1002
+  - TZ=America/Toronto
+  - PIPER_VOICE=en_US-amy-medium
+  # - PIPER_LENGTH=1.0 #optional
+  # - PIPER_NOISE=0.667 #optional
+  # - PIPER_NOISEW=0.333 #optional
+  # - PIPER_SPEAKER=0 #optional
+  # - PIPER_PROCS=1 #optional
 
 helmCharts:
 - name: home-assistant
