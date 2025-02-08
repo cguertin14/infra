@@ -31,7 +31,7 @@ configMapGenerator:
   - TZ=America/Toronto
   - WHISPER_MODEL=small
   - WHISPER_LANG=en
-  - WHISPER_BEAM=10
+  #- WHISPER_BEAM=10
 - name: piper-config
   literals:
   - PUID=1001
