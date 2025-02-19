@@ -1,0 +1,26 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-issuer-educs
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: guertincharles@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource used to store the account's private key.
+      name: letsencrypt-private-key
+    solvers:
+    - dns01:
+        cloudflare:
+          email: guertincharles@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-educs-secret
+            key: api-token
+      selector:
+        dnsNames:
+        - 'erabliereducoeursucre.com'
+        - 'www.erabliereducoeursucre.com'
+        - 'api.erabliereducoeursucre.com'

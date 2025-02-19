@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: educs-backend
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer-educs"
 spec:
   ingressClassName: nginx
   tls:
