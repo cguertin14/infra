@@ -41,3 +41,5 @@ spec:
         envFrom:
         - configMapRef:
             name: pihole-config
+        - secretRef:
+            name: pihole-secrets
