@@ -57,6 +57,9 @@ helmCharts:
     adlists:
     - https://raw.githubusercontent.com/StevenBlack/hosts/refs/heads/master/hosts
 
+    whitelist:
+    - raw.githubusercontent.com
+
 configMapGenerator:
 - name: pihole-config
   literals:
