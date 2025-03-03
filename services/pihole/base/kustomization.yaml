@@ -17,7 +17,7 @@ commonLabels:
 
 images:
 - name: ekofr/pihole-exporter
-  newTag: v0.4.0
+  newTag: v1.0.0
 
 helmCharts:
 - name: pihole
