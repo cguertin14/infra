@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
 - resources/namespace.yml
 - resources/ingress.yml
-- metrics/service-monitor.yml
-- metrics/service.yml
+# - metrics/service-monitor.yml
+# - metrics/service.yml
 
 namespace: pihole
 
@@ -16,6 +16,8 @@ commonLabels:
   app.kubernetes.io/name: pihole
 
 images:
+- name: pihole/pihole
+  newTag: 2025.02.7
 - name: ekofr/pihole-exporter
   newTag: v1.0.0
 
