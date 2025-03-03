@@ -4,7 +4,7 @@
     from:
     - namespaceSelector:
         matchLabels:
-          name: kube-system
+          kubernetes.io/metadata.name: kube-system
       podSelector:
         matchLabels:
           app.kubernetes.io/name: nginx-ingress-controller
