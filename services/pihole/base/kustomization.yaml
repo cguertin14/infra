@@ -54,6 +54,9 @@ helmCharts:
     ftl:
       MAXDBDAYS: 15
 
+    adlists:
+    - https://raw.githubusercontent.com/StevenBlack/hosts/refs/heads/master/hosts
+
 configMapGenerator:
 - name: pihole-config
   literals:
