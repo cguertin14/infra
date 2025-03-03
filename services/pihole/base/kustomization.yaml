@@ -27,8 +27,7 @@ helmCharts:
   namespace: pihole
   valuesInline:
     admin:
-      enabled: true
-      existingSecret: pihole-secrets
+      enabled: false
       
     resources:
       requests:
@@ -50,13 +49,14 @@ helmCharts:
     serviceDhcp:
       enabled: false
 
+    virtualHost: pihole.k8s.cguertin.dev
+
     ftl:
-      MAXDBDAYS: 15 # half a month
+      MAXDBDAYS: 15
 
 configMapGenerator:
 - name: pihole-config
   literals:
   - TZ=America/New_York
-  - WEB_PORT=80
-  - VIRTUAL_HOST=pihole.k8s.cguertin.dev
   - FTLCONF_dns_upstreams=8.8.8.8;8.8.4.4
+  - FTLCONF_dns_listeningMode=all
