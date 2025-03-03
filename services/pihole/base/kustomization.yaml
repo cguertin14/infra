@@ -27,7 +27,8 @@ helmCharts:
   namespace: pihole
   valuesInline:
     admin:
-      enabled: false
+      enabled: true
+      existingSecret: pihole-secrets
       
     resources:
       requests:

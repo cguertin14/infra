@@ -27,7 +27,7 @@ spec:
         - name: PIHOLE_API_TOKEN
           valueFrom:
             secretKeyRef:
-              key: WEBPASSWORD
+              key: password
               name: pihole-secrets
         resources:
           limits:
@@ -41,5 +41,3 @@ spec:
         envFrom:
         - configMapRef:
             name: pihole-config
-        - secretRef:
-            name: pihole-secrets
