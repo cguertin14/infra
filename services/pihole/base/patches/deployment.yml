@@ -37,9 +37,12 @@ spec:
           name: prometheus
           protocol: TCP
       - name: pihole
-        env: null # This allows us to set our own env variables
+        env:
+        - name: FTLCONF_webserver_api_password
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: pihole-secrets
         envFrom:
         - configMapRef:
             name: pihole-config
-        - secretRef:
-            name: pihole-secrets

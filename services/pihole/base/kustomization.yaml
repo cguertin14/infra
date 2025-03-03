@@ -57,8 +57,8 @@ configMapGenerator:
 - name: pihole-config
   literals:
   - TZ=America/New_York
-  - WEB_PORT=80
-  - VIRTUAL_HOST=pihole.k8s.cguertin.dev
-  - DNS1=8.8.8.8
-  - DNS2=8.8.4.4
-  - PIHOLE_DNS_=8.8.8.8;8.8.4.4
+  - FTLCONF_WEB_PORT=80
+  - FTLCONF_VIRTUAL_HOST=pihole.k8s.cguertin.dev
+  - FTLCONF_DNS1=8.8.8.8
+  - FTLCONF_DNS2=8.8.4.4
+  - FTLCONF_dns_upstreams=8.8.8.8;8.8.4.4
