@@ -57,7 +57,11 @@ helmCharts:
       MAXDBDAYS: 15
 
     adlists:
-    - https://github.com/StevenBlack/hosts/blob/master/hosts
+    - https://raw.githubusercontent.com/StevenBlack/hosts/refs/heads/master/hosts
+
+    whitelist:
+    - raw.githubusercontent.com
+    - github.com
 
 configMapGenerator:
 - name: pihole-config
