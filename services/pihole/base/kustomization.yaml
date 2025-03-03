@@ -57,7 +57,7 @@ helmCharts:
       MAXDBDAYS: 15
 
     adlists:
-    - https://raw.githubusercontent.com/StevenBlack/hosts/refs/heads/master/hosts
+    - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
     whitelist:
     - raw.githubusercontent.com
