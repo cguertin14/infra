@@ -8,9 +8,3 @@
       podSelector:
         matchLabels:
           app.kubernetes.io/name: nginx-ingress-controller
-    - namespaceSelector:
-        matchLabels:
-          name: logging
-      podSelector:
-        matchLabels:
-          app.kubernetes.io/name: logging
