@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
 - resources/namespace.yml
 - resources/ingress.yml
-# - metrics/service-monitor.yml
-# - metrics/service.yml
+- metrics/service-monitor.yml
+- metrics/service.yml
 
 namespace: pihole
 
