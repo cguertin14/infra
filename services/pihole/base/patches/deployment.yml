@@ -24,7 +24,7 @@ spec:
               fieldPath: status.podIP
         - name: PIHOLE_PORT
           value: "80"
-        - name: PIHOLE_PASSWORD
+        - name: PIHOLE_API_TOKEN
           valueFrom:
             secretKeyRef:
               key: WEBPASSWORD
