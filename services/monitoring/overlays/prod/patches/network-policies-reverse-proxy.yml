@@ -7,5 +7,4 @@
           name: kube-system
       podSelector:
         matchLabels:
-          name: nginx-ingress-controller
-          # app.kubernetes.io/name: nginx-ingress-controller
+          app.kubernetes.io/name: nginx-ingress-controller
