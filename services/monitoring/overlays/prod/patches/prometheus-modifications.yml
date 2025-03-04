@@ -27,8 +27,4 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-            - master1
-            - master2
-            - master3
-            - worker1
-            - worker2
+            - mediaserver
