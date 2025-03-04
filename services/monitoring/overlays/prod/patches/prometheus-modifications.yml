@@ -18,7 +18,7 @@ spec:
           requests:
             storage: 500Gi
         storageClassName: nfs-client
-  # Make sure Prometheuses run on worker nodes
+  # Make sure Prometheuses run on non-HA nodes
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,8 +27,8 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
+            - master1
+            - master2
+            - master3
             - worker1
             - worker2
-            - worker3
-            - worker4
-            - worker5
