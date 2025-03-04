@@ -48,13 +48,13 @@ patches:
   target:
     group: apps
     kind: Deployment
-    name: prod-ingress-nginx-controller
+    name: ingress-nginx-controller
     namespace: kube-system
     version: v1
 - path: patches/remove-replicas.yml
   target:
     group: apps
     kind: Deployment
-    name: prod-ingress-nginx-controller
+    name: ingress-nginx-controller
     namespace: kube-system
     version: v1

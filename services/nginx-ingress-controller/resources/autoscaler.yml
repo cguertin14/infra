@@ -10,13 +10,12 @@ spec:
   minReplicas: 3
   maxReplicas: 15
   metrics:
-  # Memory isn't really a factor for ingress-nginx, commenting it out for now.
-  # - type: Resource
-  #   resource:
-  #     name: memory
-  #     target:
-  #       type: Utilization
-  #       averageUtilization: 95
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 95
   - type: Resource
     resource:
       name: cpu
