@@ -8,7 +8,7 @@ spec:
     kind: Deployment
     name: ingress-nginx-controller
   minReplicas: 3
-  maxReplicas: 24
+  maxReplicas: 15
   metrics:
   - type: Resource
     resource:
