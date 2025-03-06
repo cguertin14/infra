@@ -19,7 +19,7 @@ images:
 - name: pihole/pihole
   newTag: 2025.03.0
 - name: ekofr/pihole-exporter
-  newTag: v1.0.0
+  newTag: v1.0.1
 
 helmCharts:
 - name: pihole
