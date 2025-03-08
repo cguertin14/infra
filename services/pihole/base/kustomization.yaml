@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - resources/namespace.yml
 - resources/ingress.yml
+- resources/storage.yml
 - metrics/service-monitor.yml
 - metrics/service.yml
 
@@ -41,8 +42,9 @@ helmCharts:
 
     persistentVolumeClaim:
       enabled: true
-      size: "2Gi"
+      size: "10Gi"
       storageClass: "nfs-client"
+      volumeName: pihole-config
       accessModes:
         - ReadWriteOnce
 
