@@ -42,11 +42,7 @@ helmCharts:
 
     persistentVolumeClaim:
       enabled: true
-      size: "10Gi"
-      storageClass: "nfs-client"
-      volumeName: pihole-config
-      accessModes:
-        - ReadWriteOnce
+      existingClaim: pihole
 
     serviceWeb:
       type: ClusterIP
