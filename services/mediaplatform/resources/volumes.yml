@@ -1,9 +1,24 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mediaserver-downloads-storage
+spec:
+  storageClassName: nfs-media-client
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.0.205
+    path: /volume1/k8s/mediaplatform-mediaserver-downloads-storage-pvc-b42e52d8-db59-45d1-8a04-e23e36a146f6
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mediaserver-downloads-storage
 spec:
   storageClassName: nfs-media-client
+  volumeName: mediaserver-downloads-storage
   accessModes:
   - ReadWriteMany
   resources:
@@ -11,11 +26,26 @@ spec:
       storage: 200Gi
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mediaserver-movies-storage
+spec:
+  storageClassName: nfs-media-client
+  capacity:
+    storage: 10Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.0.205
+    path: /volume1/k8s/mediaplatform-mediaserver-movies-storage-pvc-d4f50713-e13b-415f-aa1c-9bd6d377601a
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mediaserver-movies-storage
 spec:
   storageClassName: nfs-media-client
+  volumeName: mediaserver-movies-storage
   accessModes:
   - ReadWriteMany
   resources:
@@ -23,11 +53,26 @@ spec:
       storage: 10Ti
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mediaserver-shows-storage
+spec:
+  storageClassName: nfs-media-client
+  capacity:
+    storage: 10Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.0.205
+    path: /volume1/k8s/mediaplatform-mediaserver-shows-storage-pvc-02b3fa28-faf4-46a8-9c44-a05755d458fc
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mediaserver-shows-storage
 spec:
   storageClassName: nfs-media-client
+  volumeName: mediaserver-shows-storage
   accessModes:
   - ReadWriteMany
   resources:

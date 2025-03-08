@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: home-assistant-config
+  namespace: home-asssitant
+spec:
+  storageClassName: nfs-media-client
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.0.205
+    path: /volume1/k8s/home-assistant-home-assistant-config-pvc-4d5e69ba-9390-4cc2-a722-0653aa58413c

@@ -7,6 +7,7 @@ resources:
 - resources/namespace.yml
 - resources/voice-assistant-whisper.yml
 - resources/voice-assistant-piper.yml
+- resources/pv.yml
 
 images:
 - name: ghcr.io/home-assistant/home-assistant
@@ -61,6 +62,8 @@ helmCharts:
     persistence:
       config:
         enabled: true
+        volumeName: home-assistant-config
+        storageClass: nfs-media-client
       usb:
         enabled: true
         type: hostPath
