@@ -40,9 +40,9 @@ helmCharts:
         cpu: "250m"
         memory: "896Mi"
 
-    # persistentVolumeClaim:
-    #   enabled: true
-    #   existingClaim: pihole
+    persistentVolumeClaim:
+      enabled: true
+      existingClaim: pihole
 
     serviceWeb:
       type: ClusterIP
