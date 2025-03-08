@@ -33,7 +33,7 @@ persistentvolumeclaim "mongo-persistent-storage-mongo-2" deleted
 
 7. Follow Restore procedure in [kustomization.yaml](./kustomization.yaml) in the env variables section. Commit this modified file.
 
-8. Manually restore the MongoDB Database: `kubectl create job --from=cronjob/mongo-backups -n educs restore-mongo-db`.
+8. Manually restore the MongoDB Database: `kubectl create job --from=cronjob/mongodb-backups -n educs restore-mongo-db`.
 
 9. Delete the restore job: `kubectl delete job -n educs restore-mongo-db`
 
