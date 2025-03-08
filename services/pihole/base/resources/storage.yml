@@ -3,9 +3,9 @@ kind: PersistentVolume
 metadata:
   name: pihole-config
 spec:
-  storageClassName: nfs-media-client
+  storageClassName: nfs-client
   capacity:
-    storage: 2Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   nfs:
