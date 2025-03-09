@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - resources/namespace.yml
 - resources/ingress.yml
-- resources/storage.yml
 - metrics/service-monitor.yml
 - metrics/service.yml
 
@@ -17,10 +16,12 @@ commonLabels:
   app.kubernetes.io/name: pihole
 
 images:
-- name: pihole/pihole
-  newTag: 2025.03.0
 - name: ekofr/pihole-exporter
   newTag: v1.0.1
+# Note: this is not needed because 
+#       it's set in the helm chart.
+# - name: pihole/pihole
+#   newTag: 2025.03.0
 
 helmCharts:
 - name: pihole
@@ -42,7 +43,7 @@ helmCharts:
 
     persistentVolumeClaim:
       enabled: true
-      existingClaim: pihole
+      size: 2Gi
 
     serviceWeb:
       type: ClusterIP
@@ -74,3 +75,5 @@ configMapGenerator:
   - TZ=America/New_York
   - FTLCONF_dns_upstreams=8.8.8.8;8.8.4.4
   - FTLCONF_dns_listeningMode=all
+  - PIHOLE_UID=1001
+  - PIHOLE_GID=1001
