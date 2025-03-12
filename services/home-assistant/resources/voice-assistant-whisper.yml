@@ -67,6 +67,8 @@ spec:
         resources:
           requests:
             nvidia.com/gpu: 1 # Request 1 GPU
+          limits:
+            nvidia.com/gpu: 1 # Request 1 GPU
         ports:
         - containerPort: 10300
           name: whisper
