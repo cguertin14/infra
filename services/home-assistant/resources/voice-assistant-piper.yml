@@ -55,6 +55,7 @@ spec:
                   operator: In
                   values:
                     - mediaserver
+                    - nvidiaserver
       containers:
       - name: piper
         image: lscr.io/linuxserver/piper

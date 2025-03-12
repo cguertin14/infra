@@ -54,8 +54,11 @@ spec:
                 - key: kubernetes.io/hostname
                   operator: In
                   values:
-                    - mediaserver
+                    - nvidiaserver
       containers:
+      # TODO: Add Nvidia GPU mount here.
+      # See https://hub.docker.com/r/linuxserver/faster-whisper for details.
+      # Also see https://egemengulpinar.medium.com/running-whisper-large-v3-on-docker-with-gpu-support-e8a5b5daabf9.
       - name: whisper
         image: lscr.io/linuxserver/faster-whisper
         envFrom:
