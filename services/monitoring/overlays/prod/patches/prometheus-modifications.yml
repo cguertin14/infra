@@ -22,12 +22,12 @@ spec:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - podAffinityTerm:
+      - weight: 100
+        topologyKey: kubernetes.io/hostname
+        podAffinityTerm:
           labelSelector:
             matchLabels:
               app.kubernetes.io/name: prometheus
-          topologyKey: kubernetes.io/hostname
-        weight: 100
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
