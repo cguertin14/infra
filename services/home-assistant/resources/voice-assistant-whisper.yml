@@ -65,8 +65,6 @@ spec:
         - configMapRef:
             name: whisper-config
         resources:
-          requests:
-            nvidia.com/gpu: 1 # Request 1 GPU
           limits:
             nvidia.com/gpu: 1 # Request 1 GPU
         ports:
