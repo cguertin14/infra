@@ -18,16 +18,14 @@ spec:
           requests:
             storage: 500Gi
         storageClassName: nfs-client
-  # Make sure Prometheuses run on x86 nodes
+  # Make sure Prometheuses run on different x86 nodes
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: prometheus
         topologyKey: kubernetes.io/hostname
-        podAffinityTerm:
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/name: prometheus
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
