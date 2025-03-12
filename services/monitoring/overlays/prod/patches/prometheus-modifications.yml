@@ -27,6 +27,7 @@ spec:
             matchLabels:
               app.kubernetes.io/name: prometheus
           topologyKey: kubernetes.io/hostname
+        weight: 100
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
