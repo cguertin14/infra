@@ -60,7 +60,7 @@ spec:
       # See https://hub.docker.com/r/linuxserver/faster-whisper for details.
       # Also see https://egemengulpinar.medium.com/running-whisper-large-v3-on-docker-with-gpu-support-e8a5b5daabf9.
       - name: whisper
-        image: lscr.io/linuxserver/faster-whisper
+        image:  ghcr.io/speaches-ai/speaches # lscr.io/linuxserver/faster-whisper
         envFrom:
         - configMapRef:
             name: whisper-config
