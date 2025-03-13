@@ -62,9 +62,9 @@ spec:
         envFrom:
         - configMapRef:
             name: whisper-config
-        resources: {}
-        #   limits:
-        #     nvidia.com/gpu: 1 # Request 1 GPU
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # Request 1 GPU
         ports:
         - containerPort: 10300
           name: whisper
