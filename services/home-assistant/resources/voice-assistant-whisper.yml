@@ -36,6 +36,7 @@ metadata:
   labels: 
     app.kubernetes.io/name: whisper
 spec:
+  runtimeClassName: nvidia
   selector:
     matchLabels:
       app.kubernetes.io/name: whisper
@@ -64,9 +65,9 @@ spec:
         envFrom:
         - configMapRef:
             name: whisper-config
-        resources: {}
-          # limits:
-          #   nvidia.com/gpu: 1 # Request 1 GPU
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # Request 1 GPU
         ports:
         - containerPort: 8000
           name: whisper
