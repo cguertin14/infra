@@ -1096,8 +1096,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "NVIDIA DCGM Dashboard",
-  "uid": "nvidia-dcgm-dashboard-2",
+  "title": "Better NVIDIA DCGM Dashboard",
+  "uid": "nvidia-dcgm-dashboard-3",
   "version": 3,
   "weekStart": ""
 }
