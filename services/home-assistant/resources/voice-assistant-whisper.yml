@@ -46,7 +46,7 @@ spec:
       labels:
         app.kubernetes.io/name: whisper
     spec:
-      runtimeClassName: nvidia
+      runtimeClassName: nvidia # Note: SUPER IMPORTANT
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
