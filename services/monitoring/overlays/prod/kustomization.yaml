@@ -89,7 +89,7 @@ configMapGenerator:
   - dashboards/blog_slos.json
   - dashboards/nginx-overview.json
   - dashboards/nginx-performance.json
-  - dashboards/nvidia-dashboard.json
+  - dashboards/nvidia-dashboard-3.json
 
 secretGenerator:
 - name: grafana-datasources
