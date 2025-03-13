@@ -13,10 +13,8 @@ images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
   newTag: "2025.3"
-# - name: lscr.io/linuxserver/faster-whisper
-#   newTag: "2.4.0-gpu"
-- name: ghcr.io/speaches-ai/speaches
-  newTag: latest-cuda
+- name: lscr.io/linuxserver/faster-whisper
+  newTag: "2.4.0"
 - name: lscr.io/linuxserver/piper
   newTag: "1.4.0"
 
@@ -32,7 +30,7 @@ configMapGenerator:
   - PUID=1001
   - PGID=1002
   - TZ=America/Toronto
-  - WHISPER_MODEL=large-v3
+  - WHISPER_MODEL=small
   - WHISPER_LANG=en
   #- WHISPER_BEAM=10
 - name: piper-config
