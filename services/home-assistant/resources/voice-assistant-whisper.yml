@@ -36,7 +36,6 @@ metadata:
   labels: 
     app.kubernetes.io/name: whisper
 spec:
-  runtimeClassName: nvidia
   selector:
     matchLabels:
       app.kubernetes.io/name: whisper
@@ -47,6 +46,7 @@ spec:
       labels:
         app.kubernetes.io/name: whisper
     spec:
+      runtimeClassName: nvidia
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
