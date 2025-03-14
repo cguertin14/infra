@@ -5,6 +5,7 @@ namespace: gpu-operator
 
 resources:
 - namespace.yml
+- time-slicing-config-all.yml
 
 helmCharts:
 - name: gpu-operator
@@ -18,17 +19,8 @@ helmCharts:
     devicePlugin:
       enabled: true
       config:
-        create: true
+        create: false
         name: time-slicing-config-all
-        default:
-          version: v1
-          flags:
-            migStrategy: none
-          sharing:
-            timeSlicing:
-              resources:
-              - name: nvidia.com/gpu
-                replicas: 4
     # Metrics
     dcgmExporter:
       enabled: true
