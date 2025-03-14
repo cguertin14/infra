@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: time-slicing-config-all
 data:
-  default: |-
+  any: |-
     version: v1
     flags:
       migStrategy: none
