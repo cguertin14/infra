@@ -31,3 +31,17 @@ helmCharts:
         value: nvidia
       - name: CONTAINERD_SET_AS_DEFAULT
         value: "true"
+      # Device Plugin
+      devicePlugin:
+        enabled: true
+        config:
+          name: time-slicing-config-all
+          default: |-
+            version: v1
+            flags:
+              migStrategy: none
+            sharing:
+              timeSlicing:
+                resources:
+                - name: nvidia.com/gpu
+                  replicas: 4
