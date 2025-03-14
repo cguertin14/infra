@@ -35,6 +35,7 @@ helmCharts:
       devicePlugin:
         enabled: true
         config:
+          create: true
           name: time-slicing-config-all
           default: |-
             version: v1
