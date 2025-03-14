@@ -14,6 +14,21 @@ helmCharts:
   includeCRDs: true
   version: v24.9.2
   valuesInline:
+    # Device Plugin
+    devicePlugin:
+      enabled: true
+      config:
+        create: true
+        name: time-slicing-config-all
+        default:
+          version: v1
+          flags:
+            migStrategy: none
+          sharing:
+            timeSlicing:
+              resources:
+              - name: nvidia.com/gpu
+                replicas: 4
     # Metrics
     dcgmExporter:
       enabled: true
@@ -31,18 +46,3 @@ helmCharts:
         value: nvidia
       - name: CONTAINERD_SET_AS_DEFAULT
         value: "true"
-    # Device Plugin
-    devicePlugin:
-      enabled: true
-      config:
-        create: true
-        name: time-slicing-config-all
-        default: |-
-          version: v1
-          flags:
-            migStrategy: none
-          sharing:
-            timeSlicing:
-              resources:
-              - name: nvidia.com/gpu
-                replicas: 4
