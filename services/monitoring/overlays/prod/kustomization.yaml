@@ -82,7 +82,7 @@ configMapGenerator:
   - dashboards/argocd.json
   - dashboards/argo-rollouts.json
   - dashboards/node_temperatures.json
-  - dashboards/pi_hole_2.json
+  - dashboards/pi_hole_3.json
 - name: grafana-dashboards-custom-2
   namespace: monitoring
   files:
