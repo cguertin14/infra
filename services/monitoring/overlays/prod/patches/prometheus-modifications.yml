@@ -30,8 +30,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: kubernetes.io/hostname
+          - key: kubernetes.io/arch
             operator: In
             values:
-            - mediaserver
-            - nvidiaserver
+              - amd64
