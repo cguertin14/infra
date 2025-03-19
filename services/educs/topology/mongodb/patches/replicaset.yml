@@ -12,12 +12,13 @@ spec:
       template:
         spec:
           affinity:
-            podAntiAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                - labelSelector:
-                    matchLabels:
-                      app: educs-mongodb-svc
-                  topologyKey: kubernetes.io/hostname
+            # TODO: Wait for 3rd x86 node to uncomment this.
+            # podAntiAffinity:
+            #   requiredDuringSchedulingIgnoredDuringExecution:
+            #     - labelSelector:
+            #         matchLabels:
+            #           app: educs-mongodb-svc
+            #       topologyKey: kubernetes.io/hostname
             nodeAffinity:
               requiredDuringSchedulingIgnoredDuringExecution:
                 nodeSelectorTerms:
