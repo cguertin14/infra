@@ -26,6 +26,9 @@ configMapGenerator:
 generators:
 - secrets-generator.yml
 
+patchesStrategicMerge:
+- patches/replicaset.yml
+
 labels:
 - includeSelectors: true
   pairs:

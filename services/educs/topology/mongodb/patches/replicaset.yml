@@ -1,0 +1,37 @@
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: educs-mongodb
+spec:
+  # number of replicas, minimum for HA
+  members: 3
+  type: ReplicaSet
+  version: 7.0.17
+  statefulSet:
+    spec:
+      template:
+        spec:
+          affinity:
+            podAntiAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchLabels:
+                      app: educs-mongodb-svc
+                  topologyKey: kubernetes.io/hostname
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: kubernetes.io/hostname
+                      operator: In
+                      values:
+                        - mediaserver
+                        - nvidiaserver
+      volumeClaimTemplates:
+        - metadata:
+            name: data-volume
+          spec:
+            resources:
+                requests:
+                    storage: 20Gi
+            storageClassName: nfs-client
