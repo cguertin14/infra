@@ -40,6 +40,8 @@ spec:
           name: grafana-dashboards-custom
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-2
           name: grafana-dashboards-custom-2
+        - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-3
+          name: grafana-dashboards-custom-3
       volumes:
       # 5- Set Grafana Persistent Storage volume.
       - emptyDir: null
@@ -55,3 +57,7 @@ spec:
         configMap:
           defaultMode: 420
           name: grafana-dashboards-custom-2
+      - name: grafana-dashboards-custom-3
+        configMap:
+          defaultMode: 420
+          name: grafana-dashboards-custom-3
