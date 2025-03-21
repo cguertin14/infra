@@ -8,6 +8,7 @@ cloud LAN {
 	node Router
 	node LoadBalancer
 	storage NAS
+	storage Ceph
 
 	cloud cluster as "Kubernetes Cluster  \n   192.168.0.0/24"
 
@@ -26,6 +27,12 @@ cloud LAN {
 		node worker4
 		node worker5
 	}
+	
+	node x86_Nodes {
+	  node mediaserver
+	  node nvidiaserver
+	  node miniitx0
+	}
 
 	master1 -u-> etcd
 	master2 -u-> etcd
@@ -33,6 +40,7 @@ cloud LAN {
 
 	cluster -d-> ControlPlane
 	DataPlane -d-> NAS
+	x86_Nodes -d-> Ceph
 
 	master1 <-d-> worker1
 	master1 <-d-> worker2
@@ -51,6 +59,18 @@ cloud LAN {
 	master3 <-d-> worker3
 	master3 <-d-> worker4
 	master3 <-d-> worker5
+	
+	master1 <-d-> mediaserver
+	master1 <-d-> nvidiaserver
+	master1 <-d-> miniitx0
+	
+	master2 <-d-> mediaserver
+	master2 <-d-> nvidiaserver
+	master2 <-d-> miniitx0
+
+	master3 <-d-> mediaserver
+	master3 <-d-> nvidiaserver
+	master3 <-d-> miniitx0
 
 }
 
