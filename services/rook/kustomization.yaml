@@ -3,7 +3,6 @@ kind: Kustomization
 
 namespace: rook-ceph
 
-
 resources:
 - resources/namespace.yml
 
@@ -14,7 +13,6 @@ labels:
 - includeSelectors: true
   pairs:
     app.kubernetes.io/name: rook-ceph
-
 
 helmCharts:
 # Operator helm chart
