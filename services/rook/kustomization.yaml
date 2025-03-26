@@ -1,0 +1,218 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: rook-ceph
+
+commonLabels:
+  app.kubernetes.io/name: rook-ceph
+
+resources:
+- resources/namespace.yml
+
+helmCharts:
+# Operator helm chart
+- name: rook-ceph
+  namespace: rook-ceph
+  releaseName: rook-ceph
+  repo: https://charts.rook.io/release
+  version: v1.16.5
+  valuesInline:
+    crds:
+      enabled: true
+# Ceph cluster helm chart
+- name: rook-ceph-cluster
+  namespace: rook-ceph
+  releaseName: rook-ceph-cluster
+  repo: https://charts.rook.io/release
+  version: v1.16.5
+  valuesInline:
+    operatorNamespace: rook-ceph
+    
+    nfs:
+      enabled: false # Disable NFS
+    
+    # Size is 3 because of the triple node cluster - which consists of the nvidiaserver, mediaserver & miniitx0 machines.
+    configOverride: |
+      [global]
+      osd_pool_default_size = 3
+
+    mon:
+      count: 2 # Tied to the number of nodes.
+      allowMultiplePerNode: false
+
+    # TODO: Test if this works properly.
+    placement:
+      all:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - amd64
+      #
+      # Monitor deployments may contain an anti-affinity rule for avoiding monitor
+      # collocation on the same node. This is a required rule when host network is used
+      # or when AllowMultiplePerNode is false. Otherwise this anti-affinity rule is a
+      # preferred rule with weight: 50.
+      #
+      # The above placement information can also be specified for mon, mgr, cleanup and osd components
+      #
+      # mon:
+      # mgr:
+      # cleanup:
+      # osd:
+
+    monitoring:
+      enabled: true
+      createPrometheusRules: true
+
+    dashboard:
+      enabled: true
+
+    ingress:
+      dashboard:
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+        host:
+          name: rook-ceph.k8s.cguertin.dev
+          path: "/ceph-dashboard(/|$)(.*)"
+          pathType: Prefix
+        tls:
+        - hosts:
+          - rook-ceph.k8s.cguertin.dev
+          secretName: rook-ceph-dashboard-cert
+
+    toolbox:
+      enabled: false # Note: turn to true to debug the cluster
+
+
+    # 1. Define Ceph Cluster: https://github.com/rook/rook/blob/release-1.16/deploy/charts/rook-ceph-cluster/values.yaml#L84
+    # DONE through the parameters of this file.
+
+    # 2. Define object storage (S3 compatibility): https://rook.io/docs/rook/latest/Storage-Configuration/Object-Storage-RGW/object-storage/
+    cephObjectStores:
+    - name: ceph-objectstore
+      spec:
+        metadataPool:
+          failureDomain: host
+          replicated:
+            size: 3 # Tied to the number of nodes.
+        dataPool:
+          failureDomain: host
+          erasureCoded:
+            dataChunks: 2
+            codingChunks: 1
+          parameters:
+            bulk: "true"
+        preservePoolsOnDelete: true
+        gateway:
+          port: 80
+          resources:
+            limits:
+              memory: "2Gi"
+            requests:
+              cpu: "1000m"
+              memory: "1Gi"
+          # securePort: 443
+          # sslCertificateRef:
+          instances: 1
+          priorityClassName: system-cluster-critical
+          # opsLogSidecar:
+          #   resources:
+          #     limits:
+          #       memory: "100Mi"
+          #     requests:
+          #       cpu: "100m"
+          #       memory: "40Mi"
+      storageClass:
+        enabled: true
+        name: ceph-bucket
+        reclaimPolicy: Delete
+        isDefault: false
+        volumeBindingMode: "Immediate"
+        annotations: {}
+        labels: {}
+        parameters:
+          # note: objectStoreNamespace and objectStoreName are configured by the chart
+          region: us-east-1
+      # Don't want this publicly exposed, for now.
+      ingress:
+        enabled: false
+
+    # 3. Define block storage (ReadWriteOnce compatibility): https://rook.io/docs/rook/latest/Storage-Configuration/Block-Storage-RBD/block-storage/
+    cephBlockPools:
+    - enabled: true
+      name: ceph-blockpool
+      spec:
+        failureDomain: host
+        hybridStorage:
+          primaryDeviceClass: hdd
+          secondaryDeviceClass: ssd
+        replicated:
+          size: 3 # Tied to the number of nodes.
+      storageClass:
+        enabled: true
+        name: ceph-block
+        isDefault: false
+        reclaimPolicy: Delete
+        allowVolumeExpansion: true
+        volumeBindingMode: "Immediate"
+        mountOptions: []
+        allowedTopologies: []
+        parameters:
+          imageFormat: "2"
+          imageFeatures: layering
+          csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+          csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+          csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+          csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/fstype: ext4
+
+    # 3. Define a filesystem for PVCs (ReadWriteMany compatibility): https://rook.io/docs/rook/latest/Storage-Configuration/Shared-Filesystem-CephFS/filesystem-storage/#create-the-filesystem
+    cephFileSystems:
+    - name: ceph-filesystem
+      spec:
+        metadataPool:
+          replicated:
+            size: 3 # Tied to the number of nodes.
+        dataPools:
+          - failureDomain: host
+            replicated:
+              size: 2 # Tied to the number of nodes.
+            name: data0
+        metadataServer:
+          activeCount: 1
+          activeStandby: true
+          resources:
+            limits:
+              memory: "4Gi"
+            requests:
+              cpu: "1000m"
+              memory: "4Gi"
+          priorityClassName: system-cluster-critical
+      storageClass:
+        enabled: true
+        isDefault: false
+        name: ceph-filesystem
+        pool: data0
+        reclaimPolicy: Delete
+        allowVolumeExpansion: true
+        volumeBindingMode: "Immediate"
+        annotations: {}
+        labels: {}
+        mountOptions: []
+        parameters:
+          csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+          csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+          csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+          csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+          csi.storage.k8s.io/fstype: ext4
+    
