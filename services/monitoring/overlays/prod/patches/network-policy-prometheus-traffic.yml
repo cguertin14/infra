@@ -18,3 +18,13 @@
       podSelector:
         matchLabels:
           app.kubernetes.io/name: kured
+- op: add
+  path: /spec/ingress/-
+  value:
+    from:
+    - namespaceSelector:
+        matchLabels:
+          name: rook-ceph
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: rook-ceph
