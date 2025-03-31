@@ -90,13 +90,13 @@ configMapGenerator:
   - dashboards/nginx-overview.json
   - dashboards/nginx-performance.json
   - dashboards/nvidia-dashboard-3.json
+  - dashboards/educs_slos.json
 - name: grafana-dashboards-custom-3
   namespace: monitoring
   files:
   - dashboards/ceph_cluster_dashboard.json
   - dashboards/ceph_osd_single_dashboard.json
   - dashboards/ceph_pools_dashboard.json
-  - dashboards/educs_slos.json
 
 secretGenerator:
 - name: grafana-datasources
