@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 26,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -93,6 +94,8 @@
       },
       "id": 46,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -103,9 +106,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -113,7 +117,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))",
+          "expr": "sum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -121,7 +125,7 @@
           "refId": "A"
         }
       ],
-      "title": "[SLO] Availability % 14d",
+      "title": "[SLO] Availability % 28d",
       "type": "gauge"
     },
     {
@@ -168,6 +172,8 @@
       },
       "id": 52,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -178,9 +184,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -188,14 +195,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\n/ \nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))\n))* 60 * 60 * 24 * 14\n\n",
+          "expr": "(1 - (\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\n/ \nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))\n))* 60 * 60 * 24 * 14\n\n",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Time Nginx served != 5xx in last 14d",
+      "title": "Time Nginx served != 5xx in last 28d",
       "type": "gauge"
     },
     {
@@ -247,6 +254,8 @@
       },
       "id": 48,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -257,9 +266,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -267,14 +277,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[14d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[14d]))\r\n\r\n))/0.001",
+          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))\r\n\r\n))/0.001",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Error budget spent in 14d",
+      "title": "Error budget spent in 28d",
       "type": "gauge"
     },
     {
@@ -326,6 +336,8 @@
       },
       "id": 57,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -336,9 +348,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -357,18 +370,28 @@
       "type": "gauge"
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
       "datasource": {
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "fontSize": "80%",
-      "format": "short",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 10,
         "w": 12,
@@ -376,18 +399,31 @@
         "y": 8
       },
       "id": 20,
-      "legend": {
-        "percentage": true,
-        "percentageDecimals": 4,
-        "show": true,
-        "values": true
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "legendType": "Under graph",
-      "links": [],
-      "nullPointMode": "connected",
-      "pieType": "pie",
       "pluginVersion": "7.2.2",
-      "strokeWidth": 1,
       "targets": [
         {
           "datasource": {
@@ -404,57 +440,116 @@
         }
       ],
       "title": "Requests Status Code Seen from Nginx",
-      "transformations": [],
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
+      "type": "piechart"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "gte",
+                "reducer": "allIsZero",
+                "value": 0
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 10,
         "w": 12,
         "x": 12,
         "y": 8
       },
-      "hiddenSeries": false,
       "id": 24,
       "interval": "1m",
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
       "pluginVersion": "9.3.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "datasource": {
@@ -470,37 +565,8 @@
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "requests / seconds displayed by HTTP Code seen from Nginx",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:89",
-          "format": "reqps",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:90",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
@@ -572,6 +638,8 @@
       },
       "id": 53,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -582,9 +650,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -592,7 +661,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+          "expr": "sum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -601,7 +670,7 @@
           "refId": "A"
         }
       ],
-      "title": "[SLO] Latency % 14d",
+      "title": "[SLO] Latency % 28d",
       "type": "gauge"
     },
     {
@@ -648,6 +717,8 @@
       },
       "id": 54,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -658,9 +729,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -668,14 +740,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))* 60 * 60 * 24 * 14",
+          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))* 60 * 60 * 24 * 14",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "C"
         }
       ],
-      "title": "Time Nginx is under SLO in the last 14d",
+      "title": "Time Nginx is under SLO in the last 28d",
       "type": "gauge"
     },
     {
@@ -727,6 +799,8 @@
       },
       "id": 55,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -737,9 +811,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -747,14 +822,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[14d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[14d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
+          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "C"
         }
       ],
-      "title": "Error budget spent in 14d",
+      "title": "Error budget spent in 28d",
       "type": "gauge"
     },
     {
@@ -806,6 +881,8 @@
       },
       "id": 56,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -816,9 +893,10 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -908,7 +986,8 @@
         },
         "showValue": "never",
         "tooltip": {
-          "show": true,
+          "mode": "single",
+          "showColorScale": false,
           "yHistogram": false
         },
         "yAxis": {
@@ -917,7 +996,7 @@
           "unit": "s"
         }
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "11.2.0",
       "reverseYBuckets": false,
       "targets": [
         {
@@ -951,56 +1030,92 @@
       "yBucketBound": "auto"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.7
+              }
+            ]
+          },
           "unit": "s"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
         "y": 26
       },
-      "hiddenSeries": false,
       "id": 14,
       "interval": "5s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
       "pluginVersion": "9.3.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "datasource": {
@@ -1035,47 +1150,8 @@
           "refId": "B"
         }
       ],
-      "thresholds": [
-        {
-          "$$hashKey": "object:28",
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 0.7,
-          "yaxis": "left"
-        }
-      ],
-      "timeRegions": [],
       "title": "Latency Percentiles",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:165",
-          "format": "s",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:166",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -1090,8 +1166,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1142,8 +1217,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
@@ -1151,7 +1225,7 @@
         "current": {
           "selected": false,
           "text": "prometheus",
-          "value": "prometheus"
+          "value": "P1809F7CD0C75ACF3"
         },
         "hide": 2,
         "includeAll": false,
