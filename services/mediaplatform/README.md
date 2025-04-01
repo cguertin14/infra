@@ -7,7 +7,10 @@ Deploy the kustomize stack, then port-forward each of them to configure their se
 
 ## Prowlarr Setup
 
-Fill in the indexers, including https://nzbgeek.info/dashboard.php.
+Fill in the indexers, including 
+1. https://nzbgeek.info/dashboard.php
+2. https://nzb.su/profile
+3. https://api.nzbplanet.net/login
 
 ## Sabnzbd Setup
 
@@ -20,13 +23,6 @@ Provider is news.newshosting.com, SSL on port 563. Credentials can be found on h
 ### Hardware Acceleration
 
 Official setup guide is [here](https://jellyfin.org/docs/general/administration/hardware-acceleration/intel/#configure-with-linux-virtualization), this is already done through [this](./patches/jellyfin-intel-quick-sync-patch.yml). Simply enable it in the Jellyfin UI, in Playback settings.
-
-### IPTV Providers
-
-Head over to https://epg.best/, log in.
-
-1. Copy `My EPG XML link`, then add it as a new `TV Guide Data Provider` in Jellyfin
-2. Copy all the `m3u` links, then add them as individual m3u `Tuner Devices` in Jellyfin.
 
 ## Known Issues
 
