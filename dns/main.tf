@@ -1,8 +1,6 @@
 resource "cloudflare_zone" "cguertin_dev" {
   zone       = var.cguertin_domain
   account_id = var.account_id
-  plan       = "free"
-  type       = "full"
 }
 
 resource "cloudflare_record" "bsky_validation" {
@@ -10,6 +8,7 @@ resource "cloudflare_record" "bsky_validation" {
   type    = "TXT"
   name    = "_atproto"
   content = "did=did:plc:ianrdupaclcx5ojppeap74wh"
+  comment = "Bluesky :)"
   ttl     = 300
   proxied = false
 }
