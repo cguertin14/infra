@@ -1,8 +1,9 @@
 resource "cloudflare_zone" "cguertin_dev" {
-  zone       = var.cguertin_domain
-  account_id = var.account_id
-  plan       = "free"
-  type       = "full"
+  name = var.cguertin_domain
+  account_id {
+    id = var.account_id
+  }
+  type = "full"
 }
 
 resource "cloudflare_record" "bsky_validation" {
