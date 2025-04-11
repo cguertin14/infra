@@ -1,6 +1,6 @@
 resource "cloudflare_zone" "cguertin_dev" {
   name = var.cguertin_domain
-  account {
+  account = {
     id = var.account_id
   }
   type = "full"
@@ -29,17 +29,17 @@ resource "cloudflare_dns_record" "cname_dns_entry" {
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_record.pi_load_balancer.hostname
+  content  = cloudflare_dns_record.pi_load_balancer.hostname
   ttl      = 1800
   proxied  = false
 }
 
-resource "cloudflare_record" "cname_dns_entry_proxied" {
+resource "cloudflare_dns_record" "cname_dns_entry_proxied" {
   for_each = toset(var.proxied_domains)
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_record.pi_load_balancer.hostname
+  content  = cloudflare_dns_record.pi_load_balancer.hostname
   ttl      = 1
   proxied  = true
 }
