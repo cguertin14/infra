@@ -28,11 +28,11 @@ helmCharts:
         size: 2Gi
         storageClass: nfs-media-client
         volumeName: jellyfin-config
-    resources:
-      # Warning: No limits.
-      requests:
-        cpu: '2'
-        memory: 4Gi
+    # resources:
+    #   # Warning: No limits.
+    #   requests:
+    #     cpu: '2'
+    #     memory: 4Gi
   version: 9.5.3
 # Below charts live here -> https://github.com/k8s-at-home/charts/tree/master/charts/stable
 - name: radarr
@@ -110,11 +110,11 @@ helmCharts:
         size: 2Gi
         storageClass: nfs-client
         volumeName: sabnzbd-config
-    resources:
-      # Warning: No limits.
-      requests:
-        cpu: '0.5' # take half a core.
-        memory: 1Gi
+    # resources:
+    #   # Warning: No limits.
+    #   requests:
+    #     cpu: '0.5' # take half a core.
+    #     memory: 1Gi
   version: 9.4.2
 
 # Setting proper image tags on each service.
