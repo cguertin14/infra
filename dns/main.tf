@@ -1,34 +1,30 @@
 resource "cloudflare_zone" "cguertin_dev" {
   name = var.cguertin_domain
-  account_id {
+  account {
     id = var.account_id
   }
   type = "full"
 }
 
-resource "cloudflare_record" "bsky_validation" {
+resource "cloudflare_dns_record" "bsky_validation" {
   zone_id = cloudflare_zone.cguertin_dev.id
   type    = "TXT"
   name    = "_atproto"
-  value   = "did=did:plc:ianrdupaclcx5ojppeap74wh"
+  content = "did=did:plc:ianrdupaclcx5ojppeap74wh"
   ttl     = 300
   proxied = false
 }
 
-resource "cloudflare_record" "pi_load_balancer" {
+resource "cloudflare_dns_record" "pi_load_balancer" {
   zone_id = cloudflare_zone.cguertin_dev.id
   name    = "lb.${var.cguertin_domain}."
   type    = "A"
-  value   = var.router_ip
+  content = var.router_ip
   ttl     = 300
   proxied = false
 }
 
-resource "cloudflare_record" "cname_dns_entry" {
-  depends_on = [
-    cloudflare_record.pi_load_balancer,
-    cloudflare_zone.cguertin_dev
-  ]
+resource "cloudflare_dns_record" "cname_dns_entry" {
   for_each = toset(var.domains)
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
@@ -39,10 +35,6 @@ resource "cloudflare_record" "cname_dns_entry" {
 }
 
 resource "cloudflare_record" "cname_dns_entry_proxied" {
-  depends_on = [
-    cloudflare_record.pi_load_balancer,
-    cloudflare_zone.cguertin_dev
-  ]
   for_each = toset(var.proxied_domains)
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
