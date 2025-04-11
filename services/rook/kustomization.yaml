@@ -24,6 +24,8 @@ helmCharts:
   valuesInline:
     crds:
       enabled: true
+    monitoring:
+      enabled: true
   version: v1.16.5
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
