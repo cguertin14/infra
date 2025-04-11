@@ -8,6 +8,7 @@ resources:
 
 patches:
 - path: patches/storageclasses.yml
+- path: patches/affinity.yml
 
 labels:
 - includeSelectors: true
@@ -79,18 +80,6 @@ helmCharts:
       enabled: false
 
     operatorNamespace: rook-ceph
-
-    # TODO: Test if this works properly.
-    placement:
-      all:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/arch
-                operator: In
-                values:
-                - amd64
 
     toolbox:
       enabled: false
