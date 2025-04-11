@@ -5,6 +5,7 @@ metadata:
   namespace: rook-ceph
 spec:
   placement:
+    # TODO: split affinity rules per-service to remove load on amd64 nodes.
     all:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
