@@ -26,13 +26,13 @@ helmCharts:
       enabled: true
     monitoring:
       enabled: true
-  version: v1.16.5
+  version: v1.16.6
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
   namespace: rook-ceph
   releaseName: rook-ceph-cluster
   repo: https://charts.rook.io/release
-  version: v1.16.5
+  version: v1.16.6
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the nvidiaserver, mediaserver & miniitx0 machines.
     configOverride: |
