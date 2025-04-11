@@ -39,6 +39,8 @@ helmCharts:
 
     dashboard:
       enabled: true
+      urlPrefix: /ceph-dashboard
+      ssl: true
 
     ingress:
       enabled: true
@@ -50,7 +52,7 @@ helmCharts:
         host:
           name: rook-ceph.k8s.cguertin.dev
           path: /ceph-dashboard(/|$)(.*)
-          pathType: Prefix
+          pathType: ImplementationSpecific
         tls:
         - hosts:
           - rook-ceph.k8s.cguertin.dev
