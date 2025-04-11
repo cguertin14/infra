@@ -120,22 +120,22 @@ helmCharts:
 # Setting proper image tags on each service.
 images:
 - name: jellyfin/jellyfin
-  newTag: 10.10.6
+  newTag: 10.10.7
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.14
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.20.2
+  newTag: 5.21.1
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.32.2
+  newTag: 1.33.3
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
   newTag: 4.6.7
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
-  newTag: 4.4.1
+  newTag: 4.5.0
 
 # Patches to add standalone common PVC to each service.
 patches:

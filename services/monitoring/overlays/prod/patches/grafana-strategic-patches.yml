@@ -9,6 +9,16 @@ spec:
     type: Recreate
   template:
     spec:
+      # Make sure Prometheuses run on different x86 nodes
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                  - amd64
       # 2- Set security context to 65534.
       securityContext:
         fsGroup: 65534
