@@ -8,7 +8,8 @@ resources:
 
 patches:
 - path: patches/storageclasses.yml
-- path: patches/affinity.yml
+- path: patches/cluster-affinity.yml
+- path: patches/cluster-resources.yml
 
 labels:
 - includeSelectors: true
@@ -34,7 +35,7 @@ helmCharts:
   repo: https://charts.rook.io/release
   version: v1.16.6
   valuesInline:
-    # Size is 3 because of the triple node cluster - which consists of the nvidiaserver, mediaserver & miniitx0 machines.
+    # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
     configOverride: |
       [global]
       osd_pool_default_size = 3
@@ -45,9 +46,13 @@ helmCharts:
     ingress:
       enabled: false
 
+    # HA mon/mgr replica count (yes, 2 for mgr)
     mon:
       allowMultiplePerNode: false
       count: 3
+    mgr:
+      allowMultiplePerNode: false
+      count: 2
 
     # TODO: Reduce overall memory limits that are affecting other deployments in the cluster.
     #       Preventing them from deploying (bad).
@@ -65,7 +70,7 @@ helmCharts:
     # cleanup:
     # osd:
     # TODO: Look at removing CephPGImbalance alarm; it is not needed for now, 
-    #       since not all OSDs have the same capacity on purpose.
+    #       since not all OSDs have the same capacity on purpose. -> Silence it on alertmanager instead of deleting/muting it
     monitoring:
       createPrometheusRules: true
       enabled: true

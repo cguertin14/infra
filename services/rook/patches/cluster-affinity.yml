@@ -1,0 +1,69 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  placement:
+    # TODO: split affinity rules per-service to remove load on amd64 nodes. (mon, mgr, arbiter, cleanup & all can run anywhere, as they don't *manage* the actual storage)
+    # https://rook.io/docs/rook/latest-release/CRDs/Cluster/ceph-cluster-crd/?h=placement#placement-configuration-settings
+    #
+    # osd/prepareosd pods must run on nodes with storage.
+    #
+    osd:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+    prepareosd:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+    #
+    # Run the other pods on arm64 nodes.
+    #
+    # mon:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #       - matchExpressions:
+    #         - key: kubernetes.io/arch
+    #           operator: In
+    #           values:
+    #           - arm64
+    # mgr:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #       - matchExpressions:
+    #         - key: kubernetes.io/arch
+    #           operator: In
+    #           values:
+    #           - arm64
+    # arbiter:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #       - matchExpressions:
+    #         - key: kubernetes.io/arch
+    #           operator: In
+    #           values:
+    #           - arm64
+    # cleanup:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #       - matchExpressions:
+    #         - key: kubernetes.io/arch
+    #           operator: In
+    #           values:
+    #           - arm64

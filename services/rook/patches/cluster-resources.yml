@@ -1,0 +1,62 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  resources:
+    cleanup:
+      limits:
+        memory: 500m # default: 1Gi
+      requests:
+        cpu: 500m
+        memory: 100Mi
+    crashcollector:
+      limits:
+        memory: 60Mi
+      requests:
+        cpu: 100m
+        memory: 60Mi
+    exporter:
+      limits:
+        memory: 64Mi # default: 128Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    logcollector:
+      limits:
+        memory: 500Mi # default: 1Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    mgr:
+      limits:
+        memory: 1Gi
+      requests:
+        cpu: 250m # default: 500m
+        memory: 512Mi
+    mgr-sidecar:
+      limits:
+        memory: 100Mi
+      requests:
+        cpu: 50m # default: 100m
+        memory: 40Mi
+    mon:
+      limits:
+        memory: 1Gi # default: 2Gi
+      requests:
+        cpu: 500m # default: 1000m
+        memory: 1Gi
+    osd:
+      # Default:
+      #
+      # limits:
+      #   memory: 4Gi
+      limits: null
+      requests:
+        cpu: 500m # default: 1000m
+        memory: 4Gi
+    prepareosd:
+      requests:
+        cpu: 500m
+        memory: 50Mi
