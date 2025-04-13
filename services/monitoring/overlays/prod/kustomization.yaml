@@ -97,6 +97,9 @@ configMapGenerator:
   - dashboards/ceph_cluster_dashboard.json
   - dashboards/ceph_osd_single_dashboard.json
   - dashboards/ceph_pools_dashboard.json
+- name: grafana-dashboards-custom-4
+  namespace: monitoring
+  files:
   - dashboards/cloudnative_pg.json
 
 secretGenerator:
