@@ -11,6 +11,15 @@ spec:
     spec:
       template:
         spec:
+          containers:
+          - name: "mongod"
+            resources:
+              limits:
+                # cpu: 1 -> remove CPU limits
+                memory: 500M
+              requests:
+                cpu: 250m # default: 500m
+                memory: 400M
           affinity:
             # TODO: Wait for 3rd x86 node to uncomment this.
             # podAntiAffinity:
