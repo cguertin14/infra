@@ -13,7 +13,7 @@ variable "account_id" {
 variable "router_ip" {
   description = "Router IP address"
   type        = string
-  default     = "76.67.50.135"
+  default     = "70.52.112.201"
 }
 
 variable "proxied_domains" {
@@ -30,6 +30,7 @@ variable "domains" {
   type        = list(string)
   default = [
     "ha", # home-assistant
+    "photos",
     "jellyfin.media",
     "sonarr.media",
     "radarr.media",
