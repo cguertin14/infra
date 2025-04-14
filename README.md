@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/cguertin14/infra.svg?style=shield)](https://circleci.com/gh/cguertin14/infra)
 
-My infrastructure running on a Raspberry Pi Kubernetes Cluster.
+My infrastructure running on a hybrid arm64/amd64 Kubernetes Cluster.
 
 ## Architecture
 
