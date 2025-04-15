@@ -7,7 +7,7 @@ spec:
   replicas: 3
   resources:
     requests:
-      memory: 1500Mi
+      memory: 1250Mi
       cpu: 60m
   # Data is accumulated for 183 days (6 months) and is deleted afterwards.
   # More info: https://github.com/prometheus-operator/kube-prometheus/blob/v0.7.0/manifests/setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml#L2846
