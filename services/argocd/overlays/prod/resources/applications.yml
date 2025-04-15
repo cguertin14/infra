@@ -473,8 +473,6 @@ spec:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
     path: services/cloudnative-pg
-  syncOptions:
-  - ServerSideApply=true
   syncPolicy:
     automated:
       selfHeal: true
