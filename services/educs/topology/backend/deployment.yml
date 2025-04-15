@@ -28,20 +28,19 @@ spec:
                         name: backend-secrets
                   resources:
                     limits:
-                        # No CPU limit
-                        memory: 1Gi
+                        memory: 256Mi
                     requests:
-                        memory: 1Gi
-                        cpu: 400m
+                        memory: 256Mi
+                        cpu: 250m
                   livenessProbe:
                     httpGet:
                         path: /api/health
                         port: 80
-                    initialDelaySeconds: 100
+                    initialDelaySeconds: 20
                     periodSeconds: 20
                   readinessProbe:
                     httpGet:
                         path: /api/health
                         port: 80
-                    initialDelaySeconds: 80
+                    initialDelaySeconds: 10
                     periodSeconds: 10

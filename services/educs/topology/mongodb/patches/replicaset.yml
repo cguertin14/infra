@@ -16,10 +16,10 @@ spec:
             resources:
               limits:
                 # cpu: 1 -> remove CPU limits
-                memory: 500M
+                memory: 512Mi
               requests:
                 cpu: 250m # default: 500m
-                memory: 400M
+                memory: 512Mi
           affinity:
             # TODO: Wait for 3rd x86 node to uncomment this.
             # podAntiAffinity:
