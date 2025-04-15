@@ -17,6 +17,12 @@ helmCharts:
   valuesInline:
     operator:
       watchNamespace: "*"
+      resources:
+        limits:
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
 
 resources:
 - namespace.yml

@@ -29,9 +29,7 @@ spec:
             secretKeyRef:
               key: password
               name: pihole-secrets
-        resources:
-          limits:
-            memory: 128Mi
+        resources: {}
         ports:
         - containerPort: 9617
           name: prometheus
