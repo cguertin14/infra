@@ -27,7 +27,12 @@ helmCharts:
       enabled: true
     monitoring:
       enabled: true
-    pluginNodeAffinity: kubernetes.io/arch=amd64 # only run plugin pods on amd64 machines
+    
+    # only run plugin pods on amd64 machines
+    cephFSPluginNodeAffinity: kubernetes.io/arch=amd64
+    rbdPluginNodeAffinity: kubernetes.io/arch=amd64
+
+    # Adjust plugin pods resources for less memory usage
     csiCephFSPluginResource: |
       - name : driver-registrar
         resource:
