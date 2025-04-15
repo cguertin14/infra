@@ -24,6 +24,7 @@ spec:
         - 'cguertin.dev'
         - 'preview.cguertin.dev'
         - 'ha.cguertin.dev'
+        - 'photos.cguertin.dev'
         - 'jellyfin.media.cguertin.dev'
         - 'radarr.media.cguertin.dev'
         - 'sonarr.media.cguertin.dev'

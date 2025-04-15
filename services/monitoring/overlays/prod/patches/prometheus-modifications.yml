@@ -4,6 +4,11 @@ metadata:
   name: k8s
   namespace: monitoring
 spec:
+  replicas: 3
+  resources:
+    requests:
+      memory: 2Gi
+      cpu: 60m
   # Data is accumulated for 183 days (6 months) and is deleted afterwards.
   # More info: https://github.com/prometheus-operator/kube-prometheus/blob/v0.7.0/manifests/setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml#L2846
   retention: 183d
@@ -18,14 +23,7 @@ spec:
           requests:
             storage: 500Gi
         storageClassName: nfs-client
-  # Make sure Prometheuses run on different x86 nodes
   affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: prometheus
-        topologyKey: kubernetes.io/hostname
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
@@ -34,3 +32,9 @@ spec:
             operator: In
             values:
               - amd64
+    # podAntiAffinity:
+    #   requiredDuringSchedulingIgnoredDuringExecution:
+    #   - labelSelector:
+    #       matchLabels:
+    #         app.kubernetes.io/name: prometheus
+    #     topologyKey: kubernetes.io/hostname
