@@ -21,7 +21,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 500Gi
+            storage: 250Gi
         storageClassName: nfs-client
   affinity:
     nodeAffinity:
