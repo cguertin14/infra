@@ -27,11 +27,6 @@ helmCharts:
       enabled: true
     monitoring:
       enabled: true
-    
-    # only run plugin pods on amd64 machines
-    # csi:
-    #   cephFSPluginNodeAffinity: kubernetes.io/arch=amd64
-    #   rbdPluginNodeAffinity: kubernetes.io/arch=amd64
 
     # Adjust plugin pods resources for less memory usage
     csiCephFSPluginResource: |
@@ -45,10 +40,10 @@ helmCharts:
       - name : csi-cephfsplugin
         resource:
           requests:
-            memory: 512Mi
-            cpu: 250m
+            memory: 128Mi
+            cpu: 50m
           limits:
-            memory: 512Mi
+            memory: 128Mi
       - name : liveness-prometheus
         resource:
           requests:
@@ -67,10 +62,10 @@ helmCharts:
       - name : csi-rbdplugin
         resource:
           requests:
-            memory: 512Mi
-            cpu: 250m
+            memory: 128Mi
+            cpu: 50m
           limits:
-            memory: 512Mi
+            memory: 128Mi
       - name : liveness-prometheus
         resource:
           requests:
