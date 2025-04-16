@@ -29,9 +29,9 @@ helmCharts:
       enabled: true
     
     # only run plugin pods on amd64 machines
-    csi:
-      cephFSPluginNodeAffinity: kubernetes.io/arch=amd64
-      rbdPluginNodeAffinity: kubernetes.io/arch=amd64
+    # csi:
+    #   cephFSPluginNodeAffinity: kubernetes.io/arch=amd64
+    #   rbdPluginNodeAffinity: kubernetes.io/arch=amd64
 
     # Adjust plugin pods resources for less memory usage
     csiCephFSPluginResource: |
