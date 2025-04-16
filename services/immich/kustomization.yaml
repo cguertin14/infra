@@ -28,6 +28,12 @@ patches:
     kind: Deployment
     name: immich-machine-learning
     version: v1
+- path: patches/immich-redis-storage.yml
+  target:
+    group: apps
+    kind: StatefulSet
+    name: immich-redis-master
+    version: v1
 
 generators:
 - secrets-generator.yml
