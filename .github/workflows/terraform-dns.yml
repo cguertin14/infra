@@ -2,8 +2,10 @@ name: Terraform DNS GHA
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
+    # tags:
+    #   - '*'
 
 permissions:
   contents: read
