@@ -37,7 +37,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN 
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN }}
       - name: Terraform Init
         working-directory: terraform/dns
         run: |
@@ -54,7 +54,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN 
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN }}
       - name: Apply code
         working-directory: terraform/dns
         run: |
