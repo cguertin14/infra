@@ -13,14 +13,15 @@ resource "aws_iam_user" "backup_user" {
   name     = "${each.value}-backup-user"
 }
 
-resource "aws_iam_access_key" "backup_access_key" {
-  for_each = toset(var.role_name_prefixes)
-  user     = aws_iam_user.backup_user[each.key].name
-}
+# WARNING: Go create this in the console and use copy/paste it from there.
+# resource "aws_iam_access_key" "backup_access_key" {
+#   for_each = toset(var.role_name_prefixes)
+#   user     = aws_iam_user.backup_user[each.key].name
+# }
 
 resource "aws_s3_bucket" "backup_bucket" {
-  for_each = toset(var.role_name_prefixes)
-  bucket   = "${each.value}-backup-bucket"
+  for_each      = toset(var.role_name_prefixes)
+  bucket_prefix = "${each.value}-backup-bucket"
   lifecycle {
     prevent_destroy = true # Must be destroyed in the console.
   }
