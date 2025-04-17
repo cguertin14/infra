@@ -2,10 +2,8 @@ name: Terraform AWS GHA
 
 on:
   push:
-    branches:
-      - main
-    # tags:
-    #   - '*'
+    tags:
+      - '*'
 
 permissions:
   contents: read
