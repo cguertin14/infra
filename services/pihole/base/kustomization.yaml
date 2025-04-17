@@ -35,10 +35,10 @@ helmCharts:
       
     resources:
       limits:
-        memory: "512"
+        memory: "512Mi"
       requests:
-        cpu: "250"
-        memory: "512"
+        cpu: "250m"
+        memory: "512Mi"
 
     persistentVolumeClaim:
       enabled: true
