@@ -1,4 +1,4 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+je apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
@@ -35,10 +35,10 @@ helmCharts:
       
     resources:
       limits:
-        memory: "128Mi"
+        memory: "512"
       requests:
-        cpu: "60m"
-        memory: "128Mi"
+        cpu: "250"
+        memory: "512"
 
     persistentVolumeClaim:
       enabled: true
