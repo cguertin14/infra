@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Create .terraformrc file locally
-        run: echo "credentials \"app.terraform.io\" {token = \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
       - name: Test if terraform configs are valid
         working-directory: terraform/dns
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Create .terraformrc file locally
-        run: echo "credentials \"app.terraform.io\" {token = \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
       - name: Terraform Init
         working-directory: terraform/dns
         run: |
@@ -45,7 +45,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Create .terraformrc file locally
+        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
       - name: Apply code
+        working-directory: terraform/dns
         run: |
           terraform init -input=false
           terraform apply -auto-approve -input=false
