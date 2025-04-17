@@ -1,0 +1,51 @@
+name: Terraform DNS GHA
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+
+jobs:
+  tf_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create .terraformrc file locally
+        run: echo "credentials \"app.terraform.io\" {token = \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+      - name: Test if terraform configs are valid
+        working-directory: terraform/dns
+        run: |
+          terraform init -input=false
+          terraform fmt -check -recursive -diff
+
+  plan:
+    needs: tf_lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create .terraformrc file locally
+        run: echo "credentials \"app.terraform.io\" {token = \"$TERRAFORM_TOKEN\"}" > $HOME/.terraformrc
+      - name: Terraform Init
+        working-directory: terraform/dns
+        run: |
+          terraform init -input=false
+          terraform plan -input=false
+
+  apply_approval:
+    runs-on: ubuntu-latest
+    needs: plan
+    environment: terraform-approval # requires approval
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Apply code
+        run: |
+          terraform init -input=false
+          terraform apply -auto-approve -input=false
