@@ -18,8 +18,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Create .terraformrc file locally
-        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN }}
       - name: Test if terraform configs are valid
         working-directory: terraform/dns
         run: |
@@ -32,8 +34,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Create .terraformrc file locally
-        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN 
       - name: Terraform Init
         working-directory: terraform/dns
         run: |
@@ -47,8 +51,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Create .terraformrc file locally
-        run: echo "credentials \"app.terraform.io\" {token = \"${{ secrets.TERRAFORM_TOKEN }}\"}" > $HOME/.terraformrc
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_TOKEN 
       - name: Apply code
         working-directory: terraform/dns
         run: |
