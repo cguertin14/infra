@@ -13,7 +13,7 @@ This space defines backups taken by [Velero](https://velero.io).
 
 Read how [here](https://velero.io/docs/latest/basic-install/).
 
-### Restore data
+### Restore etcd resources
 
 1. Find the etcd backup you want to restore on S3/on k8s, note its name. (i.e: `velero-etcd-backups-20250418213241`)
 2. Run this command (change the timestamp):
@@ -23,7 +23,7 @@ velero restore create velero-etcd-restore-20250418213241 --from-backup velero-et
 
 Your k8s resources (except PVs/PVCs) should now be restored.
 
-### Restore etcd resources
+### Restore volumes
 
 1. Find the volumes backup you want to restore on S3/on k8s, note its name. (i.e: `velero-volumes-backups-20250418213241`)
 2. Run this command (change the timestamp):
@@ -32,6 +32,17 @@ velero restore create velero-volumes-restore-20250418213241 --from-backup velero
 ```
 
 Your PVs/PVCs should now be restored.
+
+### In case of empty k8s cluster
+
+If the cluster has been lost, and it is fully empty:
+
+1. Re-deploy this Kustomize stack in the new cluster;
+2. Run a similar command to this:
+```bash
+velero restore create --from-schedule velero-volumes-backups --allow-partially-failed
+velero restore create --from-schedule velero-etcd-backups --allow-partially-failed
+```
 
 ## Useful links
 

@@ -38,6 +38,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
       filter {
         prefix = rule.value
       }
+      transition {
+        days          = 7
+        storage_class = "GLACIER_IR"
+      }
       expiration {
         days = 14 # expire objects after 2 weeks
       }

@@ -76,25 +76,20 @@ helmCharts:
         template:
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          # All namespaces
+          # Most namespaces
           includedNamespaces:
           - argo-rollouts
           - argocd
           - blog
           - cert-manager
           - cloudnative-pg
-          - ddns
-          - default
           - educs
           - gpu-operator
           - home-assistant
           - immich
-          - k3supdater
           - kube-node-lease
           - kube-public
           - kube-system
-          - kured
-          - lululemon-stockchecker
           - mediaplatform
           - metallb-system
           - mongodb-operator
