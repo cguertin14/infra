@@ -30,14 +30,17 @@ resource "aws_s3_bucket" "backup_bucket" {
 
 resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
   bucket = aws_s3_bucket.backup_bucket.id
-  rule {
-    id     = "expire-old-backups"
-    status = "Enabled"
-    filter {
-      prefix = ".tar.gz"
-    }
-    expiration {
-      days = 14 # expire objects after 2 weeks
+  dynamic "rule" {
+    for_each = [".json", ".tar.gz", ".json.gz", ".gz"]
+    content {
+      id     = "expire-old-backups-${replace(rule.value, ".", "-")}"
+      status = "Enabled"
+      filter {
+        prefix = rule.value
+      }
+      expiration {
+        days = 14 # expire objects after 2 weeks
+      }
     }
   }
 }
