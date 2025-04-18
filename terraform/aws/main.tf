@@ -13,13 +13,12 @@ data "aws_iam_policy_document" "backup_assume_role_policy" {
 }
 
 resource "aws_iam_user" "backup_user" {
-  name = "${each.value}-backup-user"
+  name = "${local.bucket_prefix}-user"
 }
 
 # WARNING: Go create this in the console and use copy/paste it from there.
 # resource "aws_iam_access_key" "backup_access_key" {
-#   for_each = toset(var.role_name_prefixes)
-#   user     = aws_iam_user.backup_user[each.key].name
+#   user     = aws_iam_user.backup_user.name
 # }
 
 resource "aws_s3_bucket" "backup_bucket" {
@@ -62,8 +61,8 @@ resource "aws_s3_bucket_policy" "backup_bucket_policy" {
           "s3:ListMultipartUploadParts"
         ]
         Resource = [
-          "arn:aws:s3:::${aws_s3_bucket.backup_bucket[each.key].id}",
-          "arn:aws:s3:::${aws_s3_bucket.backup_bucket[each.key].id}/*",
+          "arn:aws:s3:::${aws_s3_bucket.backup_bucket.id}",
+          "arn:aws:s3:::${aws_s3_bucket.backup_bucket.id}/*",
         ]
       },
     ]
@@ -117,7 +116,7 @@ data "aws_iam_policy_document" "backup_policy" {
 }
 
 resource "aws_iam_user_policy" "backup_user_policy" {
-  name   = "${each.value}-backup-policy"
-  user   = aws_iam_user.backup_user[each.key].id
-  policy = data.aws_iam_policy_document.backup_policy[each.key].json
+  name   = "${local.bucket_prefix}-policy"
+  user   = aws_iam_user.backup_user.id
+  policy = data.aws_iam_policy_document.backup_policy.json
 }
