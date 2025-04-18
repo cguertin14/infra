@@ -22,7 +22,7 @@ resource "aws_iam_user" "backup_user" {
 # }
 
 resource "aws_s3_bucket" "backup_bucket" {
-  bucket_prefix = "${local.bucket_prefix}-backup-bucket"
+  bucket_prefix = "${local.bucket_prefix}-bucket"
   lifecycle {
     prevent_destroy = true # Must be destroyed in the console.
   }
@@ -37,7 +37,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
       prefix = ".tar.gz"
     }
     expiration {
-      days = 30
+      days = 14 # expire objects after 2 weeks
     }
   }
 }
