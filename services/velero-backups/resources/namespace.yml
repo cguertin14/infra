@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: velero-backups
+  labels:
+    name: velero-backups
