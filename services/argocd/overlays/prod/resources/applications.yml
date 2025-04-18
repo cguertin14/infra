@@ -401,25 +401,25 @@ spec:
 #     automated:
 #       selfHeal: true
 #       prune: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: home-assistant
-  namespace: argocd
-spec:
-  project: production
-  destination:
-    namespace: home-assistant
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/cguertin14/infra
-    targetRevision: main
-    path: services/home-assistant
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: home-assistant
+#   namespace: argocd
+# spec:
+#   project: production
+#   destination:
+#     namespace: home-assistant
+#     server: https://kubernetes.default.svc
+#   source:
+#     repoURL: https://github.com/cguertin14/infra
+#     targetRevision: main
+#     path: services/home-assistant
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+#       prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
