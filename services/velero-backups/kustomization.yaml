@@ -5,6 +5,7 @@ namespace: velero-backups
 
 resources:
 - resources/namespace.yml
+- resources/cm-restore-migration-pvc.yml
 
 generators:
 - secrets-generator.yml
