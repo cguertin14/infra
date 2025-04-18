@@ -2,13 +2,12 @@ name: Terraform AWS GHA
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+    - main
 
 permissions:
   contents: read
   pull-requests: write
-
 
 jobs:
   tf_lint:
