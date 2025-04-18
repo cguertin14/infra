@@ -43,6 +43,7 @@ helmCharts:
     persistentVolumeClaim:
       enabled: true
       size: 2Gi
+      storageClass: ceph-block
 
     serviceWeb:
       type: ClusterIP
