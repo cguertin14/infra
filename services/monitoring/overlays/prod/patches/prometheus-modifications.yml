@@ -22,7 +22,7 @@ spec:
         resources:
           requests:
             storage: 250Gi
-        storageClassName: nfs-client
+        storageClassName: ceph-block
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
