@@ -33,7 +33,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
   dynamic "rule" {
     for_each = [".json", ".tar.gz", ".json.gz", ".gz"]
     content {
-      id     = "expire-old-backups-${replace(rule.value, ".", "-")}"
+      id     = "expire-old-backups-${replace(rule.value, ".", "")}"
       status = "Enabled"
       filter {
         prefix = rule.value
