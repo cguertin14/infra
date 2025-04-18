@@ -58,7 +58,8 @@ resource "aws_s3_bucket_policy" "backup_bucket_policy" {
           "s3:PutObject",
           "s3:PutObjectTagging",
           "s3:AbortMultipartUpload",
-          "s3:ListMultipartUploadParts"
+          "s3:ListMultipartUploadParts",
+          "s3:ListBucket",
         ]
         Resource = [
           "arn:aws:s3:::${aws_s3_bucket.backup_bucket.id}",
@@ -94,7 +95,8 @@ data "aws_iam_policy_document" "backup_policy" {
       "s3:PutObject",
       "s3:PutObjectTagging",
       "s3:AbortMultipartUpload",
-      "s3:ListMultipartUploadParts"
+      "s3:ListMultipartUploadParts",
+      "s3:ListBucket",
     ]
     resources = [
       "arn:aws:s3:::${aws_s3_bucket.backup_bucket.id}",
