@@ -7,11 +7,12 @@ metadata:
 spec:
   template:
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        supplementalGroups:
-        - 109 # ID of the 'render' group
+      # NOTE: The below does not seem needed after migrating to rook-ceph
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   supplementalGroups:
+      #   - 109 # ID of the 'render' group
       containers:
       - name: "jellyfin"
         securityContext:

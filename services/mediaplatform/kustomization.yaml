@@ -6,7 +6,6 @@ namespace: mediaplatform
 resources:
 - resources/namespace.yml
 - resources/volumes.yml
-- resources/volumes-arr.yml
 - resources/ingresses.yml
 
 ## Important: Storage logic
@@ -25,9 +24,8 @@ helmCharts:
     persistence:
       config:
         enabled: true
-        size: 2Gi
-        storageClass: nfs-media-client
-        volumeName: jellyfin-config
+        size: 5Gi
+        storageClass: ceph-block
     # resources:
     #   # Warning: No limits.
     #   requests:
@@ -46,8 +44,7 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
-        storageClass: nfs-client
-        volumeName: radarr-config
+        storageClass: ceph-block
   version: 16.3.2
 - name: sonarr
   namespace: mediaplatform
@@ -60,8 +57,7 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
-        storageClass: nfs-client
-        volumeName: sonarr-config
+        storageClass: ceph-block
   version: 16.3.2
 - name: prowlarr
   namespace: mediaplatform
@@ -74,8 +70,7 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
-        storageClass: nfs-client
-        volumeName: prowlarr-config
+        storageClass: ceph-block
   version: 4.5.2
 - name: qbittorrent
   namespace: mediaplatform
@@ -94,8 +89,7 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
-        storageClass: nfs-client
-        volumeName: qbittorrent-config
+        storageClass: ceph-block
   version: 13.5.2
 - name: sabnzbd
   namespace: mediaplatform
@@ -108,8 +102,7 @@ helmCharts:
       config:
         enabled: true
         size: 2Gi
-        storageClass: nfs-client
-        volumeName: sabnzbd-config
+        storageClass: ceph-block
     # resources:
     #   # Warning: No limits.
     #   requests:
