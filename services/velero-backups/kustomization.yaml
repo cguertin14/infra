@@ -23,8 +23,6 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     deployNodeAgent: true
-    defaultSnapshotMoveData: true
-    defaultVolumesToFsBackup: true
 
     credentials:
       existingSecret: velero-s3-credentials
@@ -38,6 +36,8 @@ helmCharts:
           name: plugins
 
     configuration:
+      defaultSnapshotMoveData: true
+      defaultVolumesToFsBackup: true
       backupStorageLocation:
       - name: aws
         default: true
