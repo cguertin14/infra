@@ -37,7 +37,7 @@ helmCharts:
 
     configuration:
       defaultSnapshotMoveData: true
-      defaultVolumesToFsBackup: true
+      defaultVolumesToFsBackup: true # TODO: check if this is causing issues.
       backupStorageLocation:
       - name: aws
         default: true
