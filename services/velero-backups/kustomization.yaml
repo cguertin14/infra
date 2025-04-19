@@ -68,13 +68,13 @@ helmCharts:
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
           # Specific PVs/PVCs namespaces
-          includedNamespaces:
-          - educs
-          - home-assistant
-          - immich
-          - mediaplatform
-          - monitoring
-          - pihole
+          # includedNamespaces:
+          # - educs
+          # - home-assistant
+          # - immich
+          # - mediaplatform
+          # - monitoring
+          # - pihole
           # Only backup PVs and PVCs
           includedNamespaceScopedResources:
           - persistentVolumeClaims
