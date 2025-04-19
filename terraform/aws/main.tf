@@ -31,7 +31,7 @@ resource "aws_s3_bucket" "backup_bucket" {
 resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
   bucket = aws_s3_bucket.backup_bucket.id
   dynamic "rule" {
-    for_each = [".json", ".tar.gz", ".json.gz", ".gz"]
+    for_each = ["backups/", "restores/", "kipia/"]
     content {
       id     = "expire-old-backups-${replace(rule.value, ".", "")}"
       status = "Enabled"

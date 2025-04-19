@@ -56,6 +56,10 @@ helmCharts:
     schedules:
       volumes-backups:
         disabled: false
+        annotations:
+          # only back up rook-ceph volumes
+          pv.kubernetes.io/provisioned-by: rook-ceph.rbd.csi.ceph.com
+          volume.kubernetes.io/storage-provisioner: rook-ceph.rbd.csi.ceph.com
         schedule: "0 */24 * * *" # every 1 day/24 hours
         useOwnerReferencesInBackup: false
         paused: false
