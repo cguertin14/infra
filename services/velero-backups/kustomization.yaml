@@ -54,11 +54,24 @@ helmCharts:
           region: us-east-1
 
     schedules:
-      volumes-backups:
+      persistent-volume-backups:
         disabled: false
         annotations:
           # only back up rook-ceph volumes
           pv.kubernetes.io/provisioned-by: rook-ceph.rbd.csi.ceph.com
+        schedule: "0 */24 * * *" # every 1 day/24 hours
+        useOwnerReferencesInBackup: false
+        paused: false
+        skipImmediately: false
+        template:
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: aws
+          includedClusterScopedResources:
+          - persistentVolumes
+      persistent-volume-claims-backups:
+        disabled: false
+        annotations:
+          # only back up rook-ceph volumes
           volume.kubernetes.io/storage-provisioner: rook-ceph.rbd.csi.ceph.com
         schedule: "0 */24 * * *" # every 1 day/24 hours
         useOwnerReferencesInBackup: false
@@ -67,19 +80,17 @@ helmCharts:
         template:
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          # Specific PVs/PVCs namespaces
-          # includedNamespaces:
-          # - educs
-          # - home-assistant
-          # - immich
-          # - mediaplatform
-          # - monitoring
-          # - pihole
+          # Specific namespaces where rook-ceph PVCs are used
+          includedNamespaces:
+          - educs
+          - home-assistant
+          - immich
+          - mediaplatform
+          - monitoring
+          - pihole
           # Only backup PVs and PVCs
           includedNamespaceScopedResources:
           - persistentVolumeClaims
-          includedClusterScopedResources:
-          - persistentVolumes
       etcd-backups:
         disabled: false
         schedule: "0 */72 * * *" # every 3 days
@@ -111,7 +122,7 @@ helmCharts:
           - rook-ceph
           - synology-nfs
           - synology-nfs-media
-          # PVs and PVCs are backed up in a separate backup schedule
+          # PVs and PVCs are backed up in separate backup schedules
           excludedNamespaceScopedResources:
           - persistentVolumeClaims
           excludedClusterScopedResources:
