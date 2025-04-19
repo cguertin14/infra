@@ -56,7 +56,7 @@ helmCharts:
     schedules:
       etcd-backups:
         disabled: false
-        schedule: "0 */72 * * *" # every 3 days
+        schedule: "0 */24 * * *" # every 24 hours
         useOwnerReferencesInBackup: false
         paused: false
         skipImmediately: false
