@@ -63,6 +63,9 @@ helmCharts:
           includedNamespaces:
           # TODO: Add more namespaces here once all PVCs/PVs are migrated to rook-ceph...
           - immich
+          - monitoring
+          - mediaplatform
+          - home-assistant
           # Only backup PVs and PVCs
           includedNamespaceScopedResources:
           - persistentVolumeClaims

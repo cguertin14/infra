@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: piper
 spec:
-  storageClassName: nfs-client
+  storageClassName: ceph-block
   accessModes:
   - ReadWriteOnce
   resources:
