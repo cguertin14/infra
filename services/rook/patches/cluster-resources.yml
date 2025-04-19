@@ -37,10 +37,10 @@ spec:
         memory: 512Mi
     mgr-sidecar:
       limits:
-        memory: 40Mi
+        memory: 80Mi
       requests:
-        cpu: 50m # default: 100m
-        memory: 40Mi
+        cpu: 100m
+        memory: 80Mi
     mon:
       limits:
         memory: 1Gi # default: 2Gi
