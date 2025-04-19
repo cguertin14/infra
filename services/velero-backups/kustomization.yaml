@@ -23,6 +23,8 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     deployNodeAgent: true
+    defaultSnapshotMoveData: true
+    defaultVolumesToFsBackup: true
 
     credentials:
       existingSecret: velero-s3-credentials
