@@ -39,6 +39,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
         prefix = rule.value
       }
       transition {
+        days          = 2
+        storage_class = "STANDARD_IA"
+      }
+      transition {
         days          = 7
         storage_class = "GLACIER_IR"
       }
