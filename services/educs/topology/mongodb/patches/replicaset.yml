@@ -42,5 +42,12 @@ spec:
           spec:
             resources:
                 requests:
-                    storage: 20Gi
-            storageClassName: nfs-client
+                    storage: 2Gi
+            storageClassName: ceph-block
+        - metadata:
+            name: logs-volume
+          spec:
+            resources:
+                requests:
+                    storage: 2Gi
+            storageClassName: ceph-block

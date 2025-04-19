@@ -61,11 +61,12 @@ helmCharts:
           storageLocation: aws
           # Specific PVs/PVCs namespaces
           includedNamespaces:
-          # TODO: Add more namespaces here once all PVCs/PVs are migrated to rook-ceph...
-          - immich
-          - monitoring
-          - mediaplatform
+          - educs
           - home-assistant
+          - immich
+          - mediaplatform
+          - monitoring
+          - pihole
           # Only backup PVs and PVCs
           includedNamespaceScopedResources:
           - persistentVolumeClaims
