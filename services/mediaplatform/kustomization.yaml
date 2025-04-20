@@ -24,7 +24,7 @@ helmCharts:
     persistence:
       config:
         enabled: true
-        size: 5Gi
+        size: 10Gi
         storageClass: ceph-block
     # resources:
     #   # Warning: No limits.
