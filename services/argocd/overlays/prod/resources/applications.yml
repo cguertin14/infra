@@ -477,6 +477,25 @@ spec:
     automated:
       selfHeal: true
       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-snapshotter
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: k8s-snapshotter
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 # ---
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
