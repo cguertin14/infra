@@ -491,7 +491,7 @@ spec:
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: k8s-snapshotter
+    path: services/k8s-snapshotter
   syncPolicy:
     automated:
       selfHeal: true
