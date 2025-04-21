@@ -63,6 +63,7 @@ helmCharts:
       config:
         enabled: true
         storageClass: ceph-block
+        size: 2Gi
       usb:
         enabled: true
         type: hostPath
