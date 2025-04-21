@@ -5,7 +5,6 @@ namespace: velero-backups
 
 resources:
 - resources/namespace.yml
-- resources/cm-restore-migration-pvc.yml
 
 generators:
 - secrets-generator.yml
@@ -22,8 +21,6 @@ helmCharts:
   version: 8.7.2
   includeCRDs: true
   valuesInline:
-    deployNodeAgent: true
-
     credentials:
       existingSecret: velero-s3-credentials
     
@@ -35,9 +32,11 @@ helmCharts:
         - mountPath: /target
           name: plugins
 
+    deployNodeAgent: true
     configuration:
       defaultSnapshotMoveData: true
-      defaultVolumesToFsBackup: true # TODO: check if this is causing issues.
+      features: EnableCSI
+      uploaderType: kopia
       backupStorageLocation:
       - name: aws
         default: true
@@ -56,7 +55,7 @@ helmCharts:
     schedules:
       etcd-backups:
         disabled: false
-        schedule: "0 */24 * * *" # every 24 hours
+        schedule: "0 2 * * *" # every day at 2AM
         useOwnerReferencesInBackup: false
         paused: false
         skipImmediately: false
@@ -85,45 +84,23 @@ helmCharts:
           - rook-ceph
           - synology-nfs
           - synology-nfs-media
-          # PVs and PVCs are backed up in separate backup schedules
-          excludedNamespaceScopedResources:
-          - persistentVolumeClaims
+          # PVs & PVCs are backed up in separate backup schedules
           excludedClusterScopedResources:
           - persistentVolumes
-      # persistent-volume-backups:
-      #   disabled: false
-      #   annotations:
-      #     # only back up rook-ceph volumes
-      #     pv.kubernetes.io/provisioned-by: rook-ceph.rbd.csi.ceph.com
-      #   schedule: "0 */24 * * *" # every 1 day/24 hours
-      #   useOwnerReferencesInBackup: false
-      #   paused: false
-      #   skipImmediately: false
-      #   template:
-      #     ttl: "336h" # 2 weeks / 14 days
-      #     storageLocation: aws
-      #     includedClusterScopedResources:
-      #     - persistentVolumes
-      # persistent-volume-claims-backups:
-      #   disabled: false
-      #   annotations:
-      #     # only back up rook-ceph volumes
-      #     volume.kubernetes.io/storage-provisioner: rook-ceph.rbd.csi.ceph.com
-      #   schedule: "0 */24 * * *" # every 1 day/24 hours
-      #   useOwnerReferencesInBackup: false
-      #   paused: false
-      #   skipImmediately: false
-      #   template:
-      #     ttl: "336h" # 2 weeks / 14 days
-      #     storageLocation: aws
-      #     # Specific namespaces where rook-ceph PVCs are used
-      #     includedNamespaces:
-      #     - educs
-      #     - home-assistant
-      #     - immich
-      #     - mediaplatform
-      #     - monitoring
-      #     - pihole
-      #     # Only backup PVs and PVCs
-      #     includedNamespaceScopedResources:
-      #     - persistentVolumeClaims
+          excludedNamespaceScopedResources:
+          - persistentVolumeClaims
+      persistent-data-backups:
+        disabled: false
+        schedule: "30 2 * * *" # every day at 2:30AM
+        useOwnerReferencesInBackup: false
+        paused: false
+        skipImmediately: false
+        template:
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: aws
+          snapshotMoveData: true
+          includedClusterScopedResources:
+          - persistentVolumes
+          # Do not back up PVCs here, only PVs - as they are backed up in the etcd-backups schedule.
+          includedNamespaceScopedResources:
+          - persistentVolumeClaims
