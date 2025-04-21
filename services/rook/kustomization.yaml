@@ -100,10 +100,6 @@ helmCharts:
     mgr:
       allowMultiplePerNode: false
       count: 2
-
-    # TODO: Reduce overall memory limits that are affecting other deployments in the cluster.
-    #       Preventing them from deploying (bad).
-    
     #
     # Monitor deployments may contain an anti-affinity rule for avoiding monitor
     # collocation on the same node. This is a required rule when host network is used
@@ -129,3 +125,9 @@ helmCharts:
 
     toolbox:
       enabled: false
+
+    # Deploy a volume snapshot class for block storage
+    cephBlockPoolsVolumeSnapshotClass:
+      enabled: true
+      annotations:
+        snapshot.storage.kubernetes.io/is-default-class: "true"
