@@ -21,7 +21,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 250Gi
+            storage: 100Gi
         storageClassName: ceph-block
   affinity:
     nodeAffinity:
