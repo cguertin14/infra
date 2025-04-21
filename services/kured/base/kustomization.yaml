@@ -27,3 +27,4 @@ helmCharts:
       endTime: "04:30"
       period: 30m
       timeZone: America/New_York
+      forceReboot: true
