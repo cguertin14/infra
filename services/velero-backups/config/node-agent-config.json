@@ -1,17 +1,6 @@
 {
-	"loadAffinity": [
-		{
-			"nodeSelector": {
-				"matchExpressions": [
-					{
-						"key": "kubernetes.io/arch",
-						"operator": "In",
-						"values": [
-							"amd64"
-						]
-					}
-				]
-			}
-		}
-	]
+	"podResources": {
+		"cpuRequest": "1500m",
+		"memoryRequest": "256Mi"
+	}
 }
