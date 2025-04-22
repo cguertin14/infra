@@ -69,7 +69,7 @@ helmCharts:
       # This backup includes all resources in the cluster.
       cluster-backups:
         disabled: false
-        schedule: "0 2 * * *" # every day at 2AM
+        schedule: "0 2,14 * * *" # every day at 2AM & 2PM
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false

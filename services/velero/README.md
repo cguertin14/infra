@@ -4,7 +4,7 @@ This space defines backups taken by [Velero](https://velero.io).
 
 ## Current Schedules
 
-* `cluster-backups` backups -- etcd & PV/PVCs: every day at 2AM
+* `cluster-backups` backups -- etcd & PV/PVCs: every day at 2AM & 2PM
 
 ## Restoring backups
 
