@@ -9,7 +9,7 @@ This space defines backups taken by [Velero](https://velero.io).
 
 ## Restoring backups
 
-:warning: IMPORTANT NOTE: Backup resources are automatically re-created if all is lost and the `velero-backups` namespace is recreated. This is great.
+:warning: IMPORTANT NOTE: Backup resources are automatically re-created if all is lost and the `velero` namespace is recreated. This is great.
 
 ### Install the Velero CLI
 
@@ -20,7 +20,7 @@ Read how [here](https://velero.io/docs/latest/basic-install/).
 1. Find the etcd backup you want to restore on S3/on k8s, note its name. (i.e: `velero-etcd-backups-20250418213241`)
 2. Run this command (change the timestamp):
 ```bash
-velero restore create velero-etcd-restore-20250418213241 --from-backup velero-etcd-backups-20250418213241 --namespace velero-backups
+velero restore create velero-etcd-restore-20250418213241 --from-backup velero-etcd-backups-20250418213241 --namespace velero
 ```
 
 Your k8s resources (except PVs/PVCs) should now be restored.
@@ -30,7 +30,7 @@ Your k8s resources (except PVs/PVCs) should now be restored.
 1. Find the volumes backup you want to restore on S3/on k8s, note its name. (i.e: `velero-persistent-data-backups-20250418213241`)
 2. Run this command (change the timestamp):
 ```bash
-velero restore create velero-persistent-data-restore-20250418213241 --from-backup velero-persistent-data-backups-20250418213241 --namespace velero-backups
+velero restore create velero-persistent-data-restore-20250418213241 --from-backup velero-persistent-data-backups-20250418213241 --namespace velero
 ```
 
 Your PVs/PVCs should now be restored.
