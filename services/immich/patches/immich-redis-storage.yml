@@ -1,3 +1,9 @@
 - op: add
   path: /spec/volumeClaimTemplates/0/spec/storageClassName
   value: ceph-block
+
+- op: add
+  path: /spec/volumeClaimTemplates/0/metadata
+  value:
+    labels:
+      velero.io/exclude-from-backup: "true"
