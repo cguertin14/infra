@@ -45,7 +45,7 @@ helmCharts:
 
     deployNodeAgent: true
     configuration:
-      defaultRepoMaintainFrequency: 12h0m0s
+      defaultRepoMaintainFrequency: 6h0m0s
       defaultSnapshotMoveData: true
       defaultBackupStorageLocation: aws
       features: EnableCSI
