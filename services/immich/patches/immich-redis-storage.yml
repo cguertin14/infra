@@ -3,7 +3,6 @@
   value: ceph-block
 
 - op: add
-  path: /spec/volumeClaimTemplates/0/metadata
+  path: /spec/volumeClaimTemplates/0/metadata/labels
   value:
-    labels:
-      velero.io/exclude-from-backup: "true"
+    velero.io/exclude-from-backup: "true"
