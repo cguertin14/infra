@@ -500,17 +500,17 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: velero-backups
+  name: velero
   namespace: argocd
 spec:
   project: production
   destination:
-    namespace: velero-backups
+    namespace: velero
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: services/velero-backups
+    path: services/velero
   syncPolicy:
     automated:
       selfHeal: true
