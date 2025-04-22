@@ -55,45 +55,10 @@ helmCharts:
           region: us-east-1
 
     schedules:
-      cluster-etcd-backups:
+      # This backup includes all resources in the cluster.
+      cluster-backups:
         disabled: false
         schedule: "0 2 * * *" # every day at 2AM
-        useOwnerReferencesInBackup: false
-        paused: false
-        skipImmediately: false
-        template:
-          ttl: "336h" # 2 weeks / 14 days
-          storageLocation: aws
-          # Most namespaces
-          includedNamespaces:
-          - argo-rollouts
-          - argocd
-          - blog
-          - cert-manager
-          - cloudnative-pg
-          - educs
-          - gpu-operator
-          - home-assistant
-          - immich
-          - kube-node-lease
-          - kube-public
-          - kube-system
-          - mediaplatform
-          - metallb-system
-          - mongodb-operator
-          - monitoring
-          - pihole
-          - rook-ceph
-          - synology-nfs
-          - synology-nfs-media
-          # PVs & PVCs are backed up in separate backup schedules
-          excludedClusterScopedResources:
-          - persistentVolumes
-          excludedNamespaceScopedResources:
-          - persistentVolumeClaims
-      persistent-volumes-backups:
-        disabled: false
-        schedule: "30 2 * * *" # every day at 2:30AM
         useOwnerReferencesInBackup: false
         paused: false
         skipImmediately: false
@@ -102,8 +67,3 @@ helmCharts:
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
           snapshotMoveData: true
-          includedClusterScopedResources:
-          - persistentVolumes
-          # Do not back up PVCs here, only PVs - as they are backed up in the etcd-backups schedule.
-          includedNamespaceScopedResources:
-          - persistentVolumeClaims
