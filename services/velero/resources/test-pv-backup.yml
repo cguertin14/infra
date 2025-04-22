@@ -16,3 +16,17 @@ spec:
   # Do not back up PVCs here, only PVs - as they are backed up in the etcd-backups schedule.
   includedNamespaceScopedResources:
   - persistentVolumeClaims
+---
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: test-pv-from-schedule-5
+  namespace: velero
+spec:
+  csiSnapshotTimeout: 30m0s
+  hooks: {}
+  itemOperationTimeout: 0s
+  metadata: {}
+  snapshotMoveData: true
+  storageLocation: aws
+  ttl: 336h0m0s

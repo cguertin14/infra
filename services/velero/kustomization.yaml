@@ -63,7 +63,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
+          # snapshotMoveData: true -> apparently not needed, but leaving here commented out
           csiSnapshotTimeout: 30m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          #snapshotMoveData: true
