@@ -1,0 +1,18 @@
+## This is an example backup file.
+#
+#
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: test-pvc-backup-2
+  namespace: velero
+spec:
+  csiSnapshotTimeout: 30m0s
+  ttl: "336h" # 2 weeks / 14 days
+  storageLocation: aws
+  snapshotMoveData: true
+  includedClusterScopedResources:
+  - persistentVolumes
+  # Do not back up PVCs here, only PVs - as they are backed up in the etcd-backups schedule.
+  includedNamespaceScopedResources:
+  - persistentVolumeClaims
