@@ -18,7 +18,7 @@ helmCharts:
   releaseName: velero
   namespace: velero-backups
   repo: https://vmware-tanzu.github.io/helm-charts
-  version: 8.7.2
+  version: 9.0.0
   includeCRDs: true
   valuesInline:
     credentials:
