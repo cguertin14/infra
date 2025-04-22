@@ -60,7 +60,7 @@ helmCharts:
       enabled: true
       architecture: standalone
       auth:
-        enabled: false # TODO: See if this could be enabled
+        enabled: false
 
     server:
       enabled: true
