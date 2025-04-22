@@ -1,8 +1,8 @@
 {
 	"podResources": {
-		"cpuRequest": "2000m",
+		"cpuRequest": "1500m",
 		"cpuLimit": "2500m",
-		"memoryRequest": "512Mi",
+		"memoryRequest": "256Mi",
 		"memoryLimit": "1Gi"
 	},
 	"loadAffinity": [
