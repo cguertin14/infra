@@ -59,11 +59,11 @@ helmCharts:
       cluster-backups:
         disabled: false
         schedule: "0 2 * * *" # every day at 2AM
-        useOwnerReferencesInBackup: false
+        useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
         template:
           csiSnapshotTimeout: 30m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          snapshotMoveData: true
+          #snapshotMoveData: true
