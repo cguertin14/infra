@@ -10,6 +10,13 @@ patches:
 - path: patches/storageclasses.yml
 - path: patches/cluster-affinity.yml
 - path: patches/cluster-resources.yml
+- path: patches/prometheus-rules.yml
+  target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: PrometheusRule
+    name: prometheus-ceph-rules
+    namespace: rook-ceph
 
 labels:
 - includeSelectors: true

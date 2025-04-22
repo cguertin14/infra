@@ -4,8 +4,7 @@ This space defines backups taken by [Velero](https://velero.io).
 
 ## Current Schedules
 
-* `etcd` backups: every 24 hours / 1 day.
-* `Persistent volumes / Persistent volume claims`: every 24 hours / 1 day.
+* `cluster-backups` backups -- etcd & PV/PVCs: every day at 2AM
 
 ## Restoring backups
 
