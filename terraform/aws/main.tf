@@ -39,7 +39,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire_old_backups" {
         prefix = rule.value
       }
       transition {
-        days          = 3
+        days          = 2 # after 2 days, move files to Glacier
         storage_class = "GLACIER_IR"
       }
       expiration {
