@@ -1,0 +1,23 @@
+{
+	"podResources": {
+		"cpuRequest": "2000m",
+		"cpuLimit": "2500m",
+		"memoryRequest": "512Mi",
+		"memoryLimit": "1Gi"
+	},
+	"loadAffinity": [
+		{
+			"nodeSelector": {
+				"matchExpressions": [
+					{
+						"key": "kubernetes.io/arch",
+						"operator": "In",
+						"values": [
+							"amd64"
+						]
+					}
+				]
+			}
+		}
+	]
+}
