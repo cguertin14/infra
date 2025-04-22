@@ -9,6 +9,8 @@ This space defines backups taken by [Velero](https://velero.io).
 
 ## Restoring backups
 
+:warning: IMPORTANT NOTE: Backup resources are automatically re-created if all is lost and the `velero-backups` namespace is recreated. This is great.
+
 ### Install the Velero CLI
 
 Read how [here](https://velero.io/docs/latest/basic-install/).
