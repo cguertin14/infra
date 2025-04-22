@@ -1,6 +1,0 @@
-{
-	"podResources": {
-		"cpuRequest": "1500m",
-		"memoryRequest": "256Mi"
-	}
-}
