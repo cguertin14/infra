@@ -36,6 +36,7 @@ helmCharts:
     configuration:
       defaultRepoMaintainFrequency: 12h0m0s
       defaultSnapshotMoveData: true
+      defaultBackupStorageLocation: aws
       features: EnableCSI
       uploaderType: kopia
       backupStorageLocation:
