@@ -45,6 +45,7 @@ helmCharts:
 
     deployNodeAgent: true
     configuration:
+      defaultRepoMaintainFrequency: 12h
       defaultSnapshotMoveData: true
       features: EnableCSI
       uploaderType: kopia
