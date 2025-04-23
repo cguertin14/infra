@@ -4,6 +4,7 @@ metadata:
   name: piper-storage
   labels:
     app.kubernetes.io/name: piper
+    velero.io/exclude-from-backup: "true"
 spec:
   storageClassName: ceph-block
   accessModes:

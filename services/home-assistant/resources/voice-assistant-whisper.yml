@@ -4,6 +4,7 @@ metadata:
   name: whisper-storage
   labels:
     app.kubernetes.io/name: whisper
+    velero.io/exclude-from-backup: "true"
 spec:
   storageClassName: ceph-block
   accessModes:
