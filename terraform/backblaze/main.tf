@@ -12,9 +12,9 @@ resource "b2_bucket" "backup_bucket" {
     content {
       file_name_prefix = lifecycle_rules.value
       # After 3 days, hide files
-      days_from_uploading_to_hiding = 3
+      days_from_uploading_to_hiding = 7
       # After 14 days (11 days later), delete files
-      days_from_hiding_to_deleting = 11
+      days_from_hiding_to_deleting = 7
     }
   }
 
