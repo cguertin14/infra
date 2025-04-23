@@ -42,8 +42,6 @@ helmCharts:
       enabled: true
       size: 2Gi
       storageClass: ceph-block
-      annotations:
-        velero.io/csi-volumesnapshot-class: "ceph-block"
 
     serviceWeb:
       type: ClusterIP

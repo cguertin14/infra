@@ -74,7 +74,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 30m0s
+          csiSnapshotTimeout: 60m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
           includedNamespaces:
