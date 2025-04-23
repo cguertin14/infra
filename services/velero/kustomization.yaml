@@ -69,7 +69,7 @@ helmCharts:
       # This backup includes all resources in the cluster EXCEPT PVs/PVCs
       etcd-backups:
         disabled: false
-        schedule: "0 2,14 * * *" # every day at 2AM & 2PM
+        schedule: "0 6,20 * * *" # every day at 2AM & 2PM - time is in UTC
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
@@ -84,7 +84,7 @@ helmCharts:
           - persistentvolumeclaims
       persistent-volumes-backups:
         disabled: false
-        schedule: "15 2,14 * * *" # every day at 2:15AM & 2:15PM
+        schedule: "15 6,20 * * *" # every day at 2:15AM & 2:15PM - time is in UTC
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
