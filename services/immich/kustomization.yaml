@@ -38,6 +38,10 @@ patches:
 generators:
 - secrets-generator.yml
 
+replicas:
+- name: immich-server
+  count: 0 # temporarily remove immich-server pods
+
 helmCharts:
 - name: immich
   releaseName: immich
