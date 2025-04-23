@@ -48,23 +48,24 @@ helmCharts:
     configuration:
       defaultRepoMaintainFrequency: 6h0m0s
       defaultSnapshotMoveData: true
-      defaultBackupStorageLocation: aws
+      defaultBackupStorageLocation: backblaze
       features: EnableCSI
       uploaderType: kopia
       backupStorageLocation:
-      - name: aws
+      - name: backblaze
         default: true
-        provider: aws
-        bucket: velero-backups-bucket20250418195129140400000001
+        provider: backblaze
+        bucket: velero-backups-bucket
         accessMode: ReadWrite
         config:
-          region: us-east-1
+          region: ca-east-006
+          s3Url: https://s3.ca-east-006.backblazeb2.com 
       volumeSnapshotLocation:
-      - name: aws
-        provider: aws
+      - name: backblaze
+        provider: backblaze
         default: true
         config:
-          region: us-east-1
+          region: ca-east-006
 
     schedules:
       # This backup includes all resources in the cluster EXCEPT PVs/PVCs
@@ -77,7 +78,7 @@ helmCharts:
         template:
           csiSnapshotTimeout: 60m0s
           ttl: "336h" # 2 weeks / 14 days
-          storageLocation: aws
+          storageLocation: backblaze
           includedNamespaces:
           - '*'
           excludedResources:
@@ -92,7 +93,7 @@ helmCharts:
         template:
           csiSnapshotTimeout: 60m0s # wait up to 1 hour for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
-          storageLocation: aws
+          storageLocation: backblaze
           includedNamespaces:
           - educs
           - home-assistant
