@@ -54,7 +54,7 @@ helmCharts:
         enabled: true # creates service monitors
       persistence:
         library:
-          existingClaim: immich-photos-storage
+          existingClaim: immich-photos-storage-adjustable
 
     # Use cloudnative-pg instead.
     postgresql:
