@@ -59,7 +59,8 @@ helmCharts:
         accessMode: ReadWrite
         config:
           region: ca-east-006
-          s3Url: https://s3.ca-east-006.backblazeb2.com 
+          s3Url: https://s3.ca-east-006.backblazeb2.com
+          checksumAlgorithm: '' # fix for s3:PutObject error https://github.com/vmware-tanzu/velero/issues/7534#issuecomment-2033987674
       volumeSnapshotLocation:
       - name: backblaze
         provider: aws
