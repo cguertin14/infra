@@ -93,7 +93,12 @@ helmCharts:
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
           includeNamespaces:
-          - '*'
+          - educs
+          - home-assistant
+          - immich
+          - mediaplatform
+          - monitoring
+          - pihole
           includeResources:
           - persistentvolumes
           - persistentvolumeclaims
