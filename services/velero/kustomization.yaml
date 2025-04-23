@@ -54,7 +54,7 @@ helmCharts:
       backupStorageLocation:
       - name: backblaze
         default: true
-        provider: backblaze
+        provider: aws
         bucket: velero-backups-bucket
         accessMode: ReadWrite
         config:
@@ -62,7 +62,7 @@ helmCharts:
           s3Url: https://s3.ca-east-006.backblazeb2.com 
       volumeSnapshotLocation:
       - name: backblaze
-        provider: backblaze
+        provider: aws
         default: true
         config:
           region: ca-east-006
