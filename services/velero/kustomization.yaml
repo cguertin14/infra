@@ -77,9 +77,9 @@ helmCharts:
           csiSnapshotTimeout: 30m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          includeNamespaces:
+          includedNamespaces:
           - '*'
-          excludeResources:
+          excludedResources:
           - persistentvolumes
           - persistentvolumeclaims
       persistent-volumes-backups:
@@ -92,13 +92,13 @@ helmCharts:
           csiSnapshotTimeout: 30m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
-          includeNamespaces:
+          includedNamespaces:
           - educs
           - home-assistant
           - immich
           - mediaplatform
           - monitoring
           - pihole
-          includeResources:
+          includedResources:
           - persistentvolumes
           - persistentvolumeclaims
