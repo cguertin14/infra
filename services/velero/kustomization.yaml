@@ -14,15 +14,16 @@ images:
   newTag: v1.12.0
 
 # NOTE: Temporarily disable this to test all backups work without (some don't)
-# configMapGenerator:
-# - name: node-agent-config
-#   namespace: velero
-#   options:
-#     disableNameSuffixHash: true
-#   files:
-#   - config/node-agent-config.json
-# patches:
-# - path: patches/node-agent-ds-configmap.yml
+configMapGenerator:
+- name: node-agent-config
+  namespace: velero
+  options:
+    disableNameSuffixHash: true
+  files:
+  - config/node-agent-config.json
+
+patches:
+- path: patches/node-agent-ds-configmap.yml
 
 helmCharts:
 - name: velero

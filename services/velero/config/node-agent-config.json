@@ -4,17 +4,10 @@
 			"nodeSelector": {
 				"matchExpressions": [
 					{
-						"key": "kubernetes.io/hostname",
+						"key": "kubernetes.io/arch",
 						"operator": "In",
 						"values": [
-							"nvidiaserver",
-							"miniitx0",
-							"mediaserver",
-							"worker1",
-							"worker2",
-							"worker3",
-							"worker4",
-							"worker5"
+							"amd64"
 						]
 					}
 				]
