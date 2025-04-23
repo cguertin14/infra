@@ -72,7 +72,7 @@ helmCharts:
       etcd-backups:
         disabled: false
         schedule: "0 6 * * *" # every day at 2AM - time is in UTC
-        useOwnerReferencesInBackup: false
+        useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
         template:
@@ -87,7 +87,7 @@ helmCharts:
       persistent-volumes-backups:
         disabled: false
         schedule: "15 6 * * *" # every day at 2:15AM - time is in UTC
-        useOwnerReferencesInBackup: false
+        useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
         template:
