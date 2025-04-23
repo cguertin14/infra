@@ -66,15 +66,34 @@ helmCharts:
           region: us-east-1
 
     schedules:
-      # This backup includes all resources in the cluster.
-      cluster-backups:
+      # This backup includes all resources in the cluster EXCEPT PVs/PVCs
+      etcd-backups:
         disabled: false
         schedule: "0 2,14 * * *" # every day at 2AM & 2PM
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
         template:
-          # snapshotMoveData: true -> apparently not needed, but leaving here commented out
           csiSnapshotTimeout: 30m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: aws
+          includeNamespaces:
+          - '*'
+          excludeResources:
+          - persistentvolumes
+          - persistentvolumeclaims
+      persistent-volumes-backups:
+        disabled: false
+        schedule: "15 2,14 * * *" # every day at 2:15AM & 2:15PM
+        useOwnerReferencesInBackup: true
+        paused: false
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 30m0s
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: aws
+          includeNamespaces:
+          - '*'
+          includeResources:
+          - persistentvolumes
+          - persistentvolumeclaims
