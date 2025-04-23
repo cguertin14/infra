@@ -138,3 +138,5 @@ helmCharts:
       enabled: true
       annotations:
         snapshot.storage.kubernetes.io/is-default-class: "true"
+      labels:
+        velero.io/csi-volumesnapshot-class: "true"
