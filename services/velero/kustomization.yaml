@@ -32,6 +32,11 @@ helmCharts:
   version: 9.0.0
   includeCRDs: true
   valuesInline:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  
     credentials:
       existingSecret: velero-s3-credentials
     
