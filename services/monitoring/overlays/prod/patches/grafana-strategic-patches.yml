@@ -63,7 +63,7 @@ spec:
         configMap:
           defaultMode: 420
           name: grafana-dashboards-custom-3
-      - name: grafana-dashboards-custom-3
+      - name: grafana-dashboards-custom-4
         configMap:
           defaultMode: 420
           name: grafana-dashboards-custom-4
