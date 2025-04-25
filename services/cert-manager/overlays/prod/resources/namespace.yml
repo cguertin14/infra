@@ -4,5 +4,3 @@ metadata:
   name: cert-manager
   labels:
     name: cert-manager
-  annotations:
-    linkerd.io/inject: disabled

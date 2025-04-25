@@ -4,5 +4,3 @@ metadata:
   name: kured
   labels:
     name: kured
-  annotations:
-    linkerd.io/inject: enabled

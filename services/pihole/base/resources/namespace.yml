@@ -4,5 +4,3 @@ metadata:
   name: pihole
   labels:
     name: pihole
-  annotations:
-    linkerd.io/inject: disabled
