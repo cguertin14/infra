@@ -82,7 +82,6 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 60m0s
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
@@ -97,7 +96,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 60m0s # wait up to 1 hour for the snapshot to be ready for use
+          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
