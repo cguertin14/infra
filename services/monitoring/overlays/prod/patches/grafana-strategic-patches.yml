@@ -40,8 +40,8 @@ spec:
           name: grafana-dashboards-custom
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-2
           name: grafana-dashboards-custom-2
-        # - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-3
-        #   name: grafana-dashboards-custom-3
+        - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-3
+          name: grafana-dashboards-custom-3
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards-4
           name: grafana-dashboards-custom-4
       volumes:
@@ -59,10 +59,10 @@ spec:
         configMap:
           defaultMode: 420
           name: grafana-dashboards-custom-2
-      # - name: grafana-dashboards-custom-3
-      #   configMap:
-      #     defaultMode: 420
-      #     name: grafana-dashboards-custom-3
+      - name: grafana-dashboards-custom-3
+        configMap:
+          defaultMode: 420
+          name: grafana-dashboards-custom-3
       - name: grafana-dashboards-custom-4
         configMap:
           defaultMode: 420
