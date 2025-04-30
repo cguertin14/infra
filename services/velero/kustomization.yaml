@@ -123,3 +123,18 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
+      persistent-volumes-backups-third-wave:
+        disabled: false
+        schedule: "45 6 * * *" # every day at 2:45AM - time is in UTC
+        useOwnerReferencesInBackup: true
+        paused: false
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: backblaze
+          includedNamespaces:
+          - monitoring
+          includedResources:
+          - persistentvolumes
+          - persistentvolumeclaims
