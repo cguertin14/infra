@@ -754,7 +754,7 @@
       "targets": [
         {
           "datasource": "${DS_PROMETHEUS}",
-          "expr": "count(ALERTS{alertstate=\"firing\",alertname=~\"^Ceph.+\"}) OR vector(0)",
+          "expr": "count(ALERTS{alertstate=\"firing\",alertname=~\"^Ceph.+\",alertname!=\"CephPGImbalance\"}) OR vector(0)",
           "format": "time_series",
           "instant": true,
           "interval": "$interval",
@@ -5683,6 +5683,6 @@
   },
   "timezone": "",
   "title": "Ceph Cluster",
-  "uid": "tbO9LAiZK",
-  "version": 0
+  "uid": "6b5be7c78",
+  "version": 1
 }
