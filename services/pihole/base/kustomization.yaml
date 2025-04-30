@@ -28,6 +28,8 @@ helmCharts:
   releaseName: pihole
   namespace: pihole
   valuesInline:
+    strategyType: Recreate
+
     admin:
       enabled: false
       
