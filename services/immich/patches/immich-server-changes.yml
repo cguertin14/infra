@@ -4,16 +4,10 @@
     type: Recreate
 
 - op: add
-  path: /spec/template/spec/affinity
+  path: /spec/template/spec/containers/0/resources
   value:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/arch
-            operator: In
-            values:
-            - amd64
+    limits:
+      nvidia.com/gpu: 1
     
 - op: replace
   path: /spec/template/spec/containers/0/env
