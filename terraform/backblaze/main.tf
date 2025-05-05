@@ -11,8 +11,10 @@ resource "b2_bucket" "backup_bucket" {
     for_each = ["backups/", "restores/", "kopia/"]
     content {
       file_name_prefix = lifecycle_rules.value
-      # After 14 days (7 days later), delete files
-      days_from_hiding_to_deleting = 7
+      # After 15 days, hide files
+      days_from_uploading_to_hiding = 15
+      # After 16 days (1 day later), delete files
+      days_from_hiding_to_deleting = 1
     }
   }
 

@@ -8,7 +8,7 @@ metadata:
   namespace: velero
 spec:
   csiSnapshotTimeout: 30m0s
-  ttl: "336h" # 2 weeks / 14 days
+  ttl: "312h" # 13 days
   storageLocation: aws
   snapshotMoveData: true
   includedClusterScopedResources:
