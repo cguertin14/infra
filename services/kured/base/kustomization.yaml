@@ -22,7 +22,7 @@ helmCharts:
   valuesInline:
     configuration:
       metricsPort: 8080
-      rebootDays: [sun,mon,tue,wed,thu]
+      rebootDays: [sun,mon,tue,wed,thu,fri,sat]
       startTime: "04:30"
       endTime: "06:30"
       period: 15m
