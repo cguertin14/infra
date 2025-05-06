@@ -58,7 +58,7 @@ helmCharts:
 
     redis:
       enabled: true
-      architecture: standalone
+      architecture: replication
       auth:
         enabled: false
 
