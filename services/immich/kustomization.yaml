@@ -32,7 +32,7 @@ patches:
   target:
     group: apps
     kind: StatefulSet
-    name: immich-redis-master
+    name: immich-redis-replicas
     version: v1
 
 generators:
