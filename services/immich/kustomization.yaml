@@ -32,7 +32,7 @@ patches:
   target:
     group: apps
     kind: StatefulSet
-    name: immich-redis-replicas
+    name: immich-redis-master
     version: v1
 
 generators:
@@ -58,7 +58,7 @@ helmCharts:
 
     redis:
       enabled: true
-      architecture: replication
+      architecture: standalone
       auth:
         enabled: false
 
