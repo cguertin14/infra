@@ -20,6 +20,7 @@ helmCharts:
   namespace: kured
   includeCRDs: true
   valuesInline:
+    tolerations: []
     configuration:
       metricsPort: 8080
       rebootDays: [sun,mon,tue,wed,thu,fri,sat]
