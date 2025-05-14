@@ -38,6 +38,8 @@ helmCharts:
         enabled: true
       ui:
         enabled: true
+      tls:
+        enabled: false
       metrics:
         serviceMonitor:
           enabled: true
