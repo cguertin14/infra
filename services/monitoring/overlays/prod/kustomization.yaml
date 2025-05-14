@@ -115,7 +115,7 @@ configMapGenerator:
   namespace: monitoring
   files:
   - dashboards/hubble-l7-http-metrics-by-workload.json
-  - hubble-network-overview-namespace.json
+  - dashboards/hubble-network-overview-namespace.json
 
 secretGenerator:
 - name: grafana-datasources
