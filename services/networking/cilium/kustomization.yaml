@@ -32,6 +32,8 @@ helmCharts:
     # Hubble & ipam configurations
     hubble:
       listenAddress: :4244
+      peerService:
+        clusterDomain: "cluster.local"
       relay:
         enabled: true
       ui:
