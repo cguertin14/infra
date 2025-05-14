@@ -21,15 +21,13 @@ helmCharts:
     operator:
       prometheus:
         enabled: true
+        serviceMonitor:
+          enabled: true
     prometheus:
       enabled: true
       serviceMonitor:
         enabled: true
         trustCRDsExist: true
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
 
     # Hubble & ipam configurations
     hubble:
@@ -39,6 +37,8 @@ helmCharts:
       ui:
         enabled: true
       metrics:
+        serviceMonitor:
+          enabled: true
         enableOpenMetrics: true
         enabled:
         - dns
