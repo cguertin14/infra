@@ -9,6 +9,15 @@ resources:
 commonLabels:
   app.kubernetes.io/name: cilium
 
+patches:
+- path: patches/cilium-servicemonitor.yml
+  target:
+    kind: ServiceMonitor
+    name: cilium-agent
+    namespace: kube-system
+    version: v1
+    group: monitoring.coreos.com
+
 helmCharts:
 - name: cilium
   repo: https://helm.cilium.io/
