@@ -101,6 +101,21 @@ configMapGenerator:
   namespace: monitoring
   files:
   - dashboards/velero.json
+- name: grafana-dashboards-custom-5
+  namespace: monitoring
+  files:
+  - dashboards/cilium-dashboard.json
+  - dashboards/cilium-operator-dashboard.json
+- name: grafana-dashboards-custom-6
+  namespace: monitoring
+  files:
+  - dashboards/hubble-dashboard.json
+  - dashboards/hubble-dns-namespace.json
+- name: grafana-dashboards-custom-7
+  namespace: monitoring
+  files:
+  - dashboards/hubble-l7-http-metrics-by-workload.json
+  - hubble-network-overview-namespace.json
 
 secretGenerator:
 - name: grafana-datasources
