@@ -37,7 +37,7 @@ helmCharts:
       limits:
         memory: "896Mi"
       requests:
-        cpu: "40m"
+        cpu: "125m"
         memory: "512Mi"
 
     persistentVolumeClaim:
