@@ -11,7 +11,7 @@ images:
 
 resources:
 - resources/namespace.yml
-- resources/postgres-db.yml
+# - resources/postgres-db.yml
 - resources/storage.yml
 
 patches:
