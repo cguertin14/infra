@@ -6,15 +6,13 @@ kind: Cluster
 metadata:
   name: immich-postgres
 spec:
-  # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
-  # imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0@sha256:be3f025d79aa1b747817f478e07e71be43236e14d00d8a9eb3914146245035ba
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
+  # At the time of writing, immich is only compatible with vectorchord >=0.3<=0.4. Latest v16 postgres image with that version is 16.9.
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0@ sha256:69c827b85380454b46260219a93c9fd13942453200d1d07f856a17d7af0df8b2 
   instances: 1
 
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
-      # - "vectors.so"
 
   managed:
     roles:
@@ -29,7 +27,6 @@ spec:
       secret:
         name: immich-postgres-user
       postInitSQL:
-        # - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "vchord" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
