@@ -27,6 +27,7 @@ spec:
       secret:
         name: immich-postgres-user
       postInitSQL:
+        - CREATE EXTENSION vchord CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
