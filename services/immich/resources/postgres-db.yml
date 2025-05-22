@@ -13,6 +13,7 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
+      - "vcords.so"
 
   managed:
     roles:
@@ -27,7 +28,7 @@ spec:
       secret:
         name: immich-postgres-user
       postInitSQL:
-        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "vchord" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
