@@ -91,7 +91,7 @@ helmCharts:
           - persistentvolumeclaims
       persistent-volumes-backups:
         disabled: false
-        schedule: "15 6 * * *" # every day at 2:15AM - time is in UTC
+        schedule: "15 0,6,12,18 * * *" # every day at 2:15AM/8:15AM/2:15PM/8:15PM - time is in UTC (every 6 hours)
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false

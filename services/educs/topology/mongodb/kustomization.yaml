@@ -9,20 +9,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 resources:
 - operator-rbac.yml
 
-images:
-- name: ghcr.io/cguertin14/mongodb-backup-s3
-  newTag: v1.1.4
-
-# Comment if restore enabled.
-configMapGenerator:
-- literals:
-  - MONGODB_HOST=educs-mongodb-0.educs-mongodb-svc.mongodb,educs-mongodb-1.educs-mongodb-svc,educs-mongodb-2.educs-mongodb-svc
-  - MONGODB_PORT=27017
-  - INIT_BACKUP=true
-  # Uncomment if need to restore DB.
-  # - INIT_RESTORE=true
-  name: mongodb-backups-config
-
 generators:
 - secrets-generator.yml
 
