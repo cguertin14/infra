@@ -137,7 +137,7 @@ helmCharts:
           - persistentvolumeclaims
       persistent-volumes-backups-fourth-wave:
         disabled: false
-        schedule: "3 6 * * *" # every day at 3AM - time is in UTC
+        schedule: "3 6,18 * * *" # every day at 3AM/5PM - time is in UTC
         useOwnerReferencesInBackup: true
         paused: false
         skipImmediately: false
