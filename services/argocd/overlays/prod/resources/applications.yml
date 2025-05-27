@@ -179,25 +179,6 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pihole
-  namespace: argocd
-spec:
-  project: production
-  destination:
-    namespace: pihole
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/cguertin14/infra
-    targetRevision: main
-    path: services/pihole/overlays/prod
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: blog
   namespace: argocd
 spec:
@@ -513,6 +494,25 @@ spec:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
     path: services/velero
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: adguard-home
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: adguard-home
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/adguard-home
   syncPolicy:
     automated:
       selfHeal: true

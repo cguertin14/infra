@@ -40,7 +40,6 @@ variable "domains" {
     "sabnzbd.media",
     "auth.k8s",
     "gitops.k8s",
-    "pihole.k8s",
     "network.k8s",
     "monitoring.k8s",
     "rollout.gitops.k8s",

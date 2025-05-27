@@ -39,6 +39,5 @@ spec:
         - 'rollout.gitops.k8s.cguertin.dev'
         - 'gitops.k8s.cguertin.dev'
         - 'auth.k8s.cguertin.dev'
-        - 'pihole.k8s.cguertin.dev'
         - 'rook-ceph.k8s.cguertin.dev'
         - 'adguard-home.k8s.cguertin.dev'
