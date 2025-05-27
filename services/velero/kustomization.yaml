@@ -116,7 +116,7 @@ helmCharts:
           storageLocation: backblaze
           includedNamespaces:
           - mediaplatform
-          - pihole
+          - adguard
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
