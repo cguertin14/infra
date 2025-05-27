@@ -15,7 +15,6 @@ resources:
 - resources/storage.yml
 
 patches:
-- path: patches/machine-learning-affinity.yml
 - path: patches/immich-server-changes.yml
   target:
     group: apps

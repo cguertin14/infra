@@ -2,12 +2,6 @@
   path: /spec/strategy
   value:
     type: Recreate
-
-- op: add
-  path: /spec/template/spec/containers/0/resources
-  value:
-    limits:
-      nvidia.com/gpu: 1
     
 - op: replace
   path: /spec/template/spec/containers/0/env
