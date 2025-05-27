@@ -69,6 +69,7 @@ helmCharts:
       dns-udp:
         enabled: true
         type: LoadBalancer
+        loadBalancerIP: 192.168.0.21
         ports:
           dns-udp:
             enabled: true
