@@ -5,9 +5,9 @@ namespace: immich
 
 images:
 - name: ghcr.io/immich-app/immich-server
-  newTag: v1.133.1
+  newTag: v1.134.0
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v1.133.1
+  newTag: v1.134.0
 
 resources:
 - resources/namespace.yml
