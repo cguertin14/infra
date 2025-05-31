@@ -1,0 +1,4 @@
+- op: replace
+  path: /spec/groups/0/rules/21/expr
+  # NodeMemoryHighUtilization patch
+  value: 100 - (node_memory_MemAvailable_bytes{job="node-exporter"} / node_memory_MemTotal_bytes{job="node-exporter"} * 100) > 95

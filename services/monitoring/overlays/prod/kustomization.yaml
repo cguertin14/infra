@@ -64,6 +64,13 @@ patches:
     name: kubernetes-monitoring-rules
     namespace: monitoring
     version: v1
+- path: patches/prometheus-alerts-patch-2.yml
+  target:
+    group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: node-exporter-rules
+    namespace: monitoring
+    version: v1
 
 patchesStrategicMerge:
 - patches/crds-length.yml
