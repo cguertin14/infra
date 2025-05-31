@@ -1,10 +1,15 @@
 - op: replace
   path: /spec/groups/1/rules/7/expr
+  # CPUThrottlingHigh patch
   value: |
     sum(increase(container_cpu_cfs_throttled_periods_total{container!="", }[5m])) by (container, pod, namespace)
       /
     sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespace)
-      > ( 85 / 100 )
+      > ( 95 / 100 )
+- op: replace
+  path: /spec/groups/0/rules/21/expr
+  # NodeMemoryHighUtilization patch
+  value: 100 - (node_memory_MemAvailable_bytes{job="node-exporter"} / node_memory_MemTotal_bytes{job="node-exporter"} * 100) > 95
 - op: remove
   path: /spec/groups/7
 - op: remove
