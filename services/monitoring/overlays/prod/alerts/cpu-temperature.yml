@@ -6,21 +6,39 @@ spec:
   groups:
   - name: cpu-temperature
     rules:
-    - alert: CPUTemperatureHigh
+    - alert: ArmCPUTemperatureHigh
       annotations:
         description: The average CPU temperature of `{{$labels.instance}}` is high at `{{$value}}` Celcius degrees.
         summary: Average CPU temperature higher or equal to 55 Celcius degrees.
       expr: |
-        avg by (instance) (node_thermal_zone_temp) > 55
+        avg by (instance) (node_thermal_zone_temp{type="cpu-thermal"}) > 55
       for: 15m
       labels:
         severity: warning
-    - alert: CPUTemperatureVeryHigh
+    - alert: ArmCPUTemperatureVeryHigh
       annotations:
         description: The average CPU temperature of `{{$labels.instance}}` is very high at `{{$value}}` Celcius degrees.
         summary: Average CPU temperature higher or equal to 60 Celcius degrees.
       expr: |
-        avg by (instance) (node_thermal_zone_temp) > 60
+        avg by (instance) (node_thermal_zone_temp{type="cpu-thermal"}) > 60
+      for: 15m
+      labels:
+        severity: critical
+    - alert: x86CPUTemperatureHigh
+      annotations:
+        description: The average CPU temperature of `{{$labels.instance}}` is high at `{{$value}}` Celcius degrees.
+        summary: Average CPU temperature higher or equal to 55 Celcius degrees.
+      expr: |
+        avg by (instance) (node_thermal_zone_temp{type="x86_pkg_temp"}) > 70
+      for: 15m
+      labels:
+        severity: warning
+    - alert: x86CPUTemperatureVeryHigh
+      annotations:
+        description: The average CPU temperature of `{{$labels.instance}}` is very high at `{{$value}}` Celcius degrees.
+        summary: Average CPU temperature higher or equal to 60 Celcius degrees.
+      expr: |
+        avg by (instance) (node_thermal_zone_temp{type="x86_pkg_temp"}) > 90
       for: 15m
       labels:
         severity: critical
