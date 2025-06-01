@@ -88,7 +88,7 @@ configMapGenerator:
   files:
   - dashboards/argocd.json
   - dashboards/argo-rollouts.json
-  - dashboards/node_temperatures.json
+  - dashboards/node_temperatures_2.json
 - name: grafana-dashboards-custom-2
   namespace: monitoring
   files:
