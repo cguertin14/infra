@@ -95,7 +95,7 @@
           "refId": "A"
         }
       ],
-      "title": "amd64 nodes",
+      "title": "amd64 nodes temps now",
       "type": "gauge"
     },
     {
@@ -171,7 +171,7 @@
           "refId": "A"
         }
       ],
-      "title": "arm64 nodes",
+      "title": "arm64 nodes temps now",
       "type": "gauge"
     },
     {
@@ -279,7 +279,7 @@
           "refId": "A"
         }
       ],
-      "title": "arm64 temps over time",
+      "title": "amd64 temps over time",
       "type": "timeseries"
     },
     {
@@ -755,7 +755,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Machine Temperatures",
-  "uid": "snPg424KbtK3f3xArvCjr2",
-  "version": 2,
+  "uid": "gghpFEP9zYXWufXLKmzQpa",
+  "version": 3,
   "weekStart": ""
 }
