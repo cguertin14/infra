@@ -116,7 +116,7 @@ images:
   newTag: 10.10.7
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
-  newTag: 4.0.14
+  newTag: 4.0.15
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
   newTag: 5.26.2
