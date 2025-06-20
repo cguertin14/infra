@@ -18,6 +18,8 @@
 - op: replace
   path: /spec/template/spec/containers/0/env
   value:
+    - name: TZ
+      value: America/Montreal
     - name: DB_DATABASE_NAME
       value: immich
     - name: DB_HOSTNAME
