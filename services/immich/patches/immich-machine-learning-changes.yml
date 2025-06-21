@@ -4,6 +4,10 @@
     limits:
       nvidia.com/gpu: 1
 
+- op: add
+  path: /spec/template/spec/runtimeClassName
+  value: nvidia
+
 - op: replace
   path: /spec/template/spec/containers/0/env
   value:
