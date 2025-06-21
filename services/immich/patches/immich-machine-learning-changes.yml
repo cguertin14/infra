@@ -31,3 +31,5 @@
       value: immich-redis-master
     - name: TRANSFORMERS_CACHE
       value: /cache
+    - name: MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL
+      value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
