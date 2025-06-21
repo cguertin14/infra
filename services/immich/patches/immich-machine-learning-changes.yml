@@ -34,4 +34,4 @@
     - name: MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL
       value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
     - name: MACHINE_LEARNING_PRELOAD__CLIP__VISUAL
-      value: value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
+      value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
