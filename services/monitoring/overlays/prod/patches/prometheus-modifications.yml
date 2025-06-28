@@ -9,9 +9,9 @@ spec:
     requests:
       memory: 1Gi
       cpu: 60m
-  # Data is accumulated for 183 days (6 months) and is deleted afterwards.
+  # Data is accumulated for 91 days (3 months) and is deleted afterwards.
   # More info: https://github.com/prometheus-operator/kube-prometheus/blob/v0.7.0/manifests/setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml#L2846
-  retention: 183d
+  retention: 91d
   storage:
     volumeClaimTemplate:
       apiVersion: v1
