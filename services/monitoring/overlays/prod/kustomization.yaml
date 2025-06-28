@@ -87,16 +87,25 @@ patchesStrategicMerge:
 configMapGenerator:
 - name: grafana-settings-config
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   envs:
   - env/grafana-settings
 - name: grafana-dashboards-custom
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/argocd.json
   - dashboards/argo-rollouts.json
   - dashboards/machine_temperatures_v1.0.1.json
 - name: grafana-dashboards-custom-2
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/blog_slos.json
   - dashboards/nginx-overview.json
@@ -105,26 +114,41 @@ configMapGenerator:
   - dashboards/educs_slos.json
 - name: grafana-dashboards-custom-3
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/ceph_cluster_dashboard_v2.json
   - dashboards/ceph_osd_single_dashboard_v2.json
   - dashboards/ceph_pools_dashboard.json
 - name: grafana-dashboards-custom-4
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/velero.json
 - name: grafana-dashboards-custom-5
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/cilium-dashboard.json
   - dashboards/cilium-operator-dashboard.json
 - name: grafana-dashboards-custom-6
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/hubble-dashboard.json
   - dashboards/hubble-dns-namespace.json
 - name: grafana-dashboards-custom-7
   namespace: monitoring
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/hubble-l7-http-metrics-by-workload.json
   - dashboards/hubble-network-overview-namespace.json
