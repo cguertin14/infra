@@ -81,13 +81,13 @@ helmCharts:
               cpu: 50m
             limits:
               memory: 128Mi
-  version: v1.17.5
+  version: v1.17.6
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
   namespace: rook-ceph
   releaseName: rook-ceph-cluster
   repo: https://charts.rook.io/release
-  version: v1.17.5
+  version: v1.17.6
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
     configOverride: |
