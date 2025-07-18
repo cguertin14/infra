@@ -29,4 +29,4 @@ helmCharts:
       period: 15m
       timeZone: America/New_York
       forceReboot: true
-      drainTimeout: 5m
+      drainTimeout: 10m
