@@ -96,7 +96,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
@@ -111,7 +111,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
@@ -127,7 +127,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
@@ -142,7 +142,7 @@ helmCharts:
         paused: false
         skipImmediately: false
         template:
-          csiSnapshotTimeout: 4h0m0s # wait up to 4 hours for the snapshot to be ready for use
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
           ttl: "336h" # 2 weeks / 14 days
           storageLocation: backblaze
           includedNamespaces:
