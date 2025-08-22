@@ -81,7 +81,7 @@ helmCharts:
               cpu: 50m
             limits:
               memory: 128Mi
-  version: v1.17.7
+  version: v1.18.0
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
   namespace: rook-ceph
