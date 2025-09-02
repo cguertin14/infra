@@ -16,6 +16,9 @@ spec:
     volumeClaimTemplate:
       apiVersion: v1
       kind: PersistentVolumeClaim
+      metadata:
+        labels:
+          velero.io/exclude-from-backup: "true" # do not backup prometheus data
       spec:
         accessModes:
         - ReadWriteOnce
