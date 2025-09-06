@@ -14,7 +14,7 @@ spec:
       - name: install-ksops
         # Match Argo CD Go version
         image: viaductoss/ksops
-        command: ["/bin/sh", "-c"]
+        command: ["/bin/bash", "-c"]
         args:
         - echo "Installing KSOPS...";
           mv ksops /custom-tools;
