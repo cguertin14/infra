@@ -12,6 +12,7 @@
     "**/.terraform.lock.hcl",
     "services/educs/topology/mongo"
   ],
+  "ignoreDeps": ["viaductoss/ksops"],
   "packageRules": [
     {
       "groupName": "all dependencies",
