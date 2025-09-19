@@ -58,3 +58,10 @@ patches:
     name: ingress-nginx-controller
     namespace: kube-system
     version: v1
+- patch: |-
+    - op: replace
+      path: /spec/ttlSecondsAfterFinished
+      value: 10
+  target:
+    kind: Job
+    name: ingress-nginx-admission-create
