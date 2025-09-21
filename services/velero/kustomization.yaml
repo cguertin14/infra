@@ -89,7 +89,7 @@ helmCharts:
           excludedResources:
           - persistentvolumes
           - persistentvolumeclaims
-      persistent-volumes-backups:
+      persistent-volumes-backups-educs:
         disabled: false
         schedule: "15 0,6,12,18 * * *" # every day at 2:15AM/8:15AM/2:15PM/8:15PM - time is in UTC (every 6 hours)
         useOwnerReferencesInBackup: true
@@ -104,7 +104,7 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
-      persistent-volumes-backups-second-wave:
+      persistent-volumes-backups-media-adguard:
         disabled: false
         schedule: "30 6 * * *" # every day at 2:30AM - time is in UTC
         useOwnerReferencesInBackup: true
@@ -120,7 +120,7 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
-      persistent-volumes-backups-third-wave:
+      persistent-volumes-backups-monitoring:
         disabled: false
         schedule: "45 6 * * *" # every day at 2:45AM - time is in UTC
         useOwnerReferencesInBackup: true
@@ -135,7 +135,7 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
-      persistent-volumes-backups-fourth-wave:
+      persistent-volumes-backups-photos-and-ha:
         disabled: false
         schedule: "3 6,18 * * *" # every day at 3AM/5PM - time is in UTC
         useOwnerReferencesInBackup: true
