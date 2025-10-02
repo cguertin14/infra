@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "groupName": "all dependencies",
+  "groupSlug": "all",
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "ignorePaths": [
+    "**/.terraform.lock.hcl",
+    "services/educs/topology/mongo"
+  ],
+  "ignoreDeps": ["viaductoss/ksops"],
+  "packageRules": [
+    {
+      "groupName": "all dependencies",
+      "groupSlug": "all",
+      "matchPackageNames": [
+        "*"
+      ]
+    }
+  ],
+  "separateMajorMinor": true
+}
