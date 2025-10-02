@@ -122,10 +122,10 @@ images:
   newTag: 5.27.5
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 1.37.0
+  newTag: 2.0.5
 - name: ghcr.io/k8s-at-home/qbittorrent
   newName: linuxserver/qbittorrent
-  newTag: 4.6.7
+  newTag: 20.04.1
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
   newTag: 4.5.3
