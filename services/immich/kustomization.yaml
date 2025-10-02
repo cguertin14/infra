@@ -5,9 +5,9 @@ namespace: immich
 
 images:
 - name: ghcr.io/immich-app/immich-server
-  newTag: v1.144.1
+  newTag: v2.0.0
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v1.144.1-cuda
+  newTag: v2.0.0-cuda
 - name: docker.io/bitnami/redis
   newName: bitnamilegacy/redis
 
