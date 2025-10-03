@@ -131,7 +131,7 @@ helmCharts:
     operatorNamespace: rook-ceph
 
     toolbox:
-      enabled: true
+      enabled: false
 
     # Deploy a volume snapshot class for block storage
     cephBlockPoolsVolumeSnapshotClass:
