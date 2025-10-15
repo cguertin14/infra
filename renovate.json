@@ -12,7 +12,10 @@
     "**/.terraform.lock.hcl",
     "services/educs/topology/mongo"
   ],
-  "ignoreDeps": ["viaductoss/ksops"],
+  "ignoreDeps": [
+    "viaductoss/ksops",
+    "ghcr.io/immich-app/immich-machine-learning"
+  ],
   "packageRules": [
     {
       "groupName": "all dependencies",
