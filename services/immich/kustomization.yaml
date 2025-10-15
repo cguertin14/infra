@@ -78,10 +78,14 @@ helmCharts:
 
     machine-learning:
       enabled: true
-      env:
-        TRANSFORMERS_CACHE: /cache
-        MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: immich-app/ViT-B-32__openai #immich-app/XLM-Roberta-Large-Vit-B-16Plus
-        CUDA_LAUNCH_BLOCKING: 1
+      controllers:
+        main:
+          containers:
+            main:
+              env:
+                TRANSFORMERS_CACHE: /cache
+                MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: immich-app/ViT-B-32__openai #immich-app/XLM-Roberta-Large-Vit-B-16Plus
+                CUDA_LAUNCH_BLOCKING: 1
       persistence:
         cache:
           enabled: true
