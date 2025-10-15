@@ -11,25 +11,9 @@
 - op: replace
   path: /spec/template/spec/containers/0/env
   value:
-    - name: DB_DATABASE_NAME
-      value: immich
-    - name: DB_HOSTNAME
-      value: immich-postgres-rw # service name of the postgres operator instances
-    - name: DB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: immich-postgres-user
-          key: password
-    - name: DB_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: immich-postgres-user
-          key: username
-    - name: IMMICH_MACHINE_LEARNING_URL
-      value: http://immich-machine-learning:3003
-    - name: REDIS_HOSTNAME
-      value: immich-redis-master
     - name: TRANSFORMERS_CACHE
       value: /cache
+    - name: LD_LIBRARY_PATH
+      value: /usr/local/cuda:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
     - name: MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL
       value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
