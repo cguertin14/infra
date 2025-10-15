@@ -49,6 +49,13 @@ helmCharts:
 
     valkey:
       enabled: true
+      persistence:
+        data:
+          enabled: true
+          size: 2Gi
+          type: persistentVolumeClaim
+          accessMode: ReadWriteOnce
+          storageClass: ceph-block
 
     server:
       enabled: true
