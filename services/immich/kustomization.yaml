@@ -8,8 +8,8 @@ images:
   newTag: v2.0.1
 - name: ghcr.io/immich-app/immich-machine-learning
   newTag: v2.0.1-cuda
-- name: docker.io/bitnami/redis
-  newName: bitnamilegacy/redis
+# - name: docker.io/bitnami/redis
+#   newTag: 
 
 resources:
 - resources/namespace.yml
@@ -29,12 +29,12 @@ patches:
     kind: Deployment
     name: immich-machine-learning
     version: v1
-- path: patches/immich-redis-storage.yml
-  target:
-    group: apps
-    kind: StatefulSet
-    name: immich-redis-master
-    version: v1
+# - path: patches/immich-redis-storage.yml
+#   target:
+#     group: apps
+#     kind: StatefulSet
+#     name: immich-redis-master
+#     version: v1
 
 generators:
 - secrets-generator.yml
@@ -57,11 +57,11 @@ helmCharts:
     postgresql:
       enabled: false
 
-    redis:
+    valkey:
       enabled: true
-      architecture: standalone
-      auth:
-        enabled: false
+      # architecture: standalone
+      # auth:
+      #   enabled: false
 
     server:
       enabled: true
