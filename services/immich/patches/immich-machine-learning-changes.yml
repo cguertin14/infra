@@ -8,12 +8,8 @@
   path: /spec/template/spec/runtimeClassName
   value: nvidia
 
-- op: replace
-  path: /spec/template/spec/containers/0/env
+- op: add
+  path: /spec/template/spec/containers/0/env/1
   value:
-    - name: TRANSFORMERS_CACHE
-      value: /cache
-    - name: LD_LIBRARY_PATH
-      value: /usr/local/cuda:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
-    - name: MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL
-      value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
+    name: MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL
+    value: immich-app/XLM-Roberta-Large-Vit-B-16Plus
