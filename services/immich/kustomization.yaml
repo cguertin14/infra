@@ -9,7 +9,7 @@ images:
 - name: ghcr.io/immich-app/immich-machine-learning
   newTag: v2.0.1-cuda
 - name: docker.io/valkey/valkey
-  newTag: 8.1-alpine
+  newTag: 9.0-alpine
 
 resources:
 - resources/namespace.yml
