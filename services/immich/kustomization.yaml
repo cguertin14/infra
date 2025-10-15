@@ -53,10 +53,6 @@ helmCharts:
         library:
           existingClaim: immich-photos-storage-adjustable
 
-    # Use cloudnative-pg instead.
-    postgresql:
-      enabled: false
-
     valkey:
       enabled: true
       # architecture: standalone
