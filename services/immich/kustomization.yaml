@@ -7,7 +7,7 @@ images:
 - name: ghcr.io/immich-app/immich-server
   newTag: v2.1.0
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v2.1.0-cuda
+  newTag: v2.0.1-cuda
 - name: docker.io/valkey/valkey
   newTag: 9.0-alpine
 
@@ -80,7 +80,7 @@ helmCharts:
       enabled: true
       env:
         TRANSFORMERS_CACHE: /cache
-        MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: immich-app/XLM-Roberta-Large-Vit-B-16Plus
+        MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: immich-app/immich-app/ViT-B-32__openai #immich-app/XLM-Roberta-Large-Vit-B-16Plus
         CUDA_LAUNCH_BLOCKING: 1
       persistence:
         cache:
