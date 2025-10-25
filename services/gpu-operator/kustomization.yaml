@@ -13,7 +13,7 @@ helmCharts:
   releaseName: gpu-operator
   repo: https://nvidia.github.io/gpu-operator
   includeCRDs: true
-  version: v25.3.4
+  version: v25.10.0
   valuesInline:
     # Device Plugin
     devicePlugin:
