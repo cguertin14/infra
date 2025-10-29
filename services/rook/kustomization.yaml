@@ -29,7 +29,7 @@ helmCharts:
   namespace: rook-ceph
   releaseName: rook-ceph
   repo: https://charts.rook.io/release
-  version: v1.18.5
+  version: v1.18.6
   valuesInline:
     crds:
       enabled: true
@@ -87,7 +87,7 @@ helmCharts:
   namespace: rook-ceph
   releaseName: rook-ceph-cluster
   repo: https://charts.rook.io/release
-  version: v1.18.5
+  version: v1.18.6
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
     configOverride: |
