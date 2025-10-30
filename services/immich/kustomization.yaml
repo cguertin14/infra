@@ -7,7 +7,7 @@ images:
 - name: ghcr.io/immich-app/immich-server
   newTag: v2.2.0
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v2.0.1-cuda
+  newTag: v2.2.0-cuda
 - name: docker.io/valkey/valkey
   newTag: 9.0-alpine
 
