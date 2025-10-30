@@ -14,7 +14,6 @@
   ],
   "ignoreDeps": [
     "viaductoss/ksops",
-    "ghcr.io/immich-app/immich-machine-learning"
   ],
   "packageRules": [
     {
