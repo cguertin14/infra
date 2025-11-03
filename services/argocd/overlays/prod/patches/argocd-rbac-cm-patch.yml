@@ -16,6 +16,7 @@ data:
     # - read, create, update and delete GPG keys.
 
     p, role:org-operators, applications, sync, *, allow
+    p, role:org-operators, applications, delete, *, allow
     p, role:org-operators, clusters, get, *, allow
     p, role:org-operators, certificates, get, *, allow
     p, role:org-operators, repositories, get, *, allow
