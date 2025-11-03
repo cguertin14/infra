@@ -12,16 +12,12 @@ data:
     # the homelab-infra/SRE group to:
     
     # - get clusters, certificates and repositories;
-    # - sync applications;
-    # - read, create, update and delete GPG keys.
+    # - sync applications, delete resources (such as pods);
 
     p, role:org-operators, applications, sync, *, allow
-    p, role:org-operators, resources, delete, *, allow
+    p, role:org-operators, applications, delete/*/*/*/*, *, allow
     p, role:org-operators, clusters, get, *, allow
     p, role:org-operators, certificates, get, *, allow
     p, role:org-operators, repositories, get, *, allow
-    p, role:org-operators, gpgkeys, get, *, allow
-    p, role:org-operators, gpgkeys, create, *, allow
-    p, role:org-operators, gpgkeys, delete, *, allow
 
     g, homelab-infra:SRE, role:org-operators
