@@ -16,7 +16,7 @@ images:
 - name: lscr.io/linuxserver/faster-whisper
   newTag: "3.0.2-gpu"
 - name: lscr.io/linuxserver/piper
-  newTag: "1.6.3"
+  newTag: "2.1.2"
 
 replicas:
 - name: whisper
