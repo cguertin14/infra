@@ -14,7 +14,7 @@ images:
   newName: homeassistant/home-assistant
   newTag: "2025.11"
 - name: lscr.io/linuxserver/faster-whisper
-  newTag: "3.0.1-gpu"
+  newTag: "3.0.2-gpu"
 - name: lscr.io/linuxserver/piper
   newTag: "1.6.3"
 
