@@ -10,11 +10,6 @@ configMapGenerator:
   literals:
   - ZONE_NAME=cguertin.dev
   - RECORD_NAME=lb
-  - UPDATE_GITHUB_TERRAFORM=true
-  - GITHUB_BASE_BRANCH=main
-  - GITHUB_REPO_OWNER=cguertin14
-  - GITHUB_REPO_NAME=infra
-  - GITHUB_FILE_PATH=dns/variables.tf
 
 generators:
 - secrets-generator.yml
