@@ -119,7 +119,7 @@ images:
   newTag: 4.0.16
 - name: ghcr.io/k8s-at-home/radarr
   newName: linuxserver/radarr
-  newTag: 5.28.0
+  newTag: 6.0.4
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
   newTag: 2.1.5
