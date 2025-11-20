@@ -5,9 +5,9 @@ namespace: immich
 
 images:
 - name: ghcr.io/immich-app/immich-server
-  newTag: v2.2.3
+  newTag: v2.3.0
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v2.2.3-cuda
+  newTag: v2.3.0-cuda
 - name: docker.io/valkey/valkey
   newTag: 9.0-alpine
 
