@@ -1,9 +1,25 @@
 locals {
-  bucket_prefix = "velero-backups"
+  backup_bucket_prefix = "velero-backups"
+}
+
+resource "b2_bucket" "ios_backups_bucket" {
+  bucket_name = "ios-backups-bucket"
+  bucket_type = "allPrivate"
+
+  # Like AWS tags
+  bucket_info = {
+    environment = "production"
+    project     = "cguertin14/infra"
+    owner       = "cguertin14"
+  }
+
+  lifecycle {
+    prevent_destroy = true # Must be destroyed in the console.
+  }
 }
 
 resource "b2_bucket" "backup_bucket" {
-  bucket_name = "${local.bucket_prefix}-bucket"
+  bucket_name = "${local.backup_bucket_prefix}-bucket"
   bucket_type = "allPrivate"
 
   # Glacier-like lifecycle for the bucket. - Commented out for now, as this can interfere with velero jobs.
