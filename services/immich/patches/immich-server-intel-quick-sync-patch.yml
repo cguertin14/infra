@@ -13,7 +13,7 @@ spec:
       #   supplementalGroups:
       #   - 109 # ID of the 'render' group
       containers:
-      - name: "immich-server"
+      - name: "main"
         securityContext:
           privileged: true # Container must run as privileged inside of the pod
         volumeMounts:
