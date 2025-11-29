@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-server
+spec:
+  template:
+    spec:
+      # NOTE: The below does not seem needed after migrating to rook-ceph
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   supplementalGroups:
+      #   - 109 # ID of the 'render' group
+      containers:
+      - name: "immich-server"
+        securityContext:
+          privileged: true # Container must run as privileged inside of the pod
+        volumeMounts:
+        - name: "render-device"
+          mountPath: "/dev/dri/renderD128"
+      volumes:
+      - name: "render-device"
+        hostPath:
+          path: "/dev/dri/renderD128"
