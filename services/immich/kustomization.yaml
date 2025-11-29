@@ -17,7 +17,7 @@ resources:
 - resources/storage.yml
 
 patches:
-- path: patches/immich-server-intel-quick-sync-patch.yml
+# - path: patches/immich-server-intel-quick-sync-patch.yml
 - path: patches/immich-server-changes.yml
   target:
     group: apps
