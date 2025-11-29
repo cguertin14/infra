@@ -14,6 +14,7 @@ spec:
       #   - 109 # ID of the 'render' group
       containers:
       - name: "immich-server"
+        image: ghcr.io/immich-app/immich-server
         securityContext:
           privileged: true # Container must run as privileged inside of the pod
         volumeMounts:
