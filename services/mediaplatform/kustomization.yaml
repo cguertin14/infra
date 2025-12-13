@@ -140,6 +140,9 @@ helmCharts:
 images:
 - name: jellyfin/jellyfin
   newTag: 10.11.4
+- name: loeken/jellyseerr
+  newName: ghcr.io/fallenbagel/jellyseerr
+  newTag: 2.7.3
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.16
