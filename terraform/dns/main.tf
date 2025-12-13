@@ -1,3 +1,7 @@
+locals {
+  load_balancer_url = "lb.${var.cguertin_domain}"
+}
+
 resource "cloudflare_zone" "cguertin_dev" {
   name = var.cguertin_domain
   account = {
@@ -33,7 +37,7 @@ resource "cloudflare_dns_record" "cname_dns_entry" {
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_dns_record.pi_load_balancer.content
+  content  = local.load_balancer_url
   ttl      = 1800
   proxied  = false
 }
@@ -47,7 +51,7 @@ resource "cloudflare_dns_record" "cname_dns_entry_proxied" {
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_dns_record.pi_load_balancer.content
+  content  = local.load_balancer_url
   ttl      = 1
   proxied  = true
 }

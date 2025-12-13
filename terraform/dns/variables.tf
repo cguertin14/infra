@@ -13,7 +13,7 @@ variable "account_id" {
 variable "router_ip" {
   description = "Router IP address"
   type        = string
-  default     = "74.15.104.79"
+  default     = "76.67.51.178"
 }
 
 variable "proxied_domains" {
