@@ -1,6 +1,8 @@
 resource "cloudflare_zone" "cguertin_dev" {
-  name    = var.cguertin_domain
-  account = var.account_id
+  name = var.cguertin_domain
+  account = {
+    id = var.account_id
+  }
 }
 
 resource "cloudflare_dns_record" "bsky_validation" {
