@@ -1,9 +1,9 @@
 resource "cloudflare_zone" "cguertin_dev" {
-  zone       = var.cguertin_domain
-  account_id = var.account_id
+  name    = var.cguertin_domain
+  account = var.account_id
 }
 
-resource "cloudflare_record" "bsky_validation" {
+resource "cloudflare_dns_record" "bsky_validation" {
   zone_id = cloudflare_zone.cguertin_dev.id
   type    = "TXT"
   name    = "_atproto"
@@ -13,7 +13,7 @@ resource "cloudflare_record" "bsky_validation" {
   proxied = false
 }
 
-resource "cloudflare_record" "pi_load_balancer" {
+resource "cloudflare_dns_record" "pi_load_balancer" {
   zone_id = cloudflare_zone.cguertin_dev.id
   name    = "lb.${var.cguertin_domain}."
   type    = "A"
@@ -22,7 +22,7 @@ resource "cloudflare_record" "pi_load_balancer" {
   proxied = false
 }
 
-resource "cloudflare_record" "cname_dns_entry" {
+resource "cloudflare_dns_record" "cname_dns_entry" {
   depends_on = [
     cloudflare_record.pi_load_balancer,
     cloudflare_zone.cguertin_dev
@@ -36,7 +36,7 @@ resource "cloudflare_record" "cname_dns_entry" {
   proxied  = false
 }
 
-resource "cloudflare_record" "cname_dns_entry_proxied" {
+resource "cloudflare_dns_record" "cname_dns_entry_proxied" {
   depends_on = [
     cloudflare_record.pi_load_balancer,
     cloudflare_zone.cguertin_dev
