@@ -37,6 +37,18 @@ helmCharts:
   releaseName: jellyseerr
   repo: https://loeken.github.io/helm-charts
   valuesInline:
+    controllers:
+      main:
+        enabled: true
+        type: deployment
+        containers:
+          main:
+            resources:
+              limits:
+                memory: 512Mi
+              requests:
+                cpu: "200m"
+                memory: 512Mi
     persistence:
       config:
         enabled: true
