@@ -33,6 +33,7 @@ variable "domains" {
     "photos",
     "adguard-home.k8s",
     "jellyfin.media",
+    "jellyseerr.media",
     "sonarr.media",
     "radarr.media",
     "prowlarr.media",

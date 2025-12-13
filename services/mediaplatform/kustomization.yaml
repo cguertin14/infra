@@ -32,6 +32,18 @@ helmCharts:
     #     cpu: '2'
     #     memory: 4Gi
   version: 9.5.3
+- name: jellyseerr
+  namespace: mediaplatform
+  releaseName: jellyseerr
+  repo: https://loeken.github.io/helm-charts
+  valuesInline:
+    persistence:
+      config:
+        enabled: true
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        storageClass: ceph-block
+  version: 2.7.3
 # Below charts live here -> https://github.com/k8s-at-home/charts/tree/master/charts/stable
 - name: radarr
   namespace: mediaplatform
