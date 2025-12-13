@@ -33,7 +33,7 @@ resource "cloudflare_dns_record" "cname_dns_entry" {
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_dns_record.pi_load_balancer.hostname
+  content  = cloudflare_dns_record.pi_load_balancer.content
   ttl      = 1800
   proxied  = false
 }
@@ -47,7 +47,7 @@ resource "cloudflare_dns_record" "cname_dns_entry_proxied" {
   name     = each.value
   zone_id  = cloudflare_zone.cguertin_dev.id
   type     = "CNAME"
-  content  = cloudflare_dns_record.pi_load_balancer.hostname
+  content  = cloudflare_dns_record.pi_load_balancer.content
   ttl      = 1
   proxied  = true
 }
