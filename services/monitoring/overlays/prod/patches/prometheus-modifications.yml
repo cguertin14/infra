@@ -12,7 +12,7 @@ spec:
   # Data is accumulated for 60 days and is deleted afterwards.
   # More info: https://github.com/prometheus-operator/kube-prometheus/blob/v0.7.0/manifests/setup/prometheus-operator-0prometheusCustomResourceDefinition.yaml#L2846
   retention: 60d
-  retentionSize: 125Gi
+  retentionSize: 125GB
   storage:
     volumeClaimTemplate:
       apiVersion: v1
