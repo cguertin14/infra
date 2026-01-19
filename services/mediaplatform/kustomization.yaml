@@ -139,7 +139,7 @@ helmCharts:
 # Setting proper image tags on each service.
 images:
 - name: jellyfin/jellyfin
-  newTag: 10.11.5
+  newTag: 10.11.6
 - name: loeken/jellyseerr
   newName: ghcr.io/fallenbagel/jellyseerr
   newTag: 2.7.3
