@@ -90,9 +90,11 @@ helmCharts:
   version: v1.18.9
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
+    # Note for bluestore changes: https://github.com/rook/rook/discussions/15403
     configOverride: |
       [global]
       osd_pool_default_size = 3
+      bluestore_slow_ops_warn_lifetime = 0
 
     # Dashboard not needed; grafana dashboards are enough.
     dashboard:
