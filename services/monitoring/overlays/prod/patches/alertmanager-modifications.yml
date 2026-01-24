@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: main
+  namespace: monitoring
+  resourceVersion: "227954285"
+spec:
+  image: quay.io/prometheus/alertmanager:v0.30.1
+  replicas: 3
+  nodeSelector:
+    kubernetes.io/arch: amd64
+  resources:
+    limits:
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ceph-block
+        resources:
+          requests:
+            storage: "2Gi"

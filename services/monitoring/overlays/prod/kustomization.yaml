@@ -77,6 +77,13 @@ patches:
     name: grafana
     namespace: monitoring
     version: v1
+- path: patches/alertmanager-modifications.yml
+  target:
+    group: monitoring.coreos.com
+    kind: Alertmanager
+    name: main
+    namespace: monitoring
+    version: v1
 
 patchesStrategicMerge:
 - patches/crds-length.yml
