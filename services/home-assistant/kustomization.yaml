@@ -12,7 +12,7 @@ resources:
 images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
-  newTag: "2026.1"
+  newTag: "2026.2"
 - name: lscr.io/linuxserver/faster-whisper
   newTag: "3.1.0-gpu-legacy"
 - name: lscr.io/linuxserver/piper
