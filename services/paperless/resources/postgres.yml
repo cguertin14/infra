@@ -15,7 +15,7 @@ spec:
       owner: paperless-user
       secret:
         name: paperless-postgres-creds
-  # TODO: See if this enough
+  # Storage
   storage:
     size: 10Gi
     storageClass: ceph-block

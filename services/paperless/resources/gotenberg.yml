@@ -59,3 +59,19 @@ spec:
           requests:
             cpu: 25m
             memory: 250Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: gotenberg
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+          initialDelaySeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: gotenberg
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+          initialDelaySeconds: 15

@@ -55,3 +55,17 @@ spec:
           requests:
             cpu: 25m
             memory: 1Gi
+        livenessProbe:
+          httpGet:
+            path: /tika
+            port: tika
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /tika
+            port: tika
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
