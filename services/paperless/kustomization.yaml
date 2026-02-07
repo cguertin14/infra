@@ -87,9 +87,21 @@ helmCharts:
     redis:
       enabled: false
     persistence:
-      config:
+      data:
         enabled: true
-        size: 2Gi
+        size: 10Gi
+        storageClass: ceph-block
+      media:
+        enabled: true
+        size: 10Gi
+        storageClass: ceph-block
+      export:
+        enabled: true
+        size: 1Gi
+        storageClass: ceph-block
+      consume:
+        enabled: true
+        size: 1Gi
         storageClass: ceph-block
     resources:
       limits:
