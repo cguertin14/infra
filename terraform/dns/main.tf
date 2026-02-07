@@ -21,7 +21,7 @@ resource "cloudflare_dns_record" "bsky_validation" {
 
 resource "cloudflare_dns_record" "pi_load_balancer" {
   zone_id = cloudflare_zone.cguertin_dev.id
-  name    = "lb.${var.cguertin_domain}."
+  name    = "lb.${var.cguertin_domain}"
   type    = "A"
   content = var.router_ip
   ttl     = 300
