@@ -1,0 +1,98 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: paperless
+
+generators:
+- secrets-generator.yml
+
+resources:
+- resources/valkey.yml
+- resources/postgres.yml
+
+# Workaround for Kustomize bug: namespace transformer doesn't apply to helmCharts resources
+patches:
+- target:
+    name: paperless
+  patch: |-
+    - op: add
+      path: /metadata/namespace
+      value: paperless
+- target:
+    name: paperless-config
+    kind: PersistentVolumeClaim
+  patch: |-
+    - op: add
+      path: /metadata/namespace
+      value: paperless
+
+images:
+- name: ghcr.io/paperless-ngx/paperless-ngx
+  newTag: 2.20.6
+- name: docker.io/valkey/valkey
+  newTag: 9.0-alpine
+
+helmCharts:
+- name: paperless
+  releaseName: paperless
+  repo: https://k8s-at-home.com/charts/
+  version: 9.1.3
+  valuesInline:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+    env:
+      TZ: America/Toronto
+      PAPERLESS_URL: https://classeur.cguertin.dev
+      # Valkey
+      PAPERLESS_REDIS: redis://paperless-valkey
+      # Postgres
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_DBHOST: paperless-postgres-rw
+      PAPERLESS_DBNAME: paperless-db
+      PAPERLESS_DBSSLMODE: prefer
+      PAPERLESS_DBUSER: paperless-user
+      # The password comes from a secret
+      PAPERLESS_DBPASS:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-postgres-creds
+            key: password
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.k8s.cguertin.dev/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://$host$uri"
+        ingressClassName: nginx
+        tls:  
+        - hosts:
+          - classeur.cguertin.dev
+          secretName: paperless-cert
+        hosts:
+          - host: classeur.cguertin.dev
+            paths:
+              - path: /
+                pathType: Prefix
+    postgres:
+      enabled: false
+    redis:
+      enabled: false
+    persistence:
+      config:
+        enabled: true
+        size: 2Gi
+        storageClass: ceph-block
+    resources:
+      limits:
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 1Gi

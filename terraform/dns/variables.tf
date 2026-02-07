@@ -32,6 +32,7 @@ variable "domains" {
     "ha", # home-assistant
     "photos",
     "adguard-home.k8s",
+    "classeur.cguertin.dev",
     "jellyfin.media",
     "jellyseerr.media",
     "sonarr.media",

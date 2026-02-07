@@ -1,0 +1,31 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: paperless-postgres
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
+  instances: 1
+  
+  # Not needed, for now
+  # postgresql:
+
+  bootstrap:
+    initdb:
+      database: paperless-db
+      owner: paperless-user
+      secret:
+        name: paperless-postgres-creds
+  # TODO: See if this enough
+  storage:
+    size: 10Gi
+    storageClass: ceph-block
+  # Run on amd64 nodes
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
