@@ -58,6 +58,27 @@ helmCharts:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 192.168.0.24
+    probes:
+      liveness:
+        custom: true
+        spec:
+          httpGet:
+            path: /
+            port: 8000
+            scheme: HTTP
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+      readiness:
+        custom: true
+        spec:
+          httpGet:
+            path: /
+            port: 8000
+            scheme: HTTP
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
     env:
       TZ: America/Toronto
       # Tika/Gotenberg
