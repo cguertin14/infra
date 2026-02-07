@@ -54,7 +54,7 @@ spec:
                     - amd64
       containers:
       - env:
-        image: docker.io/valkey/valkey
+        image: public.ecr.aws/valkey/valkey
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:

@@ -31,7 +31,7 @@ patches:
 images:
 - name: ghcr.io/paperless-ngx/paperless-ngx
   newTag: 2.20.6
-- name: docker.io/valkey/valkey
+- name: public.ecr.aws/valkey/valkey
   newTag: 9.0-alpine
 - name: gotenberg/gotenberg
   newTag: "8.26"
