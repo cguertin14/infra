@@ -34,8 +34,8 @@ helmCharts:
   valuesInline:
     kubectl:
       image:
-        repository: alpine/kubectl
-        tag: 1.34.0
+        repository: rancher/kubectl
+        tag: v1.35.0
   
     metrics:
       enabled: true
