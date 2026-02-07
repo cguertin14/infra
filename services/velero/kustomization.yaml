@@ -32,10 +32,7 @@ helmCharts:
   version: 11.3.2
   includeCRDs: true
   valuesInline:
-    kubectl:
-      image:
-        repository: registry.k8s.io/kubectl
-        tag: v1.35.0
+    upgradeCRDs: false
   
     metrics:
       enabled: true
