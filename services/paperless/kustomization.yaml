@@ -49,6 +49,7 @@ helmCharts:
               - amd64
     env:
       TZ: America/Toronto
+      PAPERLESS_TIKA_ENABLED: true
       PAPERLESS_URL: https://classeur.cguertin.dev
       # Valkey
       PAPERLESS_REDIS: redis://paperless-valkey
