@@ -32,6 +32,10 @@ helmCharts:
   version: 11.3.2
   includeCRDs: true
   valuesInline:
+    kubectl:
+      image:
+        repository: public.ecr.aws/bitnami/kubectl
+  
     metrics:
       enabled: true
       serviceMonitor:
