@@ -34,7 +34,8 @@ helmCharts:
   valuesInline:
     kubectl:
       image:
-        repository: public.ecr.aws/bitnami/kubectl
+        repository: alpine/kubectl
+        tag: 1.34.0
   
     metrics:
       enabled: true
