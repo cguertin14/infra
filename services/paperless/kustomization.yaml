@@ -121,7 +121,7 @@ helmCharts:
         storageClass: ceph-block
     resources:
       limits:
-        memory: 1Gi
+        memory: 2Gi
       requests:
-        cpu: 200m
-        memory: 1Gi
+        cpu: 375m
+        memory: 2Gi
