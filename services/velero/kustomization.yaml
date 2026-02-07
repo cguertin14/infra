@@ -151,3 +151,18 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
+      persistent-volumes-backups-paperless:
+        disabled: false
+        schedule: "15 6,18 * * *" # every day at 3:15AM/5:15PM - time is in UTC
+        useOwnerReferencesInBackup: true
+        paused: false
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: backblaze
+          includedNamespaces:
+          - paperless
+          includedResources:
+          - persistentvolumes
+          - persistentvolumeclaims
