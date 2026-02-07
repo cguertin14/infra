@@ -9,6 +9,7 @@ images:
 - name: ghcr.io/immich-app/immich-machine-learning
   newTag: v2.5.5-cuda
 - name: docker.io/valkey/valkey
+  newName: public.ecr.aws/valkey/valkey
   newTag: 9.0-alpine
 
 resources:
