@@ -35,6 +35,8 @@ images:
   newTag: 9.0-alpine
 - name: gotenberg/gotenberg
   newTag: "8.26"
+- name: apache/tika
+  newTag: "3.2.3.0"
 
 helmCharts:
 - name: paperless

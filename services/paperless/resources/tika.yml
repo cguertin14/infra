@@ -42,7 +42,7 @@ spec:
                     - amd64
       containers:
       - env:
-        image: ghcr.io/apache/tika
+        image: apache/tika
         imagePullPolicy: IfNotPresent
         name: tika
         ports:
