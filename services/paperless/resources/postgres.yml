@@ -19,6 +19,13 @@ spec:
   storage:
     size: 10Gi
     storageClass: ceph-block
+  # Resources
+  resources:
+    limits:
+      memory: 250Mi
+    requests:
+      cpu: 100m
+      memory: 250Mi
   # Run on amd64 nodes
   affinity:
     nodeAffinity:

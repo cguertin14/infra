@@ -53,4 +53,9 @@ spec:
         - containerPort: 3000
           name: gotenberg
           protocol: TCP
-        resources: {}
+        resources:
+          limits:
+            memory: 250Mi
+          requests:
+            cpu: 25m
+            memory: 250Mi

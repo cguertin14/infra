@@ -83,7 +83,12 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
-        resources: {}
+        resources:
+          limits:
+            memory: 50Mi
+          requests:
+            cpu: 25m
+            memory: 50Mi
         startupProbe:
           exec:
             command:
