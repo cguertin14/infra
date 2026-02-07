@@ -31,7 +31,7 @@ helmCharts:
         mountPath: /opt/adguardhome/work
         storageClass: ceph-block
         accessMode: ReadWriteOnce
-        size: 2Gi
+        size: 3Gi
 
     ingress:
       main:
