@@ -42,7 +42,7 @@ spec:
                     - amd64
       containers:
       - env:
-        image: gotenberg/gotenberg:8.26 # TODO: Move this to kustomization.yaml
+        image: gotenberg/gotenberg
         imagePullPolicy: IfNotPresent
         name: gotenberg
         command:
