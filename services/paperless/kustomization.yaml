@@ -9,6 +9,8 @@ generators:
 resources:
 - resources/valkey.yml
 - resources/postgres.yml
+- resources/tika.yml
+- resources/gotenberg.yml
 
 # Workaround for Kustomize bug: namespace transformer doesn't apply to helmCharts resources
 patches:
@@ -49,7 +51,10 @@ helmCharts:
               - amd64
     env:
       TZ: America/Toronto
+      # Tika/Gotenberg
       PAPERLESS_TIKA_ENABLED: true
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
+      PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
       PAPERLESS_URL: https://classeur.cguertin.dev
       # Valkey
       PAPERLESS_REDIS: redis://paperless-valkey
