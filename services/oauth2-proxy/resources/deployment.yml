@@ -29,6 +29,8 @@ spec:
         - --cookie-csrf-per-request=true
         - --cookie-domain=.cguertin.dev
         - --whitelist-domain=.cguertin.dev
+        - --skip-provider-button=true
+        - --redirect-url=https://auth.k8s.cguertin.dev/oauth2/callback
         envFrom:
         - secretRef:
             name: oauth-secrets          
