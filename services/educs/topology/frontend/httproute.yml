@@ -12,6 +12,13 @@ spec:
   - matches:
     - path:
         type: PathPrefix
+        value: /api
+    backendRefs:
+    - name: educs-backend
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
         value: /
     backendRefs:
     - name: educs-frontend
