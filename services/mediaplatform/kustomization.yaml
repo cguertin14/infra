@@ -6,7 +6,8 @@ namespace: mediaplatform
 resources:
 - resources/namespace.yml
 - resources/volumes.yml
-- resources/ingresses.yml
+- resources/httproutes.yml
+- resources/security-policy.yml
 
 ## Important: Storage logic
 #

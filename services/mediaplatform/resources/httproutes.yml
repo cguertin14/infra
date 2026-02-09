@@ -1,0 +1,132 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyfin
+spec:
+  hostnames:
+  - jellyfin.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: jellyfin
+      port: 8096
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: radarr
+spec:
+  hostnames:
+  - radarr.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: radarr
+      port: 7878
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sonarr
+spec:
+  hostnames:
+  - sonarr.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: sonarr
+      port: 8989
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: prowlarr
+spec:
+  hostnames:
+  - prowlarr.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: prowlarr
+      port: 9696
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: qbittorrent
+spec:
+  hostnames:
+  - qbittorrent.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: qbittorrent
+      port: 443
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sabnzbd
+spec:
+  hostnames:
+  - sabnzbd.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: sabnzbd
+      port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyseerr
+spec:
+  hostnames:
+  - jellyseerr.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: jellyseerr
+      port: 5055

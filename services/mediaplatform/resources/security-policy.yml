@@ -1,0 +1,40 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: mediaplatform-oauth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: radarr
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: sonarr
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: prowlarr
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: qbittorrent
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: sabnzbd
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: jellyseerr
+  extAuth:
+    headersToExtAuth:
+    - cookie
+    - x-forwarded-proto
+    - x-forwarded-host
+    - x-forwarded-uri
+    http:
+      backendRefs:
+      - name: oauth2-proxy
+        namespace: kube-system
+        port: 4180
+      path: /oauth2
+      headersToBackend:
+      - x-auth-request-user
+      - x-auth-request-email
+      - x-auth-request-access-token
