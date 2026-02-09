@@ -12,11 +12,10 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://rollout.gitops.k8s.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://rollout.gitops.k8s.cguertin.dev/"

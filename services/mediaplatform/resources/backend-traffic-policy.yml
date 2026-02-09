@@ -12,14 +12,13 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://radarr.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://radarr.media.cguertin.dev/"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -35,14 +34,13 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://sonarr.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://sonarr.media.cguertin.dev/"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -58,14 +56,13 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://prowlarr.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://prowlarr.media.cguertin.dev/"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -81,14 +78,13 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://qbittorrent.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://qbittorrent.media.cguertin.dev/"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -104,14 +100,13 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://sabnzbd.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://sabnzbd.media.cguertin.dev/"
 ---
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
@@ -127,11 +122,10 @@ spec:
       statusCodes:
       - type: Value
         value: 302
-    response:
+    redirect:
+      scheme: https
+      hostname: auth.k8s.cguertin.dev
+      path:
+        type: ReplaceFullPath
+        replaceFullPath: /oauth2/start?rd=https://jellyseerr.media.cguertin.dev/
       statusCode: 302
-      body:
-        type: Inline
-        inline: "Redirecting to login..."
-      headers:
-      - name: Location
-        value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://jellyseerr.media.cguertin.dev/"
