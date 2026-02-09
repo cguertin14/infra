@@ -13,6 +13,7 @@ resources:
 - resources/gotenberg.yml
 
 # Workaround for Kustomize bug: namespace transformer doesn't apply to helmCharts resources
+# NOTE: This will be fixed in the version after Kustomize v5.8.0: https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.0
 patches:
 - target:
     name: paperless
