@@ -13,7 +13,3 @@ spec:
       set:
       - name: X-Forwarded-Proto
         value: https
-      - name: X-Forwarded-Host
-        value: "%REQ(:authority)%"
-      - name: X-Forwarded-Uri
-        value: "%REQ(:path)%"
