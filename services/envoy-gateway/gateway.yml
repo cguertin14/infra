@@ -346,10 +346,7 @@ spec:
     protocol: HTTPS
     allowedRoutes:
       namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            name: educs
+        from: All
     tls:
       mode: Terminate
       certificateRefs:

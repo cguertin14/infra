@@ -13,7 +13,7 @@ helmCharts:
   namespace: envoy-gateway-system
   repo: oci://docker.io/envoyproxy
   version: v1.6.3
-  includeCRDs: false
+  includeCRDs: true
   valuesInline:
     podDisruptionBudget:
       minAvailable: 2
