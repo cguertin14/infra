@@ -7,6 +7,7 @@ resources:
 - resources/namespace.yml
 - resources/httproute.yml
 - resources/security-policy.yml
+- resources/backend-traffic-policy.yml
 
 images:
 - name: adguard/adguardhome

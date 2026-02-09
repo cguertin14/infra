@@ -6,7 +6,6 @@ namespace: envoy-gateway-system
 resources:
 - gateway.yml
 - educs-certificates.yml
-- envoy-patch-policy.yml
 
 helmCharts:
 - name: gateway-helm
@@ -16,10 +15,7 @@ helmCharts:
   version: 1.7.0
   includeCRDs: true
   valuesInline:
-    config:
-      envoyGateway:
-        extensionApis:
-          enableEnvoyPatchPolicy: true
+    config: {}
     podDisruptionBudget:
       minAvailable: 2
     deployment:
