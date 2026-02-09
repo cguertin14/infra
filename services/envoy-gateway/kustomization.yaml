@@ -6,7 +6,6 @@ namespace: envoy-gateway-system
 resources:
 - gateway.yml
 - educs-certificates.yml
-- client-traffic-policy.yml
 
 helmCharts:
 - name: gateway-helm
