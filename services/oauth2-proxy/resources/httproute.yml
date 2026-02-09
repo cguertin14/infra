@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: oauth2-proxy
+  namespace: kube-system
+spec:
+  hostnames:
+  - auth.k8s.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: oauth2-proxy
+      port: 4180

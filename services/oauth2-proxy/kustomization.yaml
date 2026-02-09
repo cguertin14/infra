@@ -16,4 +16,5 @@ generators:
 resources:
 - resources/deployment.yml
 - resources/service.yml
-- resources/ingress.yml
+- resources/httproute.yml
+- resources/reference-grant.yml

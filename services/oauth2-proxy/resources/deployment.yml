@@ -16,8 +16,9 @@ spec:
         - --provider=github
         - --email-domain=*
         # - --scope=email+profile # fix for 500 errors.
-        - --upstream=file:///dev/null
+        - --upstream=static://200
         - --http-address=0.0.0.0:4180
+        - --reverse-proxy=true
         - --pass-authorization-header=true
         - --pass-access-token=true
         - --pass-user-headers=true
@@ -25,9 +26,11 @@ spec:
         - --set-xauthrequest=true
         - --cookie-refresh=1m
         - --cookie-expire=30m
-        - --cookie-csrf-per-request=true
+        # - --cookie-csrf-per-request=true  # disabled: incompatible with ext_authz flow
         - --cookie-domain=.cguertin.dev
         - --whitelist-domain=.cguertin.dev
+        - --skip-provider-button=true
+        - --redirect-url=https://auth.k8s.cguertin.dev/oauth2/callback
         envFrom:
         - secretRef:
             name: oauth-secrets          
