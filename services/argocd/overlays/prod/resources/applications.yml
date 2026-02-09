@@ -141,25 +141,6 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-ingress-controller
-  namespace: argocd
-spec:
-  project: production
-  destination:
-    namespace: kube-system
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/cguertin14/infra
-    targetRevision: main
-    path: services/nginx-ingress-controller
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: oauth2-proxy
   namespace: argocd
 spec:
@@ -538,3 +519,25 @@ spec:
       prune: true
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: envoy-gateway
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: envoy-gateway-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: services/envoy-gateway
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
