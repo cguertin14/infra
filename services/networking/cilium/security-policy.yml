@@ -9,7 +9,6 @@ spec:
     name: hubble-cilium
   extAuth:
     headersToExtAuth:
-    - host
     - cookie
     - x-forwarded-proto
     - x-forwarded-host

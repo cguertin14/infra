@@ -9,7 +9,6 @@ spec:
     name: argo-rollout-dashboard
   extAuth:
     headersToExtAuth:
-    - host
     - cookie
     - x-forwarded-proto
     - x-forwarded-host

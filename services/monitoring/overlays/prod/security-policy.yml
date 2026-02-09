@@ -13,7 +13,6 @@ spec:
     name: prometheus
   extAuth:
     headersToExtAuth:
-    - host
     - cookie
     - x-forwarded-proto
     - x-forwarded-host
