@@ -1,0 +1,151 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyPatchPolicy
+metadata:
+  name: ext-authz-allow-location-header
+  namespace: envoy-gateway-system
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy-gateway
+  type: JSONPatch
+  jsonPatches:
+  # argo-rollouts (filter_chain 4)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/4/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # monitoring - alertmanager (filter_chain 6)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/6/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # monitoring - prometheus (filter_chain 7)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/7/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # mediaplatform (filter_chains 9-14)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/9/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/10/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/11/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/12/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/13/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/14/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # hubble (filter_chain 15)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/15/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # paperless (filter_chain 16)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/16/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
+  # adguard-home (filter_chain 17)
+  - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
+    name: "envoy-gateway-system/envoy-gateway/cguertin-dev-https"
+    operation:
+      op: add
+      path: "/filter_chains/17/filters/0/typed_config/http_filters/0/typed_config/http_service/authorization_response/allowed_client_headers"
+      value:
+        patterns:
+        - exact: "location"
+          ignore_case: true
+        - exact: "set-cookie"
+          ignore_case: true
