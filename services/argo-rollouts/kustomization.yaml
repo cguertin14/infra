@@ -8,6 +8,7 @@ resources:
 - github.com/argoproj/argo-rollouts/manifests/dashboard-install?ref=v1.8.3
 - resources/httproute.yml
 - resources/security-policy.yml
+- resources/backend-traffic-policy.yml
 - resources/namespace.yml
 - metrics/service-monitor.yml
 - templates/replicaset-ready.yml
