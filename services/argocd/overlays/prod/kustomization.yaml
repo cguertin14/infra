@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - ../../base
-- resources/argocd-ingress.yml
+- resources/argocd-httproute.yml
 - resources/project.yml
 - resources/applications.yml
 
