@@ -51,10 +51,7 @@ spec:
     protocol: HTTPS
     allowedRoutes:
       namespaces:
-        from: Selector
-        selector:
-          matchLabels:
-            name: kube-system
+        from: All
     tls:
       mode: Terminate
       certificateRefs:
