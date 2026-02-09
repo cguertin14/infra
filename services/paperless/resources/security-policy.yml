@@ -10,6 +10,7 @@ spec:
     name: paperless
   extAuth:
     headersToExtAuth:
+    - host
     - cookie
     - x-forwarded-proto
     - x-forwarded-host
