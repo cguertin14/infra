@@ -16,6 +16,12 @@ helmCharts:
   version: 1.7.0
   includeCRDs: true
   valuesInline:
+    config:
+      envoyGateway:
+        gateway:
+          controllerName: gateway.envoyproxy.io/gatewayclass-controller
+        extensionApis:
+          enableEnvoyPatchPolicy: true
     podDisruptionBudget:
       minAvailable: 2
     deployment:
