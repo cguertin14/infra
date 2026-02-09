@@ -7,6 +7,7 @@ resources:
 - resources/namespace.yml
 - resources/voice-assistant-whisper.yml
 - resources/voice-assistant-piper.yml
+- resources/httproute.yml
 # - resources/pv.yml
 
 images:
@@ -98,19 +99,7 @@ helmCharts:
 
     ingress:
       main:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-          nginx.org/websocket-services: home-assistant
-        ingressClassName: nginx
-        tls:
-        - hosts:
-          - ha.cguertin.dev
-          secretName: home-assistant-cert
-        hosts:
-          - host: ha.cguertin.dev
-            paths:
-              - path: /
+        enabled: false
 
     # WARNING: Find out how much resources are needed for home-assistant, might remain empty.
     # resources:

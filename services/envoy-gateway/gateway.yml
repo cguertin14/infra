@@ -1,0 +1,359 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: eg
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: envoy-gateway
+  namespace: envoy-gateway-system
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+spec:
+  gatewayClassName: eg
+  listeners:
+  # Blog
+  - hostname: cguertin.dev
+    name: cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: blog
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: cguertin-dev-cert
+  - hostname: preview.cguertin.dev
+    name: preview-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: blog
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: preview-cguertin-dev-cert
+  # OAuth2 Proxy
+  - hostname: auth.k8s.cguertin.dev
+    name: auth-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: kube-system
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: auth-k8s-cguertin-dev-cert
+  # ArgoCD
+  - hostname: gitops.k8s.cguertin.dev
+    name: gitops-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: argocd
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: gitops-k8s-cguertin-dev-cert
+  # Argo Rollouts
+  - hostname: rollout.gitops.k8s.cguertin.dev
+    name: rollout-gitops-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: argo-rollouts
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: rollout-gitops-k8s-cguertin-dev-cert
+  # Monitoring - Grafana
+  - hostname: monitoring.k8s.cguertin.dev
+    name: monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: monitoring
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: monitoring-k8s-cguertin-dev-cert
+  # Monitoring - Alertmanager
+  - hostname: alertmanager.monitoring.k8s.cguertin.dev
+    name: alertmanager-monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: monitoring
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: alertmanager-monitoring-k8s-cguertin-dev-cert
+  # Monitoring - Prometheus
+  - hostname: prometheus.monitoring.k8s.cguertin.dev
+    name: prometheus-monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: monitoring
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: prometheus-monitoring-k8s-cguertin-dev-cert
+  # Mediaplatform - Jellyfin
+  - hostname: jellyfin.media.cguertin.dev
+    name: jellyfin-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: jellyfin-media-cguertin-dev-cert
+  # Mediaplatform - Radarr
+  - hostname: radarr.media.cguertin.dev
+    name: radarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: radarr-media-cguertin-dev-cert
+  # Mediaplatform - Sonarr
+  - hostname: sonarr.media.cguertin.dev
+    name: sonarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: sonarr-media-cguertin-dev-cert
+  # Mediaplatform - Prowlarr
+  - hostname: prowlarr.media.cguertin.dev
+    name: prowlarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: prowlarr-media-cguertin-dev-cert
+  # Mediaplatform - Qbittorrent
+  - hostname: qbittorrent.media.cguertin.dev
+    name: qbittorrent-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: qbittorrent-media-cguertin-dev-cert
+  # Mediaplatform - Sabnzbd
+  - hostname: sabnzbd.media.cguertin.dev
+    name: sabnzbd-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: sabnzbd-media-cguertin-dev-cert
+  # Mediaplatform - Jellyseerr
+  - hostname: jellyseerr.media.cguertin.dev
+    name: jellyseerr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: mediaplatform
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: jellyseerr-media-cguertin-dev-cert
+  # Networking - Hubble
+  - hostname: network.k8s.cguertin.dev
+    name: network-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: kube-system
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: network-k8s-cguertin-dev-cert
+  # Paperless
+  - hostname: classeur.cguertin.dev
+    name: classeur-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: paperless
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: classeur-cguertin-dev-cert
+  # Adguard Home
+  - hostname: adguard-home.k8s.cguertin.dev
+    name: adguard-home-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: adguard-home
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: adguard-home-k8s-cguertin-dev-cert
+  # Home Assistant
+  - hostname: ha.cguertin.dev
+    name: ha-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: home-assistant
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: ha-cguertin-dev-cert
+  # Immich
+  - hostname: photos.cguertin.dev
+    name: photos-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: immich
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: photos-cguertin-dev-cert
+  # Educs (certs managed manually - different issuer)
+  - hostname: erabliereducoeursucre.com
+    name: educs-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: educs
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: educs-frontend-cert
+  - hostname: www.erabliereducoeursucre.com
+    name: www-educs-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: educs
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: www-educs-frontend-cert
+  - hostname: api.erabliereducoeursucre.com
+    name: api-educs-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            name: educs
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: educs-backend-cert

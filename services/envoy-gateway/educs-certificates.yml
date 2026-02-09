@@ -1,0 +1,38 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: educs-frontend-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: educs-frontend-cert
+  issuerRef:
+    name: letsencrypt-issuer-educs
+    kind: ClusterIssuer
+  dnsNames:
+  - erabliereducoeursucre.com
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: www-educs-frontend-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: www-educs-frontend-cert
+  issuerRef:
+    name: letsencrypt-issuer-educs
+    kind: ClusterIssuer
+  dnsNames:
+  - www.erabliereducoeursucre.com
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: educs-backend-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: educs-backend-cert
+  issuerRef:
+    name: letsencrypt-issuer-educs
+    kind: ClusterIssuer
+  dnsNames:
+  - api.erabliereducoeursucre.com

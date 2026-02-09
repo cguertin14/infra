@@ -1,0 +1,44 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+namespace: envoy-gateway-system
+
+resources:
+- gateway.yml
+- educs-certificates.yml
+
+helmCharts:
+- name: gateway-helm
+  releaseName: envoy-gateway
+  namespace: envoy-gateway-system
+  repo: oci://docker.io/envoyproxy
+  version: v1.6.3
+  includeCRDs: false
+  valuesInline:
+    podDisruptionBudget:
+      minAvailable: 2
+    deployment:
+      envoyGateway:
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            memory: 1Gi
+            cpu: 100m
+    hpa:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 10
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 90
+        - type: Resource
+          resource:
+            name: memory
+            target:
+              type: Utilization
+              averageUtilization: 90

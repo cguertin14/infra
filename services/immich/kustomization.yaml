@@ -16,6 +16,7 @@ resources:
 - resources/namespace.yml
 - resources/postgres-db.yml
 - resources/storage.yml
+- resources/httproute.yml
 
 patches:
 - path: patches/immich-server-intel-quick-sync-patch.yml
@@ -63,20 +64,7 @@ helmCharts:
       enabled: true
       ingress:
         main:
-          enabled: true
-          ingressClassName: nginx
-          annotations:
-            # proxy-body-size is set to 0 to remove the body limit on file uploads
-            nginx.ingress.kubernetes.io/proxy-body-size: "0"
-            cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-          hosts:
-          - host: photos.cguertin.dev
-            paths:
-              - path: "/"
-          tls:
-          - secretName: photos-cguertin-dev-tls
-            hosts:
-              - photos.cguertin.dev
+          enabled: false
 
     machine-learning:
       enabled: true

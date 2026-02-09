@@ -2,7 +2,7 @@
 
 ## Radarr, Sonarr, Qbittorrent, Prowlarr & Sabnzbd
 
-Before deploying these, comment out the ingresses in [here](./resources/ingresses.yml). 
+Before deploying these, comment out the http routes in [here](./resources/httproutes.yml). 
 Deploy the kustomize stack, then port-forward each of them to configure their settings (especially auth).
 
 ## Prowlarr Setup
