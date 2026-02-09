@@ -38,5 +38,6 @@ spec:
       - x-auth-request-user
       - x-auth-request-email
       - x-auth-request-access-token
+      headersToClient:
       - location
       - set-cookie

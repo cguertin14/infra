@@ -7,7 +7,6 @@ resources:
 - grafana-pvc.yml
 - httproutes.yml
 - security-policy.yml
-- backend-traffic-policy.yml
 
 generators:
 - secrets-generator.yml

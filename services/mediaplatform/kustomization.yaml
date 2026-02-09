@@ -8,7 +8,6 @@ resources:
 - resources/volumes.yml
 - resources/httproutes.yml
 - resources/security-policy.yml
-- resources/backend-traffic-policy.yml
 
 ## Important: Storage logic
 #

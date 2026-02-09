@@ -6,7 +6,6 @@ namespace: kube-system
 resources:
 - hubble-httproute.yml
 - security-policy.yml
-- backend-traffic-policy.yml
 
 commonLabels:
   app.kubernetes.io/name: cilium
