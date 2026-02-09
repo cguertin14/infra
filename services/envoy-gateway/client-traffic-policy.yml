@@ -1,0 +1,17 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: ClientTrafficPolicy
+metadata:
+  name: forward-host-header
+  namespace: envoy-gateway-system
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy-gateway
+  headers:
+    earlyRequestHeaders:
+      add:
+      - name: X-Forwarded-Host
+        value: "%REQ(:authority)%"
+      - name: X-Forwarded-Uri
+        value: "%REQ(:path)%"
