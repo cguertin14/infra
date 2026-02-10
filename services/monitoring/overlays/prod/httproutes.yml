@@ -7,7 +7,7 @@ spec:
   hostnames:
   - monitoring.k8s.cguertin.dev
   parentRefs:
-  - name: main-gateway
+  - name: envoy-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -27,7 +27,7 @@ spec:
   hostnames:
   - alertmanager.monitoring.k8s.cguertin.dev
   parentRefs:
-  - name: main-gateway
+  - name: envoy-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -47,7 +47,7 @@ spec:
   hostnames:
   - prometheus.monitoring.k8s.cguertin.dev
   parentRefs:
-  - name: main-gateway
+  - name: envoy-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:

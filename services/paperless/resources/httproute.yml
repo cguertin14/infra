@@ -7,7 +7,7 @@ spec:
   hostnames:
   - classeur.cguertin.dev
   parentRefs:
-  - name: main-gateway
+  - name: envoy-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
