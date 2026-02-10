@@ -13,7 +13,5 @@ spec:
       add:
       - name: X-Forwarded-Host
         value: "%REQ(:authority)%"
-      - name: X-Forwarded-Proto
-        value: "%REQ(:scheme)%"
       - name: X-Forwarded-Uri
         value: "%REQ(:path)%"
