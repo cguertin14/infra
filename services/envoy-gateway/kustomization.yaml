@@ -14,7 +14,7 @@ helmCharts:
   namespace: envoy-gateway-system
   repo: oci://docker.io/envoyproxy
   version: 1.7.0
-  includeCRDs: true
+  includeCRDs: false
   valuesInline:
     config: {}
     replicas: 2

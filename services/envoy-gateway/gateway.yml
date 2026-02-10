@@ -24,7 +24,6 @@ spec:
               type: Utilization
               averageUtilization: 80
       envoyDeployment:
-        name: main-gateway-proxy
         strategy:
           type: RollingUpdate
           rollingUpdate:
@@ -46,7 +45,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: main-gateway
+  name: envoy-gateway
   namespace: envoy-gateway-system
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-issuer"
