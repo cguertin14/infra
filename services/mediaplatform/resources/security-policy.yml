@@ -33,7 +33,6 @@ spec:
       - name: oauth2-proxy
         namespace: kube-system
         port: 4180
-      path: /oauth2
       headersToBackend:
       - x-auth-request-user
       - x-auth-request-email
