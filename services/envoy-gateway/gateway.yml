@@ -23,6 +23,9 @@ spec:
             target:
               type: Utilization
               averageUtilization: 80
+      envoyService:
+        type: LoadBalancer
+        loadBalancerIP: 192.168.0.20
       envoyDeployment:
         container:
           resources:
