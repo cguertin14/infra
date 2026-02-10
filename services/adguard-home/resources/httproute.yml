@@ -7,7 +7,7 @@ spec:
   hostnames:
   - adguard-home.k8s.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:

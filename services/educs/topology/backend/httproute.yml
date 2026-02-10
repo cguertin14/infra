@@ -6,7 +6,7 @@ spec:
   hostnames:
   - api.erabliereducoeursucre.com
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:

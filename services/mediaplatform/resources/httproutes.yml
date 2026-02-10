@@ -6,7 +6,7 @@ spec:
   hostnames:
   - jellyfin.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -25,7 +25,7 @@ spec:
   hostnames:
   - radarr.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -44,7 +44,7 @@ spec:
   hostnames:
   - sonarr.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -63,7 +63,7 @@ spec:
   hostnames:
   - prowlarr.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -82,7 +82,7 @@ spec:
   hostnames:
   - qbittorrent.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -101,7 +101,7 @@ spec:
   hostnames:
   - sabnzbd.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
@@ -120,7 +120,7 @@ spec:
   hostnames:
   - jellyseerr.media.cguertin.dev
   parentRefs:
-  - name: envoy-gateway
+  - name: main-gateway
     namespace: envoy-gateway-system
   rules:
   - matches:
