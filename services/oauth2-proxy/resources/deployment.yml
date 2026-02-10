@@ -24,7 +24,7 @@ spec:
         - --pass-user-headers=true
         - --set-authorization-header=true
         - --set-xauthrequest=true
-        - --cookie-refresh=1m
+        - --cookie-refresh=0
         - --cookie-expire=30m
         # - --cookie-csrf-per-request=true  # disabled: incompatible with ext_authz flow
         - --cookie-domain=.cguertin.dev
