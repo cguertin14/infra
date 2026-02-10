@@ -52,6 +52,19 @@ spec:
   rules:
   - matches:
     - path:
+        type: Exact
+        value: /
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplaceFullPath
+          replaceFullPath: /graph
+    backendRefs:
+    - name: prometheus-k8s
+      port: 9090
+  - matches:
+    - path:
         type: PathPrefix
         value: /
     backendRefs:
