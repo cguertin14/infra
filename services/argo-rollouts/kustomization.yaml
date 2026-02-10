@@ -26,9 +26,6 @@ images:
 configurations:
 - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 
-commonLabels:
-  app.kubernetes.io/name: argo-rollouts
-
 patchesStrategicMerge:
 - patches/controller-metrics.yml
 - patches/add-metrics-label-to-svc.yml
