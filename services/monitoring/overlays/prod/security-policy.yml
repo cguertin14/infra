@@ -1,13 +1,38 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
-  name: monitoring-oauth
+  name: alertmanager-oauth
   namespace: monitoring
 spec:
   targetRefs:
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
     name: alertmanager
+  extAuth:
+    headersToExtAuth:
+    - cookie
+    - x-forwarded-proto
+    - x-forwarded-host
+    - x-forwarded-uri
+    http:
+      backendRefs:
+      - name: oauth2-proxy
+        namespace: kube-system
+        port: 4180
+      headersToBackend:
+      - x-auth-request-user
+      - x-auth-request-email
+      - x-auth-request-access-token
+      - location
+      - set-cookie
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: prometheus-oauth
+  namespace: monitoring
+spec:
+  targetRefs:
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
     name: prometheus
