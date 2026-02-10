@@ -13,6 +13,7 @@ resources:
 - resources/gotenberg.yml
 - resources/httproute.yml
 - resources/security-policy.yml
+- resources/backend-traffic-policy.yml
 
 # Workaround for Kustomize bug: namespace transformer doesn't apply to helmCharts resources
 # NOTE: This will be fixed in the version after Kustomize v5.8.0: https://github.com/kubernetes-sigs/kustomize/releases/tag/kustomize%2Fv5.8.0
@@ -89,6 +90,10 @@ helmCharts:
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
       PAPERLESS_URL: https://classeur.cguertin.dev
+      # Trust the remote user header from oauth2-proxy (via ext_authz)
+      # so Paperless auto-logs in users and doesn't return its own 302 login redirects
+      PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
+      PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME: HTTP_X_AUTH_REQUEST_EMAIL
       # Valkey
       PAPERLESS_REDIS: redis://paperless-valkey
       # Postgres
