@@ -24,6 +24,7 @@ spec:
               type: Utilization
               averageUtilization: 80
       envoyDeployment:
+        name: main-gateway-proxy
         strategy:
           type: RollingUpdate
           rollingUpdate:
