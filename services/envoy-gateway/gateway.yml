@@ -24,6 +24,13 @@ spec:
               type: Utilization
               averageUtilization: 80
       envoyDeployment:
+        container:
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              memory: 512Mi
         strategy:
           type: RollingUpdate
           rollingUpdate:

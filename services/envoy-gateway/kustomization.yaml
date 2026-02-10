@@ -16,15 +16,6 @@ helmCharts:
   version: 1.7.0
   includeCRDs: false
   valuesInline:
-    config: {}
     replicas: 2
     podDisruptionBudget:
       minAvailable: 1
-    deployment:
-      envoyGateway:
-        resources:
-          limits:
-            memory: 1Gi
-          requests:
-            memory: 1Gi
-            cpu: 100m
