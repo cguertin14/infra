@@ -17,8 +17,9 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     config: {}
+    replicas: 2
     podDisruptionBudget:
-      minAvailable: 2
+      minAvailable: 1
     deployment:
       envoyGateway:
         resources:
@@ -27,20 +28,3 @@ helmCharts:
           requests:
             memory: 1Gi
             cpu: 100m
-    hpa:
-      enabled: true
-      minReplicas: 3
-      maxReplicas: 10
-      metrics:
-        - type: Resource
-          resource:
-            name: cpu
-            target:
-              type: Utilization
-              averageUtilization: 90
-        - type: Resource
-          resource:
-            name: memory
-            target:
-              type: Utilization
-              averageUtilization: 90
