@@ -18,4 +18,4 @@ spec:
       header:
         set:
         - name: Location
-          value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://rollout.gitops.k8s.cguertin.dev/"
+          value: "https://auth.k8s.cguertin.dev/oauth2/start?rd=https://rollout.gitops.k8s.cguertin.dev/rollouts"

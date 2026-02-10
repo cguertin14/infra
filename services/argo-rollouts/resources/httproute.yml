@@ -11,6 +11,19 @@ spec:
   rules:
   - matches:
     - path:
+        type: Exact
+        value: /
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplaceFullPath
+          replaceFullPath: /rollouts
+    backendRefs:
+    - name: argo-rollouts-dashboard
+      port: 3100
+  - matches:
+    - path:
         type: PathPrefix
         value: /
     backendRefs:
