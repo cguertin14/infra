@@ -4,7 +4,7 @@
     from:
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: kube-system
+          kubernetes.io/metadata.name: envoy-gateway-system
       podSelector:
         matchLabels:
-          app.kubernetes.io/name: nginx-ingress-controller
+          gateway.envoyproxy.io/owning-gateway-name: envoy-gateway
