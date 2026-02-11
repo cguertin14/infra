@@ -26,6 +26,15 @@ spec:
       envoyService:
         type: LoadBalancer
         loadBalancerIP: 192.168.0.20
+        patch:
+          type: StrategicMerge
+          value:
+            spec:
+              ports:
+              - name: metrics
+                protocol: TCP
+                port: 19001
+                targetPort: 19001
       envoyDeployment:
         container:
           resources:

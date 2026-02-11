@@ -8,3 +8,14 @@ spec:
       app.kubernetes.io/instance: envoy-gateway
   endpoints:
   - port: metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: envoy-gateway-global-metrics
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: proxy
+  endpoints:
+  - port: metrics
