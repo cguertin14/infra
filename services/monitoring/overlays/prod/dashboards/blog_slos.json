@@ -117,7 +117,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))",
+          "expr": "(sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) - (sum(rate(envoy_cluster_upstream_rq_xx{envoy_response_code_class=\"5\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) or vector(0))) / sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -133,7 +133,7 @@
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "description": "For a 99.9% slo, Nginx is allowed to be down for 40.32 minutes in a 28 days period",
+      "description": "For a 99.9% slo, Envoy is allowed to be down for 40.32 minutes in a 28 days period",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -195,14 +195,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\n/ \nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))\n))* 60 * 60 * 24 * 14\n\n",
+          "expr": "(1 - (\n(sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) - (sum(rate(envoy_cluster_upstream_rq_xx{envoy_response_code_class=\"5\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) or vector(0)))\n/\nsum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n)) * 60 * 60 * 24 * 14",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Time Nginx served != 5xx in last 28d",
+      "title": "Time Envoy served != 5xx in last 28d",
       "type": "gauge"
     },
     {
@@ -277,7 +277,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[28d]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[28d]))\r\n\r\n))/0.001",
+          "expr": "(1 - (\n(sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) - (sum(rate(envoy_cluster_upstream_rq_xx{envoy_response_code_class=\"5\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d])) or vector(0)))\n/\nsum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n)) / 0.001",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -359,7 +359,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - (\r\nsum(rate(nginx_ingress_controller_requests{status!~\"5.*\", exported_service=~\"blog.*\"}[$__range]))\r\n/ \r\nsum(rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__range]))\r\n\r\n))/0.001",
+          "expr": "(1 - (\n(sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[$__range])) - (sum(rate(envoy_cluster_upstream_rq_xx{envoy_response_code_class=\"5\", envoy_cluster_name=~\"httproute/blog/.*\"}[$__range])) or vector(0)))\n/\nsum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~\"httproute/blog/.*\"}[$__range]))\n)) / 0.001",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -431,15 +431,15 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (status) (increase(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__range]))>0",
+          "expr": "sum by (envoy_response_code) (increase(envoy_cluster_upstream_rq{envoy_cluster_name=~\"httproute/blog/.*\"}[$__range])) > 0",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{ code}}",
+          "legendFormat": "{{envoy_response_code}}",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Requests Status Code Seen from Nginx",
+      "title": "Requests Status Code Seen from Envoy",
       "type": "piechart"
     },
     {
@@ -557,15 +557,15 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by(status) (rate(nginx_ingress_controller_requests{exported_service=~\"blog.*\"}[$__rate_interval]))",
+          "expr": "sum by(envoy_response_code) (rate(envoy_cluster_upstream_rq{envoy_cluster_name=~\"httproute/blog/.*\"}[$__rate_interval]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{code}}",
+          "legendFormat": "{{envoy_response_code}}",
           "refId": "A"
         }
       ],
-      "title": "requests / seconds displayed by HTTP Code seen from Nginx",
+      "title": "requests / seconds displayed by HTTP Code seen from Envoy",
       "type": "timeseries"
     },
     {
@@ -661,7 +661,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+          "expr": "sum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"500\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n/\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"+Inf\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -678,7 +678,7 @@
         "type": "prometheus",
         "uid": "$DS_PROMETHEUS"
       },
-      "description": "For a 99.5% slo, Nginx is allowed to be under slo for 201 minutes in a 14 days period",
+      "description": "For a 99.5% slo, Envoy is allowed to be under slo for 201 minutes in a 14 days period",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -740,14 +740,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))* 60 * 60 * 24 * 14",
+          "expr": "(1 - (\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"500\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n/\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"+Inf\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n)) * 60 * 60 * 24 * 14",
           "interval": "",
           "legendFormat": "",
           "range": true,
           "refId": "C"
         }
       ],
-      "title": "Time Nginx is under SLO in the last 28d",
+      "title": "Time Envoy is under SLO in the last 28d",
       "type": "gauge"
     },
     {
@@ -822,7 +822,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[28d]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[28d]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
+          "expr": "(1 - (\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"500\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n/\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"+Inf\", envoy_cluster_name=~\"httproute/blog/.*\"}[28d]))\n)) / 0.005",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -904,7 +904,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(1-(\r\nsum(rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"0.5\", exported_service=~\"blog.*\"}[$__range]))\r\n/\r\nsum (rate(nginx_ingress_controller_connect_duration_seconds_bucket{le=\"+Inf\", exported_service=~\"blog.*\"}[$__range]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n))/0.005",
+          "expr": "(1 - (\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"500\", envoy_cluster_name=~\"httproute/blog/.*\"}[$__range]))\n/\nsum(rate(envoy_cluster_upstream_rq_time_bucket{le=\"+Inf\", envoy_cluster_name=~\"httproute/blog/.*\"}[$__range]))\n)) / 0.005",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -1005,7 +1005,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (le) (increase(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval]))",
+          "expr": "sum by (le) (increase(envoy_cluster_upstream_rq_time_bucket{envoy_cluster_name=~\"httproute/blog/.*\"}[$__rate_interval]))",
           "format": "heatmap",
           "interval": "",
           "legendFormat": "{{le}}",
@@ -1123,7 +1123,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "histogram_quantile(0.999, sum by(le)(rate(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])))\n",
+          "expr": "histogram_quantile(0.999, sum by(le)(rate(envoy_cluster_upstream_rq_time_bucket{envoy_cluster_name=~\"httproute/blog/.*\"}[$__rate_interval]))) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "99.9 percentile",
@@ -1134,7 +1134,7 @@
             "uid": "$DS_PROMETHEUS"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.95, sum(rate(nginx_ingress_controller_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
+          "expr": "histogram_quantile(0.95, sum(rate(envoy_cluster_upstream_rq_time_bucket{envoy_cluster_name=~\"httproute/blog/.*\"}[$__rate_interval])) by(le)) / 1000",
           "interval": "",
           "legendFormat": "95 percentile",
           "refId": "C"
@@ -1144,7 +1144,7 @@
             "uid": "$DS_PROMETHEUS"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.90, sum(rate(nginx_ingress_controller_request_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__rate_interval])) by(le))",
+          "expr": "histogram_quantile(0.90, sum(rate(envoy_cluster_upstream_rq_time_bucket{envoy_cluster_name=~\"httproute/blog/.*\"}[$__rate_interval])) by(le)) / 1000",
           "interval": "",
           "legendFormat": "90 percentile ",
           "refId": "B"
@@ -1203,7 +1203,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (le) (increase(nginx_ingress_controller_connect_duration_seconds_bucket{exported_service=~\"blog.*\"}[$__range]))",
+          "expr": "sum by (le) (increase(envoy_cluster_upstream_rq_time_bucket{envoy_cluster_name=~\"httproute/blog/.*\"}[$__range]))",
           "format": "heatmap",
           "hide": false,
           "interval": "",
