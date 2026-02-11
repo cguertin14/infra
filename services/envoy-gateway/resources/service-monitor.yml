@@ -19,3 +19,4 @@ spec:
       app.kubernetes.io/component: proxy
   endpoints:
   - port: metrics
+    path: /stats/prometheus
