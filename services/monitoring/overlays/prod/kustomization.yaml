@@ -117,8 +117,8 @@ configMapGenerator:
       argocd.argoproj.io/sync-options: Replace=true
   files:
   - dashboards/blog_slos.json
-  - dashboards/nginx-overview.json
-  - dashboards/nginx-performance.json
+  - https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-clusters.json
+  - https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json
   - dashboards/nvidia-dashboard-3.json
   - dashboards/educs_slos.json
 - name: grafana-dashboards-custom-3
@@ -145,6 +145,7 @@ configMapGenerator:
   files:
   - dashboards/cilium-dashboard.json
   - dashboards/cilium-operator-dashboard.json
+  - https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-proxy-global.json
 - name: grafana-dashboards-custom-6
   namespace: monitoring
   options:
