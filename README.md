@@ -1,6 +1,7 @@
 # infra
 
-[![CircleCI](https://circleci.com/gh/cguertin14/infra.svg?style=shield)](https://circleci.com/gh/cguertin14/infra)
+![DNS](https://github.com/cguertin14/infra/actions/workflows/terraform-dns.yml/badge.svg)
+![Backblaze](https://github.com/cguertin14/infra/actions/workflows/terraform-backblaze.yml/badge.svg)
 
 My infrastructure running on a hybrid arm64/amd64 Kubernetes Cluster.
 
