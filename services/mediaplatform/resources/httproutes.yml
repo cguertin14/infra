@@ -33,8 +33,8 @@ spec:
         type: PathPrefix
         value: /api/v3/release
     timeouts:
-      request: 120s
-      backendRequest: 120s
+      request: 300s
+      backendRequest: 300s
     backendRefs:
     - name: radarr
       port: 7878
@@ -62,8 +62,8 @@ spec:
         type: PathPrefix
         value: /api/v3/release
     timeouts:
-      request: 120s
-      backendRequest: 120s
+      request: 300s
+      backendRequest: 300s
     backendRefs:
     - name: sonarr
       port: 8989
