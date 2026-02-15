@@ -31,6 +31,16 @@ spec:
   - matches:
     - path:
         type: PathPrefix
+        value: /api/v3/release
+    timeouts:
+      request: 120s
+      backendRequest: 120s
+    backendRefs:
+    - name: radarr
+      port: 7878
+  - matches:
+    - path:
+        type: PathPrefix
         value: /
     backendRefs:
     - name: radarr
@@ -47,6 +57,16 @@ spec:
   - name: envoy-gateway
     namespace: envoy-gateway-system
   rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v3/release
+    timeouts:
+      request: 120s
+      backendRequest: 120s
+    backendRefs:
+    - name: sonarr
+      port: 8989
   - matches:
     - path:
         type: PathPrefix
