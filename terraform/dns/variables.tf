@@ -34,7 +34,6 @@ variable "domains" {
     "adguard-home.k8s",
     "classeur.cguertin.dev",
     "jellyfin.media",
-    "jellyseerr.media",
     "sonarr.media",
     "radarr.media",
     "prowlarr.media",

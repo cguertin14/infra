@@ -266,20 +266,6 @@ spec:
       - name: sabnzbd-media-cguertin-dev-cert
         group: ''
         kind: Secret
-  # Mediaplatform - Jellyseerr
-  - hostname: jellyseerr.media.cguertin.dev
-    name: jellyseerr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: jellyseerr-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
   # Networking - Hubble
   - hostname: network.k8s.cguertin.dev
     name: network-k8s-cguertin-dev-https

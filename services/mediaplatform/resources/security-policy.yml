@@ -19,9 +19,6 @@ spec:
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
     name: sabnzbd
-  - group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: jellyseerr
   extAuth:
     headersToExtAuth:
     - cookie
