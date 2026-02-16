@@ -26,6 +26,11 @@ resource "cloudflare_dns_record" "pi_load_balancer" {
   content = var.router_ip
   ttl     = 300
   proxied = false
+
+  lifecycle {
+    ignore_changes  = [content]
+    prevent_destroy = true
+  }
 }
 
 resource "cloudflare_dns_record" "cname_dns_entry" {
