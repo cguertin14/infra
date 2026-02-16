@@ -143,8 +143,8 @@ images:
 - name: jellyfin/jellyfin
   newTag: 10.11.6
 - name: loeken/jellyseerr
-  newName: ghcr.io/fallenbagel/jellyseerr
-  newTag: 2.7.3
+  newName: ghcr.io/seerr-team/seerr
+  newTag: v3.0.1
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.16
