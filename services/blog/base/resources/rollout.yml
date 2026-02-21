@@ -38,6 +38,8 @@ spec:
           value: https://cguertin.dev
         - name: service-name
           value: blog-active
+        - name: namespace
+          value: blog
   template:
     spec:
       containers:

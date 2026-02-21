@@ -5,6 +5,7 @@ metadata:
 spec:
   args:
   - name: service-name
+  - name: namespace
   metrics:
   - name: availability-sli-success-rate
     initialDelay: 45s
@@ -15,13 +16,12 @@ spec:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
-          sum(rate(
-            nginx_ingress_controller_requests{status!~"5.*", exported_service=~"{{args.service-name}}.*"}[5m]
-          ))
-          / 
-          sum(rate(
-            nginx_ingress_controller_requests{exported_service=~"{{args.service-name}}.*"}[5m]
-          ))
+          (
+            sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~"httproute/{{args.namespace}}/{{args.service-name}}.*"}[5m]))
+            - (sum(rate(envoy_cluster_upstream_rq_xx{envoy_response_code_class="5", envoy_cluster_name=~"httproute/{{args.namespace}}/{{args.service-name}}.*"}[5m])) or vector(0))
+          )
+          /
+          sum(rate(envoy_cluster_upstream_rq_completed{envoy_cluster_name=~"httproute/{{args.namespace}}/{{args.service-name}}.*"}[5m]))
   - name: latency-sli-success-rate
     initialDelay: 45s
     # 99.95% Latency SLI
@@ -31,10 +31,6 @@ spec:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090
         query: |
-          sum(rate(
-            nginx_ingress_controller_request_duration_seconds_bucket{le="0.5", exported_service=~"{{args.service-name}}.*"}[5m]
-          ))
+          sum(rate(envoy_cluster_upstream_rq_time_bucket{le="500.0", envoy_cluster_name=~"httproute/{{args.namespace}}/{{args.service-name}}.*"}[5m]))
           /
-          sum(rate(
-            nginx_ingress_controller_request_duration_seconds_bucket{le="+Inf", exported_service=~"{{args.service-name}}.*"}[5m]
-          ))
+          sum(rate(envoy_cluster_upstream_rq_time_bucket{le="+Inf", envoy_cluster_name=~"httproute/{{args.namespace}}/{{args.service-name}}.*"}[5m]))
