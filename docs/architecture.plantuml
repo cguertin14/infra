@@ -13,9 +13,9 @@ cloud LAN {
 	cloud cluster as "Kubernetes Cluster  \n   192.168.0.0/24"
 
 	node ControlPlane {
-		node master1
-		node master2
-		node master3
+		node mediaserver
+    	node nvidiaserver
+    	node miniitx0
 
 		database etcd
 	}
@@ -26,51 +26,45 @@ cloud LAN {
 		node worker3
 		node worker4
 		node worker5
-	}
-	
-	node x86_Nodes {
-	  node mediaserver
-	  node nvidiaserver
-	  node miniitx0
+		node worker6
+		node worker7
+		node worker8
 	}
 
-	master1 -u-> etcd
-	master2 -u-> etcd
-	master3 -u-> etcd
+	nvidiaserver -u-> etcd
+	mediaserver -u-> etcd
+	miniitx0 -u-> etcd
 
 	cluster -d-> ControlPlane
+	ControlPlane -d-> Ceph
 	DataPlane -d-> NAS
-	x86_Nodes -d-> Ceph
 
-	master1 <-d-> worker1
-	master1 <-d-> worker2
-	master1 <-d-> worker3
-	master1 <-d-> worker4
-	master1 <-d-> worker5
+	mediaserver <-d-> worker1
+	mediaserver <-d-> worker2
+	mediaserver <-d-> worker3
+	mediaserver <-d-> worker4
+	mediaserver <-d-> worker5
+	mediaserver <-d-> worker6
+	mediaserver <-d-> worker7
+	mediaserver <-d-> worker8
 	
-	master2 <-d-> worker1
-	master2 <-d-> worker2
-	master2 <-d-> worker3
-	master2 <-d-> worker4
-	master2 <-d-> worker5
+	nvidiaserver <-d-> worker1
+	nvidiaserver <-d-> worker2
+	nvidiaserver <-d-> worker3
+	nvidiaserver <-d-> worker4
+	nvidiaserver <-d-> worker5
+	nvidiaserver <-d-> worker6
+	nvidiaserver <-d-> worker7
+	nvidiaserver <-d-> worker8
 
-	master3 <-d-> worker1
-	master3 <-d-> worker2
-	master3 <-d-> worker3
-	master3 <-d-> worker4
-	master3 <-d-> worker5
-	
-	master1 <-d-> mediaserver
-	master1 <-d-> nvidiaserver
-	master1 <-d-> miniitx0
-	
-	master2 <-d-> mediaserver
-	master2 <-d-> nvidiaserver
-	master2 <-d-> miniitx0
-
-	master3 <-d-> mediaserver
-	master3 <-d-> nvidiaserver
-	master3 <-d-> miniitx0
+	miniitx0 <-d-> worker1
+	miniitx0 <-d-> worker2
+	miniitx0 <-d-> worker3
+	miniitx0 <-d-> worker4
+	miniitx0 <-d-> worker5
+	miniitx0 <-d-> worker6
+	miniitx0 <-d-> worker7
+	miniitx0 <-d-> worker8
 
 }
 
