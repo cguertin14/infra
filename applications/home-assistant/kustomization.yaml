@@ -56,9 +56,13 @@ helmCharts:
     env:
       TZ: America/Toronto
     
-    # This is required to access the host machine's USB devices.
+    # This is required to access the host machine's USB devices and Bluetooth.
     securityContext:
-      privileged:  true
+      privileged: true
+      capabilities:
+        add:
+          - NET_ADMIN
+          - NET_RAW
 
     persistence:
       config:
@@ -70,19 +74,6 @@ helmCharts:
         type: hostPath
         hostPath: /dev/bus/usb/001/003
 
-    # TODO: See if this is needed?
-    # addons:
-    #   codeserver:
-    #     enabled: false
-    #     args:
-    #       - --auth
-    #       - none
-    #       - --user-data-dir
-    #       - /data/config/.vscode
-    #     volumeMounts:
-    #     - name: config
-    #       mountPath: /data/config # TODO: Validate that this works
-
     # Affinity rule to schedule home-assistant on capable nodes.
     affinity:
       nodeAffinity:
@@ -92,7 +83,7 @@ helmCharts:
             - key: kubernetes.io/hostname
               operator: In
               values:
-              # Nodes with USB devices attached.
+              # Nodes with USB Zigbee devices attached.
               - worker3
               - worker4
               - worker5
@@ -102,11 +93,12 @@ helmCharts:
         enabled: false
 
     # WARNING: Find out how much resources are needed for home-assistant, might remain empty.
-    # resources:
-      # Warning: No limits.
-      # requests:
-      #   cpu: '6' # take the whole node, so that only sabnzbd can be scheduled on it. (there are 8 cores, but let's use 6)
-      #   memory: 8Gi
+    resources:
+      requests:
+        cpu: 30m
+        memory: 1Gi
+      limits:
+        memory: 1Gi
 
 patches:
 - path: patches/home-assistant-hostnetwork-patch.yml
