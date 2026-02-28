@@ -37,7 +37,7 @@ spec:
   source:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
-    path: services/networking/cilium
+    path: services/cilium
   syncPolicy:
     automated:
       selfHeal: true
