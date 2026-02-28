@@ -50,6 +50,8 @@ helmCharts:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 192.168.0.23
+        annotations:
+          lbipam.cilium.io/sharing-key: adguard-dns
         ports:
           dns-tcp:
             enabled: true
@@ -60,7 +62,9 @@ helmCharts:
       dns-udp:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: 192.168.0.21
+        loadBalancerIP: 192.168.0.23
+        annotations:
+          lbipam.cilium.io/sharing-key: adguard-dns
         ports:
           dns-udp:
             enabled: true
