@@ -66,12 +66,10 @@ kind: Gateway
 metadata:
   name: envoy-gateway
   namespace: envoy-gateway-system
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
 spec:
   gatewayClassName: eg
   listeners:
-  # Blog
+  # *.cguertin.dev (wildcard cert covers cguertin.dev + all *.cguertin.dev)
   - hostname: cguertin.dev
     name: cguertin-dev-https
     port: 443
@@ -82,7 +80,7 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-      - name: cguertin-dev-cert
+      - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
   - hostname: preview.cguertin.dev
@@ -95,220 +93,9 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-      - name: preview-cguertin-dev-cert
+      - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  # OAuth2 Proxy
-  - hostname: auth.k8s.cguertin.dev
-    name: auth-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: auth-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # ArgoCD
-  - hostname: gitops.k8s.cguertin.dev
-    name: gitops-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: gitops-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Argo Rollouts
-  - hostname: rollout.gitops.k8s.cguertin.dev
-    name: rollout-gitops-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: rollout-gitops-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Monitoring - Grafana
-  - hostname: monitoring.k8s.cguertin.dev
-    name: monitoring-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: monitoring-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Monitoring - Alertmanager
-  - hostname: alertmanager.monitoring.k8s.cguertin.dev
-    name: alertmanager-monitoring-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: alertmanager-monitoring-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Monitoring - Prometheus
-  - hostname: prometheus.monitoring.k8s.cguertin.dev
-    name: prometheus-monitoring-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: prometheus-monitoring-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Jellyfin
-  - hostname: jellyfin.media.cguertin.dev
-    name: jellyfin-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: jellyfin-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Radarr
-  - hostname: radarr.media.cguertin.dev
-    name: radarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: radarr-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Sonarr
-  - hostname: sonarr.media.cguertin.dev
-    name: sonarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: sonarr-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Prowlarr
-  - hostname: prowlarr.media.cguertin.dev
-    name: prowlarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: prowlarr-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Qbittorrent
-  - hostname: qbittorrent.media.cguertin.dev
-    name: qbittorrent-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: qbittorrent-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Mediaplatform - Sabnzbd
-  - hostname: sabnzbd.media.cguertin.dev
-    name: sabnzbd-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: sabnzbd-media-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Networking - Hubble
-  - hostname: network.k8s.cguertin.dev
-    name: network-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: network-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Paperless
-  - hostname: classeur.cguertin.dev
-    name: classeur-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: classeur-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Adguard Home
-  - hostname: adguard-home.k8s.cguertin.dev
-    name: adguard-home-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: adguard-home-k8s-cguertin-dev-cert
-        group: ''
-        kind: Secret
-  # Home Assistant
   - hostname: ha.cguertin.dev
     name: ha-cguertin-dev-https
     port: 443
@@ -319,10 +106,9 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-      - name: ha-cguertin-dev-cert
+      - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  # Immich
   - hostname: photos.cguertin.dev
     name: photos-cguertin-dev-https
     port: 443
@@ -333,10 +119,209 @@ spec:
     tls:
       mode: Terminate
       certificateRefs:
-      - name: photos-cguertin-dev-cert
+      - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  # Educs (certs managed manually - different issuer)
+  - hostname: classeur.cguertin.dev
+    name: classeur-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  # *.k8s.cguertin.dev
+  - hostname: auth.k8s.cguertin.dev
+    name: auth-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: gitops.k8s.cguertin.dev
+    name: gitops-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: monitoring.k8s.cguertin.dev
+    name: monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: network.k8s.cguertin.dev
+    name: network-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: adguard-home.k8s.cguertin.dev
+    name: adguard-home-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  # *.gitops.k8s.cguertin.dev
+  - hostname: rollout.gitops.k8s.cguertin.dev
+    name: rollout-gitops-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: gitops-k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  # *.monitoring.k8s.cguertin.dev
+  - hostname: alertmanager.monitoring.k8s.cguertin.dev
+    name: alertmanager-monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: monitoring-k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: prometheus.monitoring.k8s.cguertin.dev
+    name: prometheus-monitoring-k8s-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: monitoring-k8s-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  # *.media.cguertin.dev
+  - hostname: jellyfin.media.cguertin.dev
+    name: jellyfin-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: radarr.media.cguertin.dev
+    name: radarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: sonarr.media.cguertin.dev
+    name: sonarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: prowlarr.media.cguertin.dev
+    name: prowlarr-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: qbittorrent.media.cguertin.dev
+    name: qbittorrent-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  - hostname: sabnzbd.media.cguertin.dev
+    name: sabnzbd-media-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: media-cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
+  # Educs (explicit certs - different issuer)
   - hostname: erabliereducoeursucre.com
     name: educs-https
     port: 443

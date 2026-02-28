@@ -1,0 +1,65 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cguertin-dev-wildcard-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: cguertin-dev-wildcard-cert
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - cguertin.dev
+  - "*.cguertin.dev"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: k8s-cguertin-dev-wildcard-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: k8s-cguertin-dev-wildcard-cert
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.k8s.cguertin.dev"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: media-cguertin-dev-wildcard-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: media-cguertin-dev-wildcard-cert
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.media.cguertin.dev"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: monitoring-k8s-cguertin-dev-wildcard-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: monitoring-k8s-cguertin-dev-wildcard-cert
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.monitoring.k8s.cguertin.dev"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitops-k8s-cguertin-dev-wildcard-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: gitops-k8s-cguertin-dev-wildcard-cert
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.gitops.k8s.cguertin.dev"

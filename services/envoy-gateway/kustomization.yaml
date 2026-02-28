@@ -5,6 +5,7 @@ namespace: envoy-gateway-system
 
 resources:
 - resources/gateway.yml
+- resources/wildcard-certificates.yml
 - resources/educs-certificates.yml
 - resources/client-traffic-policy.yml
 - resources/service-monitor.yml
