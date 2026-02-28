@@ -13,3 +13,6 @@ metadata:
   name: home-l2-network
 spec:
   loadBalancerIPs: true
+  interfaces:
+    - ^eth
+    - ^enp
