@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/cguertin14/infra
         targetRevision: main
-        path: '{{.path}}'
+        path: '{{.path.path}}'
       syncPolicy:
         automated:
           selfHeal: true
@@ -60,7 +60,7 @@ spec:
       source:
         repoURL: https://github.com/cguertin14/infra
         targetRevision: main
-        path: '{{.path}}'
+        path: '{{.path.path}}'
       syncPolicy:
         automated:
           selfHeal: true
