@@ -73,6 +73,10 @@ helmCharts:
         enabled: true
         type: hostPath
         hostPath: /dev/bus/usb/001/003
+      dbus:
+        enabled: true
+        type: hostPath
+        hostPath: /run/dbus
 
     # Affinity rule to schedule home-assistant on capable nodes.
     affinity:
