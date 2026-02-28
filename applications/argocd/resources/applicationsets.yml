@@ -1,0 +1,103 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: system-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+  - git:
+      repoURL: https://github.com/cguertin14/infra
+      revision: main
+      directories:
+      - path: system-apps/*
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+      namespace: argocd
+    spec:
+      project: production
+      destination:
+        namespace: kube-system
+        server: https://kubernetes.default.svc
+      source:
+        repoURL: https://github.com/cguertin14/infra
+        targetRevision: main
+        path: '{{.path}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: namespaced-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+  - merge:
+      mergeKeys:
+      - path.basename
+      generators:
+      - git:
+          repoURL: https://github.com/cguertin14/infra
+          revision: main
+          directories:
+          - path: applications/*
+          - path: applications/argocd
+            exclude: true
+      - list:
+          elements:
+          - path.basename: rook
+            namespace: rook-ceph
+          - path.basename: envoy-gateway
+            namespace: envoy-gateway-system
+          - path.basename: nfs-media-client
+            namespace: synology-nfs-media
+          - path.basename: educs-topology
+            namespace: educs
+          - path.basename: educs-network
+            namespace: educs
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+      namespace: argocd
+    spec:
+      project: production
+      destination:
+        namespace: '{{default .path.basename .namespace}}'
+        server: https://kubernetes.default.svc
+      source:
+        repoURL: https://github.com/cguertin14/infra
+        targetRevision: main
+        path: '{{.path}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+        - CreateNamespace=true
+        - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: production
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: applications/argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - ServerSideApply=true

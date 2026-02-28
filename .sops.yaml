@@ -1,5 +1,10 @@
 creation_rules:
-- path_regex: services/.*/secrets/.*\.yml$
+- path_regex: system-apps/.*/secrets/.*\.yml$
+  encrypted_regex: '^(data|stringData|name|db)$'
+  pgp: >- 
+    FB43BB6AE3C36AD515570A4FD7A77BD6F799A804,
+    00147B487D93E97077A21F898C32FAF457DC2C54
+- path_regex: applications/.*/secrets/.*\.yml$
   encrypted_regex: '^(data|stringData|name|db)$'
   pgp: >- 
     FB43BB6AE3C36AD515570A4FD7A77BD6F799A804,

@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+- https://github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v3.3.0&timeout=90s
+- metrics/argocd-serviceMonitor.yml
+- metrics/argocd-server-serviceMonitor.yml
+- metrics/argocd-repo-server-serviceMonitor.yml
+- metrics/prom-rule.yml
+- namespace.yml
+- resources/argocd-httproute.yml
+- resources/project.yml
+- resources/applicationsets.yml
+
+patches:
+- path: patches/argocd-rbac-cm-patch.yml
+- path: patches/argocd-cm-patch.yml
+- path: patches/argocd-server-patch.yml
+- path: patches/argocd-repo-server-ksops-patch.yml
+- path: patches/argocd-repo-server-gpg-import-patch.yml
+- path: patches/application-controller-patch.yml
+
+generators:
+- secrets-generator.yml
+
+images:
+- name: viaductoss/ksops
+  newTag: v4.3.3
