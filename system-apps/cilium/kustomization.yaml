@@ -7,7 +7,6 @@ resources:
 - hubble-httproute.yml
 - security-policy.yml
 - backend-traffic-policy.yml
-- l2-loadbalancer.yml
 
 commonLabels:
   app.kubernetes.io/name: cilium
@@ -65,7 +64,7 @@ helmCharts:
         - icmp
         - httpV2:exemplars=true;labelsContext=source_ip,source_namespace,source_workload,destination_ip,destination_namespace,destination_workload,traffic_direction
     l2announcements:
-      enabled: true
+      enabled: false
     devices:
       - enp+
       - eth+

@@ -51,24 +51,24 @@ helmCharts:
         type: LoadBalancer
         loadBalancerIP: 192.168.0.23
         annotations:
-          lbipam.cilium.io/sharing-key: adguard-dns
+          metallb.universe.tf/allow-shared-ip: adguard-dns
         ports:
           dns-tcp:
             enabled: true
             port: 53
             protocol: TCP
             targetPort: 53
-        externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
       dns-udp:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 192.168.0.23
         annotations:
-          lbipam.cilium.io/sharing-key: adguard-dns
+          metallb.universe.tf/allow-shared-ip: adguard-dns
         ports:
           dns-udp:
             enabled: true
             port: 53
             protocol: UDP
             targetPort: 53
-        externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
