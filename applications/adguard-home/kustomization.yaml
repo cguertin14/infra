@@ -58,7 +58,7 @@ helmCharts:
             port: 53
             protocol: TCP
             targetPort: 53
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
       dns-udp:
         enabled: true
         type: LoadBalancer
@@ -71,4 +71,4 @@ helmCharts:
             port: 53
             protocol: UDP
             targetPort: 53
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
