@@ -50,15 +50,11 @@ spec:
             exclude: true
       - list:
           elements:
-          - path.basename: rook
-            namespace: rook-ceph
-          - path.basename: envoy-gateway
-            namespace: envoy-gateway-system
-          - path.basename: nfs-media-client
-            namespace: synology-nfs-media
-          - path.basename: educs-topology
+          - path:
+              basename: educs-topology
             namespace: educs
-          - path.basename: educs-network
+          - path:
+              basename: educs-network
             namespace: educs
   template:
     metadata:
