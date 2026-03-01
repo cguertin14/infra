@@ -14,6 +14,8 @@ spec:
       containers:
       - args:
         - --provider=github
+        - --github-org=homelab-infra
+        - --github-team=SRE
         - --email-domain=*
         # - --scope=email+profile # fix for 500 errors.
         - --upstream=static://200
