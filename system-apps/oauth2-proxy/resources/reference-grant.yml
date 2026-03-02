@@ -20,9 +20,6 @@ spec:
   - group: gateway.envoyproxy.io
     kind: SecurityPolicy
     namespace: kube-system
-  - group: gateway.envoyproxy.io
-    kind: SecurityPolicy
-    namespace: paperless
   to:
   - group: ""
     kind: Service

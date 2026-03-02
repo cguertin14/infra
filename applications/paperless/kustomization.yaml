@@ -12,7 +12,6 @@ resources:
 - resources/tika.yml
 - resources/gotenberg.yml
 - resources/httproute.yml
-- resources/security-policy.yml
 - resources/backend-traffic-policy.yml
 
 # Workaround for Kustomize bug: namespace transformer doesn't apply to helmCharts resources
@@ -91,9 +90,15 @@ helmCharts:
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
       PAPERLESS_URL: https://classeur.cguertin.dev
-      # so Paperless auto-logs in users and doesn't return its own 302 login redirects
-      PAPERLESS_ENABLE_HTTP_REMOTE_USER: "true"
-      PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME: HTTP_X_AUTH_REQUEST_USER
+      # GitHub OAuth via django-allauth
+      PAPERLESS_APPS: "allauth.socialaccount.providers.github"
+      PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
+      PAPERLESS_SOCIAL_AUTO_SIGNUP: "false"
+      PAPERLESS_SOCIALACCOUNT_PROVIDERS:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-github-oauth
+            key: providers-json
       # Valkey
       PAPERLESS_REDIS: redis://paperless-valkey
       # Postgres
