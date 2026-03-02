@@ -93,6 +93,7 @@ helmCharts:
       PAPERLESS_APPS: "allauth.socialaccount.providers.github"
       PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
       PAPERLESS_SOCIAL_AUTO_SIGNUP: "false"
+      PAPERLESS_ACCOUNT_ALLOW_SIGNUPS: "false"
       PAPERLESS_SOCIALACCOUNT_PROVIDERS:
         valueFrom:
           secretKeyRef:
