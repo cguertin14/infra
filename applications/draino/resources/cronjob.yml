@@ -1,0 +1,64 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: node-drain
+  namespace: draino
+spec:
+  schedule: "*/2 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 120
+      template:
+        spec:
+          serviceAccountName: node-drain
+          nodeSelector:
+            kubernetes.io/arch: amd64
+          restartPolicy: Never
+          containers:
+          - name: node-drain
+            image: public.ecr.aws/bitnami/kubectl
+            command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+
+              echo "=== Checking for NotReady nodes ==="
+              NOT_READY=$(kubectl get nodes --no-headers | awk '$2 ~ /NotReady/ {print $1}')
+
+              if [ -z "$NOT_READY" ]; then
+                echo "All nodes are Ready."
+              else
+                for NODE in $NOT_READY; do
+                  echo "--- Node $NODE is NotReady ---"
+                  if kubectl get node "$NODE" -o jsonpath='{.spec.unschedulable}' | grep -q true; then
+                    echo "Node $NODE is already cordoned, skipping."
+                  else
+                    echo "Cordoning node $NODE..."
+                    kubectl cordon "$NODE"
+                    echo "Draining node $NODE..."
+                    kubectl drain "$NODE" \
+                      --ignore-daemonsets \
+                      --delete-emptydir-data \
+                      --force \
+                      --timeout=90s || echo "Drain of $NODE completed with warnings."
+                  fi
+                done
+              fi
+
+              echo ""
+              echo "=== Checking for recovered nodes ==="
+              CORDONED_READY=$(kubectl get nodes --no-headers | awk '$2 == "Ready,SchedulingDisabled" {print $1}')
+
+              if [ -z "$CORDONED_READY" ]; then
+                echo "No recovered nodes to uncordon."
+              else
+                for NODE in $CORDONED_READY; do
+                  echo "Node $NODE is Ready but cordoned, uncordoning..."
+                  kubectl uncordon "$NODE"
+                done
+              fi

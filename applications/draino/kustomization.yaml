@@ -4,24 +4,9 @@ kind: Kustomization
 namespace: draino
 
 resources:
-- https://raw.githubusercontent.com/pfnet/draino/refs/heads/master/manifest.yaml
+- resources/rbac.yml
+- resources/cronjob.yml
 
 images:
-- name: ghcr.io/pfnet/draino
-  newTag: v1.0.2
-
-patches:
-- target:
-    kind: Deployment
-    name: draino
-  patch: |-
-    - op: add
-      path: /spec/template/spec/nodeSelector
-      value:
-        kubernetes.io/arch: amd64
-    - op: replace
-      path: /spec/template/spec/containers/0/command
-      value:
-        - /draino
-        - --namespace=$(POD_NAMESPACE)
-        - NotReady
+- name: public.ecr.aws/bitnami/kubectl
+  newTag: 1.35.2
