@@ -22,6 +22,7 @@ resources:
 - resources/kiosk-deployment.yml
 - resources/kiosk-service.yml
 - resources/kiosk-security-policy.yml
+- resources/kiosk-backend-traffic-policy.yml
 
 patches:
 - path: patches/immich-server-intel-quick-sync-patch.yml
