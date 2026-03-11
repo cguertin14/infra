@@ -41,12 +41,14 @@ spec:
           value: "true"
         - name: KIOSK_SHOW_DATE
           value: "true"
+        - name: KIOSK_SHOW_PROGRESS_BAR
+          value: "true"
         resources:
           requests:
             cpu: 50m
-            memory: 128Mi
+            memory: 256Mi
           limits:
-            memory: 128Mi
+            memory: 256Mi
         livenessProbe:
           httpGet:
             path: /
