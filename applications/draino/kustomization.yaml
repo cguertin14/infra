@@ -23,6 +23,5 @@ patches:
       path: /spec/template/spec/containers/0/command
       value:
         - /draino
-        - --dry-run
         - --namespace=$(POD_NAMESPACE)
         - NotReady
