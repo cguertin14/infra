@@ -25,7 +25,7 @@ metadata:
   namespace: immich
 spec:
   hostnames:
-  - kiosk.photos.cguertin.dev
+  - kiosk.cguertin.dev
   parentRefs:
   - name: envoy-gateway
     namespace: envoy-gateway-system

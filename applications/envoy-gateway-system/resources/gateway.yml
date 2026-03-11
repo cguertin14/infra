@@ -123,6 +123,19 @@ spec:
       - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
+  - hostname: kiosk.cguertin.dev
+    name: kiosk-cguertin-dev-https
+    port: 443
+    protocol: HTTPS
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: cguertin-dev-wildcard-cert
+        group: ''
+        kind: Secret
   - hostname: classeur.cguertin.dev
     name: classeur-cguertin-dev-https
     port: 443
