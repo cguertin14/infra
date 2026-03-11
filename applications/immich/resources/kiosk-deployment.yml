@@ -43,6 +43,8 @@ spec:
           value: "true"
         - name: KIOSK_SHOW_PROGRESS_BAR
           value: "true"
+        - name: KIOSK_TRANSITION
+          value: cross-fade
         resources:
           requests:
             cpu: 50m
