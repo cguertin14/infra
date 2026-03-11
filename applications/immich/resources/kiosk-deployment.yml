@@ -27,6 +27,20 @@ spec:
             secretKeyRef:
               name: immich-kiosk-api-key
               key: api-key
+        - name: KIOSK_SHOW_IMAGE_EXIF
+          value: "true"
+        - name: KIOSK_SHOW_IMAGE_CAMERA
+          value: "true"
+        - name: KIOSK_SHOW_IMAGE_DATE
+          value: "true"
+        - name: KIOSK_SHOW_IMAGE_TIME
+          value: "true"
+        - name: KIOSK_SHOW_IMAGE_LOCATION
+          value: "true"
+        - name: KIOSK_SHOW_TIME
+          value: "true"
+        - name: KIOSK_SHOW_DATE
+          value: "true"
         resources:
           requests:
             cpu: 50m
