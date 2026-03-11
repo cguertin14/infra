@@ -31,6 +31,7 @@ variable "domains" {
   default = [
     "ha", # home-assistant
     "photos",
+    "kiosk.photos",
     "adguard-home.k8s",
     "classeur.cguertin.dev",
     "jellyfin.media",
