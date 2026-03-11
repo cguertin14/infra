@@ -39,10 +39,6 @@ spec:
           value: "true"
         - name: KIOSK_SHOW_IMAGE_LOCATION
           value: "true"
-        - name: KIOSK_SHOW_TIME
-          value: "true"
-        - name: KIOSK_SHOW_DATE
-          value: "true"
         - name: KIOSK_SHOW_PROGRESS_BAR
           value: "true"
         - name: KIOSK_TRANSITION
