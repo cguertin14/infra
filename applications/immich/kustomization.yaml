@@ -11,12 +11,16 @@ images:
 - name: docker.io/valkey/valkey
   newName: public.ecr.aws/valkey/valkey
   newTag: 9.0-alpine
+- name: ghcr.io/damongolding/immich-kiosk
+  newTag: v0.33.3
 
 resources:
 - resources/namespace.yml
 - resources/postgres-db.yml
 - resources/storage.yml
 - resources/httproute.yml
+- resources/kiosk-deployment.yml
+- resources/kiosk-service.yml
 
 patches:
 - path: patches/immich-server-intel-quick-sync-patch.yml
