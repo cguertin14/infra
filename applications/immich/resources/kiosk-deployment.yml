@@ -18,6 +18,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
+        - name: LANG
+          value: fr_CA
         - name: TZ
           value: America/Toronto
         - name: KIOSK_IMMICH_URL
