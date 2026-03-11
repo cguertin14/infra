@@ -18,9 +18,10 @@ resources:
 - resources/namespace.yml
 - resources/postgres-db.yml
 - resources/storage.yml
-- resources/httproute.yml
+- resources/httproutes.yml
 - resources/kiosk-deployment.yml
 - resources/kiosk-service.yml
+- resources/kiosk-security-policy.yml
 
 patches:
 - path: patches/immich-server-intel-quick-sync-patch.yml

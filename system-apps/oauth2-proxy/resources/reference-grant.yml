@@ -19,6 +19,9 @@ spec:
     namespace: mediaplatform
   - group: gateway.envoyproxy.io
     kind: SecurityPolicy
+    namespace: immich
+  - group: gateway.envoyproxy.io
+    kind: SecurityPolicy
     namespace: kube-system
   to:
   - group: ""
