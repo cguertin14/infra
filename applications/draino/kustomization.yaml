@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: draino
+
+resources:
+- https://raw.githubusercontent.com/pfnet/draino/refs/heads/master/manifest.yaml
+
+images:
+- name: ghcr.io/pfnet/draino
+  newTag: v1.0.2
+
+patches:
+- target:
+    kind: Deployment
+    name: draino
+  patch: |-
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value:
+        kubernetes.io/arch: amd64
+    - op: replace
+      path: /spec/template/spec/containers/0/command
+      value:
+        - /draino
+        - --dry-run
+        - --namespace=$(POD_NAMESPACE)
+        - NotReady
