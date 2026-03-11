@@ -24,6 +24,8 @@ spec:
           value: America/Toronto
         - name: KIOSK_IMMICH_URL
           value: http://immich-server:2283
+        - name: KIOSK_IMMICH_EXTERNAL_URL
+          value: https://photos.cguertin.dev
         - name: KIOSK_IMMICH_API_KEY
           valueFrom:
             secretKeyRef:
