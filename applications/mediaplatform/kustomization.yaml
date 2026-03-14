@@ -13,7 +13,7 @@ resources:
 ## Important: Storage logic
 #
 # 1. each service must have its own PVC. -> Add 'persistence' to each chart. -> DONE.
-# 2. radarr, sonarr and qbittorrent all use the same PVC as Jellyfin.
+# 2. radarr and sonarr all use the same PVC as Jellyfin.
 
 helmCharts:
 - name: jellyfin
@@ -74,25 +74,6 @@ helmCharts:
         size: 2Gi
         storageClass: ceph-block
   version: 4.5.2
-- name: qbittorrent
-  namespace: mediaplatform
-  releaseName: qbittorrent
-  repo: https://k8s-at-home.com/charts/
-  valuesInline:
-    env:
-      TZ: America/Toronto
-      WEBUI_PORT: 443
-    service:
-      main:
-        ports:
-          http:
-            port: 443
-    persistence:
-      config:
-        enabled: true
-        size: 2Gi
-        storageClass: ceph-block
-  version: 13.5.2
 - name: sabnzbd
   namespace: mediaplatform
   releaseName: sabnzbd
@@ -125,9 +106,6 @@ images:
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
   newTag: 2.3.0
-- name: ghcr.io/k8s-at-home/qbittorrent
-  newName: linuxserver/qbittorrent
-  newTag: 20.04.1
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
   newTag: 4.5.5
@@ -138,7 +116,6 @@ patches:
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
 - path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node
-- path: patches/qbittorrent-affinity-rules-patch.yml # configure Qbittorrent to run on the mediaserver node
 - path: patches/jellyfin-load-balancer-patch.yml # configure Jellyfin to use a Load Balancer
   target:
     kind: Service
@@ -166,24 +143,7 @@ patches:
   target:
     group: apps
     kind: Deployment
-    name: qbittorrent
-    version: v1
-- path: patches/pvc-mediaserver-downloads-patch.yml
-  target:
-    group: apps
-    kind: Deployment
     name: sabnzbd
-    version: v1
-- path: patches/update-qbittorrent-host-header-patch-cm.yml
-  target:
-    kind: ConfigMap
-    name: qbittorrent-scripts
-    version: v1
-- path: patches/update-qbittorrent-host-header-patch-depl.yml
-  target:
-    group: apps
-    kind: Deployment
-    name: qbittorrent
     version: v1
 
 configMapGenerator:

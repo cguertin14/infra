@@ -15,9 +15,6 @@ spec:
     name: prowlarr
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
-    name: qbittorrent
-  - group: gateway.networking.k8s.io
-    kind: HTTPRoute
     name: sabnzbd
   extAuth:
     headersToExtAuth:

@@ -40,19 +40,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: qbittorrent
-spec:
-  template:
-    spec:
-      containers:
-      - name: qbittorrent
-        envFrom:
-        - configMapRef:
-            name: mediaplatform-env
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: sabnzbd
 spec:
   template:

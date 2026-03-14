@@ -1,6 +1,6 @@
 # Media Platform
 
-## Radarr, Sonarr, Qbittorrent, Prowlarr & Sabnzbd
+## Radarr, Sonarr, Prowlarr & Sabnzbd
 
 Before deploying these, comment out the http routes in [here](./resources/httproutes.yml). 
 Deploy the kustomize stack, then port-forward each of them to configure their settings (especially auth).
@@ -10,7 +10,8 @@ Deploy the kustomize stack, then port-forward each of them to configure their se
 Fill in the indexers, including 
 1. https://nzbgeek.info/dashboard.php
 2. https://nzb.su/profile
-3. https://api.nzbplanet.net/login
+3. https://www.nzb.life/
+4. https://nzbfinder.ws/
 
 ## Sabnzbd Setup
 

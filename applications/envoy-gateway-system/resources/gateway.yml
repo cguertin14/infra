@@ -309,19 +309,6 @@ spec:
       - name: media-cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  - hostname: qbittorrent.media.cguertin.dev
-    name: qbittorrent-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: media-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
   - hostname: sabnzbd.media.cguertin.dev
     name: sabnzbd-media-cguertin-dev-https
     port: 443
