@@ -34,7 +34,7 @@ images:
 - name: ghcr.io/paperless-ngx/paperless-ngx
   newTag: 2.20.11
 - name: public.ecr.aws/valkey/valkey
-  newTag: 9.0-alpine
+  newTag: 9.1-alpine
 - name: gotenberg/gotenberg
   newTag: "8.27"
 - name: apache/tika
