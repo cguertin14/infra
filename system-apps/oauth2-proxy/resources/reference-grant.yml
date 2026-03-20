@@ -10,9 +10,6 @@ spec:
     namespace: adguard-home
   - group: gateway.envoyproxy.io
     kind: SecurityPolicy
-    namespace: argo-rollouts
-  - group: gateway.envoyproxy.io
-    kind: SecurityPolicy
     namespace: monitoring
   - group: gateway.envoyproxy.io
     kind: SecurityPolicy

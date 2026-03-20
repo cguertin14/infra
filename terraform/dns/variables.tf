@@ -43,7 +43,6 @@ variable "domains" {
     "gitops.k8s",
     "network.k8s",
     "monitoring.k8s",
-    "rollout.gitops.k8s",
     "rook-ceph.k8s",
     "prometheus.monitoring.k8s",
     "alertmanager.monitoring.k8s",

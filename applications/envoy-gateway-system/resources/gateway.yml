@@ -215,20 +215,6 @@ spec:
       - name: k8s-cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  # *.gitops.k8s.cguertin.dev
-  - hostname: rollout.gitops.k8s.cguertin.dev
-    name: rollout-gitops-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: gitops-k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
   # *.monitoring.k8s.cguertin.dev
   - hostname: alertmanager.monitoring.k8s.cguertin.dev
     name: alertmanager-monitoring-k8s-cguertin-dev-https
