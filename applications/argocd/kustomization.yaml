@@ -20,6 +20,7 @@ patches:
 - path: patches/argocd-server-patch.yml
 - path: patches/argocd-repo-server-ksops-patch.yml
 - path: patches/argocd-repo-server-gpg-import-patch.yml
+- path: patches/argocd-server-rollout-extension-patch.yml
 - path: patches/application-controller-patch.yml
 
 generators:
@@ -28,3 +29,5 @@ generators:
 images:
 - name: viaductoss/ksops
   newTag: v4.3.3
+- name: quay.io/argoprojlabs/argocd-extension-installer
+  newTag: v0.0.8
