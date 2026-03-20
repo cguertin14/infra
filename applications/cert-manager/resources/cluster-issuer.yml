@@ -26,4 +26,3 @@ spec:
         - '*.k8s.cguertin.dev'
         - '*.media.cguertin.dev'
         - '*.monitoring.k8s.cguertin.dev'
-        - '*.gitops.k8s.cguertin.dev'
