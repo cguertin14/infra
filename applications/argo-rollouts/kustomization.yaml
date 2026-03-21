@@ -20,42 +20,9 @@ images:
 configurations:
 - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 
-patchesStrategicMerge:
-- patches/controller-metrics.yml
-- patches/add-metrics-label-to-svc.yml
-
 patches:
-- path: patches/remove-unknown-fields.yml
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: analysisruns.argoproj.io
-    version: v1
-- path: patches/remove-unknown-fields.yml
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: analysistemplates.argoproj.io
-    version: v1
-- path: patches/remove-unknown-fields.yml
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: clusteranalysistemplates.argoproj.io
-    version: v1
-- path: patches/remove-unknown-fields.yml
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: experiments.argoproj.io
-    version: v1
-- path: patches/remove-unknown-fields.yml
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: rollouts.argoproj.io
-    version: v1
-- path: patches/add-configmap-to-clusterrole.yml
+- path: patches/controller-metrics.yml
+- path: patches/add-metrics-label-to-svc.yml
   target:
     group: rbac.authorization.k8s.io
     kind: ClusterRole
