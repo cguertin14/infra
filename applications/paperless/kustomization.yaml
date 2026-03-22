@@ -32,7 +32,7 @@ patches:
 
 images:
 - name: ghcr.io/paperless-ngx/paperless-ngx
-  newTag: 2.20.12
+  newTag: 2.20.13
 - name: public.ecr.aws/valkey/valkey
   newTag: 9.1-alpine
 - name: gotenberg/gotenberg
