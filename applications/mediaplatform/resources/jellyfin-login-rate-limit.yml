@@ -1,0 +1,35 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyfin-login
+spec:
+  hostnames:
+  - jellyfin.media.cguertin.dev
+  parentRefs:
+  - name: envoy-gateway
+    namespace: envoy-gateway-system
+  rules:
+  - matches:
+    - path:
+        type: Exact
+        value: /Users/AuthenticateByName
+      method: POST
+    backendRefs:
+    - name: jellyfin
+      port: 8096
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: jellyfin-login-rate-limit
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: jellyfin-login
+  rateLimit:
+    local:
+      rules:
+      - limit:
+          requests: 3
+          unit: Minute

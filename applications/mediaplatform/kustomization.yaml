@@ -7,6 +7,7 @@ resources:
 - resources/namespace.yml
 - resources/volumes.yml
 - resources/httproutes.yml
+- resources/jellyfin-login-rate-limit.yml
 - resources/security-policy.yml
 - resources/backend-traffic-policy.yml
 

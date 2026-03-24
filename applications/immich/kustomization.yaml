@@ -19,6 +19,7 @@ resources:
 - resources/postgres-db.yml
 - resources/storage.yml
 - resources/httproutes.yml
+- resources/login-rate-limit.yml
 - resources/kiosk-deployment.yml
 - resources/kiosk-service.yml
 - resources/kiosk-security-policy.yml
