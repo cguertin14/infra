@@ -39,7 +39,7 @@ images:
 - name: gotenberg/gotenberg
   newTag: "8.28"
 - name: apache/tika
-  newTag: "3.2.3.0"
+  newTag: "3.3.0.0"
 
 helmCharts:
 - name: paperless
