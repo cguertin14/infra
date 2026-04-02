@@ -19,7 +19,7 @@ variable "router_ip" {
 variable "proxied_domains" {
   description = "List of CF proxied domains to create"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "domains" {
