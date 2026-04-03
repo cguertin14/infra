@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - namespace.yml
+- pdb.yml
 
 generators:
 - secrets-generator.yml

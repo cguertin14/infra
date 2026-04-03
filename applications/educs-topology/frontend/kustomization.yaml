@@ -7,6 +7,7 @@ commonLabels:
 resources:
 - deployment.yml
 - httproute.yml
+- pdb.yml
 - service.yml
 
 images:

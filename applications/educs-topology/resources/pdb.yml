@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: educs-mongodb-pdb
+spec:
+  minAvailable: "25%"
+  selector:
+    matchLabels:
+      app: educs-mongodb-svc
