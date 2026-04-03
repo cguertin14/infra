@@ -10,6 +10,7 @@ resources:
 - resources/rollout.yml
 - resources/services.yml
 - resources/autoscaler.yml
+- resources/pdb.yml
 - resources/namespace.yml
 - httproutes.yml
 
