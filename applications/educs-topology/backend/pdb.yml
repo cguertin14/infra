@@ -3,7 +3,7 @@ kind: PodDisruptionBudget
 metadata:
   name: educs-backend-pdb
 spec:
-  minAvailable: 2
+  minAvailable: "25%"
   selector:
     matchLabels:
       app.kubernetes.io/name: educs-backend
