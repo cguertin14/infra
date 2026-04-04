@@ -106,7 +106,7 @@ images:
   newTag: 6.1.1
 - name: ghcr.io/k8s-at-home/prowlarr
   newName: linuxserver/prowlarr
-  newTag: 2.3.0
+  newTag: 2.3.5
 - name: ghcr.io/k8s-at-home/sabnzbd
   newName: linuxserver/sabnzbd
   newTag: 4.5.5
