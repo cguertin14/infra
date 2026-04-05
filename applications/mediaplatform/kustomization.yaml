@@ -97,7 +97,7 @@ helmCharts:
 # Setting proper image tags on each service.
 images:
 - name: jellyfin/jellyfin
-  newTag: 10.11.7
+  newTag: 10.11.8
 - name: ghcr.io/k8s-at-home/sonarr
   newName: linuxserver/sonarr
   newTag: 4.0.17
