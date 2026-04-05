@@ -15,6 +15,10 @@ spec:
     metadata:
       name: '{{.path.basename}}'
       namespace: argocd
+      annotations:
+        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+        notifications.argoproj.io/subscribe.on-sync-running.slack: ""
     spec:
       project: production
       destination:
@@ -54,6 +58,10 @@ spec:
     metadata:
       name: '{{.path.basename}}'
       namespace: argocd
+      annotations:
+        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+        notifications.argoproj.io/subscribe.on-sync-running.slack: ""
     spec:
       project: production
       destination:
@@ -75,6 +83,10 @@ kind: Application
 metadata:
   name: envoy-gateway-system
   namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-running.slack: ""
 spec:
   project: production
   destination:
@@ -97,6 +109,10 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-running.slack: ""
 spec:
   project: production
   destination:
@@ -118,6 +134,10 @@ kind: Application
 metadata:
   name: educs-topology
   namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-running.slack: ""
 spec:
   project: production
   destination:
@@ -139,6 +159,10 @@ kind: Application
 metadata:
   name: educs-network
   namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-running.slack: ""
 spec:
   project: production
   destination:

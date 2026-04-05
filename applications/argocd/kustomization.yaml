@@ -22,6 +22,7 @@ patches:
 - path: patches/argocd-repo-server-gpg-import-patch.yml
 - path: patches/argocd-server-rollout-extension-patch.yml
 - path: patches/application-controller-patch.yml
+- path: patches/argocd-notifications-cm-patch.yml
 
 generators:
 - secrets-generator.yml
