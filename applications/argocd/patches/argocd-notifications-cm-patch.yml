@@ -39,7 +39,7 @@ data:
               "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
               "fields": [
                 { "title": ":package: Project", "value": "{{ .app.spec.project }}", "short": true },
-                { "title": ":git: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
+                { "title": ":bookmark: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
                 { "title": ":rocket: Destination", "value": "{{ .app.spec.destination.namespace }}", "short": true }
               ]
             }]
@@ -58,7 +58,7 @@ data:
               "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
               "fields": [
                 { "title": ":package: Project", "value": "{{ .app.spec.project }}", "short": true },
-                { "title": ":git: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
+                { "title": ":bookmark: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
                 { "title": ":rocket: Destination", "value": "{{ .app.spec.destination.namespace }}", "short": true },
                 { "title": ":memo: Error", "value": "{{ .app.status.operationState.message }}", "short": false }
               ]
@@ -78,7 +78,7 @@ data:
               "title_link": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
               "fields": [
                 { "title": ":package: Project", "value": "{{ .app.spec.project }}", "short": true },
-                { "title": ":git: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
+                { "title": ":bookmark: Revision", "value": "{{ .app.status.sync.revision | trunc 7 }}", "short": true },
                 { "title": ":rocket: Destination", "value": "{{ .app.spec.destination.namespace }}", "short": true }
               ]
             }]
