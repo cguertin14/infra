@@ -9,4 +9,4 @@ resources:
 
 images:
 - name: public.ecr.aws/bitnami/kubectl
-  newTag: 1.35.3
+  newTag: 1.35.4
