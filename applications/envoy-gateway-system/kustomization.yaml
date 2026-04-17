@@ -15,7 +15,7 @@ helmCharts:
   releaseName: envoy-gateway
   namespace: envoy-gateway-system
   repo: oci://docker.io/envoyproxy
-  version: 1.7.1
+  version: 1.7.2
   includeCRDs: true
   valuesInline:
     replicas: 2
