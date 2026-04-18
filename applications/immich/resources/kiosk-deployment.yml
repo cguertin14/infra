@@ -46,7 +46,7 @@ spec:
         - name: KIOSK_TRANSITION
           value: cross-fade
         - name: KIOSK_ALBUMS
-          value: "4be7397b-09bc-426a-a3ea-9617006f05ed" # Current theme: Winter
+          value: "fc76ad0d-1aba-4738-bc5b-cf1ed8bbbb47" # Current theme: Backgrounds
         - name: KIOSK_SHOW_ALBUM_NAME
           value: "true"
         resources:
