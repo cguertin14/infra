@@ -168,3 +168,18 @@ helmCharts:
           includedResources:
           - persistentvolumes
           - persistentvolumeclaims
+      persistent-volumes-backups-obsidianls:
+        disabled: false
+        schedule: "30 6,18 * * *" # every day at 3:30AM/5:30PM - time is in UTC
+        useOwnerReferencesInBackup: true
+        paused: false
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 0h30m0s # wait up to 30 minutes for the snapshot to be ready for use
+          ttl: "336h" # 2 weeks / 14 days
+          storageLocation: backblaze
+          includedNamespaces:
+          - obsidianls
+          includedResources:
+          - persistentvolumes
+          - persistentvolumeclaims
