@@ -64,13 +64,3 @@ When prompted, supply:
 
 Open the resulting `obsidian://` URI on each device with the LiveSync plugin
 installed.
-
-## Files
-
-- `kustomization.yaml` — Helm chart values (CouchDB config, persistence,
-  resources, single-node setup)
-- `resources/httproute.yml` — public HTTPS route + DirectResponse 404 for
-  `/_utils` (Fauxton blocked at the gateway)
-- `resources/rate-limit.yml` — BackendTrafficPolicy rate-limiting `/_session`
-- `secrets/admin.yml` — SOPS-encrypted Secret with admin credentials
-- `secrets-generator.yml` — KSOPS generator hook
