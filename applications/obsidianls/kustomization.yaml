@@ -10,6 +10,13 @@ resources:
 - resources/httproute.yml
 - resources/rate-limit.yml
 
+images:
+- name: couchdb
+  newName: public.ecr.aws/docker/library/couchdb
+  newTag: 3.5.1
+- name: busybox
+  newName: public.ecr.aws/docker/library/busybox
+
 # Workaround for https://github.com/kubernetes-sigs/kustomize/issues/6058:
 # since Kustomize 5.8.0, the top-level `namespace:` field no longer adds a
 # namespace to helm-rendered resources that don't already declare one in their
