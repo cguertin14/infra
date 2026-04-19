@@ -36,6 +36,7 @@ variable "domains" {
     "jellyfin.media",
     "sonarr.media",
     "radarr.media",
+    "obsidianls",
     "prowlarr.media",
     "sabnzbd.media",
     "auth.k8s",
