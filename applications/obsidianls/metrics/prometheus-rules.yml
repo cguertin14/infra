@@ -1,0 +1,67 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: couchdb-rules
+  labels:
+    prometheus: k8s
+    role: alert-rules
+spec:
+  groups:
+  - name: couchdb
+    rules:
+    - alert: CouchDBNodeDown
+      annotations:
+        description: CouchDB metrics endpoint on `{{$labels.instance}}` has been unreachable for 5 minutes.
+        summary: CouchDB node is down.
+      expr: |
+        up{job="obsidianls-couchdb"} == 0
+      for: 5m
+      labels:
+        severity: critical
+    - alert: CouchDBClusterDegraded
+      annotations:
+        description: Only `{{$value}}` of 3 CouchDB nodes are reachable. Cluster has reduced redundancy.
+        summary: CouchDB cluster has fewer than 3 healthy nodes.
+      expr: |
+        count(up{job="obsidianls-couchdb"} == 1) < 3
+      for: 10m
+      labels:
+        severity: critical
+    - alert: CouchDBHighErrorRate
+      annotations:
+        description: CouchDB is returning 5xx responses at `{{$value | humanizePercentage}}` of total requests.
+        summary: CouchDB 5xx error rate above 5%.
+      expr: |
+        sum(rate(couchdb_httpd_status_codes_total{code=~"5.."}[5m]))
+          /
+        sum(rate(couchdb_httpd_status_codes_total[5m])) > 0.05
+      for: 10m
+      labels:
+        severity: warning
+    - alert: CouchDBHighRequestLatency
+      annotations:
+        description: CouchDB p99 request latency on `{{$labels.instance}}` is `{{$value}}s`.
+        summary: CouchDB p99 request latency above 2s.
+      expr: |
+        max by (instance) (couchdb_httpd_request_time_seconds{quantile="0.99"}) > 2
+      for: 15m
+      labels:
+        severity: warning
+    - alert: CouchDBReplicatorFailures
+      annotations:
+        description: CouchDB replicator on `{{$labels.instance}}` is logging response failures at `{{$value}}/s`.
+        summary: CouchDB internal replicator is failing.
+      expr: |
+        rate(couchdb_couch_replicator_responses_failure_total[15m]) > 0.1
+      for: 15m
+      labels:
+        severity: warning
+    - alert: CouchDBOpenFilesHigh
+      annotations:
+        description: CouchDB on `{{$labels.instance}}` has `{{$value}}` open OS files.
+        summary: CouchDB open file descriptors above 50000.
+      expr: |
+        couchdb_open_os_files > 50000
+      for: 15m
+      labels:
+        severity: warning

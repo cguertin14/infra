@@ -9,6 +9,8 @@ generators:
 resources:
 - resources/httproute.yml
 - resources/rate-limit.yml
+- metrics/service-monitor.yml
+- metrics/prometheus-rules.yml
 
 images:
 - name: couchdb
@@ -112,6 +114,15 @@ helmCharts:
     # No ingress — we use Gateway API instead
     ingress:
       enabled: false
+
+    # Prometheus metrics endpoint exposed on each pod at port 17896,
+    # path /_node/_local/_prometheus. Scraped by a ServiceMonitor (see
+    # metrics/service-monitor.yml). The chart adds this port to the
+    # headless Service and permits it through the NetworkPolicy.
+    prometheusPort:
+      enabled: true
+      port: 17896
+      bind_address: 0.0.0.0
 
     # PodDisruptionBudget — with quorum=2/3, we can tolerate at most 1 node
     # being unavailable at a time. Protects against voluntary disruptions
