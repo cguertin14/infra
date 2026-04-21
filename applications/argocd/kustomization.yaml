@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- https://github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v3.3.7&timeout=90s
+- https://github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v3.3.8&timeout=90s
 - metrics/argocd-serviceMonitor.yml
 - metrics/argocd-server-serviceMonitor.yml
 - metrics/argocd-repo-server-serviceMonitor.yml
