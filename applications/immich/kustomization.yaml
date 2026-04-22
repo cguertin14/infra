@@ -12,7 +12,7 @@ images:
   newName: public.ecr.aws/valkey/valkey
   newTag: 9.1-alpine
 - name: ghcr.io/damongolding/immich-kiosk
-  newTag: 0.36.3
+  newTag: 0.37.0
 
 resources:
 - resources/namespace.yml
