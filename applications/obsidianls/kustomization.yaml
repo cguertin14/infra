@@ -3,6 +3,12 @@ kind: Kustomization
 
 namespace: obsidianls
 
+labels:
+- pairs:
+    app.kubernetes.io/name: obsidianls
+  includeSelectors: false
+  includeTemplates: true
+
 generators:
 - secrets-generator.yml
 
