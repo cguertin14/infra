@@ -14,12 +14,7 @@ spec:
       - name: install-ksops
         # Match Argo CD Go version
         image: viaductoss/ksops
-        command: ["/bin/bash", "-c"]
-        args:
-        - echo "Installing KSOPS...";
-          mv ksops /custom-tools;
-          mv kustomize /custom-tools/;
-          echo "Done.";
+        command: ["/usr/local/bin/ksops", "install", "--with-kustomize", "/custom-tools"]
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
@@ -33,9 +28,6 @@ spec:
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
-        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
-          name: custom-tools
-          subPath: ksops
-        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops-exec/ksops-exec
+        - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops
