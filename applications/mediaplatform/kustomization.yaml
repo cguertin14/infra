@@ -24,6 +24,7 @@ helmCharts:
   valuesInline:
     env:
       TZ: America/Toronto
+      JELLYFIN_PublishedServerUrl: https://jellyfin.media.cguertin.dev
     persistence:
       config:
         enabled: true
