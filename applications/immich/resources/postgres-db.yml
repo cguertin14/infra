@@ -35,6 +35,13 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
 
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "1Gi"
+    limits:
+      memory: "1Gi"
+
   affinity:
     nodeSelector:
       kubernetes.io/arch: amd64
