@@ -13,6 +13,10 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
+    parameters:
+      shared_buffers: "512MB"
+      effective_cache_size: "1536MB"
+      work_mem: "16MB"
 
   managed:
     roles:
