@@ -35,6 +35,10 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
 
+  affinity:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
   storage:
     size: 10Gi
     storageClass: ceph-block
