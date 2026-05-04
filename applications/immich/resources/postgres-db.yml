@@ -14,7 +14,7 @@ spec:
     shared_preload_libraries:
       - "vchord.so"
     parameters:
-      shared_buffers: "512MB"
+      shared_buffers: "768MB"
       effective_cache_size: "1536MB"
       work_mem: "16MB"
 
@@ -38,9 +38,9 @@ spec:
   resources:
     requests:
       cpu: "100m"
-      memory: "1Gi"
+      memory: "1536Mi"
     limits:
-      memory: "1Gi"
+      memory: "1536Mi"
 
   affinity:
     nodeSelector:
