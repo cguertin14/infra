@@ -81,7 +81,8 @@ helmCharts:
             main:
               env:
                 TRANSFORMERS_CACHE: /cache
-                MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: immich-app/XLM-Roberta-Large-Vit-B-16Plus
+                MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: ViT-B-16-SigLIP2__webli
+                MACHINE_LEARNING_WORKERS: "2"
       persistence:
         cache:
           enabled: true
