@@ -13,10 +13,12 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
+      - "pg_prewarm"
     parameters:
       shared_buffers: "768MB"
       effective_cache_size: "1536MB"
       work_mem: "16MB"
+      pg_prewarm.autoprewarm: "on"
 
   managed:
     roles:
@@ -34,6 +36,7 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS "vchord" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "pg_prewarm";
 
   resources:
     requests:
