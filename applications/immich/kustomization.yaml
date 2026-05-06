@@ -87,6 +87,6 @@ helmCharts:
         cache:
           enabled: true
           size: 10Gi
-          type: emptyDir
-          accessMode: ReadWriteMany
-          storageClass: ceph-filesystem
+          type: persistentVolumeClaim
+          accessMode: ReadWriteOnce
+          storageClass: ceph-block
