@@ -11,15 +11,18 @@ spec:
         - /bin/sh
         - -c
         - |
-          # wrap the dex binary: whenever argocd-dex calls dex, our wrapper
-          # patches dex.yaml before the real dex binary reads it.
-          cp /usr/local/bin/dex /usr/local/bin/dex.real
-          cat > /usr/local/bin/dex <<'WRAPPER'
+          # create a wrapper that shadows the real dex binary via PATH.
+          # when argocd-dex calls "dex serve /tmp/dex.yaml", our wrapper
+          # patches dex.yaml before delegating to the real binary.
+          mkdir -p /tmp/bin
+          DEX_REAL=$(which dex)
+          cat > /tmp/bin/dex <<WRAPPER
           #!/bin/sh
           if [ -f /tmp/dex.yaml ] && ! grep -q "argocd://auth/callback" /tmp/dex.yaml; then
             sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
           fi
-          exec /usr/local/bin/dex.real "$@"
+          exec $DEX_REAL "\$@"
           WRAPPER
-          chmod +x /usr/local/bin/dex
+          chmod +x /tmp/bin/dex
+          export PATH="/tmp/bin:$PATH"
           exec /shared/argocd-dex rundex
