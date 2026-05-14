@@ -19,10 +19,10 @@ spec:
               if [ "$MODIFIED_TIME" != "$LAST" ]; then
                 LAST=$MODIFIED_TIME
                 if ! grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                  if grep -q "http://localhost:4000/auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                    sed -i '/http:\/\/localhost:4000\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
+                  if grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
+                    sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
                   else
-                    echo "expected to find http://localhost:4000/auth/callback in /tmp/dex.yaml before injecting argocd://auth/callback; will retry after the next file change" >&2
+                    echo "expected to find http://localhost:8085/auth/callback in /tmp/dex.yaml before injecting argocd://auth/callback; will retry after the next file change" >&2
                   fi
                 fi
               fi
