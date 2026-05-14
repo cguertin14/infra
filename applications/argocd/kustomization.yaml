@@ -17,6 +17,7 @@ resources:
 patches:
 - path: patches/argocd-rbac-cm-patch.yml
 - path: patches/argocd-cm-patch.yml
+- path: patches/argocd-dex-server-patch.yml
 - path: patches/argocd-server-patch.yml
 - path: patches/argocd-repo-server-ksops-patch.yml
 - path: patches/argocd-repo-server-gpg-import-patch.yml
