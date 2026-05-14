@@ -18,7 +18,7 @@ spec:
               if [ "$M" != "$LAST" ]; then
                 LAST=$M
                 if grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                  :
+                  true
                 elif grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
                   sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
                 else
