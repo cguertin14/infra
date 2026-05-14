@@ -17,8 +17,13 @@ spec:
               M=$(stat -c %Y /tmp/dex.yaml 2>/dev/null)
               if [ "$M" != "$LAST" ]; then
                 LAST=$M
-                grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null || \
+                if grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
+                  :
+                elif grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
                   sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
+                else
+                  echo "missing expected Dex localhost callback in /tmp/dex.yaml" >&2
+                fi
               fi
               sleep 0.2
             done
