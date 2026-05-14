@@ -11,32 +11,15 @@ spec:
         - /bin/sh
         - -c
         - |
-          # generate the dex config without starting dex
-          /shared/argocd-dex gendexcfg > /dev/null 2>&1 || true
-
-          # wait for dex.yaml to be written
-          while [ ! -f /tmp/dex.yaml ]; do sleep 0.1; done
-
-          # inject the mobile app redirect URI into the argo-cd-cli client
-          if ! grep -q "argocd://auth/callback" /tmp/dex.yaml; then
+          # wrap the dex binary: whenever argocd-dex calls dex, our wrapper
+          # patches dex.yaml before the real dex binary reads it.
+          cp /usr/local/bin/dex /usr/local/bin/dex.real
+          cat > /usr/local/bin/dex <<'WRAPPER'
+          #!/bin/sh
+          if [ -f /tmp/dex.yaml ] && ! grep -q "argocd://auth/callback" /tmp/dex.yaml; then
             sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
           fi
-
-          # now start dex with the patched config, and keep the background
-          # watcher running for any config regenerations by argocd
-          (
-            LAST=$(stat -c %Y /tmp/dex.yaml 2>/dev/null)
-            CHECK_INTERVAL_SECONDS="0.2"
-            while true; do
-              MODIFIED_TIME=$(stat -c %Y /tmp/dex.yaml 2>/dev/null)
-              if [ "$MODIFIED_TIME" != "$LAST" ]; then
-                LAST=$MODIFIED_TIME
-                if ! grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                  if grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                    sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
-                  fi
-                fi
-              fi
-              sleep "$CHECK_INTERVAL_SECONDS"
-            done
-          ) & exec /shared/argocd-dex rundex
+          exec /usr/local/bin/dex.real "$@"
+          WRAPPER
+          chmod +x /usr/local/bin/dex
+          exec /shared/argocd-dex rundex
