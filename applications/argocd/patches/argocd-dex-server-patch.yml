@@ -13,7 +13,7 @@ spec:
         - |
           (
             LAST=""
-            CHECK_INTERVAL_SECONDS="0.2" # matches the upstream mobile-for-argocd watcher timing
+            CHECK_INTERVAL_SECONDS="0.2"
             while true; do
               MODIFIED_TIME=$(stat -c %Y /tmp/dex.yaml 2>/dev/null)
               if [ "$MODIFIED_TIME" != "$LAST" ]; then
@@ -21,6 +21,8 @@ spec:
                 if ! grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
                   if grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
                     sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
+                    # signal dex to reload config after patching
+                    killall -HUP dex 2>/dev/null || true
                   else
                     echo "expected to find http://localhost:8085/auth/callback in /tmp/dex.yaml before injecting argocd://auth/callback; will retry after the next file change" >&2
                   fi
