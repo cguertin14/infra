@@ -13,18 +13,19 @@ spec:
         - |
           (
             LAST=""
+            CHECK_INTERVAL="0.2"
             while true; do
               M=$(stat -c %Y /tmp/dex.yaml 2>/dev/null)
               if [ "$M" != "$LAST" ]; then
                 LAST=$M
-                if grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                  true
-                elif grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
-                  sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
-                else
-                  echo "missing expected Dex localhost callback in /tmp/dex.yaml" >&2
+                if ! grep -q "argocd://auth/callback" /tmp/dex.yaml 2>/dev/null; then
+                  if grep -q "http://localhost:8085/auth/callback" /tmp/dex.yaml 2>/dev/null; then
+                    sed -i '/http:\/\/localhost:8085\/auth\/callback/a\  - argocd://auth/callback' /tmp/dex.yaml
+                  else
+                    echo "missing expected Dex localhost callback in /tmp/dex.yaml" >&2
+                  fi
                 fi
               fi
-              sleep 0.2
+              sleep "$CHECK_INTERVAL"
             done
           ) & exec /shared/argocd-dex rundex
