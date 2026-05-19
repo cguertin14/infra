@@ -11,7 +11,7 @@ resources:
 
 images:
 - name: adguard/adguardhome
-  newTag: v0.107.74
+  newTag: v0.107.75
 
 helmCharts:
 - name: adguard-home
