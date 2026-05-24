@@ -82,7 +82,9 @@ helmCharts:
               env:
                 TRANSFORMERS_CACHE: /cache
                 MACHINE_LEARNING_PRELOAD__CLIP__TEXTUAL: ViT-B-16-SigLIP2__webli
-                MACHINE_LEARNING_WORKERS: "2"
+                MACHINE_LEARNING_PRELOAD__CLIP__VISUAL: ViT-B-16-SigLIP2__webli
+                MACHINE_LEARNING_WORKERS: "1"
+                MACHINE_LEARNING_MODEL_ARENA: "true"
       persistence:
         cache:
           enabled: true
