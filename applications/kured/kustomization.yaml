@@ -21,7 +21,7 @@ generators:
 helmCharts:
 - name: kured
   repo: https://kubereboot.github.io/charts
-  version: 5.11.0
+  version: 5.12.0
   releaseName: kured
   namespace: kured
   includeCRDs: true
