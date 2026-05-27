@@ -21,7 +21,7 @@ resources:
 images:
 - name: couchdb
   newName: public.ecr.aws/docker/library/couchdb
-  newTag: 3.5.1
+  newTag: 3.5.2
 - name: busybox
   newName: public.ecr.aws/docker/library/busybox
 
