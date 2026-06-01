@@ -20,7 +20,7 @@ spec:
           restartPolicy: Never
           containers:
           - name: node-drain
-            image: public.ecr.aws/bitnami/kubectl
+            image: alpine/kubectl
             command:
             - /bin/sh
             - -c
