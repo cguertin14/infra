@@ -8,5 +8,5 @@ resources:
 - resources/cronjob.yml
 
 images:
-- name: public.ecr.aws/bitnami/kubectl
+- name: alpine/kubectl
   newTag: 1.36.1
