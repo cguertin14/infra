@@ -22,17 +22,12 @@ resource "b2_bucket" "backup_bucket" {
   bucket_name = "${local.backup_bucket_prefix}-bucket"
   bucket_type = "allPrivate"
 
-  # Glacier-like lifecycle for the bucket. - Commented out for now, as this can interfere with velero jobs.
-  # dynamic "lifecycle_rules" {
-  #   for_each = ["backups/", "restores/", "kopia/"]
-  #   content {
-  #     file_name_prefix = lifecycle_rules.value
-  #     # After 15 days, hide files
-  #     days_from_uploading_to_hiding = 15
-  #     # After 16 days (1 day later), delete files
-  #     days_from_hiding_to_deleting = 1
-  #   }
-  # }
+  # Set bucket to keep only the latest version, as Velero manages its own retention.
+  # Without this, Velero's deletions just "hide" files and B2 keeps all versions forever.
+  lifecycle_rules {
+    file_name_prefix             = ""
+    days_from_hiding_to_deleting = 1
+  }
 
   # Like AWS tags
   bucket_info = {
