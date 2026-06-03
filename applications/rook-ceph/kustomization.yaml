@@ -42,6 +42,14 @@ helmCharts:
   releaseName: ceph-csi-drivers
   repo: https://ceph.github.io/ceph-csi-operator
   version: 1.0.1
+  valuesInline:
+    drivers:
+      rbd:
+        name: rook-ceph.rbd.csi.ceph.com
+      cephfs:
+        name: rook-ceph.cephfs.csi.ceph.com
+      nfs:
+        name: rook-ceph.nfs.csi.ceph.com
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
   namespace: rook-ceph
