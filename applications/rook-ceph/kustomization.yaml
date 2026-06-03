@@ -29,65 +29,48 @@ helmCharts:
   namespace: rook-ceph
   releaseName: rook-ceph
   repo: https://charts.rook.io/release
-  version: v1.19.6
+  version: v1.20.0
   valuesInline:
     crds:
       enabled: true
     monitoring:
       enabled: true
 
-    # Adjust plugin pods resources for less memory usage
-    csi:
-      csiCephFSPluginResource: |
-        - name : driver-registrar
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
-        - name : csi-cephfsplugin
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
-        - name : liveness-prometheus
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
-      csiRBDPluginResource: |
-        - name : driver-registrar
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
-        - name : csi-rbdplugin
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
-        - name : liveness-prometheus
-          resource:
-            requests:
-              memory: 128Mi
-              cpu: 50m
-            limits:
-              memory: 128Mi
+# CSI Drivers helm chart
+- name: ceph-csi-drivers
+  namespace: rook-ceph
+  releaseName: ceph-csi-drivers
+  repo: https://ceph.github.io/ceph-csi-operator
+  version: 1.0.1
+  valuesInline:
+    operatorConfig:
+      driverSpecDefaults:
+        nodePlugin:
+          resources:
+            registrar:
+              requests:
+                memory: 128Mi
+                cpu: 50m
+              limits:
+                memory: 128Mi
+            plugin:
+              requests:
+                memory: 128Mi
+                cpu: 50m
+              limits:
+                memory: 128Mi
+            liveness:
+              requests:
+                memory: 128Mi
+                cpu: 50m
+              limits:
+                memory: 128Mi
 # Ceph cluster helm chart
 - name: rook-ceph-cluster
   namespace: rook-ceph
   releaseName: rook-ceph-cluster
   repo: https://charts.rook.io/release
-  version: v1.19.6
+  version: v1.20.0
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
     # Note for bluestore changes: https://github.com/rook/rook/discussions/15403
