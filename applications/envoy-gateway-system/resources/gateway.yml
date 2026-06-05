@@ -70,7 +70,7 @@ metadata:
 spec:
   gatewayClassName: eg
   listeners:
-  # *.cguertin.dev (wildcard cert covers cguertin.dev + all *.cguertin.dev)
+  # cguertin.dev + *.cguertin.dev
   - hostname: cguertin.dev
     name: cguertin-dev-https
     port: 443
@@ -84,73 +84,8 @@ spec:
       - name: cguertin-dev-wildcard-cert
         group: ''
         kind: Secret
-  - hostname: preview.cguertin.dev
-    name: preview-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: ha.cguertin.dev
-    name: ha-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: photos.cguertin.dev
-    name: photos-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: kiosk.cguertin.dev
-    name: kiosk-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: classeur.cguertin.dev
-    name: classeur-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: obsidianls.cguertin.dev
-    name: obsidianls-cguertin-dev-https
+  - hostname: '*.cguertin.dev'
+    name: cguertin-dev-subdomains-https
     port: 443
     protocol: HTTPS
     allowedRoutes:
@@ -163,60 +98,8 @@ spec:
         group: ''
         kind: Secret
   # *.k8s.cguertin.dev
-  - hostname: auth.k8s.cguertin.dev
-    name: auth-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: gitops.k8s.cguertin.dev
-    name: gitops-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: monitoring.k8s.cguertin.dev
-    name: monitoring-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: network.k8s.cguertin.dev
-    name: network-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: adguard-home.k8s.cguertin.dev
-    name: adguard-home-k8s-cguertin-dev-https
+  - hostname: '*.k8s.cguertin.dev'
+    name: k8s-cguertin-dev-subdomains-https
     port: 443
     protocol: HTTPS
     allowedRoutes:
@@ -229,21 +112,8 @@ spec:
         group: ''
         kind: Secret
   # *.monitoring.k8s.cguertin.dev
-  - hostname: alertmanager.monitoring.k8s.cguertin.dev
-    name: alertmanager-monitoring-k8s-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: monitoring-k8s-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: prometheus.monitoring.k8s.cguertin.dev
-    name: prometheus-monitoring-k8s-cguertin-dev-https
+  - hostname: '*.monitoring.k8s.cguertin.dev'
+    name: monitoring-k8s-cguertin-dev-subdomains-https
     port: 443
     protocol: HTTPS
     allowedRoutes:
@@ -256,60 +126,8 @@ spec:
         group: ''
         kind: Secret
   # *.media.cguertin.dev
-  - hostname: jellyfin.media.cguertin.dev
-    name: jellyfin-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: media-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: radarr.media.cguertin.dev
-    name: radarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: media-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: sonarr.media.cguertin.dev
-    name: sonarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: media-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: prowlarr.media.cguertin.dev
-    name: prowlarr-media-cguertin-dev-https
-    port: 443
-    protocol: HTTPS
-    allowedRoutes:
-      namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      certificateRefs:
-      - name: media-cguertin-dev-wildcard-cert
-        group: ''
-        kind: Secret
-  - hostname: sabnzbd.media.cguertin.dev
-    name: sabnzbd-media-cguertin-dev-https
+  - hostname: '*.media.cguertin.dev'
+    name: media-cguertin-dev-subdomains-https
     port: 443
     protocol: HTTPS
     allowedRoutes:
