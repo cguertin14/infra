@@ -81,7 +81,7 @@ patchesStrategicMerge:
 images:
 - name: k8s.gcr.io/kube-state-metrics/kube-state-metrics
   newName: registry.k8s.io/kube-state-metrics/kube-state-metrics
-  newTag: v2.19.0
+  newTag: v2.19.1
 
 configMapGenerator:
 - name: grafana-settings-config
