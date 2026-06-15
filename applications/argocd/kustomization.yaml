@@ -32,4 +32,4 @@ images:
 - name: viaductoss/ksops
   newTag: v4.5.1
 - name: quay.io/argoprojlabs/argocd-extension-installer
-  newTag: v1.0.0
+  newTag: v1.0.1
