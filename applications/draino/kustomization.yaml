@@ -9,4 +9,4 @@ resources:
 
 images:
 - name: alpine/kubectl
-  newTag: 1.36.1
+  newTag: 1.36.2
