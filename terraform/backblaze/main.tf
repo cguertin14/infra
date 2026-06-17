@@ -22,11 +22,12 @@ resource "b2_bucket" "backup_bucket" {
   bucket_name = "${local.backup_bucket_prefix}-bucket"
   bucket_type = "allPrivate"
 
-  # Set bucket to keep only the latest version, as Velero manages its own retention.
-  # Without this, Velero's deletions just "hide" files and B2 keeps all versions forever.
+  # Cost control for B2 versioned objects:
+  # keep hidden versions only for a safety window, then purge them.
+  # 1 day was too aggressive for restore safety.
   lifecycle_rules {
     file_name_prefix             = ""
-    days_from_hiding_to_deleting = 1
+    days_from_hiding_to_deleting = 30
   }
 
   # Like AWS tags
