@@ -73,7 +73,7 @@ helmCharts:
     # HA mon/mgr replica count (yes, 2 for mgr)
     mon:
       allowMultiplePerNode: false
-      count: 3
+      count: 2
     mgr:
       allowMultiplePerNode: false
       count: 2
