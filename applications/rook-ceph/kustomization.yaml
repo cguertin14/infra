@@ -78,6 +78,8 @@ helmCharts:
       mgr:
         allowMultiplePerNode: false
         count: 2
+      cleanupPolicy:
+        confirmation: "yes-really-destroy-data"
     #
     # Monitor deployments may contain an anti-affinity rule for avoiding monitor
     # collocation on the same node. This is a required rule when host network is used
