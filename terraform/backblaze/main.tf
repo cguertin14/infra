@@ -23,11 +23,15 @@ resource "b2_bucket" "backup_bucket" {
   bucket_type = "allPrivate"
 
   # Cost control for B2 versioned objects:
-  # keep hidden versions only for a safety window, then purge them.
-  # 1 day was too aggressive for restore safety.
-  lifecycle_rules {
-    file_name_prefix             = ""
-    days_from_hiding_to_deleting = 30
+  # purge hidden versions only for Velero metadata prefixes.
+  # Do not apply lifecycle rules to kopia/, where aggressive version cleanup
+  # can break repository integrity and restores.
+  dynamic "lifecycle_rules" {
+    for_each = ["backups/", "restores/"]
+    content {
+      file_name_prefix             = lifecycle_rules.value
+      days_from_hiding_to_deleting = 30
+    }
   }
 
   # Like AWS tags
