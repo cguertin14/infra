@@ -54,8 +54,6 @@ spec:
         exclude: true
       - path: applications/envoy-gateway-system
         exclude: true
-      - path: applications/rook-ceph
-        exclude: true
   template:
     metadata:
       name: '{{.path.basename}}'
@@ -99,9 +97,6 @@ spec:
     targetRevision: main
     path: applications/envoy-gateway-system
   syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
@@ -150,9 +145,6 @@ spec:
     targetRevision: main
     path: applications/educs-topology
   syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
     syncOptions:
     - CreateNamespace=true
 ---
