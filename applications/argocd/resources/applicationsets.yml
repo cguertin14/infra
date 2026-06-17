@@ -97,6 +97,9 @@ spec:
     targetRevision: main
     path: applications/envoy-gateway-system
   syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
@@ -145,6 +148,9 @@ spec:
     targetRevision: main
     path: applications/educs-topology
   syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
     syncOptions:
     - CreateNamespace=true
 ---
