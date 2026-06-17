@@ -57,26 +57,27 @@ helmCharts:
   repo: https://charts.rook.io/release
   version: v1.20.1
   valuesInline:
-    # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
-    # Note for bluestore changes: https://github.com/rook/rook/discussions/15403
-    configOverride: |
-      [global]
-      osd_pool_default_size = 3
-      bluestore_slow_ops_warn_lifetime = 0
+    cephClusterSpec:
+      # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
+      # Note for bluestore changes: https://github.com/rook/rook/discussions/15403
+      configOverride: |
+        [global]
+        osd_pool_default_size = 3
+        bluestore_slow_ops_warn_lifetime = 0
 
-    # Dashboard not needed; grafana dashboards are enough.
-    dashboard:
-      enabled: false
-    ingress:
-      enabled: false
+      # Dashboard not needed; grafana dashboards are enough.
+      dashboard:
+        enabled: false
+      ingress:
+        enabled: false
 
-    # HA mon/mgr replica count (yes, 2 for mgr)
-    mon:
-      allowMultiplePerNode: false
-      count: 2
-    mgr:
-      allowMultiplePerNode: false
-      count: 2
+      # HA mon/mgr replica count (yes, 2 for mgr)
+      mon:
+        allowMultiplePerNode: false
+        count: 2
+      mgr:
+        allowMultiplePerNode: false
+        count: 2
     #
     # Monitor deployments may contain an anti-affinity rule for avoiding monitor
     # collocation on the same node. This is a required rule when host network is used
