@@ -54,8 +54,6 @@ spec:
         exclude: true
       - path: applications/envoy-gateway-system
         exclude: true
-      - path: applications/rook-ceph
-        exclude: true
   template:
     metadata:
       name: '{{.path.basename}}'
