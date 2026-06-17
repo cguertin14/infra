@@ -64,13 +64,13 @@ helmCharts:
       osd_pool_default_size = 3
       bluestore_slow_ops_warn_lifetime = 0
     
-    cephClusterSpec:
-      # Dashboard not needed; grafana dashboards are enough.
-      dashboard:
-        enabled: false
-      ingress:
-        enabled: false
+    # Dashboard not needed; grafana dashboards are enough.
+    dashboard:
+      enabled: false
+    ingress:
+      enabled: false
 
+    cephClusterSpec:
       # HA mon/mgr replica count (yes, 2 for mgr)
       mon:
         allowMultiplePerNode: false
