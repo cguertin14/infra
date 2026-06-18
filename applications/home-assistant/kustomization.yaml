@@ -103,6 +103,3 @@ helmCharts:
         memory: 1Gi
       limits:
         memory: 1Gi
-
-patches:
-- path: patches/home-assistant-hostnetwork-patch.yml
