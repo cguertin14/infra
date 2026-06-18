@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: velero-rules
+spec:
+  groups:
+  - name: failed-backup
+    rules:
+    - alert: VeleroFailedBackup
+      annotations:
+        description: Velero backup for schedule `{{$labels.schedule}}` has failures in the last hour.
+        summary: Velero backup failures detected for schedule `{{$labels.schedule}}`.
+        impact: Recent backups may be unusable and restore operations can fail.
+      expr: |
+        sum(increase(velero_backup_failure_total{schedule=~".+"}[1h])) by (schedule) > 0
+      for: 15m
+      labels:
+        severity: critical

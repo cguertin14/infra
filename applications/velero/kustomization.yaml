@@ -5,6 +5,7 @@ namespace: velero
 
 resources:
 - resources/namespace.yml
+- metrics/prom-rule.yml
 
 generators:
 - secrets-generator.yml
