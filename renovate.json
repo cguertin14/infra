@@ -15,6 +15,12 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": [
+        "velero/velero-plugin-for-aws"
+      ],
+      "enabled": false
+    },
+    {
       "groupName": "all dependencies",
       "groupSlug": "all",
       "matchPackageNames": [
