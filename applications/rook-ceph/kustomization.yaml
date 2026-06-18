@@ -46,6 +46,7 @@ helmCharts:
     drivers:
       rbd:
         name: rook-ceph.rbd.csi.ceph.com
+        snapshotPolicy: volumeSnapshot
       cephfs:
         name: rook-ceph.cephfs.csi.ceph.com
       nfs:
