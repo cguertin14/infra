@@ -30,6 +30,7 @@ spec:
         path: '{{.path.path}}'
       syncPolicy:
         automated:
+          enabled: true
           selfHeal: true
           prune: true
 ---
@@ -73,6 +74,7 @@ spec:
         path: '{{.path.path}}'
       syncPolicy:
         automated:
+          enabled: true
           selfHeal: true
           prune: true
         syncOptions:
@@ -98,6 +100,7 @@ spec:
     path: applications/envoy-gateway-system
   syncPolicy:
     automated:
+      enabled: true
       selfHeal: true
       prune: true
     syncOptions:
@@ -124,6 +127,7 @@ spec:
     path: applications/argocd
   syncPolicy:
     automated:
+      enabled: true
       selfHeal: true
       prune: true
     syncOptions:
@@ -149,6 +153,7 @@ spec:
     path: applications/educs-topology
   syncPolicy:
     automated:
+      enabled: true
       selfHeal: true
       prune: true
     syncOptions:
@@ -174,6 +179,7 @@ spec:
     path: applications/educs-network
   syncPolicy:
     automated:
+      enabled: true
       selfHeal: true
       prune: true
     syncOptions:
