@@ -46,7 +46,7 @@ spec:
         - name: KIOSK_TRANSITION
           value: cross-fade
         - name: KIOSK_ALBUMS
-          value: "fc76ad0d-1aba-4738-bc5b-cf1ed8bbbb47" # Current theme: Backgrounds
+          value: "b1d916b6-7d2b-4bab-b396-de47c4375992" # Current theme: Paris & London 2026
         - name: KIOSK_SHOW_ALBUM_NAME
           value: "true"
         resources:
