@@ -10,6 +10,9 @@ resources:
 - resources/httproute.yml
 # - resources/pv.yml
 
+patches:
+- path: patches/home-assistant-hostnetwork-patch.yml
+
 images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
