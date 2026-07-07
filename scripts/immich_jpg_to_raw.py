@@ -1,7 +1,7 @@
 import argparse
 import os
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description="A little script to fetch .NEF files to upload to immich from a given album")
@@ -14,13 +14,47 @@ if not args.immich_token or not args.album_id or not args.raw_album_id:
 	parser.error("All arguments are required")
 
 # Fetch images from the album on immich
-res = requests.get(f"https://photos.cguertin.dev/api/albums/{args.album_id}", headers={"x-api-key": args.immich_token})
+base_url = "https://photos.cguertin.dev/api"
+headers = {"x-api-key": args.immich_token, "Content-Type": "application/json"}
+
+album_res = requests.get(f"{base_url}/albums/{args.album_id}", headers={"x-api-key": args.immich_token})
+if album_res.status_code != 200:
+	raise RuntimeError(f"Failed to fetch album {args.album_id}: {album_res.status_code} - {album_res.text}")
+
 raw_files_to_upload = []
-for img in res.json()['assets']:
-	raw_files_to_upload.append(f"/Volumes/NIKON Z5_2 /DCIM/101NZ5_2/{img['originalFileName'].replace('jpg', 'NEF')}") # Hardcoded path to the RAW files, shouldn't change.
+next_page = None
+
+while True:
+	payload = {"albumIds": [args.album_id]}
+	if next_page is not None:
+		payload["page"] = int(next_page)
+
+	search_res = requests.post(f"{base_url}/search/metadata", headers=headers, json=payload)
+	if search_res.status_code != 200:
+		raise RuntimeError(f"Failed to search assets in album {args.album_id}: {search_res.status_code} - {search_res.text}")
+
+	assets = search_res.json().get("assets", {})
+	items = assets.get("items", [])
+
+	for img in items:
+		jpg_name = img.get("originalFileName")
+		if not jpg_name:
+			continue
+
+		if jpg_name.lower().endswith(".jpg"):
+			raw_name = jpg_name[:-4] + ".NEF"
+		elif jpg_name.lower().endswith(".jpeg"):
+			raw_name = jpg_name[:-5] + ".NEF"
+		else:
+			continue
+
+		raw_files_to_upload.append(f"/Volumes/NIKON Z5_2 /DCIM/101NZ5_2/{raw_name}") # Hardcoded path to the RAW files, shouldn't change.
+
+	next_page = assets.get("nextPage")
+	if not next_page:
+		break
 
 raw_album_id = args.raw_album_id
-base_url = "https://photos.cguertin.dev/api"
 uploaded_asset_ids = []
 
 # Upload to immich each RAW file
@@ -33,8 +67,8 @@ for file_name in raw_files_to_upload:
 	
 	# Get file timestamps
 	stat = file_path.stat()
-	file_created_at = datetime.fromtimestamp(stat.st_birthtime).isoformat() if hasattr(stat, 'st_birthtime') else datetime.fromtimestamp(stat.st_mtime).isoformat()
-	file_modified_at = datetime.fromtimestamp(stat.st_mtime).isoformat()
+	file_created_at = datetime.fromtimestamp(stat.st_birthtime, tz=timezone.utc).isoformat() if hasattr(stat, 'st_birthtime') else datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
+	file_modified_at = datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
 	
 	# Prepare multipart form data
 	with open(file_path, 'rb') as f:
@@ -74,4 +108,3 @@ if uploaded_asset_ids and raw_album_id:
 		print(f"\n✓ Added {len(uploaded_asset_ids)} assets to album {raw_album_id}")
 	else:
 		print(f"\n✗ Failed to add assets to album: {album_response.status_code} - {album_response.text}")
-
