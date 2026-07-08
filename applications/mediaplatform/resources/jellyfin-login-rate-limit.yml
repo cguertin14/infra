@@ -12,7 +12,7 @@ spec:
   - matches:
     - path:
         type: Exact
-        value: /Users/AuthenticateByName
+        value: /Users/authenticatebyname
       method: POST
     backendRefs:
     - name: jellyfin
