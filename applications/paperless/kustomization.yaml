@@ -108,7 +108,7 @@ helmCharts:
       PAPERLESS_DBENGINE: postgresql
       PAPERLESS_DBHOST: paperless-postgres-rw
       PAPERLESS_DBNAME: paperless-db
-      PAPERLESS_DBSSLMODE: prefer
+      PAPERLESS_DB_OPTIONS: "sslmode=prefer"
       PAPERLESS_DBUSER: paperless-user
       # Secret key
       PAPERLESS_SECRET_KEY:
