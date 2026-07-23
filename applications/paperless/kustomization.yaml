@@ -110,6 +110,12 @@ helmCharts:
       PAPERLESS_DBNAME: paperless-db
       PAPERLESS_DBSSLMODE: prefer
       PAPERLESS_DBUSER: paperless-user
+      # Secret key
+      PAPERLESS_SECRET_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret-key
+            key: PAPERLESS_SECRET_KEY
       # The password comes from a secret
       PAPERLESS_DBPASS:
         valueFrom:
