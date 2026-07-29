@@ -23,7 +23,7 @@ patches:
 helmCharts:
 - name: cilium
   repo: https://helm.cilium.io/
-  version: 1.19.6
+  version: 1.20.0
   releaseName: cilium
   namespace: kube-system
   includeCRDs: true
