@@ -9,25 +9,22 @@ spec:
       volumes:
       - name: custom-tools
         emptyDir: {}
-      # 2. Use an init container to download/copy custom binaries into the emptyDir
+      # 2. Use an init container to copy the KSOPS binary into the emptyDir
       initContainers:
       - name: install-ksops
         # Match Argo CD Go version
         image: viaductoss/ksops
-        command: ["/usr/local/bin/ksops", "install", "--with-kustomize", "/custom-tools"]
+        command: ["/usr/local/bin/ksops", "install", "/custom-tools"]
         volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
-      # 3. Volume mount the custom binary to the bin directory (overriding the existing version)
+      # 3. Mount the custom KSOPS binary into the repo-server container
       containers:
       - name: argocd-repo-server
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
         volumeMounts:
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
-          subPath: kustomize
         - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops

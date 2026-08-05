@@ -64,4 +64,4 @@ data:
         - CiliumIdentity
       clusters:
         - "*"
-  kustomize.buildOptions: "--enable-alpha-plugins"
+  kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
