@@ -12,6 +12,7 @@ spec:
       # 2. Use an init container to copy the KSOPS binary into the emptyDir
       initContainers:
       - name: install-ksops
+        args: null
         # Match Argo CD Go version
         image: viaductoss/ksops
         command: ["/usr/local/bin/ksops", "install", "/custom-tools"]
@@ -28,5 +29,9 @@ spec:
         - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops
-        - $patch: delete
-          mountPath: /usr/local/bin/kustomize
+        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+          $patch: delete
+        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops-exec/ksops-exec
+          $patch: delete
+        - mountPath: /usr/local/bin/kustomize
+          $patch: delete
