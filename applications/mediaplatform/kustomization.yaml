@@ -25,6 +25,9 @@ helmCharts:
     env:
       TZ: America/Toronto
       JELLYFIN_PublishedServerUrl: https://jellyfin.media.cguertin.dev
+    envFrom:
+    - configMapRef:
+        name: mediaplatform-env
     persistence:
       config:
         enabled: true
@@ -44,6 +47,9 @@ helmCharts:
   valuesInline:
     env:
       TZ: America/Toronto
+    envFrom:
+    - configMapRef:
+        name: mediaplatform-env
     persistence:
       config:
         enabled: true
@@ -57,6 +63,9 @@ helmCharts:
   valuesInline:
     env:
       TZ: America/Toronto
+    envFrom:
+    - configMapRef:
+        name: mediaplatform-env
     persistence:
       config:
         enabled: true
@@ -70,6 +79,9 @@ helmCharts:
   valuesInline:
     env:
       TZ: America/Toronto
+    envFrom:
+    - configMapRef:
+        name: mediaplatform-env
     persistence:
       config:
         enabled: true
@@ -83,6 +95,9 @@ helmCharts:
   valuesInline:
     env:
       TZ: America/Toronto
+    envFrom:
+    - configMapRef:
+        name: mediaplatform-env
     persistence:
       config:
         enabled: true
@@ -114,7 +129,6 @@ images:
 
 # Patches to add standalone common PVC to each service.
 patches:
-- path: patches/container-auth-patch.yml # add env variables to each service
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
 - path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node
@@ -153,3 +167,5 @@ configMapGenerator:
   - PUID=1001
   - PGID=1002
   name: mediaplatform-env
+  options:
+    disableNameSuffixHash: true
