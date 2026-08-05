@@ -28,3 +28,5 @@ spec:
         - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops
+        - $patch: delete
+          mountPath: /usr/local/bin/kustomize
