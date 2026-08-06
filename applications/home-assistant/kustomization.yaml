@@ -8,7 +8,6 @@ resources:
 - resources/voice-assistant-whisper.yml
 - resources/voice-assistant-piper.yml
 - resources/httproute.yml
-# - resources/pv.yml
 
 patches:
 - path: patches/home-assistant-hostnetwork-patch.yml
