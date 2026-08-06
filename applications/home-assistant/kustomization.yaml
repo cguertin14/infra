@@ -23,10 +23,11 @@ images:
   newTag: "2.3.1"
 
 replicas:
+# WARNING: Scaled down for now.
 - name: whisper
-  count: 1
+  count: 0
 - name: piper
-  count: 1
+  count: 0
 
 configMapGenerator:
 - name: whisper-config
