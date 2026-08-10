@@ -85,6 +85,7 @@ helmCharts:
           failureThreshold: 5
     env:
       TZ: America/Toronto
+      PAPERLESS_CONSUMER_BARCODE_SCANNER: ZXING
       # Tika/Gotenberg
       PAPERLESS_TIKA_ENABLED: true
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
@@ -148,7 +149,7 @@ helmCharts:
         storageClass: ceph-block
     resources:
       limits:
-        memory: 2Gi
+        memory: 2.5Gi
       requests:
         cpu: 375m
-        memory: 2Gi
+        memory: 2.5Gi
