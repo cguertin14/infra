@@ -3,6 +3,10 @@ kind: Kustomization
 
 namespace: rook-ceph
 
+images:
+- name: quay.io/cephcsi/cephcsi
+  newTag: v3.17.1
+
 resources:
 - resources/namespace.yml
 
