@@ -103,6 +103,10 @@ helmCharts:
           daemon:
             keyRotationPolicy: KeyGeneration
             keyGeneration: 2
+         rbdMirrorPeer:
+            keyType: aes256k
+            keyRotationPolicy: KeyGeneration
+            keyGeneration: 1
     #
     # Monitor deployments may contain an anti-affinity rule for avoiding monitor
     # collocation on the same node. This is a required rule when host network is used
