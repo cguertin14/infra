@@ -99,7 +99,7 @@ helmCharts:
             keyType: aes256k
             keyRotationPolicy: KeyGeneration
             keyGeneration: 1
-            keepPriorKeyCountMax: 1
+            keepPriorKeyCountMax: 0
           daemon:
             keyRotationPolicy: KeyGeneration
             keyGeneration: 2
