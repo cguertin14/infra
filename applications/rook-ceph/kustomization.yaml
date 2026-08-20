@@ -96,10 +96,13 @@ helmCharts:
       security:
         cephx:
           csi:
-            keyType: aes
+            keyType: aes256k
+            keyRotationPolicy: KeyGeneration
+            keyGeneration: 1
+            keepPriorKeyCountMax: 1
           daemon:
             keyRotationPolicy: KeyGeneration
-            keyGeneration: 2  
+            keyGeneration: 2
     #
     # Monitor deployments may contain an anti-affinity rule for avoiding monitor
     # collocation on the same node. This is a required rule when host network is used
