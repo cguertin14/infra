@@ -34,6 +34,21 @@ spec:
             name: grafana-admin-credentials
         - secretRef:
             name: grafana-github-sso-credentials
+        - name: GF_DATABASE_TYPE
+          value: postgres
+        - name: GF_DATABASE_HOST
+          value: grafana-postgres-rw
+        - name: GF_DATABASE_NAME
+          value: grafana
+        - name: GF_DATABASE_USER
+          value: grafana
+        - name: GF_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-postgres-credentials
+              key: password
+        - name: GF_DATABASE_SSL_MODE
+          value: prefer
         # 4- Set Grafana custom dashboards volumeMounts.
         volumeMounts:
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards

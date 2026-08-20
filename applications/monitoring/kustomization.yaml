@@ -3,12 +3,13 @@ kind: Kustomization
 
 resources:
 - github.com/prometheus-operator/kube-prometheus?ref=v0.18.0
-- rbac.yml
 - alerts/
-- grafana-pvc.yml
-- httproutes.yml
-- security-policy.yml
-- backend-traffic-policy.yml
+- resources/rbac.yml
+- resources/grafana-pvc.yml
+- resources/postgres.yml
+- resources/httproutes.yml
+- resources/security-policy.yml
+- resources/backend-traffic-policy.yml
 
 generators:
 - secrets-generator.yml
