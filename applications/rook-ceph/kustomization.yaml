@@ -103,7 +103,7 @@ helmCharts:
           daemon:
             keyRotationPolicy: KeyGeneration
             keyGeneration: 2
-         rbdMirrorPeer:
+          rbdMirrorPeer:
             keyType: aes256k
             keyRotationPolicy: KeyGeneration
             keyGeneration: 1
