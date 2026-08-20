@@ -95,6 +95,8 @@ helmCharts:
         count: 2
       security:
         cephx:
+          allowedCiphers:
+          - aes256k
           csi:
             keyType: aes256k
             keyRotationPolicy: KeyGeneration
