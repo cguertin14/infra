@@ -34,6 +34,7 @@ spec:
             name: grafana-admin-credentials
         - secretRef:
             name: grafana-github-sso-credentials
+        env:
         - name: GF_DATABASE_TYPE
           value: postgres
         - name: GF_DATABASE_HOST
