@@ -13,8 +13,14 @@ helmCharts:
   releaseName: gpu-operator
   repo: https://nvidia.github.io/gpu-operator
   includeCRDs: true
-  version: v26.3.3
+  version: v26.7.0
   valuesInline:
+    # Keep the Device Plugin/ClusterPolicy workflow only (no DRA GPUCluster CR)
+    # to avoid invalid mixed-CR configurations noted in recent release known issues.
+    clusterPolicy:
+      deployCR: true
+    gpuCluster:
+      deployCR: false
     # Device Plugin
     devicePlugin:
       enabled: true
