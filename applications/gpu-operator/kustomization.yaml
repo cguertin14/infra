@@ -21,6 +21,9 @@ helmCharts:
       deployCR: true
     gpuCluster:
       deployCR: false
+    # Keep the CUDA validator compatible with the legacy GPU.
+    validator:
+      version: v26.3.3
     # Device Plugin
     devicePlugin:
       enabled: true
