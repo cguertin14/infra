@@ -15,7 +15,7 @@ patches:
 images:
 - name: ghcr.io/home-assistant/home-assistant
   newName: homeassistant/home-assistant
-  newTag: "2026.8"
+  newTag: "2026.9"
 - name: lscr.io/linuxserver/faster-whisper
   newTag: "3.7.0-gpu-legacy"
 - name: lscr.io/linuxserver/piper
