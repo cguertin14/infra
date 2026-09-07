@@ -90,6 +90,7 @@ helmCharts:
       mon:
         allowMultiplePerNode: false
         count: 3
+        mon_clock_drift_allowed: "0.10"  # Increases tolerance to 100ms (from default 50ms)
       mgr:
         allowMultiplePerNode: false
         count: 2
