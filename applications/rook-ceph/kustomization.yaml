@@ -80,7 +80,7 @@ helmCharts:
 
       [mon]
       mon_data_avail_warn = 10
-      mon_clock_drift_allowed = 0.10"
+      mon_clock_drift_allowed = "0.10"
     
     # Dashboard not needed; grafana dashboards are enough.
     dashboard:
