@@ -71,6 +71,8 @@ helmCharts:
   valuesInline:
     # Size is 3 because of the triple node cluster - which consists of the 3 amd64 machines.
     # Note for bluestore changes: https://github.com/rook/rook/discussions/15403
+    #
+    # mon clock -> Increases tolerance to 100ms (from default 50ms)
     configOverride: |
       [global]
       osd_pool_default_size = 3
@@ -78,6 +80,7 @@ helmCharts:
 
       [mon]
       mon_data_avail_warn = 10
+      mon_clock_drift_allowed = 0.10"
     
     # Dashboard not needed; grafana dashboards are enough.
     dashboard:
@@ -90,7 +93,6 @@ helmCharts:
       mon:
         allowMultiplePerNode: false
         count: 3
-        mon_clock_drift_allowed: "0.10"  # Increases tolerance to 100ms (from default 50ms)
       mgr:
         allowMultiplePerNode: false
         count: 2
