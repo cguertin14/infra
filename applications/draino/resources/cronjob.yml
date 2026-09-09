@@ -5,7 +5,7 @@ metadata:
   namespace: draino
 spec:
   schedule: "*/2 * * * *"
-  successfulJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 15 # last 30 minutes
   failedJobsHistoryLimit: 3
   concurrencyPolicy: Forbid
   jobTemplate:
