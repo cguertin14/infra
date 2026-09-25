@@ -50,6 +50,10 @@ spec:
               key: password
         - name: GF_DATABASE_SSL_MODE
           value: require
+        # Grafana 13's bundled plugin installer updates plugins at startup; keep
+        # its write target on the writable Grafana PVC, not the read-only image.
+        - name: GF_PATHS_BUNDLED_PLUGINS
+          value: /var/lib/grafana/plugins-bundled
         # 4- Set Grafana custom dashboards volumeMounts.
         volumeMounts:
         - mountPath: /grafana-dashboard-definitions/0/custom-dashboards

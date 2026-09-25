@@ -93,6 +93,10 @@ rules:
   resources:
   - mutatingwebhookconfigurations
   - validatingwebhookconfigurations
+  - mutatingadmissionpolicies
+  - mutatingadmissionpolicybindings
+  - validatingadmissionpolicies
+  - validatingadmissionpolicybindings
   verbs:
   - list
   - watch
