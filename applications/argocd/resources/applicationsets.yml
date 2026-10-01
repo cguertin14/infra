@@ -81,6 +81,14 @@ spec:
           prune: true
         syncOptions:
         - CreateNamespace=true
+  templatePatch: |
+    {{- if eq .path.basename "cloudnative-pg" }}
+    spec:
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+        - ServerSideApply=true
+    {{- end }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
