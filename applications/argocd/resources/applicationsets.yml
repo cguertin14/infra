@@ -55,6 +55,8 @@ spec:
         exclude: true
       - path: applications/envoy-gateway-system
         exclude: true
+      - path: applications/rook-ceph
+        exclude: true
   template:
     metadata:
       name: '{{.path.basename}}'
@@ -98,6 +100,33 @@ spec:
     repoURL: https://github.com/cguertin14/infra
     targetRevision: main
     path: applications/envoy-gateway-system
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: ""
+    notifications.argoproj.io/subscribe.on-sync-running.slack: ""
+spec:
+  project: production
+  destination:
+    namespace: rook-ceph
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/cguertin14/infra
+    targetRevision: main
+    path: applications/rook-ceph
   syncPolicy:
     automated:
       enabled: true
