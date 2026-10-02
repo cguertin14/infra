@@ -21,3 +21,10 @@ helmCharts:
     replicas: 2
     podDisruptionBudget:
       minAvailable: 1
+    crds:
+      # The chart ships experimental-channel Gateway API CRDs, but the bundled
+      # safe-upgrades ValidatingAdmissionPolicy denies upgrading existing
+      # standard-channel CRDs to experimental ones.
+      gatewayAPI:
+        safeUpgradePolicy:
+          enabled: false
