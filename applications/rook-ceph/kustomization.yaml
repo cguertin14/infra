@@ -12,6 +12,7 @@ configMapGenerator:
 
 resources:
 - resources/namespace.yml
+- resources/ceph-block-storageclass.yml
 
 patches:
 - path: patches/storageclasses.yml
@@ -89,6 +90,15 @@ helmCharts:
       enabled: false
 
     cephClusterSpec:
+      network:
+        connections:
+          # All cluster nodes run Linux 7.0 kernels, which support msgr2.
+          requireMsgr2: true
+      security:
+        cephx:
+          # Keep CSI key type consistent with the allowed cipher below.
+          csi:
+            keyType: aes256k
       # HA mon/mgr replica count (yes, 2 for mgr)
       mon:
         allowMultiplePerNode: false
@@ -134,6 +144,17 @@ helmCharts:
       enabled: false
 
     operatorNamespace: rook-ceph
+
+    # Keep the existing ceph-block StorageClass outside the Helm chart so the
+    # v1.21 CSI parameter additions do not attempt to mutate immutable fields.
+    cephBlockPools:
+      - name: ceph-blockpool
+        spec:
+          failureDomain: host
+          replicated:
+            size: 3
+        storageClass:
+          enabled: false
 
     toolbox:
       enabled: true
