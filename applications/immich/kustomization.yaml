@@ -5,14 +5,14 @@ namespace: immich
 
 images:
 - name: ghcr.io/immich-app/immich-server
-  newTag: v3.3.4
+  newTag: v3.3.5
 - name: ghcr.io/immich-app/immich-machine-learning
-  newTag: v3.3.4-cuda
+  newTag: v3.3.5-cuda
 - name: docker.io/valkey/valkey
   newName: public.ecr.aws/valkey/valkey
   newTag: 9.2-alpine
 - name: ghcr.io/damongolding/immich-kiosk
-  newTag: 0.45.1
+  newTag: 0.45.2
 
 resources:
 - resources/namespace.yml
