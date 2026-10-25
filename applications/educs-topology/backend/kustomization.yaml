@@ -12,7 +12,7 @@ generators:
 
 images:
 - name: ghcr.io/cguertin14/educs-backend
-  newTag: v3.3.7
+  newTag: v3.3.8
 
 replicas:
 - count: 3
