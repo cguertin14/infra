@@ -12,7 +12,7 @@ resources:
 
 images:
 - name: ghcr.io/cguertin14/educs-frontend
-  newTag: v2.1.2
+  newTag: v2.1.3
 
 replicas:
 - name: educs-frontend
