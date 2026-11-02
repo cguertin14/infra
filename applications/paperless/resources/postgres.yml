@@ -6,7 +6,7 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
   instances: 1
 
-  # Work around AppArmor signal denials after the 7.0.0-42 kernel update.
+  # Profile deployed to cluster nodes by k3s-ansible-ha's container-apparmor role.
   # Preserve CNPG defaults because podSecurityContext overrides them.
   podSecurityContext:
     runAsUser: 26
@@ -16,7 +16,8 @@ spec:
     seccompProfile:
       type: RuntimeDefault
     appArmorProfile:
-      type: Unconfined
+      type: Localhost
+      localhostProfile: cnpg-postgres
   
   # Not needed, for now
   # postgresql:

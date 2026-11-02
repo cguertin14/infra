@@ -10,7 +10,7 @@ spec:
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0@sha256:69c827b85380454b46260219a93c9fd13942453200d1d07f856a17d7af0df8b2 
   instances: 1
 
-  # Work around AppArmor signal denials after the 7.0.0-42 kernel update.
+  # Profile deployed to cluster nodes by k3s-ansible-ha's container-apparmor role.
   # Preserve CNPG defaults because podSecurityContext overrides them.
   podSecurityContext:
     runAsUser: 26
@@ -20,7 +20,8 @@ spec:
     seccompProfile:
       type: RuntimeDefault
     appArmorProfile:
-      type: Unconfined
+      type: Localhost
+      localhostProfile: cnpg-postgres
 
   postgresql:
     shared_preload_libraries:
