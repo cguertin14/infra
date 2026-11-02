@@ -7,6 +7,18 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
   instances: 1
 
+  # Work around AppArmor signal denials after the 7.0.0-42 kernel update.
+  # Preserve CNPG defaults because podSecurityContext overrides them.
+  podSecurityContext:
+    runAsUser: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    fsGroup: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Unconfined
+
   bootstrap:
     initdb:
       database: grafana
