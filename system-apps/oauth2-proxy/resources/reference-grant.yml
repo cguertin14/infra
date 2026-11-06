@@ -19,6 +19,9 @@ spec:
     namespace: immich
   - group: gateway.envoyproxy.io
     kind: SecurityPolicy
+    namespace: ai-stack
+  - group: gateway.envoyproxy.io
+    kind: SecurityPolicy
     namespace: kube-system
   to:
   - group: ""
