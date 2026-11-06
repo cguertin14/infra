@@ -1,5 +1,15 @@
 # AI Stack: Ollama and Open WebUI
 
+SearXNG provides the internal web-search backend for Open WebUI at
+`http://searxng.ai-stack.svc.cluster.local:8080`. Its admin interface is not
+exposed outside the cluster. Open WebUI's Web Search engine must be set to
+SearXNG in Admin Settings, with query URL `http://searxng:8080/search`. The
+Open WebUI deployment sets these values as environment defaults; because the
+current database already has Web Search settings stored, switch the engine and
+URL once in Admin Settings > Web Search after the stack is deployed.
+SearXNG's instance secret is stored encrypted in
+`secrets/searxng-secret.yml`.
+
 Ollama runs on `nvidiaserver` and is reachable inside the cluster at
 `http://ollama.ai-stack.svc.cluster.local:11434`. Open WebUI has no GPU request
 or node affinity, so it can run on any eligible cluster node. Open WebUI is
@@ -39,7 +49,7 @@ the GPU. Keep the context short and load one model at a time.
 The pod requests one time-sliced NVIDIA GPU allocation and keeps its one loaded
 model resident until the pod restarts (`OLLAMA_KEEP_ALIVE=-1`) to avoid cold-load
 delays after idle periods. Immich currently uses about 2GiB of the GTX 1080's
-8GiB VRAM, so this is configured for one loaded model and a 2048-token context
+8GiB VRAM, so this is configured for one loaded model and a 4096-token context
 to leave headroom. GPU time-slicing does not partition or reserve VRAM.
 
 For temporary local access to Open WebUI, bypassing the gateway:

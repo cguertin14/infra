@@ -65,9 +65,9 @@ spec:
         resources:
           requests:
             cpu: 500m
-            memory: 4Gi
+            memory: 10Gi
           limits:
-            memory: 12Gi
+            memory: 10Gi
             nvidia.com/gpu: 1 # important
         startupProbe:
           httpGet:

@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: ai-stack
 
 resources:
+- resources/searxng
 - resources/ollama
 - resources/open-webui
 - resources/open-webui-postgres.yml
@@ -25,3 +26,5 @@ images:
   newTag: 0.40.15
 - name: ghcr.io/open-webui/open-webui
   newTag: v0.13.0
+- name: searxng/searxng
+  newTag: 2026.11.6-ac11e14c5
