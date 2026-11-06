@@ -6,7 +6,7 @@ spec:
   # number of replicas, minimum for HA
   members: 3
   type: ReplicaSet
-  version: 7.0.17
+  version: 8.0.34
   statefulSet:
     spec:
       template:
