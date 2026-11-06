@@ -1,0 +1,48 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: open-webui-postgres
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
+  instances: 1
+
+  # Profile deployed to cluster nodes by k3s-ansible-ha's container-apparmor role.
+  # Preserve CNPG defaults because podSecurityContext overrides them.
+  podSecurityContext:
+    runAsUser: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    fsGroup: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Localhost
+      localhostProfile: cnpg-postgres
+
+  bootstrap:
+    initdb:
+      database: openwebui
+      owner: openwebui
+      secret:
+        name: open-webui-postgres-credentials
+
+  storage:
+    size: 5Gi
+    storageClass: ceph-block
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64

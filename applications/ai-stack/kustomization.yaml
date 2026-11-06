@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ai-stack
+
+resources:
+- resources/ollama
+- resources/open-webui
+- resources/open-webui-postgres.yml
+- resources/open-webui-httproute.yml
+- resources/open-webui-security-policy.yml
+- resources/open-webui-backend-traffic-policy.yml
+
+generators:
+- secrets-generator.yml
+
+labels:
+- includeSelectors: false
+  includeTemplates: true
+  pairs:
+    app.kubernetes.io/part-of: ai-stack
+
+images:
+- name: ollama/ollama
+  newTag: 0.40.15
+- name: ghcr.io/open-webui/open-webui
+  newTag: v0.13.0
