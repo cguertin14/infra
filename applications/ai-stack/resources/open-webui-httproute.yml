@@ -4,7 +4,7 @@ metadata:
   name: open-webui
 spec:
   hostnames:
-  - chat.k8s.cguertin.dev
+  - chat.cguertin.dev
   parentRefs:
   - name: envoy-gateway
     namespace: envoy-gateway-system

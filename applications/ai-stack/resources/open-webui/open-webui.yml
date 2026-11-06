@@ -68,7 +68,7 @@ spec:
         - name: DATABASE_NAME
           value: openwebui
         - name: WEBUI_URL
-          value: https://chat.k8s.cguertin.dev
+          value: https://chat.cguertin.dev
         - name: ENABLE_SIGNUP
           value: "false"
         ports:

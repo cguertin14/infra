@@ -3,7 +3,7 @@
 Ollama runs on `nvidiaserver` and is reachable inside the cluster at
 `http://ollama.ai-stack.svc.cluster.local:11434`. Open WebUI has no GPU request
 or node affinity, so it can run on any eligible cluster node. Open WebUI is
-available at `https://chat.k8s.cguertin.dev` through Envoy Gateway and the
+available at `https://chat.cguertin.dev` through Envoy Gateway and the
 cluster's OAuth proxy. Ollama's API remains ClusterIP-only.
 
 Open WebUI's built-in login remains enabled and signup is disabled; the gateway
