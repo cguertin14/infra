@@ -8,6 +8,12 @@ labels:
     app.kubernetes.io/name: obsidianls
   includeSelectors: false
   includeTemplates: true
+  # Preserve the live PVC template label: volumeClaimTemplates is immutable,
+  # and includeTemplates only labels pod templates.
+  fields:
+  - path: spec/volumeClaimTemplates/metadata/labels
+    kind: StatefulSet
+    create: true
 
 generators:
 - secrets-generator.yml
