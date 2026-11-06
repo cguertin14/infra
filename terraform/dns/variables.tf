@@ -28,6 +28,7 @@ variable "domains" {
   default = [
     "@",
     "preview",
+    "chat",
     "ha", # home-assistant
     "photos",
     "kiosk",
