@@ -18,6 +18,8 @@ data:
     engines:
       - name: ahmia
         inactive: true
+      - name: brave
+        inactive: true
       - name: duckduckgo
         inactive: true
       - name: torch
@@ -64,6 +66,8 @@ spec:
           value: 0.0.0.0
         - name: SEARXNG_PORT
           value: "8080"
+        - name: GRANIAN_LOG_ACCESS_ENABLED
+          value: "true"
         - name: SEARXNG_SECRET
           valueFrom:
             secretKeyRef:

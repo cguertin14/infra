@@ -9,6 +9,8 @@ current database already has Web Search settings stored, switch the engine and
 URL once in Admin Settings > Web Search after the stack is deployed.
 SearXNG's instance secret is stored encrypted in
 `secrets/searxng-secret.yml`.
+SearXNG access logging is enabled; its pod logs include request paths and search
+query strings. Use `kubectl -n ai-stack logs deploy/searxng` to inspect requests.
 
 Ollama runs on `nvidiaserver` and is reachable inside the cluster at
 `http://ollama.ai-stack.svc.cluster.local:11434`. Open WebUI has no GPU request
