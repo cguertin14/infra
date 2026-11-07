@@ -14,6 +14,16 @@ data:
     server:
       limiter: false
       secret_key: ""
+
+    engines:
+      - name: ahmia
+        inactive: true
+      - name: duckduckgo
+        inactive: true
+      - name: torch
+        inactive: true
+      - name: wikidata
+        inactive: true
 ---
 apiVersion: v1
 kind: Service
