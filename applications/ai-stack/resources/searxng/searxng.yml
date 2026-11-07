@@ -4,7 +4,10 @@ metadata:
   name: searxng-settings
 data:
   settings.yml: |
-    use_default_settings: true
+    use_default_settings:
+      engines:
+        remove:
+          - brave
 
     search:
       formats:
@@ -17,8 +20,6 @@ data:
 
     engines:
       - name: ahmia
-        inactive: true
-      - name: brave
         inactive: true
       - name: duckduckgo
         inactive: true
