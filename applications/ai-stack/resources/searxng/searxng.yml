@@ -8,6 +8,9 @@ data:
       engines:
         remove:
           - brave
+          - brave.images
+          - brave.videos
+          - brave.news
 
     search:
       formats:
