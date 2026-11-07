@@ -69,7 +69,6 @@ kind: Deployment
 metadata:
   name: searxng
 spec:
-  replicas: 1
   strategy:
     type: Recreate
   selector:

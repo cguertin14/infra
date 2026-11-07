@@ -3,6 +3,11 @@ kind: Kustomization
 
 namespace: ai-stack
 
+replicas:
+# NOTE: searxng is scaled down for now.
+- name: searxng
+  count: 0
+
 resources:
 - resources/searxng
 - resources/ollama

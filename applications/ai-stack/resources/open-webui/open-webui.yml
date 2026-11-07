@@ -71,12 +71,9 @@ spec:
           value: https://chat.cguertin.dev
         - name: ENABLE_SIGNUP
           value: "false"
+        # The rest of the web search settings are set in the UI.
         - name: ENABLE_WEB_SEARCH
           value: "true"
-        - name: WEB_SEARCH_ENGINE
-          value: searxng
-        - name: SEARXNG_QUERY_URL
-          value: http://searxng:8080/search
         ports:
         - name: http
           containerPort: 8080
