@@ -10,3 +10,5 @@
   path: /spec/groups/7
 - op: remove
   path: /spec/groups/7
+- op: remove
+  path: /spec/groups/1/rules/1
