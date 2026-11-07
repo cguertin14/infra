@@ -2,33 +2,52 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: searxng-settings
+  namespace: ai-stack
 data:
   settings.yml: |
     use_default_settings:
       engines:
         remove:
+          - google cse
           - brave
           - brave.images
           - brave.videos
           - brave.news
 
+    general:
+      instance_name: "searxng"
+
     search:
+      safe_search: 0
       formats:
         - html
         - json
 
     server:
       limiter: false
+      image_proxy: false
       secret_key: ""
 
+    outgoing:
+      request_timeout: 6.0
+      max_request_timeout: 10.0
+
     engines:
+      - name: duckduckgo
+        disabled: false
+      - name: bing
+        disabled: false
+      - name: mojeek
+        disabled: false
+      - name: startpage
+        disabled: false
+      - name: wikipedia
+        disabled: false
+      - name: github
+        disabled: false
       - name: ahmia
         inactive: true
-      - name: duckduckgo
-        inactive: true
       - name: torch
-        inactive: true
-      - name: wikidata
         inactive: true
 ---
 apiVersion: v1
