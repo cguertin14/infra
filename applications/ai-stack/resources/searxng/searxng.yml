@@ -72,6 +72,8 @@ spec:
           value: "8080"
         - name: GRANIAN_LOG_ACCESS_ENABLED
           value: "true"
+        - name: GRANIAN_LOG_ACCESS_FMT
+          value: '[%(time)s] %(addr)s "%(method)s %(path)s?%(query_string)s %(protocol)s" %(status)d %(dt_ms).3f'
         - name: SEARXNG_SECRET
           valueFrom:
             secretKeyRef:
