@@ -30,7 +30,7 @@ helmCharts:
   releaseName: velero
   namespace: velero
   repo: https://vmware-tanzu.github.io/helm-charts
-  version: 12.2.3
+  version: 12.2.4
   includeCRDs: true
   valuesInline:
     upgradeCRDs: false
