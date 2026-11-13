@@ -19,7 +19,7 @@ images:
 - name: lscr.io/linuxserver/faster-whisper
   newTag: "3.8.1-gpu-legacy"
 - name: lscr.io/linuxserver/piper
-  newTag: "2.5.2"
+  newTag: "2.5.3"
 
 replicas:
 # WARNING: Scaled down for now.

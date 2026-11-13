@@ -37,7 +37,7 @@ images:
 - name: public.ecr.aws/valkey/valkey
   newTag: 9.2-alpine
 - name: gotenberg/gotenberg
-  newTag: "9.4"
+  newTag: "9.5"
 - name: apache/tika
   newTag: "3.3.3.0"
 
