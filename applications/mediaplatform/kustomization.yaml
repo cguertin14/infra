@@ -251,6 +251,9 @@ images:
 
 # Patches to add standalone common PVC to each service.
 patches:
+- path: patches/radarr-apparmor-profile-patch.yml
+- path: patches/sonarr-apparmor-profile-patch.yml
+- path: patches/prowlarr-apparmor-profile-patch.yml
 - path: patches/jellyfin-intel-quick-sync-patch.yml # configure Intel Quick Sync on Jellyfin
 - path: patches/jellyfin-affinity-rules-patch.yml # configure Jellyfin to run on the mediaserver node
 - path: patches/sabnzbd-affinity-rules-patch.yml # configure Sabnzbd to run on the mediaserver node

@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+spec:
+  template:
+    spec:
+      securityContext:
+        appArmorProfile:
+          type: Localhost
+          localhostProfile: arr-radarr
