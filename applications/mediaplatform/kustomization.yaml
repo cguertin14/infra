@@ -28,37 +28,6 @@ helmCharts:
     envFrom:
     - configMapRef:
         name: mediaplatform-env
-    probes:
-      liveness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 7878
-          timeoutSeconds: 5
-          periodSeconds: 10
-          failureThreshold: 12
-      readiness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 7878
-          timeoutSeconds: 5
-          periodSeconds: 10
-          failureThreshold: 6
-      startup:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 7878
-          timeoutSeconds: 5
-          periodSeconds: 5
-          failureThreshold: 60
     persistence:
       config:
         enabled: true
@@ -84,31 +53,22 @@ helmCharts:
     probes:
       liveness:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 8989
           timeoutSeconds: 5
           periodSeconds: 10
           failureThreshold: 12
       readiness:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 8989
           timeoutSeconds: 5
           periodSeconds: 10
           failureThreshold: 6
       startup:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 8989
           timeoutSeconds: 5
           periodSeconds: 5
           failureThreshold: 60
@@ -131,31 +91,22 @@ helmCharts:
     probes:
       liveness:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 9696
           timeoutSeconds: 5
           periodSeconds: 10
           failureThreshold: 12
       readiness:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 9696
           timeoutSeconds: 5
           periodSeconds: 10
           failureThreshold: 6
       startup:
         enabled: true
-        custom: true
+        custom: false
         spec:
-          httpGet:
-            path: /ping
-            port: 9696
           timeoutSeconds: 5
           periodSeconds: 5
           failureThreshold: 60
@@ -175,6 +126,28 @@ helmCharts:
     envFrom:
     - configMapRef:
         name: mediaplatform-env
+    probes:
+      liveness:
+        enabled: true
+        custom: false
+        spec:
+          timeoutSeconds: 5
+          periodSeconds: 10
+          failureThreshold: 12
+      readiness:
+        enabled: true
+        custom: false
+        spec:
+          timeoutSeconds: 5
+          periodSeconds: 10
+          failureThreshold: 6
+      startup:
+        enabled: true
+        custom: false
+        spec:
+          timeoutSeconds: 5
+          periodSeconds: 5
+          failureThreshold: 60
     persistence:
       config:
         enabled: true
