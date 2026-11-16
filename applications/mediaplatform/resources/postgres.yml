@@ -1,0 +1,252 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: radarr-postgres
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
+  instances: 1
+  podSecurityContext:
+    runAsUser: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    fsGroup: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Localhost
+      localhostProfile: cnpg-postgres
+  bootstrap:
+    initdb:
+      database: radarr-main
+      owner: radarr
+      secret:
+        name: radarr-postgres-credentials
+  storage:
+    size: 2Gi
+    storageClass: ceph-block
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: radarr
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: radarr
+  cluster:
+    name: radarr-postgres
+  login: true
+  passwordSecret:
+    name: radarr-postgres-credentials
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: radarr-main
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: radarr-main
+  owner: radarr
+  cluster:
+    name: radarr-postgres
+  databaseReclaimPolicy: retain
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: radarr-log
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: radarr-log
+  owner: radarr
+  cluster:
+    name: radarr-postgres
+  databaseReclaimPolicy: retain
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: sonarr-postgres
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
+  instances: 1
+  podSecurityContext:
+    runAsUser: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    fsGroup: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Localhost
+      localhostProfile: cnpg-postgres
+  bootstrap:
+    initdb:
+      database: sonarr-main
+      owner: sonarr
+      secret:
+        name: sonarr-postgres-credentials
+  storage:
+    size: 2Gi
+    storageClass: ceph-block
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: sonarr
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: sonarr
+  cluster:
+    name: sonarr-postgres
+  login: true
+  passwordSecret:
+    name: sonarr-postgres-credentials
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: sonarr-main
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: sonarr-main
+  owner: sonarr
+  cluster:
+    name: sonarr-postgres
+  databaseReclaimPolicy: retain
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: sonarr-log
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: sonarr-log
+  owner: sonarr
+  cluster:
+    name: sonarr-postgres
+  databaseReclaimPolicy: retain
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: prowlarr-postgres
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-system-trixie
+  instances: 1
+  podSecurityContext:
+    runAsUser: 26
+    runAsGroup: 26
+    runAsNonRoot: true
+    fsGroup: 26
+    seccompProfile:
+      type: RuntimeDefault
+    appArmorProfile:
+      type: Localhost
+      localhostProfile: cnpg-postgres
+  bootstrap:
+    initdb:
+      database: prowlarr-main
+      owner: prowlarr
+      secret:
+        name: prowlarr-postgres-credentials
+  storage:
+    size: 2Gi
+    storageClass: ceph-block
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: prowlarr
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: prowlarr
+  cluster:
+    name: prowlarr-postgres
+  login: true
+  superuser: true
+  passwordSecret:
+    name: prowlarr-postgres-credentials
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: prowlarr-log
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: prowlarr-log
+  owner: prowlarr
+  cluster:
+    name: prowlarr-postgres
+  databaseReclaimPolicy: retain
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: prowlarr-main
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  name: prowlarr-main
+  owner: prowlarr
+  cluster:
+    name: prowlarr-postgres
+  databaseReclaimPolicy: retain

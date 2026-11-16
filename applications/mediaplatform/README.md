@@ -1,5 +1,23 @@
 # Media Platform
 
+## Arr PostgreSQL databases
+
+Radarr, Sonarr, and Prowlarr use individual CloudNativePG clusters. The app
+deployments connect to PostgreSQL using credentials stored in SOPS-encrypted
+Secrets. PostgreSQL data is separate from the existing app config PVCs, which
+remain mounted at `/config` and retain each app's XML settings and SQLite files.
+
+The first PostgreSQL startup initializes fresh databases and each Arr app uses
+those databases once this change is deployed. The existing SQLite files remain
+on the config PVCs as a fallback, but are not imported automatically. Servarr
+documents SQLite-to-PostgreSQL imports as unsupported. Exported `config.xml`
+files contain app/server settings only, not library, indexer, download-client,
+history, quality profile, tag, or other application database state; configure
+those again in the app after the PostgreSQL-backed instance starts.
+
+Servarr does not back up PostgreSQL databases. Back up the CloudNativePG
+clusters separately before relying on them as the sole app database.
+
 ## Radarr, Sonarr, Prowlarr & Sabnzbd
 
 Before deploying these, comment out the http routes in [here](./resources/httproutes.yml). 

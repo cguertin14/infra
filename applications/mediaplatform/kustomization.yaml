@@ -5,16 +5,21 @@ namespace: mediaplatform
 
 resources:
 - resources/namespace.yml
+- resources/postgres.yml
 - resources/volumes.yml
 - resources/httproutes.yml
 - resources/jellyfin-login-rate-limit.yml
 - resources/security-policy.yml
 - resources/backend-traffic-policy.yml
 
+generators:
+- secrets-generator.yml
+
 ## Important: Storage logic
 #
 # 1. each service must have its own PVC. -> Add 'persistence' to each chart. -> DONE.
 # 2. radarr and sonarr all use the same PVC as Jellyfin.
+# 3. Arr application databases use dedicated CloudNativePG clusters.
 
 helmCharts:
 - name: jellyfin
@@ -45,8 +50,25 @@ helmCharts:
   releaseName: radarr
   repo: https://k8s-at-home.com/charts/
   valuesInline:
+    controller:
+      annotations:
+        argocd.argoproj.io/sync-wave: "3"
     env:
       TZ: America/Toronto
+      Radarr__Postgres__Host: radarr-postgres-rw
+      Radarr__Postgres__Port: "5432"
+      Radarr__Postgres__User:
+        valueFrom:
+          secretKeyRef:
+            name: radarr-postgres-credentials
+            key: username
+      Radarr__Postgres__Password:
+        valueFrom:
+          secretKeyRef:
+            name: radarr-postgres-credentials
+            key: password
+      Radarr__Postgres__MainDb: radarr-main
+      Radarr__Postgres__LogDb: radarr-log
     envFrom:
     - configMapRef:
         name: mediaplatform-env
@@ -83,8 +105,25 @@ helmCharts:
   releaseName: sonarr
   repo: https://k8s-at-home.com/charts/
   valuesInline:
+    controller:
+      annotations:
+        argocd.argoproj.io/sync-wave: "3"
     env:
       TZ: America/Toronto
+      Sonarr__Postgres__Host: sonarr-postgres-rw
+      Sonarr__Postgres__Port: "5432"
+      Sonarr__Postgres__User:
+        valueFrom:
+          secretKeyRef:
+            name: sonarr-postgres-credentials
+            key: username
+      Sonarr__Postgres__Password:
+        valueFrom:
+          secretKeyRef:
+            name: sonarr-postgres-credentials
+            key: password
+      Sonarr__Postgres__MainDb: sonarr-main
+      Sonarr__Postgres__LogDb: sonarr-log
     envFrom:
     - configMapRef:
         name: mediaplatform-env
@@ -121,8 +160,25 @@ helmCharts:
   releaseName: prowlarr
   repo: https://k8s-at-home.com/charts/
   valuesInline:
+    controller:
+      annotations:
+        argocd.argoproj.io/sync-wave: "3"
     env:
       TZ: America/Toronto
+      Prowlarr__Postgres__Host: prowlarr-postgres-rw
+      Prowlarr__Postgres__Port: "5432"
+      Prowlarr__Postgres__User:
+        valueFrom:
+          secretKeyRef:
+            name: prowlarr-postgres-credentials
+            key: username
+      Prowlarr__Postgres__Password:
+        valueFrom:
+          secretKeyRef:
+            name: prowlarr-postgres-credentials
+            key: password
+      Prowlarr__Postgres__MainDb: prowlarr-main
+      Prowlarr__Postgres__LogDb: prowlarr-log
     envFrom:
     - configMapRef:
         name: mediaplatform-env
