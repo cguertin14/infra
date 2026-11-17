@@ -70,6 +70,9 @@ helmCharts:
             path: /
             port: 8000
             scheme: HTTP
+            httpHeaders:
+            - name: Host
+              value: classeur.cguertin.dev
           periodSeconds: 30
           timeoutSeconds: 10
           failureThreshold: 5
@@ -80,6 +83,9 @@ helmCharts:
             path: /
             port: 8000
             scheme: HTTP
+            httpHeaders:
+            - name: Host
+              value: classeur.cguertin.dev
           periodSeconds: 30
           timeoutSeconds: 10
           failureThreshold: 5
