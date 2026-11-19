@@ -52,7 +52,7 @@ helmCharts:
   valuesInline:
     immich:
       metrics:
-        enabled: true # creates service monitors
+        enabled: false
       persistence:
         library:
           existingClaim: immich-photos-storage-adjustable
