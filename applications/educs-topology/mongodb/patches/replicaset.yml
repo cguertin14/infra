@@ -6,12 +6,7 @@ spec:
   # number of replicas, minimum for HA
   members: 3
   type: ReplicaSet
-  #
-  ## NOTE: to get to v9:
-  # 1. first upgrade to 8.0.37
-  # 2. then to 9.0.4 or newer
-  #
-  version: 8.0.37
+  version: 9.0.8
   featureCompatibilityVersion: "8.0"
   statefulSet:
     spec:
