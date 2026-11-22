@@ -193,3 +193,6 @@ spec:
   timeout:
     http:
       requestTimeout: 120s
+  compression:
+  - type: Brotli
+  - type: Gzip
