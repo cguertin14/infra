@@ -14,9 +14,6 @@ spec:
     - path:
         type: PathPrefix
         value: /
-    timeouts:
-      request: 45s
-      backendRequest: 45s
     backendRefs:
     - name: home-assistant
       port: 8123
