@@ -7,7 +7,7 @@ spec:
   members: 3
   type: ReplicaSet
   version: 9.0.8
-  featureCompatibilityVersion: "8.0"
+  featureCompatibilityVersion: "9.0"
   statefulSet:
     spec:
       template:
