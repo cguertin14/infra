@@ -8,6 +8,7 @@ resources:
 - resources/wildcard-certificates.yml
 - resources/educs-certificates.yml
 - resources/client-traffic-policy.yml
+- resources/compression.yml
 - resources/service-monitor.yml
 
 helmCharts:
