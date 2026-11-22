@@ -183,7 +183,7 @@ spec:
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: BackendTrafficPolicy
 metadata:
-  name: global-timeout
+  name: global-backend-policy
   namespace: envoy-gateway-system
 spec:
   targetRefs:
