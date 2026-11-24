@@ -37,9 +37,9 @@ images:
 - name: public.ecr.aws/valkey/valkey
   newTag: 9.2-alpine
 - name: gotenberg/gotenberg
-  newTag: "9.9"
+  newTag: "9.10"
 - name: apache/tika
-  newTag: "3.3.3.1"
+  newTag: "3.4.0.0"
 
 helmCharts:
 - name: paperless
