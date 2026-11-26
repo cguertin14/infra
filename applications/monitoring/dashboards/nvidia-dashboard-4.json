@@ -21,7 +21,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 22515,
   "graphTooltip": 0,
-  "id": 39,
+  "id": null,
   "links": [],
   "panels": [
     {
@@ -1096,8 +1096,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "NVIDIA DCGM Dashboard - 3",
-  "uid": "nvidia-dcgm-dashboard-3",
-  "version": 3,
+  "title": "NVIDIA DCGM Dashboard - 4",
+  "uid": "nvidia-dcgm-dashboard-4",
+  "version": 1,
   "weekStart": ""
 }
