@@ -21,7 +21,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 22515,
   "graphTooltip": 0,
-  "id": 39,
+  "id": null,
   "links": [],
   "panels": [
     {
@@ -89,7 +89,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "avg(DCGM_FI_DEV_GPU_TEMP{gpu=~\"$gpu\"})\n",
+          "expr": "avg(DCGM_FI_DEV_GPU_TEMP_CELSIUS{gpu=~\"$gpu\"})\n",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -164,7 +164,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(DCGM_FI_DEV_POWER_USAGE{gpu=~\"$gpu\"})",
+          "expr": "sum(DCGM_FI_DEV_BOARD_POWER_WATTS{gpu=~\"$gpu\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -269,7 +269,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(increase(DCGM_FI_DEV_TOTAL_ENERGY_CONSUMPTION{gpu=~\"$gpu\"}[1h]) / 3600000)",
+          "expr": "sum(increase(DCGM_FI_DEV_GPU_ENERGY_JOULES_TOTAL{gpu=~\"$gpu\"}[1h]) / 3600)",
           "instant": false,
           "interval": "",
           "legendFormat": "Last 1h",
@@ -282,7 +282,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum(increase(DCGM_FI_DEV_TOTAL_ENERGY_CONSUMPTION{Hostname=~\"$host\", gpu=~\"$gpu\"}[24h]) / 3600000)",
+          "expr": "sum(increase(DCGM_FI_DEV_GPU_ENERGY_JOULES_TOTAL{gpu=~\"$gpu\"}[24h]) / 3600)",
           "hide": false,
           "instant": false,
           "legendFormat": "Last 24h",
@@ -388,7 +388,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_POWER_USAGE{gpu=~\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_BOARD_POWER_WATTS{gpu=~\"$gpu\"}",
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
           "range": true,
@@ -456,7 +456,7 @@
               }
             ]
           },
-          "unit": "decmbytes"
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -493,7 +493,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_FB_USED{gpu=~\"$gpu\"}\n",
+          "expr": "DCGM_FI_DEV_FB_USED_BYTES{gpu=~\"$gpu\"}\n",
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
           "range": true,
@@ -600,7 +600,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_FB_USED{gpu=~\"$gpu\"} / (DCGM_FI_DEV_FB_USED{gpu=~\"$gpu\"} + DCGM_FI_DEV_FB_FREE{gpu=~\"$gpu\"})\n",
+          "expr": "DCGM_FI_DEV_FB_USED_BYTES{gpu=~\"$gpu\"} / (DCGM_FI_DEV_FB_USED_BYTES{gpu=~\"$gpu\"} + DCGM_FI_DEV_FB_FREE_BYTES{gpu=~\"$gpu\"})\n",
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
           "range": true,
@@ -670,7 +670,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -707,7 +707,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_GPU_UTIL{gpu=~\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_GPU_UTIL_RATIO{gpu=~\"$gpu\"}",
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
           "range": true,
@@ -812,7 +812,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_GPU_TEMP{gpu=~\"$gpu\"}",
+          "expr": "DCGM_FI_DEV_GPU_TEMP_CELSIUS{gpu=~\"$gpu\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
@@ -917,7 +917,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_DEV_SM_CLOCK{gpu=~\"$gpu\"} * 1000000",
+          "expr": "DCGM_FI_DEV_SM_CLOCK_HERTZ{gpu=~\"$gpu\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1026,7 +1026,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE{gpu=~\"$gpu\"}",
+          "expr": "DCGM_FI_PROF_TENSOR_UTIL_RATIO{gpu=~\"$gpu\"}",
           "interval": "",
           "legendFormat": "{{Hostname}} - GPU {{gpu}}",
           "range": true,
@@ -1074,14 +1074,14 @@
           "type": "prometheus",
           "uid": "P1809F7CD0C75ACF3"
         },
-        "definition": "label_values(DCGM_FI_DEV_GPU_TEMP, gpu)",
+        "definition": "label_values(DCGM_FI_DEV_GPU_TEMP_CELSIUS, gpu)",
         "hide": 0,
         "includeAll": true,
         "label": "GPU ID",
         "multi": true,
         "name": "gpu",
         "options": [],
-        "query": "label_values(DCGM_FI_DEV_GPU_TEMP, gpu)",
+        "query": "label_values(DCGM_FI_DEV_GPU_TEMP_CELSIUS, gpu)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1096,8 +1096,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "NVIDIA DCGM Dashboard - 3",
-  "uid": "nvidia-dcgm-dashboard-3",
-  "version": 3,
+  "title": "NVIDIA DCGM Dashboard - 4",
+  "uid": "nvidia-dcgm-dashboard-4",
+  "version": 1,
   "weekStart": ""
 }
