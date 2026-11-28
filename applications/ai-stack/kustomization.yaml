@@ -28,7 +28,7 @@ labels:
 
 images:
 - name: ollama/ollama
-  newTag: 0.40.18
+  newTag: 0.40.19
 - name: ghcr.io/open-webui/open-webui
   newTag: v0.13.5
 - name: searxng/searxng
